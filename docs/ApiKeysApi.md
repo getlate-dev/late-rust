@@ -1,0 +1,92 @@
+# \ApiKeysApi
+
+All URIs are relative to *https://getlate.dev/api*
+
+Method | HTTP request | Description
+------------- | ------------- | -------------
+[**create_api_key**](ApiKeysApi.md#create_api_key) | **POST** /v1/api-keys | Create a new API key
+[**delete_api_key**](ApiKeysApi.md#delete_api_key) | **DELETE** /v1/api-keys/{keyId} | Delete an API key
+[**list_api_keys**](ApiKeysApi.md#list_api_keys) | **GET** /v1/api-keys | List API keys for the current user
+
+
+
+## create_api_key
+
+> models::CreateApiKey201Response create_api_key(create_api_key_request)
+Create a new API key
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**create_api_key_request** | [**CreateApiKeyRequest**](CreateApiKeyRequest.md) |  | [required] |
+
+### Return type
+
+[**models::CreateApiKey201Response**](createApiKey_201_response.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## delete_api_key
+
+> models::DeleteAccountGroup200Response delete_api_key(key_id)
+Delete an API key
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**key_id** | **String** |  | [required] |
+
+### Return type
+
+[**models::DeleteAccountGroup200Response**](deleteAccountGroup_200_response.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## list_api_keys
+
+> models::ListApiKeys200Response list_api_keys()
+List API keys for the current user
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**models::ListApiKeys200Response**](listApiKeys_200_response.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
