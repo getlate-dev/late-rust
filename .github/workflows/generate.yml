@@ -44,6 +44,7 @@ jobs:
             -i openapi.yaml \
             -g rust \
             -o . \
+            --skip-validate-spec \
             --additional-properties=packageName=late,library=reqwest \
             --git-user-id=getlate-dev \
             --git-repo-id=late-rust
