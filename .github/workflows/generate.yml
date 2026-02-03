@@ -1,0 +1,116 @@
+name: Regenerate
+
+on:
+  repository_dispatch:
+    types: [openapi-updated]
+  workflow_dispatch:
+
+jobs:
+  generate:
+    name: Regenerate from OpenAPI
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+
+      - name: Setup Rust
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          components: rustfmt
+
+      - name: Setup Java (for openapi-generator)
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Install OpenAPI Generator
+        run: npm install -g @openapitools/openapi-generator-cli
+
+      - name: Fetch latest OpenAPI spec
+        run: |
+          curl -f -o openapi.yaml https://getlate.dev/openapi.yaml
+          echo "Fetched OpenAPI spec"
+
+      - name: Generate SDK
+        run: |
+          openapi-generator-cli generate \
+            -i openapi.yaml \
+            -g rust \
+            -o . \
+            --additional-properties=packageName=late,library=reqwest \
+            --git-user-id=getlate-dev \
+            --git-repo-id=late-rust
+
+      - name: Format code
+        run: cargo fmt || true
+
+      - name: Check for changes
+        id: changes
+        run: |
+          git add -A
+          if git diff --staged --quiet; then
+            echo "has_changes=false" >> $GITHUB_OUTPUT
+          else
+            echo "has_changes=true" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Get next version
+        if: steps.changes.outputs.has_changes == 'true'
+        id: version
+        run: |
+          LATEST_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "v0.0.0")
+          NEW_VERSION=$(echo $LATEST_TAG | awk -F. '{printf "v%d.%d.%d", $1, $2, $3+1}' | sed 's/vv/v/')
+          CARGO_VERSION=$(echo $NEW_VERSION | sed 's/v//')
+          echo "new_version=$NEW_VERSION" >> $GITHUB_OUTPUT
+          echo "cargo_version=$CARGO_VERSION" >> $GITHUB_OUTPUT
+
+      - name: Update Cargo.toml version
+        if: steps.changes.outputs.has_changes == 'true'
+        run: |
+          sed -i "s/^version = .*/version = \"${{ steps.version.outputs.cargo_version }}\"/" Cargo.toml || true
+
+      - name: Commit and push
+        if: steps.changes.outputs.has_changes == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "chore: regenerate from OpenAPI spec
+
+          - Auto-generated SDK updates
+          - Version: ${{ steps.version.outputs.new_version }}"
+          git push
+
+      - name: Build
+        if: steps.changes.outputs.has_changes == 'true'
+        run: cargo build --release
+
+      - name: Publish to crates.io
+        if: steps.changes.outputs.has_changes == 'true'
+        run: cargo publish --token ${{ secrets.CRATES_IO_TOKEN }}
+        continue-on-error: true
+
+      - name: Create GitHub Release
+        if: steps.changes.outputs.has_changes == 'true'
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ steps.version.outputs.new_version }}
+          name: ${{ steps.version.outputs.new_version }}
+          generate_release_notes: true
+          body: |
+            ## Auto-generated SDK Update
+
+            Add to `Cargo.toml`:
+            ```toml
+            [dependencies]
+            late = "${{ steps.version.outputs.cargo_version }}"
+            ```
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
