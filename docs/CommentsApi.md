@@ -120,7 +120,7 @@ Name | Type | Description  | Required | Notes
 > models::LikeInboxComment200Response like_inbox_comment(post_id, comment_id, like_inbox_comment_request)
 Like a comment
 
-Like or upvote a comment on a post.  **Supported platforms:** Facebook, Bluesky, Reddit  For Bluesky, the `cid` (content identifier) is required in the request body. 
+Like or upvote a comment on a post.  **Supported platforms:** Facebook, Twitter/X, Bluesky, Reddit  For Bluesky, the `cid` (content identifier) is required in the request body. 
 
 ### Parameters
 
@@ -152,7 +152,7 @@ Name | Type | Description  | Required | Notes
 > models::ListInboxComments200Response list_inbox_comments(profile_id, platform, min_comments, since, sort_by, sort_order, limit, cursor, account_id)
 List posts with comments across all accounts
 
-Fetch posts with their comment counts from all connected accounts. Aggregates data from multiple accounts in a single API call.  **Supported platforms:** Facebook, Instagram, Bluesky, YouTube, LinkedIn, Reddit, TikTok (write-only) 
+Fetch posts with their comment counts from all connected accounts. Aggregates data from multiple accounts in a single API call.  **Supported platforms:** Facebook, Instagram, Twitter/X, Bluesky, Threads, YouTube, LinkedIn, Reddit, TikTok (write-only) 
 
 ### Parameters
 
@@ -285,7 +285,7 @@ Name | Type | Description  | Required | Notes
 > models::UnlikeInboxComment200Response unlike_inbox_comment(post_id, comment_id, account_id, like_uri)
 Unlike a comment
 
-Remove a like from a comment.  **Supported platforms:** Facebook, Bluesky, Reddit  For Bluesky, the `likeUri` query parameter is required. 
+Remove a like from a comment.  **Supported platforms:** Facebook, Twitter/X, Bluesky, Reddit  For Bluesky, the `likeUri` query parameter is required. 
 
 ### Parameters
 

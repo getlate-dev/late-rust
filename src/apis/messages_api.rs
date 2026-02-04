@@ -169,7 +169,7 @@ pub async fn get_inbox_conversation_messages(
     }
 }
 
-/// Fetch conversations (DMs) from all connected messaging accounts in a single API call. Supports filtering by profile and platform. Results are aggregated and deduplicated.  **Supported platforms:** Facebook, Instagram, Bluesky, Reddit, Telegram
+/// Fetch conversations (DMs) from all connected messaging accounts in a single API call. Supports filtering by profile and platform. Results are aggregated and deduplicated.  **Supported platforms:** Facebook, Instagram, Twitter/X, Bluesky, Reddit, Telegram
 pub async fn list_inbox_conversations(
     configuration: &configuration::Configuration,
     profile_id: Option<&str>,

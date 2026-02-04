@@ -79,7 +79,7 @@ Name | Type | Description  | Required | Notes
 > models::ListInboxConversations200Response list_inbox_conversations(profile_id, platform, status, sort_order, limit, cursor, account_id)
 List conversations across all accounts
 
-Fetch conversations (DMs) from all connected messaging accounts in a single API call. Supports filtering by profile and platform. Results are aggregated and deduplicated.  **Supported platforms:** Facebook, Instagram, Bluesky, Reddit, Telegram 
+Fetch conversations (DMs) from all connected messaging accounts in a single API call. Supports filtering by profile and platform. Results are aggregated and deduplicated.  **Supported platforms:** Facebook, Instagram, Twitter/X, Bluesky, Reddit, Telegram 
 
 ### Parameters
 
