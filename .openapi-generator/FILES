@@ -64,6 +64,12 @@ docs/ErrorResponse.md
 docs/Expired.md
 docs/FacebookPlatformData.md
 docs/FollowerStatsResponse.md
+docs/FoodMenu.md
+docs/FoodMenuItem.md
+docs/FoodMenuItemAttributes.md
+docs/FoodMenuItemOptionsInner.md
+docs/FoodMenuLabel.md
+docs/FoodMenuSection.md
 docs/GetAccountHealth200Response.md
 docs/GetAccountHealth200ResponsePermissions.md
 docs/GetAccountHealth200ResponsePermissionsPostingInner.md
@@ -82,6 +88,7 @@ docs/GetFollowerStats200ResponseStatsValueInner.md
 docs/GetFollowerStats403Response.md
 docs/GetGmbLocations200Response.md
 docs/GetGmbLocations200ResponseLocationsInner.md
+docs/GetGoogleBusinessFoodMenus200Response.md
 docs/GetGoogleBusinessReviews200Response.md
 docs/GetGoogleBusinessReviews200ResponseReviewsInner.md
 docs/GetGoogleBusinessReviews200ResponseReviewsInnerReviewReply.md
@@ -130,6 +137,7 @@ docs/GetYouTubeDailyViews403Response.md
 docs/GetYouTubeDailyViews500Response.md
 docs/GetYouTubeTranscript200Response.md
 docs/GetYouTubeTranscript200ResponseSegmentsInner.md
+docs/GmbFoodMenusApi.md
 docs/GmbReviewsApi.md
 docs/GoogleBusinessPlatformData.md
 docs/GoogleBusinessPlatformDataCallToAction.md
@@ -195,6 +203,7 @@ docs/MediaApi.md
 docs/MediaItem.md
 docs/MediaUploadResponse.md
 docs/MessagesApi.md
+docs/Money.md
 docs/Pagination.md
 docs/Pending.md
 docs/PinterestPlatformData.md
@@ -296,6 +305,8 @@ docs/UpdateFacebookPage200ResponseSelectedPage.md
 docs/UpdateFacebookPageRequest.md
 docs/UpdateGmbLocation200Response.md
 docs/UpdateGmbLocationRequest.md
+docs/UpdateGoogleBusinessFoodMenus200Response.md
+docs/UpdateGoogleBusinessFoodMenusRequest.md
 docs/UpdateInboxConversation200Response.md
 docs/UpdateInboxConversation200ResponseData.md
 docs/UpdateInboxConversationRequest.md
@@ -351,6 +362,7 @@ src/apis/api_keys_api.rs
 src/apis/comments_api.rs
 src/apis/configuration.rs
 src/apis/connect_api.rs
+src/apis/gmb_food_menus_api.rs
 src/apis/gmb_reviews_api.rs
 src/apis/invites_api.rs
 src/apis/linked_in_mentions_api.rs
@@ -424,6 +436,12 @@ src/models/error_response.rs
 src/models/expired.rs
 src/models/facebook_platform_data.rs
 src/models/follower_stats_response.rs
+src/models/food_menu.rs
+src/models/food_menu_item.rs
+src/models/food_menu_item_attributes.rs
+src/models/food_menu_item_options_inner.rs
+src/models/food_menu_label.rs
+src/models/food_menu_section.rs
 src/models/get_account_health_200_response.rs
 src/models/get_account_health_200_response_permissions.rs
 src/models/get_account_health_200_response_permissions_posting_inner.rs
@@ -442,6 +460,7 @@ src/models/get_follower_stats_200_response_stats_value_inner.rs
 src/models/get_follower_stats_403_response.rs
 src/models/get_gmb_locations_200_response.rs
 src/models/get_gmb_locations_200_response_locations_inner.rs
+src/models/get_google_business_food_menus_200_response.rs
 src/models/get_google_business_reviews_200_response.rs
 src/models/get_google_business_reviews_200_response_reviews_inner.rs
 src/models/get_google_business_reviews_200_response_reviews_inner_review_reply.rs
@@ -550,6 +569,7 @@ src/models/list_users_200_response_users_inner.rs
 src/models/media_item.rs
 src/models/media_upload_response.rs
 src/models/mod.rs
+src/models/money.rs
 src/models/pagination.rs
 src/models/pending.rs
 src/models/pinterest_platform_data.rs
@@ -645,6 +665,8 @@ src/models/update_facebook_page_200_response_selected_page.rs
 src/models/update_facebook_page_request.rs
 src/models/update_gmb_location_200_response.rs
 src/models/update_gmb_location_request.rs
+src/models/update_google_business_food_menus_200_response.rs
+src/models/update_google_business_food_menus_request.rs
 src/models/update_inbox_conversation_200_response.rs
 src/models/update_inbox_conversation_200_response_data.rs
 src/models/update_inbox_conversation_request.rs

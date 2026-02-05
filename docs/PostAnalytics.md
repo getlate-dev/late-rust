@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **likes** | Option<**i32**> |  | [optional]
 **comments** | Option<**i32**> |  | [optional]
 **shares** | Option<**i32**> |  | [optional]
+**saves** | Option<**i32**> | Number of saves/bookmarks (Instagram, Pinterest) | [optional]
 **clicks** | Option<**i32**> |  | [optional]
 **views** | Option<**i32**> |  | [optional]
 **engagement_rate** | Option<**f64**> |  | [optional]

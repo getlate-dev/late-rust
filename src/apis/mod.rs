@@ -119,6 +119,7 @@ pub mod analytics_api;
 pub mod api_keys_api;
 pub mod comments_api;
 pub mod connect_api;
+pub mod gmb_food_menus_api;
 pub mod gmb_reviews_api;
 pub mod invites_api;
 pub mod linked_in_mentions_api;
