@@ -18,6 +18,7 @@ pub struct PlatformTarget {
     pub platform: Option<String>,
     #[serde(rename = "accountId", skip_serializing_if = "Option::is_none")]
     pub account_id: Option<Box<models::PlatformTargetAccountId>>,
+    /// Platform-specific text override. When set, this content is used instead of the top-level post content for this platform. Useful for tailoring captions per platform (e.g. keeping tweets under 280 characters).
     #[serde(rename = "customContent", skip_serializing_if = "Option::is_none")]
     pub custom_content: Option<String>,
     #[serde(rename = "customMedia", skip_serializing_if = "Option::is_none")]
