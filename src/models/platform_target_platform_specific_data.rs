@@ -27,6 +27,8 @@ pub enum PlatformTargetPlatformSpecificData {
     TikTokPlatformData(Box<models::TikTokPlatformData>),
     TelegramPlatformData(Box<models::TelegramPlatformData>),
     SnapchatPlatformData(Box<models::SnapchatPlatformData>),
+    RedditPlatformData(Box<models::RedditPlatformData>),
+    BlueskyPlatformData(Box<models::BlueskyPlatformData>),
 }
 
 impl Default for PlatformTargetPlatformSpecificData {

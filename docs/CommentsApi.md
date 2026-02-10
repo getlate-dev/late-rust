@@ -28,7 +28,7 @@ Delete a comment on a post. Supported by Facebook, Instagram, Bluesky, Reddit, Y
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**post_id** | **String** |  | [required] |
+**post_id** | **String** | The post identifier. Accepts a Late post ID or a platform-specific post ID. | [required] |
 **account_id** | **String** |  | [required] |
 **comment_id** | **String** |  | [required] |
 
@@ -60,7 +60,7 @@ Fetch comments for a specific post. Requires accountId query parameter.
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**post_id** | **String** |  | [required] |
+**post_id** | **String** | The post identifier. Accepts a Late post ID (MongoDB ObjectId) which is automatically resolved to the platform-specific post ID, or a platform-specific post ID directly (e.g. tweet ID, Facebook Graph ID, YouTube video ID). | [required] |
 **account_id** | **String** |  | [required] |
 **subreddit** | Option<**String**> | (Reddit only) Subreddit name |  |
 **limit** | Option<**i32**> | Maximum number of comments to return |  |[default to 25]
@@ -197,7 +197,7 @@ Post a reply to a post or specific comment. Requires accountId in request body.
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**post_id** | **String** |  | [required] |
+**post_id** | **String** | The post identifier. Accepts a Late post ID or a platform-specific post ID. | [required] |
 **reply_to_inbox_post_request** | [**ReplyToInboxPostRequest**](ReplyToInboxPostRequest.md) |  | [required] |
 
 ### Return type

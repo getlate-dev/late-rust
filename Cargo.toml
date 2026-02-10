@@ -1,6 +1,6 @@
 [package]
 name = "late"
-version = "0.0.10"
+version = "0.0.11"
 authors = ["OpenAPI Generator team and contributors"]
 description = "API reference for Late. Authenticate with a Bearer API key. Base URL: https://getlate.dev/api "
 # Override this license by providing a License Object in the OpenAPI.

@@ -14,6 +14,7 @@ docs/AnalyticsOverview.md
 docs/AnalyticsSinglePostResponse.md
 docs/ApiKey.md
 docs/ApiKeysApi.md
+docs/BlueskyPlatformData.md
 docs/BulkUploadPosts200Response.md
 docs/BulkUploadPosts200ResponseErrorsInner.md
 docs/BulkUploadPosts429Response.md
@@ -29,6 +30,10 @@ docs/ConnectBlueskyCredentials200Response.md
 docs/ConnectBlueskyCredentialsRequest.md
 docs/Connected.md
 docs/ConnectedAccount.md
+docs/ConnectionLog.md
+docs/ConnectionLogContext.md
+docs/ConnectionLogError.md
+docs/ConnectionLogSuccess.md
 docs/CreateAccountGroup201Response.md
 docs/CreateAccountGroupRequest.md
 docs/CreateApiKey201Response.md
@@ -190,6 +195,7 @@ docs/ListAccountGroups200Response.md
 docs/ListAccountGroups200ResponseGroupsInner.md
 docs/ListAccounts200Response.md
 docs/ListApiKeys200Response.md
+docs/ListConnectionLogs200Response.md
 docs/ListFacebookPages200Response.md
 docs/ListFacebookPages200ResponsePagesInner.md
 docs/ListGoogleBusinessLocations200Response.md
@@ -272,6 +278,7 @@ docs/QueueSchedule.md
 docs/QueueSlot.md
 docs/QueueSlotsResponse.md
 docs/QueueUpdateResponse.md
+docs/RedditPlatformData.md
 docs/RedditSearchApi.md
 docs/ReplyToInboxPost200Response.md
 docs/ReplyToInboxPost200ResponseData.md
@@ -426,6 +433,7 @@ src/models/analytics_list_response_posts_inner.rs
 src/models/analytics_overview.rs
 src/models/analytics_single_post_response.rs
 src/models/api_key.rs
+src/models/bluesky_platform_data.rs
 src/models/bulk_upload_posts_200_response.rs
 src/models/bulk_upload_posts_200_response_errors_inner.rs
 src/models/bulk_upload_posts_429_response.rs
@@ -439,6 +447,10 @@ src/models/connect_bluesky_credentials_200_response.rs
 src/models/connect_bluesky_credentials_request.rs
 src/models/connected.rs
 src/models/connected_account.rs
+src/models/connection_log.rs
+src/models/connection_log_context.rs
+src/models/connection_log_error.rs
+src/models/connection_log_success.rs
 src/models/create_account_group_201_response.rs
 src/models/create_account_group_request.rs
 src/models/create_api_key_201_response.rs
@@ -592,6 +604,7 @@ src/models/list_account_groups_200_response.rs
 src/models/list_account_groups_200_response_groups_inner.rs
 src/models/list_accounts_200_response.rs
 src/models/list_api_keys_200_response.rs
+src/models/list_connection_logs_200_response.rs
 src/models/list_facebook_pages_200_response.rs
 src/models/list_facebook_pages_200_response_pages_inner.rs
 src/models/list_google_business_locations_200_response.rs
@@ -669,6 +682,7 @@ src/models/queue_schedule.rs
 src/models/queue_slot.rs
 src/models/queue_slots_response.rs
 src/models/queue_update_response.rs
+src/models/reddit_platform_data.rs
 src/models/reply_to_inbox_post_200_response.rs
 src/models/reply_to_inbox_post_200_response_data.rs
 src/models/reply_to_inbox_post_request.rs

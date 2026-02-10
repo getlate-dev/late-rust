@@ -21,9 +21,12 @@ pub enum CreatePostRequestPlatformsInnerPlatformSpecificData {
     LinkedInPlatformData(Box<models::LinkedInPlatformData>),
     PinterestPlatformData(Box<models::PinterestPlatformData>),
     YouTubePlatformData(Box<models::YouTubePlatformData>),
+    GoogleBusinessPlatformData(Box<models::GoogleBusinessPlatformData>),
     TikTokPlatformData(Box<models::TikTokPlatformData>),
     TelegramPlatformData(Box<models::TelegramPlatformData>),
     SnapchatPlatformData(Box<models::SnapchatPlatformData>),
+    RedditPlatformData(Box<models::RedditPlatformData>),
+    BlueskyPlatformData(Box<models::BlueskyPlatformData>),
 }
 
 impl Default for CreatePostRequestPlatformsInnerPlatformSpecificData {

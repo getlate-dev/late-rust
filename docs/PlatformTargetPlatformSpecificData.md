@@ -4,11 +4,13 @@
 
 | Name | Description |
 |---- | -----|
+| BlueskyPlatformData | Platform-specific overrides and options. |
 | FacebookPlatformData | Platform-specific overrides and options. |
 | GoogleBusinessPlatformData | Platform-specific overrides and options. |
 | InstagramPlatformData | Platform-specific overrides and options. |
 | LinkedInPlatformData | Platform-specific overrides and options. |
 | PinterestPlatformData | Platform-specific overrides and options. |
+| RedditPlatformData | Platform-specific overrides and options. |
 | SnapchatPlatformData | Platform-specific overrides and options. |
 | TelegramPlatformData | Platform-specific overrides and options. |
 | ThreadsPlatformData | Platform-specific overrides and options. |

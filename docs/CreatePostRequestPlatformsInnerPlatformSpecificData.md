@@ -4,10 +4,13 @@
 
 | Name | Description |
 |---- | -----|
+| BlueskyPlatformData |  |
 | FacebookPlatformData |  |
+| GoogleBusinessPlatformData |  |
 | InstagramPlatformData |  |
 | LinkedInPlatformData |  |
 | PinterestPlatformData |  |
+| RedditPlatformData |  |
 | SnapchatPlatformData |  |
 | TelegramPlatformData |  |
 | ThreadsPlatformData |  |
