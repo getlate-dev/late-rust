@@ -21,6 +21,8 @@ pub struct WebhookPayloadMessageMessageSender {
     pub username: Option<String>,
     #[serde(rename = "picture", skip_serializing_if = "Option::is_none")]
     pub picture: Option<String>,
+    #[serde(rename = "instagramProfile", skip_serializing_if = "Option::is_none")]
+    pub instagram_profile: Option<Box<models::WebhookPayloadMessageMessageSenderInstagramProfile>>,
 }
 
 impl WebhookPayloadMessageMessageSender {
@@ -30,6 +32,7 @@ impl WebhookPayloadMessageMessageSender {
             name: None,
             username: None,
             picture: None,
+            instagram_profile: None,
         }
     }
 }

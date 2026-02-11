@@ -39,6 +39,9 @@ pub struct ListInboxConversations200ResponseDataInner {
     /// Direct link to open the conversation on the platform (if available)
     #[serde(rename = "url", skip_serializing_if = "Option::is_none")]
     pub url: Option<String>,
+    #[serde(rename = "instagramProfile", skip_serializing_if = "Option::is_none")]
+    pub instagram_profile:
+        Option<Box<models::ListInboxConversations200ResponseDataInnerInstagramProfile>>,
 }
 
 impl ListInboxConversations200ResponseDataInner {
@@ -56,6 +59,7 @@ impl ListInboxConversations200ResponseDataInner {
             status: None,
             unread_count: None,
             url: None,
+            instagram_profile: None,
         }
     }
 }

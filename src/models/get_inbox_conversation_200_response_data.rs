@@ -35,6 +35,9 @@ pub struct GetInboxConversation200ResponseData {
     pub updated_time: Option<String>,
     #[serde(rename = "participants", skip_serializing_if = "Option::is_none")]
     pub participants: Option<Vec<models::UpdateFacebookPage200ResponseSelectedPage>>,
+    #[serde(rename = "instagramProfile", skip_serializing_if = "Option::is_none")]
+    pub instagram_profile:
+        Option<Box<models::ListInboxConversations200ResponseDataInnerInstagramProfile>>,
 }
 
 impl GetInboxConversation200ResponseData {
@@ -51,6 +54,7 @@ impl GetInboxConversation200ResponseData {
             last_message_at: None,
             updated_time: None,
             participants: None,
+            instagram_profile: None,
         }
     }
 }

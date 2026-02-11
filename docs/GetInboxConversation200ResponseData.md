@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **last_message_at** | Option<**String**> |  | [optional]
 **updated_time** | Option<**String**> |  | [optional]
 **participants** | Option<[**Vec<models::UpdateFacebookPage200ResponseSelectedPage>**](UpdateFacebookPage200ResponseSelectedPage.md)> |  | [optional]
+**instagram_profile** | Option<[**models::ListInboxConversations200ResponseDataInnerInstagramProfile**](ListInboxConversations200ResponseDataInnerInstagramProfile.md)> |  | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -218,6 +218,7 @@ docs/ListInboxComments200Response.md
 docs/ListInboxComments200ResponseDataInner.md
 docs/ListInboxConversations200Response.md
 docs/ListInboxConversations200ResponseDataInner.md
+docs/ListInboxConversations200ResponseDataInnerInstagramProfile.md
 docs/ListInboxConversations200ResponseMeta.md
 docs/ListInboxConversations200ResponseMetaFailedAccountsInner.md
 docs/ListInboxConversations200ResponsePagination.md
@@ -406,6 +407,7 @@ docs/WebhookPayloadMessageConversation.md
 docs/WebhookPayloadMessageMessage.md
 docs/WebhookPayloadMessageMessageAttachmentsInner.md
 docs/WebhookPayloadMessageMessageSender.md
+docs/WebhookPayloadMessageMessageSenderInstagramProfile.md
 docs/WebhookPayloadMessageMetadata.md
 docs/WebhookPayloadPost.md
 docs/WebhookPayloadPostPost.md
@@ -650,6 +652,7 @@ src/models/list_inbox_comments_200_response.rs
 src/models/list_inbox_comments_200_response_data_inner.rs
 src/models/list_inbox_conversations_200_response.rs
 src/models/list_inbox_conversations_200_response_data_inner.rs
+src/models/list_inbox_conversations_200_response_data_inner_instagram_profile.rs
 src/models/list_inbox_conversations_200_response_meta.rs
 src/models/list_inbox_conversations_200_response_meta_failed_accounts_inner.rs
 src/models/list_inbox_conversations_200_response_pagination.rs
@@ -828,6 +831,7 @@ src/models/webhook_payload_message_conversation.rs
 src/models/webhook_payload_message_message.rs
 src/models/webhook_payload_message_message_attachments_inner.rs
 src/models/webhook_payload_message_message_sender.rs
+src/models/webhook_payload_message_message_sender_instagram_profile.rs
 src/models/webhook_payload_message_metadata.rs
 src/models/webhook_payload_post.rs
 src/models/webhook_payload_post_post.rs
