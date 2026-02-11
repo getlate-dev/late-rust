@@ -13,6 +13,16 @@ use crate::{apis::ResponseContent, models};
 use reqwest;
 use serde::{de::Error as _, Deserialize, Serialize};
 
+/// struct for typed errors of method [`edit_inbox_message`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum EditInboxMessageError {
+    Status400(),
+    Status401(models::InlineObject),
+    Status403(),
+    UnknownValue(serde_json::Value),
+}
+
 /// struct for typed errors of method [`get_inbox_conversation`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -58,6 +68,65 @@ pub enum UpdateInboxConversationError {
     Status401(models::InlineObject),
     Status403(),
     UnknownValue(serde_json::Value),
+}
+
+/// Edit the text and/or reply markup of a previously sent Telegram message. Only supported for Telegram. Returns 400 for other platforms.
+pub async fn edit_inbox_message(
+    configuration: &configuration::Configuration,
+    conversation_id: &str,
+    message_id: &str,
+    edit_inbox_message_request: models::EditInboxMessageRequest,
+) -> Result<models::EditInboxMessage200Response, Error<EditInboxMessageError>> {
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_path_conversation_id = conversation_id;
+    let p_path_message_id = message_id;
+    let p_body_edit_inbox_message_request = edit_inbox_message_request;
+
+    let uri_str = format!(
+        "{}/v1/inbox/conversations/{conversationId}/messages/{messageId}",
+        configuration.base_path,
+        conversationId = crate::apis::urlencode(p_path_conversation_id),
+        messageId = crate::apis::urlencode(p_path_message_id)
+    );
+    let mut req_builder = configuration
+        .client
+        .request(reqwest::Method::PATCH, &uri_str);
+
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    if let Some(ref token) = configuration.bearer_access_token {
+        req_builder = req_builder.bearer_auth(token.to_owned());
+    };
+    req_builder = req_builder.json(&p_body_edit_inbox_message_request);
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::EditInboxMessage200Response`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::EditInboxMessage200Response`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<EditInboxMessageError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent {
+            status,
+            content,
+            entity,
+        }))
+    }
 }
 
 /// Retrieve details and metadata for a specific conversation. Requires accountId query parameter.
@@ -249,7 +318,7 @@ pub async fn list_inbox_conversations(
     }
 }
 
-/// Send a message in a conversation. Requires accountId in request body.  **Attachment support by platform:** - Telegram: Images, videos, documents (up to 50MB) - Facebook Messenger: Images, videos, audio, files - Twitter/X: Images, videos (requires media upload) - Instagram: Not supported (API limitation) - Bluesky: Not supported (API limitation) - Reddit: Not supported (API limitation)
+/// Send a message in a conversation. Supports text, attachments, quick replies, buttons, carousels, and message tags.  **Attachment support by platform:** - Telegram: Images, videos, documents (up to 50MB) - Facebook Messenger: Images, videos, audio, files - Instagram: Images, videos, audio via URL (8MB images, 25MB video/audio) - Twitter/X: Images, videos (requires media upload) - Bluesky: Not supported - Reddit: Not supported  **Interactive message support:** | Field | Instagram | Facebook | Telegram | |---|---|---|---| | quickReplies | Meta quick_replies (13 max) | Meta quick_replies (13 max) | ReplyKeyboardMarkup (one_time) | | buttons | Generic template | Generic template | Inline keyboard | | template | Generic template (carousel) | Generic template (carousel) | Ignored | | replyMarkup | Ignored | Ignored | InlineKeyboardMarkup / ReplyKeyboardMarkup | | messagingType | Ignored | RESPONSE / UPDATE / MESSAGE_TAG | Ignored | | messageTag | HUMAN_AGENT only | 4 tag types | Ignored | | replyTo | Ignored | Ignored | reply_parameters |  Platform-specific fields are silently ignored on unsupported platforms.
 pub async fn send_inbox_message(
     configuration: &configuration::Configuration,
     conversation_id: &str,

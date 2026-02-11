@@ -17,15 +17,75 @@ pub struct SendInboxMessageRequest {
     #[serde(rename = "accountId")]
     pub account_id: String,
     /// Message text
-    #[serde(rename = "message")]
-    pub message: String,
+    #[serde(rename = "message", skip_serializing_if = "Option::is_none")]
+    pub message: Option<String>,
+    /// Quick reply buttons. Mutually exclusive with buttons. Max 13 items.
+    #[serde(rename = "quickReplies", skip_serializing_if = "Option::is_none")]
+    pub quick_replies: Option<Vec<models::SendInboxMessageRequestQuickRepliesInner>>,
+    /// Action buttons. Mutually exclusive with quickReplies. Max 3 items.
+    #[serde(rename = "buttons", skip_serializing_if = "Option::is_none")]
+    pub buttons: Option<Vec<models::SendInboxMessageRequestButtonsInner>>,
+    #[serde(rename = "template", skip_serializing_if = "Option::is_none")]
+    pub template: Option<Box<models::SendInboxMessageRequestTemplate>>,
+    #[serde(rename = "replyMarkup", skip_serializing_if = "Option::is_none")]
+    pub reply_markup: Option<Box<models::SendInboxMessageRequestReplyMarkup>>,
+    /// Facebook messaging type. Required when using messageTag.
+    #[serde(rename = "messagingType", skip_serializing_if = "Option::is_none")]
+    pub messaging_type: Option<MessagingType>,
+    /// Facebook message tag for messaging outside 24h window. Requires messagingType MESSAGE_TAG. Instagram only supports HUMAN_AGENT.
+    #[serde(rename = "messageTag", skip_serializing_if = "Option::is_none")]
+    pub message_tag: Option<MessageTag>,
+    /// Platform message ID to reply to (Telegram only).
+    #[serde(rename = "replyTo", skip_serializing_if = "Option::is_none")]
+    pub reply_to: Option<String>,
 }
 
 impl SendInboxMessageRequest {
-    pub fn new(account_id: String, message: String) -> SendInboxMessageRequest {
+    pub fn new(account_id: String) -> SendInboxMessageRequest {
         SendInboxMessageRequest {
             account_id,
-            message,
+            message: None,
+            quick_replies: None,
+            buttons: None,
+            template: None,
+            reply_markup: None,
+            messaging_type: None,
+            message_tag: None,
+            reply_to: None,
         }
+    }
+}
+/// Facebook messaging type. Required when using messageTag.
+#[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
+pub enum MessagingType {
+    #[serde(rename = "RESPONSE")]
+    Response,
+    #[serde(rename = "UPDATE")]
+    Update,
+    #[serde(rename = "MESSAGE_TAG")]
+    MessageTag,
+}
+
+impl Default for MessagingType {
+    fn default() -> MessagingType {
+        Self::Response
+    }
+}
+/// Facebook message tag for messaging outside 24h window. Requires messagingType MESSAGE_TAG. Instagram only supports HUMAN_AGENT.
+#[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
+pub enum MessageTag {
+    #[serde(rename = "CONFIRMED_EVENT_UPDATE")]
+    ConfirmedEventUpdate,
+    #[serde(rename = "POST_PURCHASE_UPDATE")]
+    PostPurchaseUpdate,
+    #[serde(rename = "ACCOUNT_UPDATE")]
+    AccountUpdate,
+    #[serde(rename = "HUMAN_AGENT")]
+    HumanAgent,
+}
+
+impl Default for MessageTag {
+    fn default() -> MessageTag {
+        Self::ConfirmedEventUpdate
     }
 }

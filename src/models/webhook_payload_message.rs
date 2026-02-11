@@ -22,6 +22,8 @@ pub struct WebhookPayloadMessage {
     pub conversation: Option<Box<models::WebhookPayloadMessageConversation>>,
     #[serde(rename = "account", skip_serializing_if = "Option::is_none")]
     pub account: Option<Box<models::WebhookPayloadMessageAccount>>,
+    #[serde(rename = "metadata", skip_serializing_if = "Option::is_none")]
+    pub metadata: Option<Box<models::WebhookPayloadMessageMetadata>>,
     #[serde(rename = "timestamp", skip_serializing_if = "Option::is_none")]
     pub timestamp: Option<String>,
 }
@@ -34,6 +36,7 @@ impl WebhookPayloadMessage {
             message: None,
             conversation: None,
             account: None,
+            metadata: None,
             timestamp: None,
         }
     }

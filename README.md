@@ -35,6 +35,15 @@ Class | Method | HTTP request | Description
 *AccountGroupsApi* | [**delete_account_group**](docs/AccountGroupsApi.md#delete_account_group) | **DELETE** /v1/account-groups/{groupId} | Delete an account group
 *AccountGroupsApi* | [**list_account_groups**](docs/AccountGroupsApi.md#list_account_groups) | **GET** /v1/account-groups | List account groups for the authenticated user
 *AccountGroupsApi* | [**update_account_group**](docs/AccountGroupsApi.md#update_account_group) | **PUT** /v1/account-groups/{groupId} | Update an account group
+*AccountSettingsApi* | [**delete_instagram_ice_breakers**](docs/AccountSettingsApi.md#delete_instagram_ice_breakers) | **DELETE** /v1/accounts/{accountId}/instagram-ice-breakers | Delete Instagram ice breakers
+*AccountSettingsApi* | [**delete_messenger_menu**](docs/AccountSettingsApi.md#delete_messenger_menu) | **DELETE** /v1/accounts/{accountId}/messenger-menu | Delete Facebook persistent menu
+*AccountSettingsApi* | [**delete_telegram_commands**](docs/AccountSettingsApi.md#delete_telegram_commands) | **DELETE** /v1/accounts/{accountId}/telegram-commands | Delete Telegram bot commands
+*AccountSettingsApi* | [**get_instagram_ice_breakers**](docs/AccountSettingsApi.md#get_instagram_ice_breakers) | **GET** /v1/accounts/{accountId}/instagram-ice-breakers | Get Instagram ice breakers
+*AccountSettingsApi* | [**get_messenger_menu**](docs/AccountSettingsApi.md#get_messenger_menu) | **GET** /v1/accounts/{accountId}/messenger-menu | Get Facebook persistent menu
+*AccountSettingsApi* | [**get_telegram_commands**](docs/AccountSettingsApi.md#get_telegram_commands) | **GET** /v1/accounts/{accountId}/telegram-commands | Get Telegram bot commands
+*AccountSettingsApi* | [**set_instagram_ice_breakers**](docs/AccountSettingsApi.md#set_instagram_ice_breakers) | **PUT** /v1/accounts/{accountId}/instagram-ice-breakers | Set Instagram ice breakers
+*AccountSettingsApi* | [**set_messenger_menu**](docs/AccountSettingsApi.md#set_messenger_menu) | **PUT** /v1/accounts/{accountId}/messenger-menu | Set Facebook persistent menu
+*AccountSettingsApi* | [**set_telegram_commands**](docs/AccountSettingsApi.md#set_telegram_commands) | **PUT** /v1/accounts/{accountId}/telegram-commands | Set Telegram bot commands
 *AccountsApi* | [**delete_account**](docs/AccountsApi.md#delete_account) | **DELETE** /v1/accounts/{accountId} | Disconnect a social account
 *AccountsApi* | [**get_account_health**](docs/AccountsApi.md#get_account_health) | **GET** /v1/accounts/{accountId}/health | Check health of a specific account
 *AccountsApi* | [**get_all_accounts_health**](docs/AccountsApi.md#get_all_accounts_health) | **GET** /v1/accounts/health | Check health of all connected accounts
@@ -103,6 +112,7 @@ Class | Method | HTTP request | Description
 *LogsApi* | [**list_logs**](docs/LogsApi.md#list_logs) | **GET** /v1/logs | Get publishing logs (deprecated)
 *LogsApi* | [**list_posts_logs**](docs/LogsApi.md#list_posts_logs) | **GET** /v1/posts/logs | Get publishing logs
 *MediaApi* | [**get_media_presigned_url**](docs/MediaApi.md#get_media_presigned_url) | **POST** /v1/media/presign | Get a presigned URL for direct file upload (up to 5GB)
+*MessagesApi* | [**edit_inbox_message**](docs/MessagesApi.md#edit_inbox_message) | **PATCH** /v1/inbox/conversations/{conversationId}/messages/{messageId} | Edit a message (Telegram only)
 *MessagesApi* | [**get_inbox_conversation**](docs/MessagesApi.md#get_inbox_conversation) | **GET** /v1/inbox/conversations/{conversationId} | Get conversation details
 *MessagesApi* | [**get_inbox_conversation_messages**](docs/MessagesApi.md#get_inbox_conversation_messages) | **GET** /v1/inbox/conversations/{conversationId}/messages | Get messages in a conversation
 *MessagesApi* | [**list_inbox_conversations**](docs/MessagesApi.md#list_inbox_conversations) | **GET** /v1/inbox/conversations | List conversations across all accounts
@@ -216,6 +226,11 @@ Class | Method | HTTP request | Description
  - [DownloadTikTokVideo200ResponseFormatsInner](docs/DownloadTikTokVideo200ResponseFormatsInner.md)
  - [DownloadYouTubeVideo200Response](docs/DownloadYouTubeVideo200Response.md)
  - [DownloadYouTubeVideo200ResponseFormatsInner](docs/DownloadYouTubeVideo200ResponseFormatsInner.md)
+ - [EditInboxMessage200Response](docs/EditInboxMessage200Response.md)
+ - [EditInboxMessage200ResponseData](docs/EditInboxMessage200ResponseData.md)
+ - [EditInboxMessageRequest](docs/EditInboxMessageRequest.md)
+ - [EditInboxMessageRequestReplyMarkup](docs/EditInboxMessageRequestReplyMarkup.md)
+ - [EditInboxMessageRequestReplyMarkupKeyboardInnerInner](docs/EditInboxMessageRequestReplyMarkupKeyboardInnerInner.md)
  - [ErrorResponse](docs/ErrorResponse.md)
  - [Expired](docs/Expired.md)
  - [FacebookPlatformData](docs/FacebookPlatformData.md)
@@ -284,6 +299,7 @@ Class | Method | HTTP request | Description
  - [GetLog200Response](docs/GetLog200Response.md)
  - [GetMediaPresignedUrl200Response](docs/GetMediaPresignedUrl200Response.md)
  - [GetMediaPresignedUrlRequest](docs/GetMediaPresignedUrlRequest.md)
+ - [GetMessengerMenu200Response](docs/GetMessengerMenu200Response.md)
  - [GetNextQueueSlot200Response](docs/GetNextQueueSlot200Response.md)
  - [GetPendingOAuthData200Response](docs/GetPendingOAuthData200Response.md)
  - [GetPendingOAuthData200ResponseOrganizationsInner](docs/GetPendingOAuthData200ResponseOrganizationsInner.md)
@@ -294,6 +310,8 @@ Class | Method | HTTP request | Description
  - [GetRedditFeed200Response](docs/GetRedditFeed200Response.md)
  - [GetRedditSubreddits200Response](docs/GetRedditSubreddits200Response.md)
  - [GetRedditSubreddits200ResponseSubredditsInner](docs/GetRedditSubreddits200ResponseSubredditsInner.md)
+ - [GetTelegramCommands200Response](docs/GetTelegramCommands200Response.md)
+ - [GetTelegramCommands200ResponseDataInner](docs/GetTelegramCommands200ResponseDataInner.md)
  - [GetTelegramConnectStatus200Response](docs/GetTelegramConnectStatus200Response.md)
  - [GetUser200Response](docs/GetUser200Response.md)
  - [GetUser200ResponseUser](docs/GetUser200ResponseUser.md)
@@ -441,8 +459,20 @@ Class | Method | HTTP request | Description
  - [SendInboxMessage200ResponseData](docs/SendInboxMessage200ResponseData.md)
  - [SendInboxMessage400Response](docs/SendInboxMessage400Response.md)
  - [SendInboxMessageRequest](docs/SendInboxMessageRequest.md)
+ - [SendInboxMessageRequestButtonsInner](docs/SendInboxMessageRequestButtonsInner.md)
+ - [SendInboxMessageRequestQuickRepliesInner](docs/SendInboxMessageRequestQuickRepliesInner.md)
+ - [SendInboxMessageRequestReplyMarkup](docs/SendInboxMessageRequestReplyMarkup.md)
+ - [SendInboxMessageRequestReplyMarkupKeyboardInnerInner](docs/SendInboxMessageRequestReplyMarkupKeyboardInnerInner.md)
+ - [SendInboxMessageRequestTemplate](docs/SendInboxMessageRequestTemplate.md)
+ - [SendInboxMessageRequestTemplateElementsInner](docs/SendInboxMessageRequestTemplateElementsInner.md)
+ - [SendInboxMessageRequestTemplateElementsInnerButtonsInner](docs/SendInboxMessageRequestTemplateElementsInnerButtonsInner.md)
  - [SendPrivateReplyToComment200Response](docs/SendPrivateReplyToComment200Response.md)
  - [SendPrivateReplyToCommentRequest](docs/SendPrivateReplyToCommentRequest.md)
+ - [SetInstagramIceBreakersRequest](docs/SetInstagramIceBreakersRequest.md)
+ - [SetInstagramIceBreakersRequestIceBreakersInner](docs/SetInstagramIceBreakersRequestIceBreakersInner.md)
+ - [SetMessengerMenuRequest](docs/SetMessengerMenuRequest.md)
+ - [SetTelegramCommandsRequest](docs/SetTelegramCommandsRequest.md)
+ - [SetTelegramCommandsRequestCommandsInner](docs/SetTelegramCommandsRequestCommandsInner.md)
  - [SnapchatPlatformData](docs/SnapchatPlatformData.md)
  - [SocialAccount](docs/SocialAccount.md)
  - [SocialAccountProfileId](docs/SocialAccountProfileId.md)
@@ -511,6 +541,7 @@ Class | Method | HTTP request | Description
  - [WebhookPayloadMessageMessage](docs/WebhookPayloadMessageMessage.md)
  - [WebhookPayloadMessageMessageAttachmentsInner](docs/WebhookPayloadMessageMessageAttachmentsInner.md)
  - [WebhookPayloadMessageMessageSender](docs/WebhookPayloadMessageMessageSender.md)
+ - [WebhookPayloadMessageMetadata](docs/WebhookPayloadMessageMetadata.md)
  - [WebhookPayloadPost](docs/WebhookPayloadPost.md)
  - [WebhookPayloadPostPost](docs/WebhookPayloadPostPost.md)
  - [WebhookPayloadPostPostPlatformsInner](docs/WebhookPayloadPostPostPlatformsInner.md)

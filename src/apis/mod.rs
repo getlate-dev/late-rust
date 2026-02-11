@@ -114,6 +114,7 @@ impl From<&str> for ContentType {
 }
 
 pub mod account_groups_api;
+pub mod account_settings_api;
 pub mod accounts_api;
 pub mod analytics_api;
 pub mod api_keys_api;
