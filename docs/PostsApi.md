@@ -201,7 +201,7 @@ Name | Type | Description  | Required | Notes
 
 ## update_post
 
-> models::PostUpdateResponse update_post(post_id, request_body)
+> models::PostUpdateResponse update_post(post_id, update_post_request)
 Update a post
 
 Update an existing post. Only draft, scheduled, failed, and partial posts can be edited. Published, publishing, and cancelled posts cannot be modified. 
@@ -212,7 +212,7 @@ Update an existing post. Only draft, scheduled, failed, and partial posts can be
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **post_id** | **String** |  | [required] |
-**request_body** | [**std::collections::HashMap<String, serde_json::Value>**](SerdeJson__Value.md) |  | [required] |
+**update_post_request** | [**UpdatePostRequest**](UpdatePostRequest.md) |  | [required] |
 
 ### Return type
 

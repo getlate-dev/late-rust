@@ -353,6 +353,7 @@ docs/UpdateInboxConversation200ResponseData.md
 docs/UpdateInboxConversationRequest.md
 docs/UpdateLinkedInOrganizationRequest.md
 docs/UpdatePinterestBoardsRequest.md
+docs/UpdatePostRequest.md
 docs/UpdateProfile200Response.md
 docs/UpdateProfileRequest.md
 docs/UpdateQueueSlot200Response.md
@@ -754,6 +755,7 @@ src/models/update_inbox_conversation_200_response_data.rs
 src/models/update_inbox_conversation_request.rs
 src/models/update_linked_in_organization_request.rs
 src/models/update_pinterest_boards_request.rs
+src/models/update_post_request.rs
 src/models/update_profile_200_response.rs
 src/models/update_profile_request.rs
 src/models/update_queue_slot_200_response.rs

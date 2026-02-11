@@ -456,11 +456,11 @@ pub async fn retry_post(
 pub async fn update_post(
     configuration: &configuration::Configuration,
     post_id: &str,
-    request_body: std::collections::HashMap<String, serde_json::Value>,
+    update_post_request: models::UpdatePostRequest,
 ) -> Result<models::PostUpdateResponse, Error<UpdatePostError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_path_post_id = post_id;
-    let p_body_request_body = request_body;
+    let p_body_update_post_request = update_post_request;
 
     let uri_str = format!(
         "{}/v1/posts/{postId}",
@@ -475,7 +475,7 @@ pub async fn update_post(
     if let Some(ref token) = configuration.bearer_access_token {
         req_builder = req_builder.bearer_auth(token.to_owned());
     };
-    req_builder = req_builder.json(&p_body_request_body);
+    req_builder = req_builder.json(&p_body_update_post_request);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;

@@ -481,6 +481,7 @@ Class | Method | HTTP request | Description
  - [UpdateInboxConversationRequest](docs/UpdateInboxConversationRequest.md)
  - [UpdateLinkedInOrganizationRequest](docs/UpdateLinkedInOrganizationRequest.md)
  - [UpdatePinterestBoardsRequest](docs/UpdatePinterestBoardsRequest.md)
+ - [UpdatePostRequest](docs/UpdatePostRequest.md)
  - [UpdateProfile200Response](docs/UpdateProfile200Response.md)
  - [UpdateProfileRequest](docs/UpdateProfileRequest.md)
  - [UpdateQueueSlot200Response](docs/UpdateQueueSlot200Response.md)

@@ -654,6 +654,8 @@ pub mod update_linked_in_organization_request;
 pub use self::update_linked_in_organization_request::UpdateLinkedInOrganizationRequest;
 pub mod update_pinterest_boards_request;
 pub use self::update_pinterest_boards_request::UpdatePinterestBoardsRequest;
+pub mod update_post_request;
+pub use self::update_post_request::UpdatePostRequest;
 pub mod update_profile_200_response;
 pub use self::update_profile_200_response::UpdateProfile200Response;
 pub mod update_profile_request;
