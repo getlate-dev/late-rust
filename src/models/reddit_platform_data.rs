@@ -11,7 +11,7 @@
 use crate::models;
 use serde::{Deserialize, Serialize};
 
-/// RedditPlatformData : Reddit post settings: - Posts are either \"link\" (with URL/media) or \"self\" (text-only) - If media is provided, the first media item's URL is used as the link - Use forceSelf to override and create a text post with the URL in the body - Subreddit defaults to the account's configured subreddit if omitted - Use the same accountId multiple times with different subreddit values in platformSpecificData to post to multiple subreddits - Images are automatically compressed if they exceed Reddit's 20MB limit
+/// RedditPlatformData : Reddit post settings: - Posts are either \"link\" (with URL/media) or \"self\" (text-only) - If media is provided, the first media item's URL is used as the link - Use forceSelf to override and create a text post with the URL in the body - Subreddit defaults to the account's configured subreddit if omitted - Use the same accountId multiple times with different subreddit values in platformSpecificData to post to multiple subreddits - Images are automatically compressed if they exceed Reddit's 20MB limit - Some subreddits require a flair; if not provided, the API will attempt to use the first available flair as fallback
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct RedditPlatformData {
     /// Target subreddit name (without \"r/\" prefix). Overrides the default subreddit configured on the account connection. Use GET /api/v1/accounts/{id}/reddit-subreddits to list available subreddits.
@@ -26,16 +26,20 @@ pub struct RedditPlatformData {
     /// When true, creates a text/self post even when a URL or media is provided.
     #[serde(rename = "forceSelf", skip_serializing_if = "Option::is_none")]
     pub force_self: Option<bool>,
+    /// Flair ID for the post. Required by some subreddits. Use GET /api/v1/accounts/{id}/reddit-flairs?subreddit=name to list available flairs.
+    #[serde(rename = "flairId", skip_serializing_if = "Option::is_none")]
+    pub flair_id: Option<String>,
 }
 
 impl RedditPlatformData {
-    /// Reddit post settings: - Posts are either \"link\" (with URL/media) or \"self\" (text-only) - If media is provided, the first media item's URL is used as the link - Use forceSelf to override and create a text post with the URL in the body - Subreddit defaults to the account's configured subreddit if omitted - Use the same accountId multiple times with different subreddit values in platformSpecificData to post to multiple subreddits - Images are automatically compressed if they exceed Reddit's 20MB limit
+    /// Reddit post settings: - Posts are either \"link\" (with URL/media) or \"self\" (text-only) - If media is provided, the first media item's URL is used as the link - Use forceSelf to override and create a text post with the URL in the body - Subreddit defaults to the account's configured subreddit if omitted - Use the same accountId multiple times with different subreddit values in platformSpecificData to post to multiple subreddits - Images are automatically compressed if they exceed Reddit's 20MB limit - Some subreddits require a flair; if not provided, the API will attempt to use the first available flair as fallback
     pub fn new() -> RedditPlatformData {
         RedditPlatformData {
             subreddit: None,
             title: None,
             url: None,
             force_self: None,
+            flair_id: None,
         }
     }
 }

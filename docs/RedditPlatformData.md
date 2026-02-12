@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **title** | Option<**String**> | Post title. Defaults to the first line of content, truncated to 300 characters. | [optional]
 **url** | Option<**String**> | URL for link posts. If provided (and forceSelf is not true), creates a link post instead of a text post. | [optional]
 **force_self** | Option<**bool**> | When true, creates a text/self post even when a URL or media is provided. | [optional]
+**flair_id** | Option<**String**> | Flair ID for the post. Required by some subreddits. Use GET /api/v1/accounts/{id}/reddit-flairs?subreddit=name to list available flairs.  | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

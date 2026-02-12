@@ -154,6 +154,8 @@ docs/GetPinterestBoards200ResponseBoardsInner.md
 docs/GetPostLogs200Response.md
 docs/GetProfile200Response.md
 docs/GetRedditFeed200Response.md
+docs/GetRedditFlairs200Response.md
+docs/GetRedditFlairs200ResponseFlairsInner.md
 docs/GetRedditSubreddits200Response.md
 docs/GetRedditSubreddits200ResponseSubredditsInner.md
 docs/GetTelegramCommands200Response.md
@@ -596,6 +598,8 @@ src/models/get_pinterest_boards_200_response_boards_inner.rs
 src/models/get_post_logs_200_response.rs
 src/models/get_profile_200_response.rs
 src/models/get_reddit_feed_200_response.rs
+src/models/get_reddit_flairs_200_response.rs
+src/models/get_reddit_flairs_200_response_flairs_inner.rs
 src/models/get_reddit_subreddits_200_response.rs
 src/models/get_reddit_subreddits_200_response_subreddits_inner.rs
 src/models/get_telegram_commands_200_response.rs
