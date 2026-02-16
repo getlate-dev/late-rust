@@ -4,6 +4,7 @@ API reference for Late. Authenticate with a Bearer API key.
 Base URL: https://getlate.dev/api
 
 
+For more information, please visit [https://getlate.dev](https://getlate.dev)
 
 ## Overview
 
@@ -567,5 +568,5 @@ cargo doc --open
 
 ## Author
 
-
+support@getlate.dev
 
