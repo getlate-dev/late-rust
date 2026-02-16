@@ -13,7 +13,7 @@ use serde::{Deserialize, Serialize};
 
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct SendPrivateReplyToCommentRequest {
-    /// The Instagram social account ID
+    /// The social account ID (Instagram or Facebook)
     #[serde(rename = "accountId")]
     pub account_id: String,
     /// The message text to send as a private DM

@@ -22,7 +22,7 @@ pub struct SendPrivateReplyToComment200Response {
     #[serde(rename = "commentId", skip_serializing_if = "Option::is_none")]
     pub comment_id: Option<String>,
     #[serde(rename = "platform", skip_serializing_if = "Option::is_none")]
-    pub platform: Option<String>,
+    pub platform: Option<Platform>,
 }
 
 impl SendPrivateReplyToComment200Response {
@@ -33,5 +33,19 @@ impl SendPrivateReplyToComment200Response {
             comment_id: None,
             platform: None,
         }
+    }
+}
+///
+#[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
+pub enum Platform {
+    #[serde(rename = "instagram")]
+    Instagram,
+    #[serde(rename = "facebook")]
+    Facebook,
+}
+
+impl Default for Platform {
+    fn default() -> Platform {
+        Self::Instagram
     }
 }

@@ -11,21 +11,25 @@
 use crate::models;
 use serde::{Deserialize, Serialize};
 
-/// GoogleBusinessPlatformData : Google Business Profile post settings: - Posts support text content and a single image (no videos) - Images must be publicly accessible URLs - Call-to-action buttons drive user engagement - Posts appear on your Google Business Profile and in Google Search/Maps - Use locationId to post to multiple locations from the same account connection
+/// GoogleBusinessPlatformData : Google Business Profile post settings: - Posts support text content and a single image (no videos) - Images must be publicly accessible URLs - Call-to-action buttons drive user engagement - Posts appear on your Google Business Profile and in Google Search/Maps - Use locationId to post to multiple locations from the same account connection - Language is auto-detected from content; override with languageCode if needed
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct GoogleBusinessPlatformData {
     /// Target Google Business location ID for multi-location posting. Format: \"locations/123456789\" If omitted, uses the selected/default location on the connection. Use GET /api/v1/accounts/{id}/gmb-locations to list available locations.
     #[serde(rename = "locationId", skip_serializing_if = "Option::is_none")]
     pub location_id: Option<String>,
+    /// BCP 47 language code for the post content (e.g., \"en\", \"de\", \"es\", \"fr\"). If omitted, the language is automatically detected from the post text. Setting this explicitly is recommended when auto-detection may not be accurate (e.g., very short posts, mixed-language content, or transliterated text).
+    #[serde(rename = "languageCode", skip_serializing_if = "Option::is_none")]
+    pub language_code: Option<String>,
     #[serde(rename = "callToAction", skip_serializing_if = "Option::is_none")]
     pub call_to_action: Option<Box<models::GoogleBusinessPlatformDataCallToAction>>,
 }
 
 impl GoogleBusinessPlatformData {
-    /// Google Business Profile post settings: - Posts support text content and a single image (no videos) - Images must be publicly accessible URLs - Call-to-action buttons drive user engagement - Posts appear on your Google Business Profile and in Google Search/Maps - Use locationId to post to multiple locations from the same account connection
+    /// Google Business Profile post settings: - Posts support text content and a single image (no videos) - Images must be publicly accessible URLs - Call-to-action buttons drive user engagement - Posts appear on your Google Business Profile and in Google Search/Maps - Use locationId to post to multiple locations from the same account connection - Language is auto-detected from content; override with languageCode if needed
     pub fn new() -> GoogleBusinessPlatformData {
         GoogleBusinessPlatformData {
             location_id: None,
+            language_code: None,
             call_to_action: None,
         }
     }
