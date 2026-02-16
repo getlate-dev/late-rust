@@ -53,7 +53,7 @@ pub enum GetWebhookSettingsError {
 pub enum TestWebhookError {
     Status400(),
     Status401(models::InlineObject),
-    Status500(models::TestWebhook200Response),
+    Status500(models::UnpublishPost200Response),
     UnknownValue(serde_json::Value),
 }
 
@@ -279,7 +279,7 @@ pub async fn get_webhook_settings(
 pub async fn test_webhook(
     configuration: &configuration::Configuration,
     test_webhook_request: models::TestWebhookRequest,
-) -> Result<models::TestWebhook200Response, Error<TestWebhookError>> {
+) -> Result<models::UnpublishPost200Response, Error<TestWebhookError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_body_test_webhook_request = test_webhook_request;
 
@@ -311,8 +311,8 @@ pub async fn test_webhook(
         let content = resp.text().await?;
         match content_type {
             ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
-            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::TestWebhook200Response`"))),
-            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::TestWebhook200Response`")))),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::UnpublishPost200Response`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::UnpublishPost200Response`")))),
         }
     } else {
         let content = resp.text().await?;

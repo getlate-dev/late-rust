@@ -342,7 +342,6 @@ docs/SnapchatPlatformData.md
 docs/SocialAccount.md
 docs/SocialAccountProfileId.md
 docs/TelegramPlatformData.md
-docs/TestWebhook200Response.md
 docs/TestWebhookRequest.md
 docs/ThreadsPlatformData.md
 docs/TikTokPlatformData.md
@@ -353,6 +352,8 @@ docs/TranscriptSegment.md
 docs/TwitterPlatformData.md
 docs/TwitterPlatformDataThreadItemsInner.md
 docs/UnlikeInboxComment200Response.md
+docs/UnpublishPost200Response.md
+docs/UnpublishPostRequest.md
 docs/UpdateAccount200Response.md
 docs/UpdateAccountGroup200Response.md
 docs/UpdateAccountGroupRequest.md
@@ -771,7 +772,6 @@ src/models/snapchat_platform_data.rs
 src/models/social_account.rs
 src/models/social_account_profile_id.rs
 src/models/telegram_platform_data.rs
-src/models/test_webhook_200_response.rs
 src/models/test_webhook_request.rs
 src/models/threads_platform_data.rs
 src/models/tik_tok_platform_data.rs
@@ -781,6 +781,8 @@ src/models/transcript_segment.rs
 src/models/twitter_platform_data.rs
 src/models/twitter_platform_data_thread_items_inner.rs
 src/models/unlike_inbox_comment_200_response.rs
+src/models/unpublish_post_200_response.rs
+src/models/unpublish_post_request.rs
 src/models/update_account_200_response.rs
 src/models/update_account_group_200_response.rs
 src/models/update_account_group_request.rs

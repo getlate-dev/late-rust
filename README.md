@@ -126,6 +126,7 @@ Class | Method | HTTP request | Description
 *PostsApi* | [**get_post**](docs/PostsApi.md#get_post) | **GET** /v1/posts/{postId} | Get a single post
 *PostsApi* | [**list_posts**](docs/PostsApi.md#list_posts) | **GET** /v1/posts | List posts visible to the authenticated user
 *PostsApi* | [**retry_post**](docs/PostsApi.md#retry_post) | **POST** /v1/posts/{postId}/retry | Retry publishing a failed or partial post
+*PostsApi* | [**unpublish_post**](docs/PostsApi.md#unpublish_post) | **POST** /v1/posts/{postId}/unpublish | Delete a published post from a social media platform
 *PostsApi* | [**update_post**](docs/PostsApi.md#update_post) | **PUT** /v1/posts/{postId} | Update a post
 *ProfilesApi* | [**create_profile**](docs/ProfilesApi.md#create_profile) | **POST** /v1/profiles | Create a new profile
 *ProfilesApi* | [**delete_profile**](docs/ProfilesApi.md#delete_profile) | **DELETE** /v1/profiles/{profileId} | Delete a profile (must have no connected accounts)
@@ -482,7 +483,6 @@ Class | Method | HTTP request | Description
  - [SocialAccount](docs/SocialAccount.md)
  - [SocialAccountProfileId](docs/SocialAccountProfileId.md)
  - [TelegramPlatformData](docs/TelegramPlatformData.md)
- - [TestWebhook200Response](docs/TestWebhook200Response.md)
  - [TestWebhookRequest](docs/TestWebhookRequest.md)
  - [ThreadsPlatformData](docs/ThreadsPlatformData.md)
  - [TikTokPlatformData](docs/TikTokPlatformData.md)
@@ -492,6 +492,8 @@ Class | Method | HTTP request | Description
  - [TwitterPlatformData](docs/TwitterPlatformData.md)
  - [TwitterPlatformDataThreadItemsInner](docs/TwitterPlatformDataThreadItemsInner.md)
  - [UnlikeInboxComment200Response](docs/UnlikeInboxComment200Response.md)
+ - [UnpublishPost200Response](docs/UnpublishPost200Response.md)
+ - [UnpublishPostRequest](docs/UnpublishPostRequest.md)
  - [UpdateAccount200Response](docs/UpdateAccount200Response.md)
  - [UpdateAccountGroup200Response](docs/UpdateAccountGroup200Response.md)
  - [UpdateAccountGroupRequest](docs/UpdateAccountGroupRequest.md)

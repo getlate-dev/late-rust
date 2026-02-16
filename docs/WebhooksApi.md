@@ -135,7 +135,7 @@ This endpoint does not need any parameter.
 
 ## test_webhook
 
-> models::TestWebhook200Response test_webhook(test_webhook_request)
+> models::UnpublishPost200Response test_webhook(test_webhook_request)
 Send test webhook
 
 Send a test webhook to verify your endpoint is configured correctly. The test payload includes `event: \"webhook.test\"` to distinguish it from real events. 
@@ -149,7 +149,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**models::TestWebhook200Response**](testWebhook_200_response.md)
+[**models::UnpublishPost200Response**](unpublishPost_200_response.md)
 
 ### Authorization
 

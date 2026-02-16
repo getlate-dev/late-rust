@@ -10,6 +10,7 @@ Method | HTTP request | Description
 [**get_post**](PostsApi.md#get_post) | **GET** /v1/posts/{postId} | Get a single post
 [**list_posts**](PostsApi.md#list_posts) | **GET** /v1/posts | List posts visible to the authenticated user
 [**retry_post**](PostsApi.md#retry_post) | **POST** /v1/posts/{postId}/retry | Retry publishing a failed or partial post
+[**unpublish_post**](PostsApi.md#unpublish_post) | **POST** /v1/posts/{postId}/unpublish | Delete a published post from a social media platform
 [**update_post**](PostsApi.md#update_post) | **PUT** /v1/posts/{postId} | Update a post
 
 
@@ -194,6 +195,37 @@ Name | Type | Description  | Required | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## unpublish_post
+
+> models::UnpublishPost200Response unpublish_post(post_id, unpublish_post_request)
+Delete a published post from a social media platform
+
+Permanently deletes a published post from the specified social media platform. The post record in Late is kept but its platform status is set to \"cancelled\".  **Supported platforms:** Threads, Facebook, Twitter/X, LinkedIn, YouTube, Pinterest, Reddit, Bluesky, Google Business, Telegram.  **Not supported:** - **Instagram:** No deletion API available. Posts must be deleted manually. - **TikTok:** No deletion API available. Posts must be deleted manually. - **Snapchat:** No deletion API available. Posts must be deleted manually.  **Platform notes:** - **Telegram:** Messages older than 48 hours may fail to delete (Telegram Bot API limitation). - **YouTube:** This permanently deletes the video from YouTube. 
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**post_id** | **String** |  | [required] |
+**unpublish_post_request** | [**UnpublishPostRequest**](UnpublishPostRequest.md) |  | [required] |
+
+### Return type
+
+[**models::UnpublishPost200Response**](unpublishPost_200_response.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
