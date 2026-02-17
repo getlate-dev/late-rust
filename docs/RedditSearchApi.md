@@ -4,15 +4,15 @@ All URIs are relative to *https://getlate.dev/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**get_reddit_feed**](RedditSearchApi.md#get_reddit_feed) | **GET** /v1/reddit/feed | Fetch subreddit feed via a connected account
-[**search_reddit**](RedditSearchApi.md#search_reddit) | **GET** /v1/reddit/search | Search Reddit posts via a connected account
+[**get_reddit_feed**](RedditSearchApi.md#get_reddit_feed) | **GET** /v1/reddit/feed | Get subreddit feed
+[**search_reddit**](RedditSearchApi.md#search_reddit) | **GET** /v1/reddit/search | Search posts
 
 
 
 ## get_reddit_feed
 
 > models::GetRedditFeed200Response get_reddit_feed(account_id, subreddit, sort, limit, after, t)
-Fetch subreddit feed via a connected account
+Get subreddit feed
 
 ### Parameters
 
@@ -45,7 +45,7 @@ Name | Type | Description  | Required | Notes
 ## search_reddit
 
 > models::SearchReddit200Response search_reddit(account_id, q, subreddit, restrict_sr, sort, limit, after)
-Search Reddit posts via a connected account
+Search posts
 
 ### Parameters
 

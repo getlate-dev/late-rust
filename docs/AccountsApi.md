@@ -4,19 +4,19 @@ All URIs are relative to *https://getlate.dev/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**delete_account**](AccountsApi.md#delete_account) | **DELETE** /v1/accounts/{accountId} | Disconnect a social account
-[**get_account_health**](AccountsApi.md#get_account_health) | **GET** /v1/accounts/{accountId}/health | Check health of a specific account
-[**get_all_accounts_health**](AccountsApi.md#get_all_accounts_health) | **GET** /v1/accounts/health | Check health of all connected accounts
-[**get_follower_stats**](AccountsApi.md#get_follower_stats) | **GET** /v1/accounts/follower-stats | Get follower stats and growth metrics
-[**list_accounts**](AccountsApi.md#list_accounts) | **GET** /v1/accounts | List connected social accounts
-[**update_account**](AccountsApi.md#update_account) | **PUT** /v1/accounts/{accountId} | Update a social account
+[**delete_account**](AccountsApi.md#delete_account) | **DELETE** /v1/accounts/{accountId} | Disconnect account
+[**get_account_health**](AccountsApi.md#get_account_health) | **GET** /v1/accounts/{accountId}/health | Check account health
+[**get_all_accounts_health**](AccountsApi.md#get_all_accounts_health) | **GET** /v1/accounts/health | Check accounts health
+[**get_follower_stats**](AccountsApi.md#get_follower_stats) | **GET** /v1/accounts/follower-stats | Get follower stats
+[**list_accounts**](AccountsApi.md#list_accounts) | **GET** /v1/accounts | List accounts
+[**update_account**](AccountsApi.md#update_account) | **PUT** /v1/accounts/{accountId} | Update account
 
 
 
 ## delete_account
 
 > models::DeleteAccountGroup200Response delete_account(account_id)
-Disconnect a social account
+Disconnect account
 
 ### Parameters
 
@@ -44,7 +44,7 @@ Name | Type | Description  | Required | Notes
 ## get_account_health
 
 > models::GetAccountHealth200Response get_account_health(account_id)
-Check health of a specific account
+Check account health
 
 Returns detailed health information for a specific social account, including token status, granted permissions, missing permissions, and actionable recommendations. 
 
@@ -74,7 +74,7 @@ Name | Type | Description  | Required | Notes
 ## get_all_accounts_health
 
 > models::GetAllAccountsHealth200Response get_all_accounts_health(profile_id, platform, status)
-Check health of all connected accounts
+Check accounts health
 
 Returns the health status of all connected social accounts, including token validity, permissions status, and any issues that need attention. Useful for monitoring account connections and identifying accounts that need reconnection. 
 
@@ -106,7 +106,7 @@ Name | Type | Description  | Required | Notes
 ## get_follower_stats
 
 > models::GetFollowerStats200Response get_follower_stats(account_ids, profile_id, from_date, to_date, granularity)
-Get follower stats and growth metrics
+Get follower stats
 
 Returns follower count history and growth metrics for connected social accounts. **Requires analytics add-on subscription.**  **Data Freshness:** Follower counts are automatically refreshed once per day. 
 
@@ -140,7 +140,7 @@ Name | Type | Description  | Required | Notes
 ## list_accounts
 
 > models::ListAccounts200Response list_accounts(profile_id, include_over_limit)
-List connected social accounts
+List accounts
 
 Returns list of connected social accounts. By default, only returns accounts from profiles within the user's plan limit. Follower count data (followersCount, followersLastUpdated) is only included if user has analytics add-on. 
 
@@ -171,7 +171,7 @@ Name | Type | Description  | Required | Notes
 ## update_account
 
 > models::UpdateAccount200Response update_account(account_id, update_account_request)
-Update a social account
+Update account
 
 ### Parameters
 

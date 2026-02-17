@@ -4,16 +4,16 @@ All URIs are relative to *https://getlate.dev/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**delete_inbox_review_reply**](ReviewsApi.md#delete_inbox_review_reply) | **DELETE** /v1/inbox/reviews/{reviewId}/reply | Delete a review reply
-[**list_inbox_reviews**](ReviewsApi.md#list_inbox_reviews) | **GET** /v1/inbox/reviews | List reviews across all accounts
-[**reply_to_inbox_review**](ReviewsApi.md#reply_to_inbox_review) | **POST** /v1/inbox/reviews/{reviewId}/reply | Reply to a review
+[**delete_inbox_review_reply**](ReviewsApi.md#delete_inbox_review_reply) | **DELETE** /v1/inbox/reviews/{reviewId}/reply | Delete review reply
+[**list_inbox_reviews**](ReviewsApi.md#list_inbox_reviews) | **GET** /v1/inbox/reviews | List reviews
+[**reply_to_inbox_review**](ReviewsApi.md#reply_to_inbox_review) | **POST** /v1/inbox/reviews/{reviewId}/reply | Reply to review
 
 
 
 ## delete_inbox_review_reply
 
 > models::DeleteInboxReviewReply200Response delete_inbox_review_reply(review_id, delete_inbox_review_reply_request)
-Delete a review reply
+Delete review reply
 
 Delete a reply to a review (Google Business only). Requires accountId in request body.
 
@@ -44,7 +44,7 @@ Name | Type | Description  | Required | Notes
 ## list_inbox_reviews
 
 > models::ListInboxReviews200Response list_inbox_reviews(profile_id, platform, min_rating, max_rating, has_reply, sort_by, sort_order, limit, cursor, account_id)
-List reviews across all accounts
+List reviews
 
 Fetch reviews from all connected Facebook Pages and Google Business accounts. Aggregates data with filtering and sorting options.  **Supported platforms:** Facebook, Google Business 
 
@@ -83,7 +83,7 @@ Name | Type | Description  | Required | Notes
 ## reply_to_inbox_review
 
 > models::ReplyToInboxReview200Response reply_to_inbox_review(review_id, reply_to_inbox_review_request)
-Reply to a review
+Reply to review
 
 Post a reply to a review. Requires accountId in request body.
 

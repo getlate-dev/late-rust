@@ -4,16 +4,16 @@ All URIs are relative to *https://getlate.dev/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create_api_key**](ApiKeysApi.md#create_api_key) | **POST** /v1/api-keys | Create a new API key
-[**delete_api_key**](ApiKeysApi.md#delete_api_key) | **DELETE** /v1/api-keys/{keyId} | Delete an API key
-[**list_api_keys**](ApiKeysApi.md#list_api_keys) | **GET** /v1/api-keys | List API keys for the current user
+[**create_api_key**](ApiKeysApi.md#create_api_key) | **POST** /v1/api-keys | Create key
+[**delete_api_key**](ApiKeysApi.md#delete_api_key) | **DELETE** /v1/api-keys/{keyId} | Delete key
+[**list_api_keys**](ApiKeysApi.md#list_api_keys) | **GET** /v1/api-keys | List keys
 
 
 
 ## create_api_key
 
 > models::CreateApiKey201Response create_api_key(create_api_key_request)
-Create a new API key
+Create key
 
 ### Parameters
 
@@ -41,7 +41,7 @@ Name | Type | Description  | Required | Notes
 ## delete_api_key
 
 > models::DeleteAccountGroup200Response delete_api_key(key_id)
-Delete an API key
+Delete key
 
 ### Parameters
 
@@ -69,7 +69,7 @@ Name | Type | Description  | Required | Notes
 ## list_api_keys
 
 > models::ListApiKeys200Response list_api_keys()
-List API keys for the current user
+List keys
 
 ### Parameters
 

@@ -4,16 +4,16 @@ All URIs are relative to *https://getlate.dev/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create_google_business_media**](GmbMediaApi.md#create_google_business_media) | **POST** /v1/accounts/{accountId}/gmb-media | Upload a photo to Google Business Profile
-[**delete_google_business_media**](GmbMediaApi.md#delete_google_business_media) | **DELETE** /v1/accounts/{accountId}/gmb-media | Delete a photo from Google Business Profile
-[**list_google_business_media**](GmbMediaApi.md#list_google_business_media) | **GET** /v1/accounts/{accountId}/gmb-media | List Google Business Profile media (photos)
+[**create_google_business_media**](GmbMediaApi.md#create_google_business_media) | **POST** /v1/accounts/{accountId}/gmb-media | Upload photo
+[**delete_google_business_media**](GmbMediaApi.md#delete_google_business_media) | **DELETE** /v1/accounts/{accountId}/gmb-media | Delete photo
+[**list_google_business_media**](GmbMediaApi.md#list_google_business_media) | **GET** /v1/accounts/{accountId}/gmb-media | List media
 
 
 
 ## create_google_business_media
 
 > models::CreateGoogleBusinessMedia200Response create_google_business_media(account_id, create_google_business_media_request)
-Upload a photo to Google Business Profile
+Upload photo
 
 Creates a media item (photo) for a location from a publicly accessible URL.  Categories determine where the photo appears: - `COVER` - Cover photo - `PROFILE` - Profile photo - `LOGO` - Business logo - `EXTERIOR` - Exterior shots - `INTERIOR` - Interior shots - `FOOD_AND_DRINK` - Food and drink photos - `MENU` - Menu photos - `PRODUCT` - Product photos - `TEAMS` - Team/staff photos - `ADDITIONAL` - Other photos 
 
@@ -44,7 +44,7 @@ Name | Type | Description  | Required | Notes
 ## delete_google_business_media
 
 > models::DeleteGoogleBusinessMedia200Response delete_google_business_media(account_id, media_id)
-Delete a photo from Google Business Profile
+Delete photo
 
 ### Parameters
 
@@ -73,7 +73,7 @@ Name | Type | Description  | Required | Notes
 ## list_google_business_media
 
 > models::ListGoogleBusinessMedia200Response list_google_business_media(account_id, page_size, page_token)
-List Google Business Profile media (photos)
+List media
 
 Lists media items (photos) for a Google Business Profile location. Returns photo URLs, descriptions, categories, and metadata. 
 

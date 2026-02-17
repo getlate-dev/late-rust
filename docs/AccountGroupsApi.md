@@ -4,17 +4,17 @@ All URIs are relative to *https://getlate.dev/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create_account_group**](AccountGroupsApi.md#create_account_group) | **POST** /v1/account-groups | Create a new account group
-[**delete_account_group**](AccountGroupsApi.md#delete_account_group) | **DELETE** /v1/account-groups/{groupId} | Delete an account group
-[**list_account_groups**](AccountGroupsApi.md#list_account_groups) | **GET** /v1/account-groups | List account groups for the authenticated user
-[**update_account_group**](AccountGroupsApi.md#update_account_group) | **PUT** /v1/account-groups/{groupId} | Update an account group
+[**create_account_group**](AccountGroupsApi.md#create_account_group) | **POST** /v1/account-groups | Create group
+[**delete_account_group**](AccountGroupsApi.md#delete_account_group) | **DELETE** /v1/account-groups/{groupId} | Delete group
+[**list_account_groups**](AccountGroupsApi.md#list_account_groups) | **GET** /v1/account-groups | List groups
+[**update_account_group**](AccountGroupsApi.md#update_account_group) | **PUT** /v1/account-groups/{groupId} | Update group
 
 
 
 ## create_account_group
 
 > models::CreateAccountGroup201Response create_account_group(create_account_group_request)
-Create a new account group
+Create group
 
 ### Parameters
 
@@ -42,7 +42,7 @@ Name | Type | Description  | Required | Notes
 ## delete_account_group
 
 > models::DeleteAccountGroup200Response delete_account_group(group_id)
-Delete an account group
+Delete group
 
 ### Parameters
 
@@ -70,7 +70,7 @@ Name | Type | Description  | Required | Notes
 ## list_account_groups
 
 > models::ListAccountGroups200Response list_account_groups()
-List account groups for the authenticated user
+List groups
 
 ### Parameters
 
@@ -95,7 +95,7 @@ This endpoint does not need any parameter.
 ## update_account_group
 
 > models::UpdateAccountGroup200Response update_account_group(group_id, update_account_group_request)
-Update an account group
+Update group
 
 ### Parameters
 

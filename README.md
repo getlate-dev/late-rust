@@ -29,13 +29,13 @@ All URIs are relative to *https://getlate.dev/api*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*ApiKeysApi* | [**create_api_key**](docs/ApiKeysApi.md#create_api_key) | **POST** /v1/api-keys | Create a new API key
-*ApiKeysApi* | [**delete_api_key**](docs/ApiKeysApi.md#delete_api_key) | **DELETE** /v1/api-keys/{keyId} | Delete an API key
-*ApiKeysApi* | [**list_api_keys**](docs/ApiKeysApi.md#list_api_keys) | **GET** /v1/api-keys | List API keys for the current user
-*AccountGroupsApi* | [**create_account_group**](docs/AccountGroupsApi.md#create_account_group) | **POST** /v1/account-groups | Create a new account group
-*AccountGroupsApi* | [**delete_account_group**](docs/AccountGroupsApi.md#delete_account_group) | **DELETE** /v1/account-groups/{groupId} | Delete an account group
-*AccountGroupsApi* | [**list_account_groups**](docs/AccountGroupsApi.md#list_account_groups) | **GET** /v1/account-groups | List account groups for the authenticated user
-*AccountGroupsApi* | [**update_account_group**](docs/AccountGroupsApi.md#update_account_group) | **PUT** /v1/account-groups/{groupId} | Update an account group
+*ApiKeysApi* | [**create_api_key**](docs/ApiKeysApi.md#create_api_key) | **POST** /v1/api-keys | Create key
+*ApiKeysApi* | [**delete_api_key**](docs/ApiKeysApi.md#delete_api_key) | **DELETE** /v1/api-keys/{keyId} | Delete key
+*ApiKeysApi* | [**list_api_keys**](docs/ApiKeysApi.md#list_api_keys) | **GET** /v1/api-keys | List keys
+*AccountGroupsApi* | [**create_account_group**](docs/AccountGroupsApi.md#create_account_group) | **POST** /v1/account-groups | Create group
+*AccountGroupsApi* | [**delete_account_group**](docs/AccountGroupsApi.md#delete_account_group) | **DELETE** /v1/account-groups/{groupId} | Delete group
+*AccountGroupsApi* | [**list_account_groups**](docs/AccountGroupsApi.md#list_account_groups) | **GET** /v1/account-groups | List groups
+*AccountGroupsApi* | [**update_account_group**](docs/AccountGroupsApi.md#update_account_group) | **PUT** /v1/account-groups/{groupId} | Update group
 *AccountSettingsApi* | [**delete_instagram_ice_breakers**](docs/AccountSettingsApi.md#delete_instagram_ice_breakers) | **DELETE** /v1/accounts/{accountId}/instagram-ice-breakers | Delete Instagram ice breakers
 *AccountSettingsApi* | [**delete_messenger_menu**](docs/AccountSettingsApi.md#delete_messenger_menu) | **DELETE** /v1/accounts/{accountId}/messenger-menu | Delete Facebook persistent menu
 *AccountSettingsApi* | [**delete_telegram_commands**](docs/AccountSettingsApi.md#delete_telegram_commands) | **DELETE** /v1/accounts/{accountId}/telegram-commands | Delete Telegram bot commands
@@ -45,123 +45,123 @@ Class | Method | HTTP request | Description
 *AccountSettingsApi* | [**set_instagram_ice_breakers**](docs/AccountSettingsApi.md#set_instagram_ice_breakers) | **PUT** /v1/accounts/{accountId}/instagram-ice-breakers | Set Instagram ice breakers
 *AccountSettingsApi* | [**set_messenger_menu**](docs/AccountSettingsApi.md#set_messenger_menu) | **PUT** /v1/accounts/{accountId}/messenger-menu | Set Facebook persistent menu
 *AccountSettingsApi* | [**set_telegram_commands**](docs/AccountSettingsApi.md#set_telegram_commands) | **PUT** /v1/accounts/{accountId}/telegram-commands | Set Telegram bot commands
-*AccountsApi* | [**delete_account**](docs/AccountsApi.md#delete_account) | **DELETE** /v1/accounts/{accountId} | Disconnect a social account
-*AccountsApi* | [**get_account_health**](docs/AccountsApi.md#get_account_health) | **GET** /v1/accounts/{accountId}/health | Check health of a specific account
-*AccountsApi* | [**get_all_accounts_health**](docs/AccountsApi.md#get_all_accounts_health) | **GET** /v1/accounts/health | Check health of all connected accounts
-*AccountsApi* | [**get_follower_stats**](docs/AccountsApi.md#get_follower_stats) | **GET** /v1/accounts/follower-stats | Get follower stats and growth metrics
-*AccountsApi* | [**list_accounts**](docs/AccountsApi.md#list_accounts) | **GET** /v1/accounts | List connected social accounts
-*AccountsApi* | [**update_account**](docs/AccountsApi.md#update_account) | **PUT** /v1/accounts/{accountId} | Update a social account
-*AnalyticsApi* | [**get_analytics**](docs/AnalyticsApi.md#get_analytics) | **GET** /v1/analytics | Unified analytics for posts
-*AnalyticsApi* | [**get_follower_stats**](docs/AnalyticsApi.md#get_follower_stats) | **GET** /v1/accounts/follower-stats | Get follower stats and growth metrics
-*AnalyticsApi* | [**get_linked_in_aggregate_analytics**](docs/AnalyticsApi.md#get_linked_in_aggregate_analytics) | **GET** /v1/accounts/{accountId}/linkedin-aggregate-analytics | Get aggregate analytics for a LinkedIn personal account
-*AnalyticsApi* | [**get_linked_in_post_analytics**](docs/AnalyticsApi.md#get_linked_in_post_analytics) | **GET** /v1/accounts/{accountId}/linkedin-post-analytics | Get analytics for a specific LinkedIn post by URN
-*AnalyticsApi* | [**get_you_tube_daily_views**](docs/AnalyticsApi.md#get_you_tube_daily_views) | **GET** /v1/analytics/youtube/daily-views | YouTube daily views breakdown
-*CommentsApi* | [**delete_inbox_comment**](docs/CommentsApi.md#delete_inbox_comment) | **DELETE** /v1/inbox/comments/{postId} | Delete a comment
-*CommentsApi* | [**get_inbox_post_comments**](docs/CommentsApi.md#get_inbox_post_comments) | **GET** /v1/inbox/comments/{postId} | Get comments for a post
-*CommentsApi* | [**hide_inbox_comment**](docs/CommentsApi.md#hide_inbox_comment) | **POST** /v1/inbox/comments/{postId}/{commentId}/hide | Hide a comment
-*CommentsApi* | [**like_inbox_comment**](docs/CommentsApi.md#like_inbox_comment) | **POST** /v1/inbox/comments/{postId}/{commentId}/like | Like a comment
-*CommentsApi* | [**list_inbox_comments**](docs/CommentsApi.md#list_inbox_comments) | **GET** /v1/inbox/comments | List posts with comments across all accounts
-*CommentsApi* | [**reply_to_inbox_post**](docs/CommentsApi.md#reply_to_inbox_post) | **POST** /v1/inbox/comments/{postId} | Reply to a post or comment
-*CommentsApi* | [**send_private_reply_to_comment**](docs/CommentsApi.md#send_private_reply_to_comment) | **POST** /v1/inbox/comments/{postId}/{commentId}/private-reply | Send private reply to comment author
-*CommentsApi* | [**unhide_inbox_comment**](docs/CommentsApi.md#unhide_inbox_comment) | **DELETE** /v1/inbox/comments/{postId}/{commentId}/hide | Unhide a comment
-*CommentsApi* | [**unlike_inbox_comment**](docs/CommentsApi.md#unlike_inbox_comment) | **DELETE** /v1/inbox/comments/{postId}/{commentId}/like | Unlike a comment
-*ConnectApi* | [**complete_telegram_connect**](docs/ConnectApi.md#complete_telegram_connect) | **PATCH** /v1/connect/telegram | Check Telegram connection status
-*ConnectApi* | [**connect_bluesky_credentials**](docs/ConnectApi.md#connect_bluesky_credentials) | **POST** /v1/connect/bluesky/credentials | Connect Bluesky using app password
-*ConnectApi* | [**get_connect_url**](docs/ConnectApi.md#get_connect_url) | **GET** /v1/connect/{platform} | Start OAuth connection for a platform
-*ConnectApi* | [**get_facebook_pages**](docs/ConnectApi.md#get_facebook_pages) | **GET** /v1/accounts/{accountId}/facebook-page | List available Facebook pages for a connected account
-*ConnectApi* | [**get_gmb_locations**](docs/ConnectApi.md#get_gmb_locations) | **GET** /v1/accounts/{accountId}/gmb-locations | List available Google Business Profile locations for a connected account
-*ConnectApi* | [**get_linked_in_organizations**](docs/ConnectApi.md#get_linked_in_organizations) | **GET** /v1/accounts/{accountId}/linkedin-organizations | Get available LinkedIn organizations for a connected account
-*ConnectApi* | [**get_pending_o_auth_data**](docs/ConnectApi.md#get_pending_o_auth_data) | **GET** /v1/connect/pending-data | Fetch pending OAuth selection data (Headless Mode)
-*ConnectApi* | [**get_pinterest_boards**](docs/ConnectApi.md#get_pinterest_boards) | **GET** /v1/accounts/{accountId}/pinterest-boards | List Pinterest boards for a connected account
-*ConnectApi* | [**get_reddit_flairs**](docs/ConnectApi.md#get_reddit_flairs) | **GET** /v1/accounts/{accountId}/reddit-flairs | List available post flairs for a Reddit subreddit
-*ConnectApi* | [**get_reddit_subreddits**](docs/ConnectApi.md#get_reddit_subreddits) | **GET** /v1/accounts/{accountId}/reddit-subreddits | List Reddit subreddits for a connected account
-*ConnectApi* | [**get_telegram_connect_status**](docs/ConnectApi.md#get_telegram_connect_status) | **GET** /v1/connect/telegram | Generate Telegram access code
-*ConnectApi* | [**handle_o_auth_callback**](docs/ConnectApi.md#handle_o_auth_callback) | **POST** /v1/connect/{platform} | Complete OAuth token exchange manually (for server-side flows)
-*ConnectApi* | [**initiate_telegram_connect**](docs/ConnectApi.md#initiate_telegram_connect) | **POST** /v1/connect/telegram | Direct Telegram connection (power users)
-*ConnectApi* | [**list_facebook_pages**](docs/ConnectApi.md#list_facebook_pages) | **GET** /v1/connect/facebook/select-page | List Facebook Pages after OAuth (Headless Mode)
-*ConnectApi* | [**list_google_business_locations**](docs/ConnectApi.md#list_google_business_locations) | **GET** /v1/connect/googlebusiness/locations | List Google Business Locations after OAuth (Headless Mode)
-*ConnectApi* | [**list_linked_in_organizations**](docs/ConnectApi.md#list_linked_in_organizations) | **GET** /v1/connect/linkedin/organizations | Fetch full LinkedIn organization details (Headless Mode)
-*ConnectApi* | [**list_pinterest_boards_for_selection**](docs/ConnectApi.md#list_pinterest_boards_for_selection) | **GET** /v1/connect/pinterest/select-board | List Pinterest Boards after OAuth (Headless Mode)
-*ConnectApi* | [**list_snapchat_profiles**](docs/ConnectApi.md#list_snapchat_profiles) | **GET** /v1/connect/snapchat/select-profile | List Snapchat Public Profiles after OAuth (Headless Mode)
-*ConnectApi* | [**select_facebook_page**](docs/ConnectApi.md#select_facebook_page) | **POST** /v1/connect/facebook/select-page | Select a Facebook Page to complete the connection (Headless Mode)
-*ConnectApi* | [**select_google_business_location**](docs/ConnectApi.md#select_google_business_location) | **POST** /v1/connect/googlebusiness/select-location | Select a Google Business location to complete the connection (Headless Mode)
-*ConnectApi* | [**select_linked_in_organization**](docs/ConnectApi.md#select_linked_in_organization) | **POST** /v1/connect/linkedin/select-organization | Select LinkedIn organization or personal account after OAuth
-*ConnectApi* | [**select_pinterest_board**](docs/ConnectApi.md#select_pinterest_board) | **POST** /v1/connect/pinterest/select-board | Select a Pinterest Board to complete the connection (Headless Mode)
-*ConnectApi* | [**select_snapchat_profile**](docs/ConnectApi.md#select_snapchat_profile) | **POST** /v1/connect/snapchat/select-profile | Select a Snapchat Public Profile to complete the connection (Headless Mode)
-*ConnectApi* | [**update_facebook_page**](docs/ConnectApi.md#update_facebook_page) | **PUT** /v1/accounts/{accountId}/facebook-page | Update selected Facebook page for a connected account
-*ConnectApi* | [**update_gmb_location**](docs/ConnectApi.md#update_gmb_location) | **PUT** /v1/accounts/{accountId}/gmb-locations | Update selected Google Business Profile location for a connected account
-*ConnectApi* | [**update_linked_in_organization**](docs/ConnectApi.md#update_linked_in_organization) | **PUT** /v1/accounts/{accountId}/linkedin-organization | Switch LinkedIn account type (personal/organization)
-*ConnectApi* | [**update_pinterest_boards**](docs/ConnectApi.md#update_pinterest_boards) | **PUT** /v1/accounts/{accountId}/pinterest-boards | Set default Pinterest board on the connection
-*ConnectApi* | [**update_reddit_subreddits**](docs/ConnectApi.md#update_reddit_subreddits) | **PUT** /v1/accounts/{accountId}/reddit-subreddits | Set default subreddit on the connection
-*GmbAttributesApi* | [**get_google_business_attributes**](docs/GmbAttributesApi.md#get_google_business_attributes) | **GET** /v1/accounts/{accountId}/gmb-attributes | Get Google Business Profile location attributes
-*GmbAttributesApi* | [**update_google_business_attributes**](docs/GmbAttributesApi.md#update_google_business_attributes) | **PUT** /v1/accounts/{accountId}/gmb-attributes | Update Google Business Profile location attributes
-*GmbFoodMenusApi* | [**get_google_business_food_menus**](docs/GmbFoodMenusApi.md#get_google_business_food_menus) | **GET** /v1/accounts/{accountId}/gmb-food-menus | Get Google Business Profile food menus
-*GmbFoodMenusApi* | [**update_google_business_food_menus**](docs/GmbFoodMenusApi.md#update_google_business_food_menus) | **PUT** /v1/accounts/{accountId}/gmb-food-menus | Update Google Business Profile food menus
-*GmbLocationDetailsApi* | [**get_google_business_location_details**](docs/GmbLocationDetailsApi.md#get_google_business_location_details) | **GET** /v1/accounts/{accountId}/gmb-location-details | Get Google Business Profile location details
-*GmbLocationDetailsApi* | [**update_google_business_location_details**](docs/GmbLocationDetailsApi.md#update_google_business_location_details) | **PUT** /v1/accounts/{accountId}/gmb-location-details | Update Google Business Profile location details
-*GmbMediaApi* | [**create_google_business_media**](docs/GmbMediaApi.md#create_google_business_media) | **POST** /v1/accounts/{accountId}/gmb-media | Upload a photo to Google Business Profile
-*GmbMediaApi* | [**delete_google_business_media**](docs/GmbMediaApi.md#delete_google_business_media) | **DELETE** /v1/accounts/{accountId}/gmb-media | Delete a photo from Google Business Profile
-*GmbMediaApi* | [**list_google_business_media**](docs/GmbMediaApi.md#list_google_business_media) | **GET** /v1/accounts/{accountId}/gmb-media | List Google Business Profile media (photos)
-*GmbPlaceActionsApi* | [**create_google_business_place_action**](docs/GmbPlaceActionsApi.md#create_google_business_place_action) | **POST** /v1/accounts/{accountId}/gmb-place-actions | Create a place action link (booking, ordering, reservation)
-*GmbPlaceActionsApi* | [**delete_google_business_place_action**](docs/GmbPlaceActionsApi.md#delete_google_business_place_action) | **DELETE** /v1/accounts/{accountId}/gmb-place-actions | Delete a place action link
-*GmbPlaceActionsApi* | [**list_google_business_place_actions**](docs/GmbPlaceActionsApi.md#list_google_business_place_actions) | **GET** /v1/accounts/{accountId}/gmb-place-actions | List place action links (booking, ordering, reservations)
-*GmbReviewsApi* | [**get_google_business_reviews**](docs/GmbReviewsApi.md#get_google_business_reviews) | **GET** /v1/accounts/{accountId}/gmb-reviews | Get Google Business Profile reviews
-*InvitesApi* | [**create_invite_token**](docs/InvitesApi.md#create_invite_token) | **POST** /v1/invite/tokens | Create a team member invite token
-*LinkedInMentionsApi* | [**get_linked_in_mentions**](docs/LinkedInMentionsApi.md#get_linked_in_mentions) | **GET** /v1/accounts/{accountId}/linkedin-mentions | Resolve a LinkedIn profile or company URL to a URN for @mentions
-*LogsApi* | [**get_log**](docs/LogsApi.md#get_log) | **GET** /v1/logs/{logId} | Get a single log entry
-*LogsApi* | [**get_post_logs**](docs/LogsApi.md#get_post_logs) | **GET** /v1/posts/{postId}/logs | Get logs for a specific post
-*LogsApi* | [**list_connection_logs**](docs/LogsApi.md#list_connection_logs) | **GET** /v1/connections/logs | Get connection logs
-*LogsApi* | [**list_logs**](docs/LogsApi.md#list_logs) | **GET** /v1/logs | Get publishing logs (deprecated)
-*LogsApi* | [**list_posts_logs**](docs/LogsApi.md#list_posts_logs) | **GET** /v1/posts/logs | Get publishing logs
-*MediaApi* | [**get_media_presigned_url**](docs/MediaApi.md#get_media_presigned_url) | **POST** /v1/media/presign | Get a presigned URL for direct file upload (up to 5GB)
-*MessagesApi* | [**edit_inbox_message**](docs/MessagesApi.md#edit_inbox_message) | **PATCH** /v1/inbox/conversations/{conversationId}/messages/{messageId} | Edit a message (Telegram only)
-*MessagesApi* | [**get_inbox_conversation**](docs/MessagesApi.md#get_inbox_conversation) | **GET** /v1/inbox/conversations/{conversationId} | Get conversation details
-*MessagesApi* | [**get_inbox_conversation_messages**](docs/MessagesApi.md#get_inbox_conversation_messages) | **GET** /v1/inbox/conversations/{conversationId}/messages | Get messages in a conversation
-*MessagesApi* | [**list_inbox_conversations**](docs/MessagesApi.md#list_inbox_conversations) | **GET** /v1/inbox/conversations | List conversations across all accounts
-*MessagesApi* | [**send_inbox_message**](docs/MessagesApi.md#send_inbox_message) | **POST** /v1/inbox/conversations/{conversationId}/messages | Send a message
+*AccountsApi* | [**delete_account**](docs/AccountsApi.md#delete_account) | **DELETE** /v1/accounts/{accountId} | Disconnect account
+*AccountsApi* | [**get_account_health**](docs/AccountsApi.md#get_account_health) | **GET** /v1/accounts/{accountId}/health | Check account health
+*AccountsApi* | [**get_all_accounts_health**](docs/AccountsApi.md#get_all_accounts_health) | **GET** /v1/accounts/health | Check accounts health
+*AccountsApi* | [**get_follower_stats**](docs/AccountsApi.md#get_follower_stats) | **GET** /v1/accounts/follower-stats | Get follower stats
+*AccountsApi* | [**list_accounts**](docs/AccountsApi.md#list_accounts) | **GET** /v1/accounts | List accounts
+*AccountsApi* | [**update_account**](docs/AccountsApi.md#update_account) | **PUT** /v1/accounts/{accountId} | Update account
+*AnalyticsApi* | [**get_analytics**](docs/AnalyticsApi.md#get_analytics) | **GET** /v1/analytics | Get post analytics
+*AnalyticsApi* | [**get_follower_stats**](docs/AnalyticsApi.md#get_follower_stats) | **GET** /v1/accounts/follower-stats | Get follower stats
+*AnalyticsApi* | [**get_linked_in_aggregate_analytics**](docs/AnalyticsApi.md#get_linked_in_aggregate_analytics) | **GET** /v1/accounts/{accountId}/linkedin-aggregate-analytics | Get LinkedIn aggregate stats
+*AnalyticsApi* | [**get_linked_in_post_analytics**](docs/AnalyticsApi.md#get_linked_in_post_analytics) | **GET** /v1/accounts/{accountId}/linkedin-post-analytics | Get LinkedIn post stats
+*AnalyticsApi* | [**get_you_tube_daily_views**](docs/AnalyticsApi.md#get_you_tube_daily_views) | **GET** /v1/analytics/youtube/daily-views | Get YouTube daily views
+*CommentsApi* | [**delete_inbox_comment**](docs/CommentsApi.md#delete_inbox_comment) | **DELETE** /v1/inbox/comments/{postId} | Delete comment
+*CommentsApi* | [**get_inbox_post_comments**](docs/CommentsApi.md#get_inbox_post_comments) | **GET** /v1/inbox/comments/{postId} | Get post comments
+*CommentsApi* | [**hide_inbox_comment**](docs/CommentsApi.md#hide_inbox_comment) | **POST** /v1/inbox/comments/{postId}/{commentId}/hide | Hide comment
+*CommentsApi* | [**like_inbox_comment**](docs/CommentsApi.md#like_inbox_comment) | **POST** /v1/inbox/comments/{postId}/{commentId}/like | Like comment
+*CommentsApi* | [**list_inbox_comments**](docs/CommentsApi.md#list_inbox_comments) | **GET** /v1/inbox/comments | List commented posts
+*CommentsApi* | [**reply_to_inbox_post**](docs/CommentsApi.md#reply_to_inbox_post) | **POST** /v1/inbox/comments/{postId} | Reply to comment
+*CommentsApi* | [**send_private_reply_to_comment**](docs/CommentsApi.md#send_private_reply_to_comment) | **POST** /v1/inbox/comments/{postId}/{commentId}/private-reply | Send private reply
+*CommentsApi* | [**unhide_inbox_comment**](docs/CommentsApi.md#unhide_inbox_comment) | **DELETE** /v1/inbox/comments/{postId}/{commentId}/hide | Unhide comment
+*CommentsApi* | [**unlike_inbox_comment**](docs/CommentsApi.md#unlike_inbox_comment) | **DELETE** /v1/inbox/comments/{postId}/{commentId}/like | Unlike comment
+*ConnectApi* | [**complete_telegram_connect**](docs/ConnectApi.md#complete_telegram_connect) | **PATCH** /v1/connect/telegram | Check Telegram status
+*ConnectApi* | [**connect_bluesky_credentials**](docs/ConnectApi.md#connect_bluesky_credentials) | **POST** /v1/connect/bluesky/credentials | Connect Bluesky account
+*ConnectApi* | [**get_connect_url**](docs/ConnectApi.md#get_connect_url) | **GET** /v1/connect/{platform} | Get OAuth connect URL
+*ConnectApi* | [**get_facebook_pages**](docs/ConnectApi.md#get_facebook_pages) | **GET** /v1/accounts/{accountId}/facebook-page | List Facebook pages
+*ConnectApi* | [**get_gmb_locations**](docs/ConnectApi.md#get_gmb_locations) | **GET** /v1/accounts/{accountId}/gmb-locations | List Google Business locations
+*ConnectApi* | [**get_linked_in_organizations**](docs/ConnectApi.md#get_linked_in_organizations) | **GET** /v1/accounts/{accountId}/linkedin-organizations | List LinkedIn orgs
+*ConnectApi* | [**get_pending_o_auth_data**](docs/ConnectApi.md#get_pending_o_auth_data) | **GET** /v1/connect/pending-data | Get pending OAuth data
+*ConnectApi* | [**get_pinterest_boards**](docs/ConnectApi.md#get_pinterest_boards) | **GET** /v1/accounts/{accountId}/pinterest-boards | List Pinterest boards
+*ConnectApi* | [**get_reddit_flairs**](docs/ConnectApi.md#get_reddit_flairs) | **GET** /v1/accounts/{accountId}/reddit-flairs | List subreddit flairs
+*ConnectApi* | [**get_reddit_subreddits**](docs/ConnectApi.md#get_reddit_subreddits) | **GET** /v1/accounts/{accountId}/reddit-subreddits | List Reddit subreddits
+*ConnectApi* | [**get_telegram_connect_status**](docs/ConnectApi.md#get_telegram_connect_status) | **GET** /v1/connect/telegram | Generate Telegram code
+*ConnectApi* | [**handle_o_auth_callback**](docs/ConnectApi.md#handle_o_auth_callback) | **POST** /v1/connect/{platform} | Complete OAuth callback
+*ConnectApi* | [**initiate_telegram_connect**](docs/ConnectApi.md#initiate_telegram_connect) | **POST** /v1/connect/telegram | Connect Telegram directly
+*ConnectApi* | [**list_facebook_pages**](docs/ConnectApi.md#list_facebook_pages) | **GET** /v1/connect/facebook/select-page | List Facebook pages
+*ConnectApi* | [**list_google_business_locations**](docs/ConnectApi.md#list_google_business_locations) | **GET** /v1/connect/googlebusiness/locations | List Google Business locations
+*ConnectApi* | [**list_linked_in_organizations**](docs/ConnectApi.md#list_linked_in_organizations) | **GET** /v1/connect/linkedin/organizations | List LinkedIn orgs
+*ConnectApi* | [**list_pinterest_boards_for_selection**](docs/ConnectApi.md#list_pinterest_boards_for_selection) | **GET** /v1/connect/pinterest/select-board | List Pinterest boards
+*ConnectApi* | [**list_snapchat_profiles**](docs/ConnectApi.md#list_snapchat_profiles) | **GET** /v1/connect/snapchat/select-profile | List Snapchat profiles
+*ConnectApi* | [**select_facebook_page**](docs/ConnectApi.md#select_facebook_page) | **POST** /v1/connect/facebook/select-page | Select Facebook page
+*ConnectApi* | [**select_google_business_location**](docs/ConnectApi.md#select_google_business_location) | **POST** /v1/connect/googlebusiness/select-location | Select Google Business location
+*ConnectApi* | [**select_linked_in_organization**](docs/ConnectApi.md#select_linked_in_organization) | **POST** /v1/connect/linkedin/select-organization | Select LinkedIn org
+*ConnectApi* | [**select_pinterest_board**](docs/ConnectApi.md#select_pinterest_board) | **POST** /v1/connect/pinterest/select-board | Select Pinterest board
+*ConnectApi* | [**select_snapchat_profile**](docs/ConnectApi.md#select_snapchat_profile) | **POST** /v1/connect/snapchat/select-profile | Select Snapchat profile
+*ConnectApi* | [**update_facebook_page**](docs/ConnectApi.md#update_facebook_page) | **PUT** /v1/accounts/{accountId}/facebook-page | Update Facebook page
+*ConnectApi* | [**update_gmb_location**](docs/ConnectApi.md#update_gmb_location) | **PUT** /v1/accounts/{accountId}/gmb-locations | Update Google Business location
+*ConnectApi* | [**update_linked_in_organization**](docs/ConnectApi.md#update_linked_in_organization) | **PUT** /v1/accounts/{accountId}/linkedin-organization | Switch LinkedIn account type
+*ConnectApi* | [**update_pinterest_boards**](docs/ConnectApi.md#update_pinterest_boards) | **PUT** /v1/accounts/{accountId}/pinterest-boards | Set default Pinterest board
+*ConnectApi* | [**update_reddit_subreddits**](docs/ConnectApi.md#update_reddit_subreddits) | **PUT** /v1/accounts/{accountId}/reddit-subreddits | Set default subreddit
+*GmbAttributesApi* | [**get_google_business_attributes**](docs/GmbAttributesApi.md#get_google_business_attributes) | **GET** /v1/accounts/{accountId}/gmb-attributes | Get attributes
+*GmbAttributesApi* | [**update_google_business_attributes**](docs/GmbAttributesApi.md#update_google_business_attributes) | **PUT** /v1/accounts/{accountId}/gmb-attributes | Update attributes
+*GmbFoodMenusApi* | [**get_google_business_food_menus**](docs/GmbFoodMenusApi.md#get_google_business_food_menus) | **GET** /v1/accounts/{accountId}/gmb-food-menus | Get food menus
+*GmbFoodMenusApi* | [**update_google_business_food_menus**](docs/GmbFoodMenusApi.md#update_google_business_food_menus) | **PUT** /v1/accounts/{accountId}/gmb-food-menus | Update food menus
+*GmbLocationDetailsApi* | [**get_google_business_location_details**](docs/GmbLocationDetailsApi.md#get_google_business_location_details) | **GET** /v1/accounts/{accountId}/gmb-location-details | Get location details
+*GmbLocationDetailsApi* | [**update_google_business_location_details**](docs/GmbLocationDetailsApi.md#update_google_business_location_details) | **PUT** /v1/accounts/{accountId}/gmb-location-details | Update location details
+*GmbMediaApi* | [**create_google_business_media**](docs/GmbMediaApi.md#create_google_business_media) | **POST** /v1/accounts/{accountId}/gmb-media | Upload photo
+*GmbMediaApi* | [**delete_google_business_media**](docs/GmbMediaApi.md#delete_google_business_media) | **DELETE** /v1/accounts/{accountId}/gmb-media | Delete photo
+*GmbMediaApi* | [**list_google_business_media**](docs/GmbMediaApi.md#list_google_business_media) | **GET** /v1/accounts/{accountId}/gmb-media | List media
+*GmbPlaceActionsApi* | [**create_google_business_place_action**](docs/GmbPlaceActionsApi.md#create_google_business_place_action) | **POST** /v1/accounts/{accountId}/gmb-place-actions | Create action link
+*GmbPlaceActionsApi* | [**delete_google_business_place_action**](docs/GmbPlaceActionsApi.md#delete_google_business_place_action) | **DELETE** /v1/accounts/{accountId}/gmb-place-actions | Delete action link
+*GmbPlaceActionsApi* | [**list_google_business_place_actions**](docs/GmbPlaceActionsApi.md#list_google_business_place_actions) | **GET** /v1/accounts/{accountId}/gmb-place-actions | List action links
+*GmbReviewsApi* | [**get_google_business_reviews**](docs/GmbReviewsApi.md#get_google_business_reviews) | **GET** /v1/accounts/{accountId}/gmb-reviews | Get reviews
+*InvitesApi* | [**create_invite_token**](docs/InvitesApi.md#create_invite_token) | **POST** /v1/invite/tokens | Create invite token
+*LinkedInMentionsApi* | [**get_linked_in_mentions**](docs/LinkedInMentionsApi.md#get_linked_in_mentions) | **GET** /v1/accounts/{accountId}/linkedin-mentions | Resolve LinkedIn mention
+*LogsApi* | [**get_log**](docs/LogsApi.md#get_log) | **GET** /v1/logs/{logId} | Get log entry
+*LogsApi* | [**get_post_logs**](docs/LogsApi.md#get_post_logs) | **GET** /v1/posts/{postId}/logs | Get post logs
+*LogsApi* | [**list_connection_logs**](docs/LogsApi.md#list_connection_logs) | **GET** /v1/connections/logs | List connection logs
+*LogsApi* | [**list_logs**](docs/LogsApi.md#list_logs) | **GET** /v1/logs | List publishing logs (deprecated)
+*LogsApi* | [**list_posts_logs**](docs/LogsApi.md#list_posts_logs) | **GET** /v1/posts/logs | List publishing logs
+*MediaApi* | [**get_media_presigned_url**](docs/MediaApi.md#get_media_presigned_url) | **POST** /v1/media/presign | Get presigned upload URL
+*MessagesApi* | [**edit_inbox_message**](docs/MessagesApi.md#edit_inbox_message) | **PATCH** /v1/inbox/conversations/{conversationId}/messages/{messageId} | Edit message
+*MessagesApi* | [**get_inbox_conversation**](docs/MessagesApi.md#get_inbox_conversation) | **GET** /v1/inbox/conversations/{conversationId} | Get conversation
+*MessagesApi* | [**get_inbox_conversation_messages**](docs/MessagesApi.md#get_inbox_conversation_messages) | **GET** /v1/inbox/conversations/{conversationId}/messages | List messages
+*MessagesApi* | [**list_inbox_conversations**](docs/MessagesApi.md#list_inbox_conversations) | **GET** /v1/inbox/conversations | List conversations
+*MessagesApi* | [**send_inbox_message**](docs/MessagesApi.md#send_inbox_message) | **POST** /v1/inbox/conversations/{conversationId}/messages | Send message
 *MessagesApi* | [**update_inbox_conversation**](docs/MessagesApi.md#update_inbox_conversation) | **PUT** /v1/inbox/conversations/{conversationId} | Update conversation status
-*PostsApi* | [**bulk_upload_posts**](docs/PostsApi.md#bulk_upload_posts) | **POST** /v1/posts/bulk-upload | Validate and schedule multiple posts from CSV
-*PostsApi* | [**create_post**](docs/PostsApi.md#create_post) | **POST** /v1/posts | Create a draft, scheduled, or immediate post
-*PostsApi* | [**delete_post**](docs/PostsApi.md#delete_post) | **DELETE** /v1/posts/{postId} | Delete a post
-*PostsApi* | [**get_post**](docs/PostsApi.md#get_post) | **GET** /v1/posts/{postId} | Get a single post
-*PostsApi* | [**list_posts**](docs/PostsApi.md#list_posts) | **GET** /v1/posts | List posts visible to the authenticated user
-*PostsApi* | [**retry_post**](docs/PostsApi.md#retry_post) | **POST** /v1/posts/{postId}/retry | Retry publishing a failed or partial post
-*PostsApi* | [**unpublish_post**](docs/PostsApi.md#unpublish_post) | **POST** /v1/posts/{postId}/unpublish | Delete a published post from a social media platform
-*PostsApi* | [**update_post**](docs/PostsApi.md#update_post) | **PUT** /v1/posts/{postId} | Update a post
-*ProfilesApi* | [**create_profile**](docs/ProfilesApi.md#create_profile) | **POST** /v1/profiles | Create a new profile
-*ProfilesApi* | [**delete_profile**](docs/ProfilesApi.md#delete_profile) | **DELETE** /v1/profiles/{profileId} | Delete a profile (must have no connected accounts)
-*ProfilesApi* | [**get_profile**](docs/ProfilesApi.md#get_profile) | **GET** /v1/profiles/{profileId} | Get a profile by id
-*ProfilesApi* | [**list_profiles**](docs/ProfilesApi.md#list_profiles) | **GET** /v1/profiles | List profiles visible to the authenticated user
-*ProfilesApi* | [**update_profile**](docs/ProfilesApi.md#update_profile) | **PUT** /v1/profiles/{profileId} | Update a profile
-*QueueApi* | [**create_queue_slot**](docs/QueueApi.md#create_queue_slot) | **POST** /v1/queue/slots | Create a new queue for a profile
-*QueueApi* | [**delete_queue_slot**](docs/QueueApi.md#delete_queue_slot) | **DELETE** /v1/queue/slots | Delete a queue schedule
-*QueueApi* | [**get_next_queue_slot**](docs/QueueApi.md#get_next_queue_slot) | **GET** /v1/queue/next-slot | Preview the next available queue slot (informational only)
-*QueueApi* | [**list_queue_slots**](docs/QueueApi.md#list_queue_slots) | **GET** /v1/queue/slots | Get queue schedules for a profile
-*QueueApi* | [**preview_queue**](docs/QueueApi.md#preview_queue) | **GET** /v1/queue/preview | Preview upcoming queue slots for a profile
-*QueueApi* | [**update_queue_slot**](docs/QueueApi.md#update_queue_slot) | **PUT** /v1/queue/slots | Create or update a queue schedule
-*RedditSearchApi* | [**get_reddit_feed**](docs/RedditSearchApi.md#get_reddit_feed) | **GET** /v1/reddit/feed | Fetch subreddit feed via a connected account
-*RedditSearchApi* | [**search_reddit**](docs/RedditSearchApi.md#search_reddit) | **GET** /v1/reddit/search | Search Reddit posts via a connected account
-*ReviewsApi* | [**delete_inbox_review_reply**](docs/ReviewsApi.md#delete_inbox_review_reply) | **DELETE** /v1/inbox/reviews/{reviewId}/reply | Delete a review reply
-*ReviewsApi* | [**list_inbox_reviews**](docs/ReviewsApi.md#list_inbox_reviews) | **GET** /v1/inbox/reviews | List reviews across all accounts
-*ReviewsApi* | [**reply_to_inbox_review**](docs/ReviewsApi.md#reply_to_inbox_review) | **POST** /v1/inbox/reviews/{reviewId}/reply | Reply to a review
-*ToolsApi* | [**check_instagram_hashtags**](docs/ToolsApi.md#check_instagram_hashtags) | **POST** /v1/tools/instagram/hashtag-checker | Check Instagram hashtags for bans
-*ToolsApi* | [**download_bluesky_media**](docs/ToolsApi.md#download_bluesky_media) | **GET** /v1/tools/bluesky/download | Download Bluesky video
+*PostsApi* | [**bulk_upload_posts**](docs/PostsApi.md#bulk_upload_posts) | **POST** /v1/posts/bulk-upload | Bulk upload from CSV
+*PostsApi* | [**create_post**](docs/PostsApi.md#create_post) | **POST** /v1/posts | Create post
+*PostsApi* | [**delete_post**](docs/PostsApi.md#delete_post) | **DELETE** /v1/posts/{postId} | Delete post
+*PostsApi* | [**get_post**](docs/PostsApi.md#get_post) | **GET** /v1/posts/{postId} | Get post
+*PostsApi* | [**list_posts**](docs/PostsApi.md#list_posts) | **GET** /v1/posts | List posts
+*PostsApi* | [**retry_post**](docs/PostsApi.md#retry_post) | **POST** /v1/posts/{postId}/retry | Retry failed post
+*PostsApi* | [**unpublish_post**](docs/PostsApi.md#unpublish_post) | **POST** /v1/posts/{postId}/unpublish | Unpublish post
+*PostsApi* | [**update_post**](docs/PostsApi.md#update_post) | **PUT** /v1/posts/{postId} | Update post
+*ProfilesApi* | [**create_profile**](docs/ProfilesApi.md#create_profile) | **POST** /v1/profiles | Create profile
+*ProfilesApi* | [**delete_profile**](docs/ProfilesApi.md#delete_profile) | **DELETE** /v1/profiles/{profileId} | Delete profile
+*ProfilesApi* | [**get_profile**](docs/ProfilesApi.md#get_profile) | **GET** /v1/profiles/{profileId} | Get profile
+*ProfilesApi* | [**list_profiles**](docs/ProfilesApi.md#list_profiles) | **GET** /v1/profiles | List profiles
+*ProfilesApi* | [**update_profile**](docs/ProfilesApi.md#update_profile) | **PUT** /v1/profiles/{profileId} | Update profile
+*QueueApi* | [**create_queue_slot**](docs/QueueApi.md#create_queue_slot) | **POST** /v1/queue/slots | Create schedule
+*QueueApi* | [**delete_queue_slot**](docs/QueueApi.md#delete_queue_slot) | **DELETE** /v1/queue/slots | Delete schedule
+*QueueApi* | [**get_next_queue_slot**](docs/QueueApi.md#get_next_queue_slot) | **GET** /v1/queue/next-slot | Get next available slot
+*QueueApi* | [**list_queue_slots**](docs/QueueApi.md#list_queue_slots) | **GET** /v1/queue/slots | List schedules
+*QueueApi* | [**preview_queue**](docs/QueueApi.md#preview_queue) | **GET** /v1/queue/preview | Preview upcoming slots
+*QueueApi* | [**update_queue_slot**](docs/QueueApi.md#update_queue_slot) | **PUT** /v1/queue/slots | Update schedule
+*RedditSearchApi* | [**get_reddit_feed**](docs/RedditSearchApi.md#get_reddit_feed) | **GET** /v1/reddit/feed | Get subreddit feed
+*RedditSearchApi* | [**search_reddit**](docs/RedditSearchApi.md#search_reddit) | **GET** /v1/reddit/search | Search posts
+*ReviewsApi* | [**delete_inbox_review_reply**](docs/ReviewsApi.md#delete_inbox_review_reply) | **DELETE** /v1/inbox/reviews/{reviewId}/reply | Delete review reply
+*ReviewsApi* | [**list_inbox_reviews**](docs/ReviewsApi.md#list_inbox_reviews) | **GET** /v1/inbox/reviews | List reviews
+*ReviewsApi* | [**reply_to_inbox_review**](docs/ReviewsApi.md#reply_to_inbox_review) | **POST** /v1/inbox/reviews/{reviewId}/reply | Reply to review
+*ToolsApi* | [**check_instagram_hashtags**](docs/ToolsApi.md#check_instagram_hashtags) | **POST** /v1/tools/instagram/hashtag-checker | Check Instagram hashtag bans
+*ToolsApi* | [**download_bluesky_media**](docs/ToolsApi.md#download_bluesky_media) | **GET** /v1/tools/bluesky/download | Download Bluesky media
 *ToolsApi* | [**download_facebook_video**](docs/ToolsApi.md#download_facebook_video) | **GET** /v1/tools/facebook/download | Download Facebook video
-*ToolsApi* | [**download_instagram_media**](docs/ToolsApi.md#download_instagram_media) | **GET** /v1/tools/instagram/download | Download Instagram reel or post
+*ToolsApi* | [**download_instagram_media**](docs/ToolsApi.md#download_instagram_media) | **GET** /v1/tools/instagram/download | Download Instagram media
 *ToolsApi* | [**download_linked_in_video**](docs/ToolsApi.md#download_linked_in_video) | **GET** /v1/tools/linkedin/download | Download LinkedIn video
 *ToolsApi* | [**download_tik_tok_video**](docs/ToolsApi.md#download_tik_tok_video) | **GET** /v1/tools/tiktok/download | Download TikTok video
-*ToolsApi* | [**download_twitter_media**](docs/ToolsApi.md#download_twitter_media) | **GET** /v1/tools/twitter/download | Download Twitter/X video
-*ToolsApi* | [**download_you_tube_video**](docs/ToolsApi.md#download_you_tube_video) | **GET** /v1/tools/youtube/download | Download YouTube video or audio
-*ToolsApi* | [**get_you_tube_transcript**](docs/ToolsApi.md#get_you_tube_transcript) | **GET** /v1/tools/youtube/transcript | Get YouTube video transcript
-*UsageApi* | [**get_usage_stats**](docs/UsageApi.md#get_usage_stats) | **GET** /v1/usage-stats | Get plan and usage stats for current account
-*UsersApi* | [**get_user**](docs/UsersApi.md#get_user) | **GET** /v1/users/{userId} | Get user by id (self or invited)
-*UsersApi* | [**list_users**](docs/UsersApi.md#list_users) | **GET** /v1/users | List team users (root + invited)
-*WebhooksApi* | [**create_webhook_settings**](docs/WebhooksApi.md#create_webhook_settings) | **POST** /v1/webhooks/settings | Create a new webhook
-*WebhooksApi* | [**delete_webhook_settings**](docs/WebhooksApi.md#delete_webhook_settings) | **DELETE** /v1/webhooks/settings | Delete a webhook
-*WebhooksApi* | [**get_webhook_logs**](docs/WebhooksApi.md#get_webhook_logs) | **GET** /v1/webhooks/logs | Get webhook delivery logs
-*WebhooksApi* | [**get_webhook_settings**](docs/WebhooksApi.md#get_webhook_settings) | **GET** /v1/webhooks/settings | List all webhooks
+*ToolsApi* | [**download_twitter_media**](docs/ToolsApi.md#download_twitter_media) | **GET** /v1/tools/twitter/download | Download Twitter/X media
+*ToolsApi* | [**download_you_tube_video**](docs/ToolsApi.md#download_you_tube_video) | **GET** /v1/tools/youtube/download | Download YouTube video
+*ToolsApi* | [**get_you_tube_transcript**](docs/ToolsApi.md#get_you_tube_transcript) | **GET** /v1/tools/youtube/transcript | Get YouTube transcript
+*UsageApi* | [**get_usage_stats**](docs/UsageApi.md#get_usage_stats) | **GET** /v1/usage-stats | Get plan and usage stats
+*UsersApi* | [**get_user**](docs/UsersApi.md#get_user) | **GET** /v1/users/{userId} | Get user
+*UsersApi* | [**list_users**](docs/UsersApi.md#list_users) | **GET** /v1/users | List users
+*WebhooksApi* | [**create_webhook_settings**](docs/WebhooksApi.md#create_webhook_settings) | **POST** /v1/webhooks/settings | Create webhook
+*WebhooksApi* | [**delete_webhook_settings**](docs/WebhooksApi.md#delete_webhook_settings) | **DELETE** /v1/webhooks/settings | Delete webhook
+*WebhooksApi* | [**get_webhook_logs**](docs/WebhooksApi.md#get_webhook_logs) | **GET** /v1/webhooks/logs | Get delivery logs
+*WebhooksApi* | [**get_webhook_settings**](docs/WebhooksApi.md#get_webhook_settings) | **GET** /v1/webhooks/settings | List webhooks
 *WebhooksApi* | [**test_webhook**](docs/WebhooksApi.md#test_webhook) | **POST** /v1/webhooks/test | Send test webhook
-*WebhooksApi* | [**update_webhook_settings**](docs/WebhooksApi.md#update_webhook_settings) | **PUT** /v1/webhooks/settings | Update a webhook
+*WebhooksApi* | [**update_webhook_settings**](docs/WebhooksApi.md#update_webhook_settings) | **PUT** /v1/webhooks/settings | Update webhook
 
 
 ## Documentation For Models

@@ -4,15 +4,15 @@ All URIs are relative to *https://getlate.dev/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**get_google_business_attributes**](GmbAttributesApi.md#get_google_business_attributes) | **GET** /v1/accounts/{accountId}/gmb-attributes | Get Google Business Profile location attributes
-[**update_google_business_attributes**](GmbAttributesApi.md#update_google_business_attributes) | **PUT** /v1/accounts/{accountId}/gmb-attributes | Update Google Business Profile location attributes
+[**get_google_business_attributes**](GmbAttributesApi.md#get_google_business_attributes) | **GET** /v1/accounts/{accountId}/gmb-attributes | Get attributes
+[**update_google_business_attributes**](GmbAttributesApi.md#update_google_business_attributes) | **PUT** /v1/accounts/{accountId}/gmb-attributes | Update attributes
 
 
 
 ## get_google_business_attributes
 
 > models::GetGoogleBusinessAttributes200Response get_google_business_attributes(account_id)
-Get Google Business Profile location attributes
+Get attributes
 
 Fetches location attributes such as amenities, services, and accessibility features.  Common attributes for restaurants include: - Dining options: has_dine_in, has_takeout, has_delivery - Amenities: has_outdoor_seating, has_wifi, has_parking - Accessibility: has_wheelchair_accessible_entrance - Payments: pay_credit_card_types_accepted  Available attributes vary by business category. 
 
@@ -42,7 +42,7 @@ Name | Type | Description  | Required | Notes
 ## update_google_business_attributes
 
 > models::UpdateGoogleBusinessAttributes200Response update_google_business_attributes(account_id, update_google_business_attributes_request)
-Update Google Business Profile location attributes
+Update attributes
 
 Updates location attributes (amenities, services, etc.).  The `attributeMask` specifies which attributes to update (comma-separated). 
 

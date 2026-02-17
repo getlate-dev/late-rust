@@ -4,19 +4,19 @@ All URIs are relative to *https://getlate.dev/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create_queue_slot**](QueueApi.md#create_queue_slot) | **POST** /v1/queue/slots | Create a new queue for a profile
-[**delete_queue_slot**](QueueApi.md#delete_queue_slot) | **DELETE** /v1/queue/slots | Delete a queue schedule
-[**get_next_queue_slot**](QueueApi.md#get_next_queue_slot) | **GET** /v1/queue/next-slot | Preview the next available queue slot (informational only)
-[**list_queue_slots**](QueueApi.md#list_queue_slots) | **GET** /v1/queue/slots | Get queue schedules for a profile
-[**preview_queue**](QueueApi.md#preview_queue) | **GET** /v1/queue/preview | Preview upcoming queue slots for a profile
-[**update_queue_slot**](QueueApi.md#update_queue_slot) | **PUT** /v1/queue/slots | Create or update a queue schedule
+[**create_queue_slot**](QueueApi.md#create_queue_slot) | **POST** /v1/queue/slots | Create schedule
+[**delete_queue_slot**](QueueApi.md#delete_queue_slot) | **DELETE** /v1/queue/slots | Delete schedule
+[**get_next_queue_slot**](QueueApi.md#get_next_queue_slot) | **GET** /v1/queue/next-slot | Get next available slot
+[**list_queue_slots**](QueueApi.md#list_queue_slots) | **GET** /v1/queue/slots | List schedules
+[**preview_queue**](QueueApi.md#preview_queue) | **GET** /v1/queue/preview | Preview upcoming slots
+[**update_queue_slot**](QueueApi.md#update_queue_slot) | **PUT** /v1/queue/slots | Update schedule
 
 
 
 ## create_queue_slot
 
 > models::CreateQueueSlot201Response create_queue_slot(create_queue_slot_request)
-Create a new queue for a profile
+Create schedule
 
 Create an additional queue for a profile. The first queue created becomes the default. Subsequent queues are non-default unless explicitly set. 
 
@@ -46,7 +46,7 @@ Name | Type | Description  | Required | Notes
 ## delete_queue_slot
 
 > models::DeleteQueueSlot200Response delete_queue_slot(profile_id, queue_id)
-Delete a queue schedule
+Delete schedule
 
 Delete a queue from a profile. Requires queueId to specify which queue to delete. If deleting the default queue, another queue will be promoted to default. 
 
@@ -77,7 +77,7 @@ Name | Type | Description  | Required | Notes
 ## get_next_queue_slot
 
 > models::GetNextQueueSlot200Response get_next_queue_slot(profile_id, queue_id)
-Preview the next available queue slot (informational only)
+Get next available slot
 
 Returns the next available queue slot for preview/informational purposes.  **Important: To schedule a post to the queue, do NOT use this endpoint's response with `scheduledFor`.** That creates a manual post, not a queue post.  Instead, use `POST /v1/posts` with `queuedFromProfile` (and optionally `queueId`). The system will automatically assign the next available slot with proper locking to prevent race conditions.  This endpoint is useful for: - Showing users when their next post will go out before they commit - Debugging/verifying queue configuration - Building UI previews  If no queueId is specified, uses the profile's default queue. 
 
@@ -108,7 +108,7 @@ Name | Type | Description  | Required | Notes
 ## list_queue_slots
 
 > models::ListQueueSlots200Response list_queue_slots(profile_id, queue_id, all)
-Get queue schedules for a profile
+List schedules
 
 Retrieve queue schedules for a profile. Each profile can have multiple queues. - Without `all=true`: Returns the default queue (or specific queue if queueId provided) - With `all=true`: Returns all queues for the profile 
 
@@ -140,7 +140,7 @@ Name | Type | Description  | Required | Notes
 ## preview_queue
 
 > models::PreviewQueue200Response preview_queue(profile_id, count)
-Preview upcoming queue slots for a profile
+Preview upcoming slots
 
 ### Parameters
 
@@ -169,7 +169,7 @@ Name | Type | Description  | Required | Notes
 ## update_queue_slot
 
 > models::UpdateQueueSlot200Response update_queue_slot(update_queue_slot_request)
-Create or update a queue schedule
+Update schedule
 
 Create a new queue or update an existing one. - Without queueId: Creates or updates the default queue - With queueId: Updates the specific queue - With setAsDefault=true: Makes this queue the default for the profile 
 

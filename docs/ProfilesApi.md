@@ -4,18 +4,18 @@ All URIs are relative to *https://getlate.dev/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create_profile**](ProfilesApi.md#create_profile) | **POST** /v1/profiles | Create a new profile
-[**delete_profile**](ProfilesApi.md#delete_profile) | **DELETE** /v1/profiles/{profileId} | Delete a profile (must have no connected accounts)
-[**get_profile**](ProfilesApi.md#get_profile) | **GET** /v1/profiles/{profileId} | Get a profile by id
-[**list_profiles**](ProfilesApi.md#list_profiles) | **GET** /v1/profiles | List profiles visible to the authenticated user
-[**update_profile**](ProfilesApi.md#update_profile) | **PUT** /v1/profiles/{profileId} | Update a profile
+[**create_profile**](ProfilesApi.md#create_profile) | **POST** /v1/profiles | Create profile
+[**delete_profile**](ProfilesApi.md#delete_profile) | **DELETE** /v1/profiles/{profileId} | Delete profile
+[**get_profile**](ProfilesApi.md#get_profile) | **GET** /v1/profiles/{profileId} | Get profile
+[**list_profiles**](ProfilesApi.md#list_profiles) | **GET** /v1/profiles | List profiles
+[**update_profile**](ProfilesApi.md#update_profile) | **PUT** /v1/profiles/{profileId} | Update profile
 
 
 
 ## create_profile
 
 > models::ProfileCreateResponse create_profile(create_profile_request)
-Create a new profile
+Create profile
 
 ### Parameters
 
@@ -43,7 +43,7 @@ Name | Type | Description  | Required | Notes
 ## delete_profile
 
 > models::DeleteAccountGroup200Response delete_profile(profile_id)
-Delete a profile (must have no connected accounts)
+Delete profile
 
 ### Parameters
 
@@ -71,7 +71,7 @@ Name | Type | Description  | Required | Notes
 ## get_profile
 
 > models::GetProfile200Response get_profile(profile_id)
-Get a profile by id
+Get profile
 
 ### Parameters
 
@@ -99,7 +99,7 @@ Name | Type | Description  | Required | Notes
 ## list_profiles
 
 > models::ProfilesListResponse list_profiles(include_over_limit)
-List profiles visible to the authenticated user
+List profiles
 
 Returns profiles within the user's plan limit. Profiles are sorted by creation date (oldest first). Use `includeOverLimit=true` to include profiles that exceed the plan limit (for management/deletion purposes). 
 
@@ -129,7 +129,7 @@ Name | Type | Description  | Required | Notes
 ## update_profile
 
 > models::UpdateProfile200Response update_profile(profile_id, update_profile_request)
-Update a profile
+Update profile
 
 ### Parameters
 

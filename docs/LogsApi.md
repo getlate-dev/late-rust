@@ -4,18 +4,18 @@ All URIs are relative to *https://getlate.dev/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**get_log**](LogsApi.md#get_log) | **GET** /v1/logs/{logId} | Get a single log entry
-[**get_post_logs**](LogsApi.md#get_post_logs) | **GET** /v1/posts/{postId}/logs | Get logs for a specific post
-[**list_connection_logs**](LogsApi.md#list_connection_logs) | **GET** /v1/connections/logs | Get connection logs
-[**list_logs**](LogsApi.md#list_logs) | **GET** /v1/logs | Get publishing logs (deprecated)
-[**list_posts_logs**](LogsApi.md#list_posts_logs) | **GET** /v1/posts/logs | Get publishing logs
+[**get_log**](LogsApi.md#get_log) | **GET** /v1/logs/{logId} | Get log entry
+[**get_post_logs**](LogsApi.md#get_post_logs) | **GET** /v1/posts/{postId}/logs | Get post logs
+[**list_connection_logs**](LogsApi.md#list_connection_logs) | **GET** /v1/connections/logs | List connection logs
+[**list_logs**](LogsApi.md#list_logs) | **GET** /v1/logs | List publishing logs (deprecated)
+[**list_posts_logs**](LogsApi.md#list_posts_logs) | **GET** /v1/posts/logs | List publishing logs
 
 
 
 ## get_log
 
 > models::GetLog200Response get_log(log_id)
-Get a single log entry
+Get log entry
 
 Retrieve detailed information about a specific log entry, including full request and response bodies for debugging. 
 
@@ -45,7 +45,7 @@ Name | Type | Description  | Required | Notes
 ## get_post_logs
 
 > models::GetPostLogs200Response get_post_logs(post_id, limit)
-Get logs for a specific post
+Get post logs
 
 Retrieve all publishing logs for a specific post. Shows the complete history of publishing attempts for that post across all platforms. 
 
@@ -76,7 +76,7 @@ Name | Type | Description  | Required | Notes
 ## list_connection_logs
 
 > models::ListConnectionLogs200Response list_connection_logs(platform, event_type, status, days, limit, skip)
-Get connection logs
+List connection logs
 
 Retrieve connection event logs showing account connection and disconnection history. Useful for debugging OAuth issues and tracking account lifecycle.  **Event Types:** - `connect_success` - New account connected successfully - `connect_failed` - Connection attempt failed - `disconnect` - Account was disconnected - `reconnect_success` - Existing account reconnected - `reconnect_failed` - Reconnection attempt failed  **Retention:** Logs are automatically deleted after 7 days. 
 
@@ -111,7 +111,7 @@ Name | Type | Description  | Required | Notes
 ## list_logs
 
 > models::ListLogs200Response list_logs(status, platform, action, days, limit, skip)
-Get publishing logs (deprecated)
+List publishing logs (deprecated)
 
 **Deprecated:** Use `/v1/posts/logs` instead. This endpoint is maintained for backwards compatibility.  Retrieve publishing logs for all posts. Logs show detailed information about each publishing attempt including API requests, responses, and timing data.  **Filtering:** - Filter by status (success, failed, pending, skipped) - Filter by platform (instagram, twitter, linkedin, etc.) - Filter by action (publish, retry, rate_limit_pause, etc.)  **Retention:** Logs are automatically deleted after 7 days. 
 
@@ -146,7 +146,7 @@ Name | Type | Description  | Required | Notes
 ## list_posts_logs
 
 > models::ListLogs200Response list_posts_logs(status, platform, action, days, limit, skip)
-Get publishing logs
+List publishing logs
 
 Retrieve publishing logs for all posts. Logs show detailed information about each publishing attempt including API requests, responses, and timing data.  **Filtering:** - Filter by status (success, failed, pending, skipped) - Filter by platform (instagram, twitter, linkedin, etc.) - Filter by action (publish, retry, rate_limit_pause, etc.)  **Retention:** Logs are automatically deleted after 7 days. 
 

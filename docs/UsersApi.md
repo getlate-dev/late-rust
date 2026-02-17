@@ -4,15 +4,15 @@ All URIs are relative to *https://getlate.dev/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**get_user**](UsersApi.md#get_user) | **GET** /v1/users/{userId} | Get user by id (self or invited)
-[**list_users**](UsersApi.md#list_users) | **GET** /v1/users | List team users (root + invited)
+[**get_user**](UsersApi.md#get_user) | **GET** /v1/users/{userId} | Get user
+[**list_users**](UsersApi.md#list_users) | **GET** /v1/users | List users
 
 
 
 ## get_user
 
 > models::GetUser200Response get_user(user_id)
-Get user by id (self or invited)
+Get user
 
 ### Parameters
 
@@ -40,7 +40,7 @@ Name | Type | Description  | Required | Notes
 ## list_users
 
 > models::ListUsers200Response list_users()
-List team users (root + invited)
+List users
 
 ### Parameters
 

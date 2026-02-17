@@ -4,14 +4,14 @@ All URIs are relative to *https://getlate.dev/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**get_usage_stats**](UsageApi.md#get_usage_stats) | **GET** /v1/usage-stats | Get plan and usage stats for current account
+[**get_usage_stats**](UsageApi.md#get_usage_stats) | **GET** /v1/usage-stats | Get plan and usage stats
 
 
 
 ## get_usage_stats
 
 > models::UsageStats get_usage_stats()
-Get plan and usage stats for current account
+Get plan and usage stats
 
 ### Parameters
 

@@ -4,19 +4,19 @@ All URIs are relative to *https://getlate.dev/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create_webhook_settings**](WebhooksApi.md#create_webhook_settings) | **POST** /v1/webhooks/settings | Create a new webhook
-[**delete_webhook_settings**](WebhooksApi.md#delete_webhook_settings) | **DELETE** /v1/webhooks/settings | Delete a webhook
-[**get_webhook_logs**](WebhooksApi.md#get_webhook_logs) | **GET** /v1/webhooks/logs | Get webhook delivery logs
-[**get_webhook_settings**](WebhooksApi.md#get_webhook_settings) | **GET** /v1/webhooks/settings | List all webhooks
+[**create_webhook_settings**](WebhooksApi.md#create_webhook_settings) | **POST** /v1/webhooks/settings | Create webhook
+[**delete_webhook_settings**](WebhooksApi.md#delete_webhook_settings) | **DELETE** /v1/webhooks/settings | Delete webhook
+[**get_webhook_logs**](WebhooksApi.md#get_webhook_logs) | **GET** /v1/webhooks/logs | Get delivery logs
+[**get_webhook_settings**](WebhooksApi.md#get_webhook_settings) | **GET** /v1/webhooks/settings | List webhooks
 [**test_webhook**](WebhooksApi.md#test_webhook) | **POST** /v1/webhooks/test | Send test webhook
-[**update_webhook_settings**](WebhooksApi.md#update_webhook_settings) | **PUT** /v1/webhooks/settings | Update a webhook
+[**update_webhook_settings**](WebhooksApi.md#update_webhook_settings) | **PUT** /v1/webhooks/settings | Update webhook
 
 
 
 ## create_webhook_settings
 
 > models::UpdateWebhookSettings200Response create_webhook_settings(create_webhook_settings_request)
-Create a new webhook
+Create webhook
 
 Create a new webhook configuration. Maximum 10 webhooks per user.  **Note:** Webhooks are automatically disabled after 10 consecutive delivery failures. 
 
@@ -46,7 +46,7 @@ Name | Type | Description  | Required | Notes
 ## delete_webhook_settings
 
 > models::UpdateRedditSubreddits200Response delete_webhook_settings(id)
-Delete a webhook
+Delete webhook
 
 Permanently delete a webhook configuration.
 
@@ -76,7 +76,7 @@ Name | Type | Description  | Required | Notes
 ## get_webhook_logs
 
 > models::GetWebhookLogs200Response get_webhook_logs(limit, status, event, webhook_id)
-Get webhook delivery logs
+Get delivery logs
 
 Retrieve webhook delivery history. Logs are automatically deleted after 7 days. 
 
@@ -109,7 +109,7 @@ Name | Type | Description  | Required | Notes
 ## get_webhook_settings
 
 > models::GetWebhookSettings200Response get_webhook_settings()
-List all webhooks
+List webhooks
 
 Retrieve all configured webhooks for the authenticated user. Supports up to 10 webhooks per user.
 
@@ -166,7 +166,7 @@ Name | Type | Description  | Required | Notes
 ## update_webhook_settings
 
 > models::UpdateWebhookSettings200Response update_webhook_settings(update_webhook_settings_request)
-Update a webhook
+Update webhook
 
 Update an existing webhook configuration. All fields except `_id` are optional - only provided fields will be updated.  **Note:** Webhooks are automatically disabled after 10 consecutive delivery failures. 
 
