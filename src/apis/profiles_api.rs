@@ -60,6 +60,7 @@ pub enum UpdateProfileError {
     UnknownValue(serde_json::Value),
 }
 
+/// Creates a new profile with a name, optional description, and color.
 pub async fn create_profile(
     configuration: &configuration::Configuration,
     create_profile_request: models::CreateProfileRequest,
@@ -109,6 +110,7 @@ pub async fn create_profile(
     }
 }
 
+/// Permanently deletes a profile by ID.
 pub async fn delete_profile(
     configuration: &configuration::Configuration,
     profile_id: &str,
@@ -161,6 +163,7 @@ pub async fn delete_profile(
     }
 }
 
+/// Returns a single profile by ID, including its name, color, and default status.
 pub async fn get_profile(
     configuration: &configuration::Configuration,
     profile_id: &str,
@@ -211,7 +214,7 @@ pub async fn get_profile(
     }
 }
 
-/// Returns profiles within the user's plan limit, sorted by creation date (oldest first). Use includeOverLimit=true to include profiles that exceed the plan limit (for management/deletion purposes).
+/// Returns profiles sorted by creation date. Use includeOverLimit=true to include profiles that exceed the plan limit.
 pub async fn list_profiles(
     configuration: &configuration::Configuration,
     include_over_limit: Option<bool>,
@@ -261,6 +264,7 @@ pub async fn list_profiles(
     }
 }
 
+/// Updates a profile's name, description, color, or default status.
 pub async fn update_profile(
     configuration: &configuration::Configuration,
     profile_id: &str,

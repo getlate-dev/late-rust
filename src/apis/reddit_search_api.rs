@@ -33,6 +33,7 @@ pub enum SearchRedditError {
     UnknownValue(serde_json::Value),
 }
 
+/// Fetch posts from a subreddit feed. Supports sorting, time filtering, and cursor-based pagination.
 pub async fn get_reddit_feed(
     configuration: &configuration::Configuration,
     account_id: &str,
@@ -105,6 +106,7 @@ pub async fn get_reddit_feed(
     }
 }
 
+/// Search Reddit posts using a connected account. Optionally scope to a specific subreddit.
 pub async fn search_reddit(
     configuration: &configuration::Configuration,
     account_id: &str,

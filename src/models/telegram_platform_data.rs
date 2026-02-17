@@ -11,7 +11,7 @@
 use crate::models;
 use serde::{Deserialize, Serialize};
 
-/// TelegramPlatformData : Supports text, images (up to 10), videos (up to 10), and mixed media albums. Captions up to 1024 chars for media posts, 4096 for text-only. Channel posts show channel name as author; group posts show bot name. Analytics not available via Telegram Bot API.
+/// TelegramPlatformData : Text, images (up to 10), videos (up to 10), and mixed media albums. Captions up to 1024 chars for media, 4096 for text-only.
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct TelegramPlatformData {
     /// Text formatting mode for the message (default is HTML)
@@ -35,7 +35,7 @@ pub struct TelegramPlatformData {
 }
 
 impl TelegramPlatformData {
-    /// Supports text, images (up to 10), videos (up to 10), and mixed media albums. Captions up to 1024 chars for media posts, 4096 for text-only. Channel posts show channel name as author; group posts show bot name. Analytics not available via Telegram Bot API.
+    /// Text, images (up to 10), videos (up to 10), and mixed media albums. Captions up to 1024 chars for media, 4096 for text-only.
     pub fn new() -> TelegramPlatformData {
         TelegramPlatformData {
             parse_mode: None,

@@ -11,7 +11,7 @@
 use crate::models;
 use serde::{Deserialize, Serialize};
 
-/// YouTubePlatformData : Videos up to 3 min are auto-detected as Shorts, longer as regular videos. Custom thumbnails supported for regular videos only (via mediaItem.thumbnail). Scheduled videos are uploaded immediately with the specified visibility. madeForKids defaults to false.
+/// YouTubePlatformData : Videos under 3 min auto-detected as Shorts. Custom thumbnails for regular videos only. Scheduled videos are uploaded immediately with the specified visibility.
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct YouTubePlatformData {
     /// Video title. Defaults to first line of content or \"Untitled Video\". Must be ≤ 100 characters.
@@ -38,7 +38,7 @@ pub struct YouTubePlatformData {
 }
 
 impl YouTubePlatformData {
-    /// Videos up to 3 min are auto-detected as Shorts, longer as regular videos. Custom thumbnails supported for regular videos only (via mediaItem.thumbnail). Scheduled videos are uploaded immediately with the specified visibility. madeForKids defaults to false.
+    /// Videos under 3 min auto-detected as Shorts. Custom thumbnails for regular videos only. Scheduled videos are uploaded immediately with the specified visibility.
     pub fn new() -> YouTubePlatformData {
         YouTubePlatformData {
             title: None,

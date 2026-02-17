@@ -13,7 +13,7 @@ use serde::{Deserialize, Serialize};
 
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct InitiateTelegramConnectRequest {
-    /// The Telegram chat ID. Can be: - Numeric ID (e.g., \"-1001234567890\") - Username with @ prefix (e.g., \"@mychannel\")
+    /// The Telegram chat ID. Numeric ID (e.g. \"-1001234567890\") or username with @ prefix (e.g. \"@mychannel\").
     #[serde(rename = "chatId")]
     pub chat_id: String,
     /// The profile ID to connect the account to

@@ -11,7 +11,7 @@
 use crate::models;
 use serde::{Deserialize, Serialize};
 
-/// LinkedInAggregateAnalyticsDailyResponseAnalytics : Daily breakdown of each metric. Each metric contains an array of date/count pairs. Note: 'reach' (MEMBERS_REACHED) is not available with DAILY aggregation per LinkedIn API limitations.
+/// LinkedInAggregateAnalyticsDailyResponseAnalytics : Daily breakdown of each metric as date/count pairs. Reach not available with DAILY aggregation.
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct LinkedInAggregateAnalyticsDailyResponseAnalytics {
     #[serde(rename = "impressions", skip_serializing_if = "Option::is_none")]
@@ -29,7 +29,7 @@ pub struct LinkedInAggregateAnalyticsDailyResponseAnalytics {
 }
 
 impl LinkedInAggregateAnalyticsDailyResponseAnalytics {
-    /// Daily breakdown of each metric. Each metric contains an array of date/count pairs. Note: 'reach' (MEMBERS_REACHED) is not available with DAILY aggregation per LinkedIn API limitations.
+    /// Daily breakdown of each metric as date/count pairs. Reach not available with DAILY aggregation.
     pub fn new() -> LinkedInAggregateAnalyticsDailyResponseAnalytics {
         LinkedInAggregateAnalyticsDailyResponseAnalytics {
             impressions: None,

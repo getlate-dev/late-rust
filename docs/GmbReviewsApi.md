@@ -13,7 +13,7 @@ Method | HTTP request | Description
 > models::GetGoogleBusinessReviews200Response get_google_business_reviews(account_id, page_size, page_token)
 Get reviews
 
-Fetches reviews for a connected Google Business Profile account. Returns all reviews including reviewer info, star rating, comment text, owner reply, and timestamps. Use pagination via nextPageToken for locations with many reviews. 
+Returns reviews for a GBP account including ratings, comments, and owner replies. Use nextPageToken for pagination.
 
 ### Parameters
 

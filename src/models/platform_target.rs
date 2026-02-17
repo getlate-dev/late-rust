@@ -37,7 +37,7 @@ pub struct PlatformTarget {
     /// The native post ID on the platform (populated after successful publish)
     #[serde(rename = "platformPostId", skip_serializing_if = "Option::is_none")]
     pub platform_post_id: Option<String>,
-    /// Public URL of the published post on the platform. Populated after successful publish. For immediate posts (publishNow=true),  this is included in the response. For scheduled posts, fetch the post  via GET /v1/posts/{postId} after the scheduled time.
+    /// Public URL of the published post. Included in the response for immediate posts; for scheduled posts, fetch via GET /v1/posts/{postId} after publish time.
     #[serde(rename = "platformPostUrl", skip_serializing_if = "Option::is_none")]
     pub platform_post_url: Option<String>,
     /// Timestamp when the post was published to this platform

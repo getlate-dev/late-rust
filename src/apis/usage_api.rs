@@ -22,6 +22,7 @@ pub enum GetUsageStatsError {
     UnknownValue(serde_json::Value),
 }
 
+/// Returns the current plan name, billing period, plan limits, and usage counts.
 pub async fn get_usage_stats(
     configuration: &configuration::Configuration,
 ) -> Result<models::UsageStats, Error<GetUsageStatsError>> {

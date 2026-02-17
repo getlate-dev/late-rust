@@ -21,6 +21,8 @@ Method | HTTP request | Description
 > delete_instagram_ice_breakers(account_id)
 Delete IG ice breakers
 
+Removes the ice breaker questions from an Instagram account's Messenger experience.
+
 ### Parameters
 
 
@@ -49,6 +51,8 @@ Name | Type | Description  | Required | Notes
 > delete_messenger_menu(account_id)
 Delete FB persistent menu
 
+Removes the persistent menu from Facebook Messenger conversations for this account.
+
 ### Parameters
 
 
@@ -76,6 +80,8 @@ Name | Type | Description  | Required | Notes
 
 > delete_telegram_commands(account_id)
 Delete TG bot commands
+
+Clears all bot commands configured for a Telegram bot account.
 
 ### Parameters
 

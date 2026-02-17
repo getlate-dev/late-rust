@@ -46,6 +46,8 @@ Name | Type | Description  | Required | Notes
 > models::DeleteGoogleBusinessMedia200Response delete_google_business_media(account_id, media_id)
 Delete photo
 
+Deletes a photo or media item from a GBP location.
+
 ### Parameters
 
 

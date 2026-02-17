@@ -14,7 +14,7 @@ Method | HTTP request | Description
 > models::GetGoogleBusinessLocationDetails200Response get_google_business_location_details(account_id, read_mask)
 Get location details
 
-Fetches detailed location information including opening hours, special hours, business description, phone numbers, website, categories, and more.  Use the readMask query parameter to request specific fields. 
+Returns detailed GBP location info (hours, description, phone, website, categories). Use readMask to request specific fields.
 
 ### Parameters
 
@@ -22,7 +22,7 @@ Fetches detailed location information including opening hours, special hours, bu
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **account_id** | **String** | The Late account ID (from /v1/accounts) | [required] |
-**read_mask** | Option<**String**> | Comma-separated fields to return. Defaults to common fields. Available: name, title, phoneNumbers, categories, storefrontAddress, websiteUri, regularHours, specialHours, serviceArea, profile, openInfo, metadata, moreHours  |  |
+**read_mask** | Option<**String**> | Comma-separated fields to return. Available: name, title, phoneNumbers, categories, storefrontAddress, websiteUri, regularHours, specialHours, serviceArea, profile, openInfo, metadata, moreHours. |  |
 
 ### Return type
 
@@ -45,7 +45,7 @@ Name | Type | Description  | Required | Notes
 > models::UpdateGoogleBusinessLocationDetails200Response update_google_business_location_details(account_id, update_google_business_location_details_request)
 Update location details
 
-Updates location details such as opening hours, special hours, business description, phone, and website. The updateMask field is required and specifies which fields to update. Common masks: regularHours, specialHours, profile.description, websiteUri, phoneNumbers. Combine with commas (e.g. regularHours,specialHours). 
+Updates GBP location details (hours, description, phone, website). The updateMask field is required and specifies which fields to update.
 
 ### Parameters
 

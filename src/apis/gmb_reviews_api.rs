@@ -25,7 +25,7 @@ pub enum GetGoogleBusinessReviewsError {
     UnknownValue(serde_json::Value),
 }
 
-/// Fetches reviews for a connected Google Business Profile account. Returns all reviews including reviewer info, star rating, comment text, owner reply, and timestamps. Use pagination via nextPageToken for locations with many reviews.
+/// Returns reviews for a GBP account including ratings, comments, and owner replies. Use nextPageToken for pagination.
 pub async fn get_google_business_reviews(
     configuration: &configuration::Configuration,
     account_id: &str,

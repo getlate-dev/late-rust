@@ -70,7 +70,7 @@ pub enum GetYouTubeDailyViewsError {
     UnknownValue(serde_json::Value),
 }
 
-/// Returns analytics for posts. With postId, returns a single post. Without it, returns a paginated list with overview stats. This endpoint returns External Post IDs by default. The postId parameter accepts both Late Post IDs and External Post IDs, auto-resolving Late IDs to External Post analytics. Use latePostId in responses to link back to your original post, or platformPostUrl as a stable identifier. isExternal indicates post origin (true = synced from platform). For follower stats, use /v1/accounts/follower-stats. LinkedIn personal accounts: per-post analytics only for Late-published posts. Telegram: not available. Data is cached and refreshed at most once per hour.
+/// Returns analytics for posts. With postId, returns a single post. Without it, returns a paginated list with overview stats. Accepts both Late Post IDs and External Post IDs (auto-resolved). Data is cached and refreshed at most once per hour. For follower stats, use /v1/accounts/follower-stats.
 pub async fn get_analytics(
     configuration: &configuration::Configuration,
     post_id: Option<&str>,
@@ -235,7 +235,7 @@ pub async fn get_follower_stats(
     }
 }
 
-/// Returns aggregate analytics across all posts for a LinkedIn personal account. Org accounts should use /v1/analytics instead. Required scope: r_member_postAnalytics (missing scope returns 403). Aggregation: TOTAL (default, lifetime totals) or DAILY (time series). Use startDate/endDate to filter. MEMBERS_REACHED is not available with DAILY aggregation.
+/// Returns aggregate analytics across all posts for a LinkedIn personal account. Org accounts should use /v1/analytics instead. Requires r_member_postAnalytics scope.
 pub async fn get_linked_in_aggregate_analytics(
     configuration: &configuration::Configuration,
     account_id: &str,
@@ -310,7 +310,7 @@ pub async fn get_linked_in_aggregate_analytics(
     }
 }
 
-/// Returns analytics for a specific LinkedIn post using its URN. Works for both personal and organization accounts. Useful for fetching analytics of posts not published through Late. Personal accounts require r_member_postAnalytics scope and return impressions, reach, likes, comments, shares, and video views (clicks not available). Organization accounts require r_organization_social scope and additionally return clicks and engagement rate.
+/// Returns analytics for a specific LinkedIn post by URN. Works for both personal and organization accounts.
 pub async fn get_linked_in_post_analytics(
     configuration: &configuration::Configuration,
     account_id: &str,
@@ -364,7 +364,7 @@ pub async fn get_linked_in_post_analytics(
     }
 }
 
-/// Returns historical daily view counts for a specific YouTube video. Uses YouTube Analytics API v2 to fetch daily breakdowns including views, watch time, and subscriber changes.  Requires the yt-analytics.readonly OAuth scope. Existing YouTube accounts may need to re-authorize. If the scope is missing, the response includes a reauthorizeUrl. Data has a 2-3 day delay; endDate is automatically capped to 3 days ago. Maximum 90 days of historical data. Defaults to last 30 days.
+/// Returns daily view counts for a YouTube video including views, watch time, and subscriber changes. Requires yt-analytics.readonly scope (re-authorization may be needed). Data has a 2-3 day delay. Max 90 days, defaults to last 30 days.
 pub async fn get_you_tube_daily_views(
     configuration: &configuration::Configuration,
     video_id: &str,

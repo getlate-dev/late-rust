@@ -175,7 +175,7 @@ pub async fn delete_queue_slot(
     }
 }
 
-/// Returns the next available queue slot for preview/informational purposes. Do NOT use this response with scheduledFor to schedule a post, as that creates a manual post, not a queue post. Instead, use POST /v1/posts with queuedFromProfile (and optionally queueId). Useful for showing users when their next post will go out, debugging queue configuration, or building UI previews.  If no queueId is specified, uses the profile's default queue.
+/// Returns the next available queue slot for preview purposes. To create a queue post, use POST /v1/posts with queuedFromProfile instead of scheduledFor.
 pub async fn get_next_queue_slot(
     configuration: &configuration::Configuration,
     profile_id: &str,
@@ -228,7 +228,7 @@ pub async fn get_next_queue_slot(
     }
 }
 
-/// Retrieve queue schedules for a profile. Each profile can have multiple queues. Without all=true, returns the default queue (or specific queue if queueId provided). With all=true, returns all queues for the profile.
+/// Returns queue schedules for a profile. Use all=true for all queues, or queueId for a specific one. Defaults to the default queue.
 pub async fn list_queue_slots(
     configuration: &configuration::Configuration,
     profile_id: &str,
@@ -286,6 +286,7 @@ pub async fn list_queue_slots(
     }
 }
 
+/// Returns the next N upcoming queue slot times for a profile as ISO datetime strings.
 pub async fn preview_queue(
     configuration: &configuration::Configuration,
     profile_id: &str,

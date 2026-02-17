@@ -91,6 +91,7 @@ pub enum SetTelegramCommandsError {
     UnknownValue(serde_json::Value),
 }
 
+/// Removes the ice breaker questions from an Instagram account's Messenger experience.
 pub async fn delete_instagram_ice_breakers(
     configuration: &configuration::Configuration,
     account_id: &str,
@@ -132,6 +133,7 @@ pub async fn delete_instagram_ice_breakers(
     }
 }
 
+/// Removes the persistent menu from Facebook Messenger conversations for this account.
 pub async fn delete_messenger_menu(
     configuration: &configuration::Configuration,
     account_id: &str,
@@ -173,6 +175,7 @@ pub async fn delete_messenger_menu(
     }
 }
 
+/// Clears all bot commands configured for a Telegram bot account.
 pub async fn delete_telegram_commands(
     configuration: &configuration::Configuration,
     account_id: &str,

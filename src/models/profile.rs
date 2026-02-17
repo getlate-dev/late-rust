@@ -25,7 +25,7 @@ pub struct Profile {
     pub color: Option<String>,
     #[serde(rename = "isDefault", skip_serializing_if = "Option::is_none")]
     pub is_default: Option<bool>,
-    /// Only present when includeOverLimit=true is used. Indicates if this profile exceeds the user's plan limit. Over-limit profiles cannot be used for posting but can be managed (disconnected accounts, deleted).
+    /// Only present when includeOverLimit=true. Indicates if this profile exceeds the plan limit.
     #[serde(rename = "isOverLimit", skip_serializing_if = "Option::is_none")]
     pub is_over_limit: Option<bool>,
     #[serde(rename = "createdAt", skip_serializing_if = "Option::is_none")]

@@ -11,10 +11,10 @@
 use crate::models;
 use serde::{Deserialize, Serialize};
 
-/// LinkedInPlatformData : Up to 20 images, no multi-video. Single PDF supported (max 100MB, ~300 pages, cannot mix with other media). Link previews auto-generated when no media attached (disable with disableLinkPreview). Use organizationUrn for multi-org posting.
+/// LinkedInPlatformData : Up to 20 images, no multi-video. Single PDF supported (max 100MB). Link previews auto-generated when no media attached. Use organizationUrn for multi-org posting.
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct LinkedInPlatformData {
-    /// Target LinkedIn Organization URN for multi-organization posting. Format: \"urn:li:organization:123456789\" If omitted, uses the selected/default organization on the connection. Use GET /api/v1/accounts/{id}/linkedin-organizations to list available organizations.
+    /// Target LinkedIn Organization URN (e.g. \"urn:li:organization:123456789\"). If omitted, uses the default org. Use GET /v1/accounts/{id}/linkedin-organizations to list orgs.
     #[serde(rename = "organizationUrn", skip_serializing_if = "Option::is_none")]
     pub organization_urn: Option<String>,
     /// Optional first comment to add after the post is created
@@ -26,7 +26,7 @@ pub struct LinkedInPlatformData {
 }
 
 impl LinkedInPlatformData {
-    /// Up to 20 images, no multi-video. Single PDF supported (max 100MB, ~300 pages, cannot mix with other media). Link previews auto-generated when no media attached (disable with disableLinkPreview). Use organizationUrn for multi-org posting.
+    /// Up to 20 images, no multi-video. Single PDF supported (max 100MB). Link previews auto-generated when no media attached. Use organizationUrn for multi-org posting.
     pub fn new() -> LinkedInPlatformData {
         LinkedInPlatformData {
             organization_urn: None,

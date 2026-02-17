@@ -50,6 +50,7 @@ pub enum UpdateAccountGroupError {
     UnknownValue(serde_json::Value),
 }
 
+/// Creates a new account group with a name and a list of social account IDs.
 pub async fn create_account_group(
     configuration: &configuration::Configuration,
     create_account_group_request: models::CreateAccountGroupRequest,
@@ -99,6 +100,7 @@ pub async fn create_account_group(
     }
 }
 
+/// Permanently deletes an account group. The accounts themselves are not affected.
 pub async fn delete_account_group(
     configuration: &configuration::Configuration,
     group_id: &str,
@@ -151,6 +153,7 @@ pub async fn delete_account_group(
     }
 }
 
+/// Returns all account groups for the authenticated user, including group names and associated account IDs.
 pub async fn list_account_groups(
     configuration: &configuration::Configuration,
 ) -> Result<models::ListAccountGroups200Response, Error<ListAccountGroupsError>> {
@@ -193,6 +196,7 @@ pub async fn list_account_groups(
     }
 }
 
+/// Updates the name or account list of an existing group. You can rename the group, change its accounts, or both.
 pub async fn update_account_group(
     configuration: &configuration::Configuration,
     group_id: &str,

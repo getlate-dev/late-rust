@@ -31,6 +31,7 @@ pub enum ListUsersError {
     UnknownValue(serde_json::Value),
 }
 
+/// Returns a single user's details by ID, including name, email, and role.
 pub async fn get_user(
     configuration: &configuration::Configuration,
     user_id: &str,
@@ -81,6 +82,7 @@ pub async fn get_user(
     }
 }
 
+/// Returns all users in the workspace including roles and profile access. Also returns the currentUserId of the caller.
 pub async fn list_users(
     configuration: &configuration::Configuration,
 ) -> Result<models::ListUsers200Response, Error<ListUsersError>> {

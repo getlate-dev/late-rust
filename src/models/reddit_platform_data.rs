@@ -11,10 +11,10 @@
 use crate::models;
 use serde::{Deserialize, Serialize};
 
-/// RedditPlatformData : Posts are either link (with URL/media) or self (text-only). If media is provided, the first item URL is used as the link; use forceSelf to override. Subreddit defaults to the account's configured one. Images over 20 MB are auto-compressed. Some subreddits require a flair; if missing, the first available flair is used as fallback.
+/// RedditPlatformData : Posts are either link (with URL/media) or self (text-only). Use forceSelf to override. Subreddit defaults to the account's configured one. Some subreddits require a flair.
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct RedditPlatformData {
-    /// Target subreddit name (without \"r/\" prefix). Overrides the default subreddit configured on the account connection. Use GET /api/v1/accounts/{id}/reddit-subreddits to list available subreddits.
+    /// Target subreddit name (without \"r/\" prefix). Overrides the default. Use GET /v1/accounts/{id}/reddit-subreddits to list options.
     #[serde(rename = "subreddit", skip_serializing_if = "Option::is_none")]
     pub subreddit: Option<String>,
     /// Post title. Defaults to the first line of content, truncated to 300 characters.
@@ -26,13 +26,13 @@ pub struct RedditPlatformData {
     /// When true, creates a text/self post even when a URL or media is provided.
     #[serde(rename = "forceSelf", skip_serializing_if = "Option::is_none")]
     pub force_self: Option<bool>,
-    /// Flair ID for the post. Required by some subreddits. Use GET /api/v1/accounts/{id}/reddit-flairs?subreddit=name to list available flairs.
+    /// Flair ID for the post. Required by some subreddits. Use GET /v1/accounts/{id}/reddit-flairs?subreddit=name to list flairs.
     #[serde(rename = "flairId", skip_serializing_if = "Option::is_none")]
     pub flair_id: Option<String>,
 }
 
 impl RedditPlatformData {
-    /// Posts are either link (with URL/media) or self (text-only). If media is provided, the first item URL is used as the link; use forceSelf to override. Subreddit defaults to the account's configured one. Images over 20 MB are auto-compressed. Some subreddits require a flair; if missing, the first available flair is used as fallback.
+    /// Posts are either link (with URL/media) or self (text-only). Use forceSelf to override. Subreddit defaults to the account's configured one. Some subreddits require a flair.
     pub fn new() -> RedditPlatformData {
         RedditPlatformData {
             subreddit: None,

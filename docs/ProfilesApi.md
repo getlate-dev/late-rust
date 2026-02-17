@@ -17,6 +17,8 @@ Method | HTTP request | Description
 > models::ProfileCreateResponse create_profile(create_profile_request)
 Create profile
 
+Creates a new profile with a name, optional description, and color.
+
 ### Parameters
 
 
@@ -44,6 +46,8 @@ Name | Type | Description  | Required | Notes
 
 > models::DeleteAccountGroup200Response delete_profile(profile_id)
 Delete profile
+
+Permanently deletes a profile by ID.
 
 ### Parameters
 
@@ -73,6 +77,8 @@ Name | Type | Description  | Required | Notes
 > models::GetProfile200Response get_profile(profile_id)
 Get profile
 
+Returns a single profile by ID, including its name, color, and default status.
+
 ### Parameters
 
 
@@ -101,14 +107,14 @@ Name | Type | Description  | Required | Notes
 > models::ProfilesListResponse list_profiles(include_over_limit)
 List profiles
 
-Returns profiles within the user's plan limit, sorted by creation date (oldest first). Use includeOverLimit=true to include profiles that exceed the plan limit (for management/deletion purposes). 
+Returns profiles sorted by creation date. Use includeOverLimit=true to include profiles that exceed the plan limit.
 
 ### Parameters
 
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**include_over_limit** | Option<**bool**> | When true, includes profiles that exceed the user's plan limit. Over-limit profiles will have isOverLimit: true in the response. Useful for managing/deleting profiles after a plan downgrade.  |  |[default to false]
+**include_over_limit** | Option<**bool**> | When true, includes over-limit profiles (marked with isOverLimit: true). |  |[default to false]
 
 ### Return type
 
@@ -130,6 +136,8 @@ Name | Type | Description  | Required | Notes
 
 > models::UpdateProfile200Response update_profile(profile_id, update_profile_request)
 Update profile
+
+Updates a profile's name, description, color, or default status.
 
 ### Parameters
 

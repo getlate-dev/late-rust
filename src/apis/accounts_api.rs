@@ -66,6 +66,7 @@ pub enum UpdateAccountError {
     UnknownValue(serde_json::Value),
 }
 
+/// Disconnects and removes a connected social account.
 pub async fn delete_account(
     configuration: &configuration::Configuration,
     account_id: &str,
@@ -118,7 +119,7 @@ pub async fn delete_account(
     }
 }
 
-/// Returns detailed health information for a specific social account, including token status, granted permissions, missing permissions, and actionable recommendations.
+/// Returns detailed health info for a specific account including token status, permissions, and recommendations.
 pub async fn get_account_health(
     configuration: &configuration::Configuration,
     account_id: &str,
@@ -169,7 +170,7 @@ pub async fn get_account_health(
     }
 }
 
-/// Returns the health status of all connected social accounts, including token validity, permissions status, and any issues that need attention. Useful for monitoring account connections and identifying accounts that need reconnection.
+/// Returns health status of all connected accounts including token validity, permissions, and issues needing attention.
 pub async fn get_all_accounts_health(
     configuration: &configuration::Configuration,
     profile_id: Option<&str>,
@@ -299,7 +300,7 @@ pub async fn get_follower_stats(
     }
 }
 
-/// Returns list of connected social accounts. By default, only returns accounts from profiles within the user's plan limit. Follower count data (followersCount, followersLastUpdated) is only included if user has analytics add-on.
+/// Returns connected social accounts. Only includes accounts within the plan limit by default. Follower data requires analytics add-on.
 pub async fn list_accounts(
     configuration: &configuration::Configuration,
     profile_id: Option<&str>,
@@ -354,6 +355,7 @@ pub async fn list_accounts(
     }
 }
 
+/// Updates a connected social account's display name or username override.
 pub async fn update_account(
     configuration: &configuration::Configuration,
     account_id: &str,

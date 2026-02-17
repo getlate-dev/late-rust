@@ -22,7 +22,7 @@ pub enum GetMediaPresignedUrlError {
     UnknownValue(serde_json::Value),
 }
 
-/// Get a presigned URL to upload files directly to cloud storage. Supports files up to 5GB.  How it works: call this endpoint with the filename and content type, receive an uploadUrl (presigned) and publicUrl, PUT your file directly to the uploadUrl, then use the publicUrl in your posts.
+/// Get a presigned URL to upload files directly to cloud storage (up to 5GB). Returns an uploadUrl and publicUrl. PUT your file to the uploadUrl, then use the publicUrl in your posts.
 pub async fn get_media_presigned_url(
     configuration: &configuration::Configuration,
     get_media_presigned_url_request: models::GetMediaPresignedUrlRequest,

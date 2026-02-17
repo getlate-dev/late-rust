@@ -11,7 +11,7 @@
 use crate::models;
 use serde::{Deserialize, Serialize};
 
-/// ThreadsPlatformData : Carousels support up to 10 images (no videos). Single posts support one image or video. Videos must be H.264/AAC MP4, max 5 min. Images must be JPEG/PNG, max 8 MB. threadItems creates a reply chain.
+/// ThreadsPlatformData : Up to 10 images per carousel (no videos). Videos must be H.264/AAC MP4, max 5 min. Images JPEG/PNG, max 8 MB. Use threadItems for reply chains.
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct ThreadsPlatformData {
     /// Sequence of posts in a Threads thread (root then replies in order).
@@ -20,7 +20,7 @@ pub struct ThreadsPlatformData {
 }
 
 impl ThreadsPlatformData {
-    /// Carousels support up to 10 images (no videos). Single posts support one image or video. Videos must be H.264/AAC MP4, max 5 min. Images must be JPEG/PNG, max 8 MB. threadItems creates a reply chain.
+    /// Up to 10 images per carousel (no videos). Videos must be H.264/AAC MP4, max 5 min. Images JPEG/PNG, max 8 MB. Use threadItems for reply chains.
     pub fn new() -> ThreadsPlatformData {
         ThreadsPlatformData { thread_items: None }
     }

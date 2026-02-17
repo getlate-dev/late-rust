@@ -14,6 +14,8 @@ Method | HTTP request | Description
 > models::GetUser200Response get_user(user_id)
 Get user
 
+Returns a single user's details by ID, including name, email, and role.
+
 ### Parameters
 
 
@@ -41,6 +43,8 @@ Name | Type | Description  | Required | Notes
 
 > models::ListUsers200Response list_users()
 List users
+
+Returns all users in the workspace including roles and profile access. Also returns the currentUserId of the caller.
 
 ### Parameters
 

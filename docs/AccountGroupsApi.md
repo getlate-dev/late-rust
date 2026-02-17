@@ -16,6 +16,8 @@ Method | HTTP request | Description
 > models::CreateAccountGroup201Response create_account_group(create_account_group_request)
 Create group
 
+Creates a new account group with a name and a list of social account IDs.
+
 ### Parameters
 
 
@@ -43,6 +45,8 @@ Name | Type | Description  | Required | Notes
 
 > models::DeleteAccountGroup200Response delete_account_group(group_id)
 Delete group
+
+Permanently deletes an account group. The accounts themselves are not affected.
 
 ### Parameters
 
@@ -72,6 +76,8 @@ Name | Type | Description  | Required | Notes
 > models::ListAccountGroups200Response list_account_groups()
 List groups
 
+Returns all account groups for the authenticated user, including group names and associated account IDs.
+
 ### Parameters
 
 This endpoint does not need any parameter.
@@ -96,6 +102,8 @@ This endpoint does not need any parameter.
 
 > models::UpdateAccountGroup200Response update_account_group(group_id, update_account_group_request)
 Update group
+
+Updates the name or account list of an existing group. You can rename the group, change its accounts, or both.
 
 ### Parameters
 

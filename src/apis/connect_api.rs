@@ -402,7 +402,7 @@ pub async fn connect_bluesky_credentials(
     }
 }
 
-/// Initiate an OAuth connection flow for any supported platform. Standard flow: call this endpoint, redirect user to the returned authUrl, Late hosts the selection UI, then redirects to your redirect_url. Headless mode (Facebook, LinkedIn, Pinterest, Google Business, Snapchat): add headless=true to this endpoint. After OAuth, the user is redirected to your redirect_url with OAuth data (profileId, tempToken, userProfile, connect_token, platform, step). Use the platform-specific selection endpoints to fetch options and save the selection. LinkedIn uses pendingDataToken instead of tempToken; call GET /v1/connect/pending-data?token=TOKEN to retrieve OAuth data (one-time use, expires in 10 minutes).
+/// Initiate an OAuth connection flow. Returns an authUrl to redirect the user to. Standard flow: Late hosts the selection UI, then redirects to your redirect_url. Headless mode (headless=true): user is redirected to your redirect_url with OAuth data for custom UI. Use the platform-specific selection endpoints to complete.
 pub async fn get_connect_url(
     configuration: &configuration::Configuration,
     platform: &str,
@@ -563,6 +563,7 @@ pub async fn get_gmb_locations(
     }
 }
 
+/// Returns LinkedIn organizations (company pages) the connected account has admin access to.
 pub async fn get_linked_in_organizations(
     configuration: &configuration::Configuration,
     account_id: &str,
@@ -613,7 +614,7 @@ pub async fn get_linked_in_organizations(
     }
 }
 
-/// Fetch pending OAuth data for headless mode. Platforms like LinkedIn store OAuth selection data (organizations, pages, etc.) server-side to prevent URI_TOO_LONG errors. After OAuth redirect, use the pendingDataToken from the URL to fetch the stored data. This endpoint is one-time use (data is deleted after fetch) and expires after 10 minutes. No authentication required, just the token.
+/// Fetch pending OAuth data for headless mode using the pendingDataToken from the redirect URL. One-time use, expires after 10 minutes. No authentication required.
 pub async fn get_pending_o_auth_data(
     configuration: &configuration::Configuration,
     token: &str,
@@ -661,6 +662,7 @@ pub async fn get_pending_o_auth_data(
     }
 }
 
+/// Returns the boards available for a connected Pinterest account. Use this to get a board ID when creating a Pinterest post.
 pub async fn get_pinterest_boards(
     configuration: &configuration::Configuration,
     account_id: &str,
@@ -711,6 +713,7 @@ pub async fn get_pinterest_boards(
     }
 }
 
+/// Returns available post flairs for a subreddit. Some subreddits require a flair when posting.
 pub async fn get_reddit_flairs(
     configuration: &configuration::Configuration,
     account_id: &str,
@@ -764,6 +767,7 @@ pub async fn get_reddit_flairs(
     }
 }
 
+/// Returns the subreddits the connected Reddit account can post to. Use this to get a subreddit name when creating a Reddit post.
 pub async fn get_reddit_subreddits(
     configuration: &configuration::Configuration,
     account_id: &str,
@@ -814,7 +818,7 @@ pub async fn get_reddit_subreddits(
     }
 }
 
-/// Generate a unique access code for connecting a Telegram channel or group. Flow: get an access code (valid 15 minutes), add the bot as admin in your channel/group, open a private chat with the bot, send the code + @yourchannel (e.g. LATE-ABC123 @mychannel), then poll PATCH /v1/connect/telegram?code={CODE} to check connection status. For private channels without a public username, forward any message from the channel to the bot along with the access code.
+/// Generate an access code (valid 15 minutes) for connecting a Telegram channel or group. Add the bot as admin, then send the code + @yourchannel to the bot. Poll PATCH /v1/connect/telegram to check status.
 pub async fn get_telegram_connect_status(
     configuration: &configuration::Configuration,
     profile_id: &str,
@@ -862,6 +866,7 @@ pub async fn get_telegram_connect_status(
     }
 }
 
+/// Exchange the OAuth authorization code for tokens and connect the account to the specified profile.
 pub async fn handle_o_auth_callback(
     configuration: &configuration::Configuration,
     platform: &str,
@@ -906,7 +911,7 @@ pub async fn handle_o_auth_callback(
     }
 }
 
-/// Connect a Telegram channel/group directly using the chat ID.  This is an alternative to the access code flow for power users who know their Telegram chat ID. The bot must already be added as an administrator in the channel/group.
+/// Connect a Telegram channel/group directly using the chat ID. Alternative to the access code flow. The bot must already be an admin in the channel/group.
 pub async fn initiate_telegram_connect(
     configuration: &configuration::Configuration,
     initiate_telegram_connect_request: models::InitiateTelegramConnectRequest,
@@ -1018,7 +1023,7 @@ pub async fn list_facebook_pages(
     }
 }
 
-/// For headless/whitelabel flows. After Google Business OAuth with headless=true, you'll be redirected to your redirect_url with tempToken and userProfile params. Call this endpoint to retrieve the list of locations the user can manage, then build your own UI to let them select one. Use the X-Connect-Token header if you initiated the connection via API key.
+/// For headless flows. Returns the list of GBP locations the user can manage. Use X-Connect-Token if connecting via API key.
 pub async fn list_google_business_locations(
     configuration: &configuration::Configuration,
     profile_id: &str,
@@ -1081,7 +1086,7 @@ pub async fn list_google_business_locations(
     }
 }
 
-/// Fetch full organization details for custom UI. After LinkedIn OAuth in headless mode, the redirect URL only contains id, urn, and name fields. Use this endpoint to fetch full details including logos, vanity names, websites, and more. No authentication required, just the tempToken from the OAuth redirect.
+/// Fetch full LinkedIn organization details (logos, vanity names, websites) for custom UI. No authentication required, just the tempToken from OAuth.
 pub async fn list_linked_in_organizations(
     configuration: &configuration::Configuration,
     temp_token: &str,
@@ -1135,7 +1140,7 @@ pub async fn list_linked_in_organizations(
     }
 }
 
-/// Retrieve Pinterest boards for headless selection UI. After Pinterest OAuth with headless=true, you'll be redirected to your redirect_url with tempToken and userProfile params. Call this endpoint to retrieve the list of boards the user can post to, then build your UI and call POST /v1/connect/pinterest/select-board to save the selection. Use X-Connect-Token header with the connect_token from the redirect URL.
+/// For headless flows. Returns Pinterest boards the user can post to. Use X-Connect-Token from the redirect URL.
 pub async fn list_pinterest_boards_for_selection(
     configuration: &configuration::Configuration,
     x_connect_token: &str,
@@ -1196,7 +1201,7 @@ pub async fn list_pinterest_boards_for_selection(
     }
 }
 
-/// For headless/whitelabel flows. After Snapchat OAuth with headless=true, you'll be redirected to your redirect_url with tempToken, userProfile, and publicProfiles params. Call this endpoint to retrieve the list of Snapchat Public Profiles the user can post to, then build your UI and call POST /v1/connect/snapchat/select-profile to save the selection. Use X-Connect-Token header with the connect_token from the redirect URL.
+/// For headless flows. Returns Snapchat Public Profiles the user can post to. Use X-Connect-Token from the redirect URL.
 pub async fn list_snapchat_profiles(
     configuration: &configuration::Configuration,
     x_connect_token: &str,
@@ -1253,7 +1258,7 @@ pub async fn list_snapchat_profiles(
     }
 }
 
-/// Complete the headless flow. After displaying your custom UI with the list of pages from the GET endpoint, call this endpoint to finalize the connection with the user's selected page. The userProfile should be the decoded JSON object from the userProfile query param in the OAuth callback redirect URL. Use the X-Connect-Token header if you initiated the connection via API key.
+/// Complete the headless flow by saving the user's selected Facebook page. Pass the userProfile from the OAuth redirect and use X-Connect-Token if connecting via API key.
 pub async fn select_facebook_page(
     configuration: &configuration::Configuration,
     select_facebook_page_request: models::SelectFacebookPageRequest,
@@ -1314,7 +1319,7 @@ pub async fn select_facebook_page(
     }
 }
 
-/// Complete the headless flow. After displaying your custom UI with the list of locations from the GET /v1/connect/googlebusiness/locations endpoint, call this endpoint to finalize the connection with the user's selected location. The userProfile should be the decoded JSON object from the userProfile query param in the OAuth callback redirect URL. It contains important token information including the refresh token. Use the X-Connect-Token header if you initiated the connection via API key.
+/// Complete the headless flow by saving the user's selected GBP location. Include userProfile from the OAuth redirect (contains refresh token). Use X-Connect-Token if connecting via API key.
 pub async fn select_google_business_location(
     configuration: &configuration::Configuration,
     select_google_business_location_request: models::SelectGoogleBusinessLocationRequest,
@@ -1376,7 +1381,7 @@ pub async fn select_google_business_location(
     }
 }
 
-/// Complete the LinkedIn connection flow. After OAuth, the user is redirected with organizations in the URL params (if they have org admin access). Use this data to build your UI, then call this endpoint to save the selection. Set accountType to \"personal\" for a personal profile (omit selectedOrganization), or \"organization\" to connect as a company page. Use the X-Connect-Token header if you initiated the connection via API key.
+/// Complete the LinkedIn connection flow. Set accountType to \"personal\" or \"organization\" to connect as a company page. Use X-Connect-Token if connecting via API key.
 pub async fn select_linked_in_organization(
     configuration: &configuration::Configuration,
     select_linked_in_organization_request: models::SelectLinkedInOrganizationRequest,
@@ -1482,7 +1487,7 @@ pub async fn select_pinterest_board(
     }
 }
 
-/// Complete the Snapchat connection flow. Save the selected Public Profile and complete the account connection. Snapchat requires a Public Profile to publish Stories, Saved Stories, and Spotlight content. After Snapchat OAuth with headless=true, you'll be redirected with tempToken, userProfile, publicProfiles, connect_token, platform=snapchat, and step=select_public_profile in the URL. Parse publicProfiles to build your custom selector UI, then call this endpoint with the selected profile. Use the X-Connect-Token header if you initiated the connection via API key.
+/// Complete the Snapchat connection flow by saving the selected Public Profile. Snapchat requires a Public Profile to publish content. Use X-Connect-Token if connecting via API key.
 pub async fn select_snapchat_profile(
     configuration: &configuration::Configuration,
     select_snapchat_profile_request: models::SelectSnapchatProfileRequest,
@@ -1540,6 +1545,7 @@ pub async fn select_snapchat_profile(
     }
 }
 
+/// Switch which Facebook Page is active for a connected account.
 pub async fn update_facebook_page(
     configuration: &configuration::Configuration,
     account_id: &str,
@@ -1593,6 +1599,7 @@ pub async fn update_facebook_page(
     }
 }
 
+/// Switch which GBP location is active for a connected account.
 pub async fn update_gmb_location(
     configuration: &configuration::Configuration,
     account_id: &str,
@@ -1646,6 +1653,7 @@ pub async fn update_gmb_location(
     }
 }
 
+/// Switch a LinkedIn account between personal profile and organization (company page) posting.
 pub async fn update_linked_in_organization(
     configuration: &configuration::Configuration,
     account_id: &str,
@@ -1699,6 +1707,7 @@ pub async fn update_linked_in_organization(
     }
 }
 
+/// Sets the default board used when publishing pins for this account.
 pub async fn update_pinterest_boards(
     configuration: &configuration::Configuration,
     account_id: &str,
@@ -1752,6 +1761,7 @@ pub async fn update_pinterest_boards(
     }
 }
 
+/// Sets the default subreddit used when publishing posts for this Reddit account.
 pub async fn update_reddit_subreddits(
     configuration: &configuration::Configuration,
     account_id: &str,

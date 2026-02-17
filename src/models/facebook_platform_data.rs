@@ -11,7 +11,7 @@
 use crate::models;
 use serde::{Deserialize, Serialize};
 
-/// FacebookPlatformData : Cannot mix videos and images. Up to 10 images for feed posts. Stories require single image or video (no captions, ephemeral 24h). Use pageId for multi-page posting.
+/// FacebookPlatformData : Up to 10 images for feed posts, cannot mix videos and images. Stories require single image or video (ephemeral 24h, no captions). Use pageId for multi-page posting.
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct FacebookPlatformData {
     /// Set to 'story' to publish as a Facebook Page Story (24-hour ephemeral content). Requires media.
@@ -20,13 +20,13 @@ pub struct FacebookPlatformData {
     /// Optional first comment to post immediately after publishing (feed posts only, not stories)
     #[serde(rename = "firstComment", skip_serializing_if = "Option::is_none")]
     pub first_comment: Option<String>,
-    /// Target Facebook Page ID for multi-page posting. If omitted, uses the selected/default page on the connection. Use GET /api/v1/accounts/{id}/facebook-page to list available pages.
+    /// Target Facebook Page ID for multi-page posting. If omitted, uses the default page. Use GET /v1/accounts/{id}/facebook-page to list pages.
     #[serde(rename = "pageId", skip_serializing_if = "Option::is_none")]
     pub page_id: Option<String>,
 }
 
 impl FacebookPlatformData {
-    /// Cannot mix videos and images. Up to 10 images for feed posts. Stories require single image or video (no captions, ephemeral 24h). Use pageId for multi-page posting.
+    /// Up to 10 images for feed posts, cannot mix videos and images. Stories require single image or video (ephemeral 24h, no captions). Use pageId for multi-page posting.
     pub fn new() -> FacebookPlatformData {
         FacebookPlatformData {
             content_type: None,

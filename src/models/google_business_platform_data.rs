@@ -11,13 +11,13 @@
 use crate::models;
 use serde::{Deserialize, Serialize};
 
-/// GoogleBusinessPlatformData : Posts support text and a single image (no videos). Images must be publicly accessible URLs. Optional call-to-action button. Posts appear on GBP, Google Search, and Maps. Use locationId for multi-location posting. Language is auto-detected; override with languageCode.
+/// GoogleBusinessPlatformData : Text and single image only (no videos). Optional call-to-action button. Posts appear on GBP, Google Search, and Maps. Use locationId for multi-location posting.
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct GoogleBusinessPlatformData {
-    /// Target Google Business location ID for multi-location posting. Format: \"locations/123456789\" If omitted, uses the selected/default location on the connection. Use GET /api/v1/accounts/{id}/gmb-locations to list available locations.
+    /// Target GBP location ID (e.g. \"locations/123456789\"). If omitted, uses the default location. Use GET /v1/accounts/{id}/gmb-locations to list locations.
     #[serde(rename = "locationId", skip_serializing_if = "Option::is_none")]
     pub location_id: Option<String>,
-    /// BCP 47 language code for the post content (e.g., \"en\", \"de\", \"es\", \"fr\"). If omitted, the language is automatically detected from the post text. Setting this explicitly is recommended when auto-detection may not be accurate (e.g., very short posts, mixed-language content, or transliterated text).
+    /// BCP 47 language code (e.g. \"en\", \"de\", \"es\"). Auto-detected if omitted. Set explicitly for short or mixed-language posts.
     #[serde(rename = "languageCode", skip_serializing_if = "Option::is_none")]
     pub language_code: Option<String>,
     #[serde(rename = "callToAction", skip_serializing_if = "Option::is_none")]
@@ -25,7 +25,7 @@ pub struct GoogleBusinessPlatformData {
 }
 
 impl GoogleBusinessPlatformData {
-    /// Posts support text and a single image (no videos). Images must be publicly accessible URLs. Optional call-to-action button. Posts appear on GBP, Google Search, and Maps. Use locationId for multi-location posting. Language is auto-detected; override with languageCode.
+    /// Text and single image only (no videos). Optional call-to-action button. Posts appear on GBP, Google Search, and Maps. Use locationId for multi-location posting.
     pub fn new() -> GoogleBusinessPlatformData {
         GoogleBusinessPlatformData {
             location_id: None,

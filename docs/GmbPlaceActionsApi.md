@@ -46,6 +46,8 @@ Name | Type | Description  | Required | Notes
 > models::DeleteGoogleBusinessPlaceAction200Response delete_google_business_place_action(account_id, name)
 Delete action link
 
+Deletes a place action link (e.g. booking or ordering URL) from a GBP location.
+
 ### Parameters
 
 

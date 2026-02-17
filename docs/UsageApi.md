@@ -13,6 +13,8 @@ Method | HTTP request | Description
 > models::UsageStats get_usage_stats()
 Get plan and usage stats
 
+Returns the current plan name, billing period, plan limits, and usage counts.
+
 ### Parameters
 
 This endpoint does not need any parameter.

@@ -33,7 +33,7 @@ pub enum UpdateGoogleBusinessLocationDetailsError {
     UnknownValue(serde_json::Value),
 }
 
-/// Fetches detailed location information including opening hours, special hours, business description, phone numbers, website, categories, and more.  Use the readMask query parameter to request specific fields.
+/// Returns detailed GBP location info (hours, description, phone, website, categories). Use readMask to request specific fields.
 pub async fn get_google_business_location_details(
     configuration: &configuration::Configuration,
     account_id: &str,
@@ -93,7 +93,7 @@ pub async fn get_google_business_location_details(
     }
 }
 
-/// Updates location details such as opening hours, special hours, business description, phone, and website. The updateMask field is required and specifies which fields to update. Common masks: regularHours, specialHours, profile.description, websiteUri, phoneNumbers. Combine with commas (e.g. regularHours,specialHours).
+/// Updates GBP location details (hours, description, phone, website). The updateMask field is required and specifies which fields to update.
 pub async fn update_google_business_location_details(
     configuration: &configuration::Configuration,
     account_id: &str,

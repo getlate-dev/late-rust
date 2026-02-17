@@ -14,6 +14,8 @@ Method | HTTP request | Description
 > models::GetRedditFeed200Response get_reddit_feed(account_id, subreddit, sort, limit, after, t)
 Get subreddit feed
 
+Fetch posts from a subreddit feed. Supports sorting, time filtering, and cursor-based pagination.
+
 ### Parameters
 
 
@@ -46,6 +48,8 @@ Name | Type | Description  | Required | Notes
 
 > models::SearchReddit200Response search_reddit(account_id, q, subreddit, restrict_sr, sort, limit, after)
 Search posts
+
+Search Reddit posts using a connected account. Optionally scope to a specific subreddit.
 
 ### Parameters
 

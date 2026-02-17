@@ -15,6 +15,8 @@ Method | HTTP request | Description
 > models::CreateApiKey201Response create_api_key(create_api_key_request)
 Create key
 
+Creates a new API key with an optional expiry. The full key value is only returned once in the response.
+
 ### Parameters
 
 
@@ -43,6 +45,8 @@ Name | Type | Description  | Required | Notes
 > models::DeleteAccountGroup200Response delete_api_key(key_id)
 Delete key
 
+Permanently revokes and deletes an API key.
+
 ### Parameters
 
 
@@ -70,6 +74,8 @@ Name | Type | Description  | Required | Notes
 
 > models::ListApiKeys200Response list_api_keys()
 List keys
+
+Returns all API keys for the authenticated user. Keys are returned with a preview only, not the full key value.
 
 ### Parameters
 

@@ -18,6 +18,8 @@ Method | HTTP request | Description
 > models::DeleteAccountGroup200Response delete_account(account_id)
 Disconnect account
 
+Disconnects and removes a connected social account.
+
 ### Parameters
 
 
@@ -46,7 +48,7 @@ Name | Type | Description  | Required | Notes
 > models::GetAccountHealth200Response get_account_health(account_id)
 Check account health
 
-Returns detailed health information for a specific social account, including token status, granted permissions, missing permissions, and actionable recommendations. 
+Returns detailed health info for a specific account including token status, permissions, and recommendations.
 
 ### Parameters
 
@@ -76,7 +78,7 @@ Name | Type | Description  | Required | Notes
 > models::GetAllAccountsHealth200Response get_all_accounts_health(profile_id, platform, status)
 Check accounts health
 
-Returns the health status of all connected social accounts, including token validity, permissions status, and any issues that need attention. Useful for monitoring account connections and identifying accounts that need reconnection. 
+Returns health status of all connected accounts including token validity, permissions, and issues needing attention.
 
 ### Parameters
 
@@ -142,7 +144,7 @@ Name | Type | Description  | Required | Notes
 > models::ListAccounts200Response list_accounts(profile_id, include_over_limit)
 List accounts
 
-Returns list of connected social accounts. By default, only returns accounts from profiles within the user's plan limit. Follower count data (followersCount, followersLastUpdated) is only included if user has analytics add-on. 
+Returns connected social accounts. Only includes accounts within the plan limit by default. Follower data requires analytics add-on.
 
 ### Parameters
 
@@ -150,7 +152,7 @@ Returns list of connected social accounts. By default, only returns accounts fro
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **profile_id** | Option<**String**> | Filter accounts by profile ID |  |
-**include_over_limit** | Option<**bool**> | When true, includes accounts from profiles that exceed the user's plan limit. Useful for disconnecting accounts from over-limit profiles so they can be deleted.  |  |[default to false]
+**include_over_limit** | Option<**bool**> | When true, includes accounts from over-limit profiles. |  |[default to false]
 
 ### Return type
 
@@ -172,6 +174,8 @@ Name | Type | Description  | Required | Notes
 
 > models::UpdateAccount200Response update_account(account_id, update_account_request)
 Update account
+
+Updates a connected social account's display name or username override.
 
 ### Parameters
 

@@ -351,7 +351,7 @@ pub async fn like_inbox_comment(
     }
 }
 
-/// Fetch posts with their comment counts from all connected accounts. Aggregates data from multiple accounts in a single API call.  Supported platforms: Facebook, Instagram, Twitter/X, Bluesky, Threads, YouTube, LinkedIn, Reddit, TikTok (write-only).
+/// Returns posts with comment counts from all connected accounts. Aggregates data across multiple accounts.
 pub async fn list_inbox_comments(
     configuration: &configuration::Configuration,
     profile_id: Option<&str>,
@@ -497,7 +497,7 @@ pub async fn reply_to_inbox_post(
     }
 }
 
-/// Send a private direct message to the author of a comment on your post. Supported platforms: Instagram, Facebook. Only one private reply per comment (platform restriction), must be sent within 7 days, only for comments on your own posts, text only. Instagram messages go to Inbox or Message Requests; Facebook opens a Messenger conversation. Both permissions are already included in Late's OAuth flow.
+/// Send a private message to the author of a comment. Supported on Instagram and Facebook only. One reply per comment, must be sent within 7 days, text only.
 pub async fn send_private_reply_to_comment(
     configuration: &configuration::Configuration,
     post_id: &str,

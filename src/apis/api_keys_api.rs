@@ -39,6 +39,7 @@ pub enum ListApiKeysError {
     UnknownValue(serde_json::Value),
 }
 
+/// Creates a new API key with an optional expiry. The full key value is only returned once in the response.
 pub async fn create_api_key(
     configuration: &configuration::Configuration,
     create_api_key_request: models::CreateApiKeyRequest,
@@ -88,6 +89,7 @@ pub async fn create_api_key(
     }
 }
 
+/// Permanently revokes and deletes an API key.
 pub async fn delete_api_key(
     configuration: &configuration::Configuration,
     key_id: &str,
@@ -140,6 +142,7 @@ pub async fn delete_api_key(
     }
 }
 
+/// Returns all API keys for the authenticated user. Keys are returned with a preview only, not the full key value.
 pub async fn list_api_keys(
     configuration: &configuration::Configuration,
 ) -> Result<models::ListApiKeys200Response, Error<ListApiKeysError>> {

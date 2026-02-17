@@ -28,7 +28,7 @@ Delete a comment on a post. Supported by Facebook, Instagram, Bluesky, Reddit, Y
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**post_id** | **String** | The post identifier. Accepts a Late post ID or a platform-specific post ID.  LinkedIn: for third-party posts, pass the full activity URN (e.g. urn:li:activity:7422459067685855232) or the raw numeric activity ID from the URL.  | [required] |
+**post_id** | **String** | Late post ID or platform-specific post ID. LinkedIn third-party posts accept full activity URN or numeric ID. | [required] |
 **account_id** | **String** |  | [required] |
 **comment_id** | **String** |  | [required] |
 
@@ -60,7 +60,7 @@ Fetch comments for a specific post. Requires accountId query parameter.
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**post_id** | **String** | The post identifier. Accepts a Late post ID (MongoDB ObjectId) which is automatically resolved to the platform-specific post ID, or a platform-specific post ID directly (e.g. tweet ID, Facebook Graph ID, YouTube video ID). LinkedIn: for your own posts, the full URN stored in Late is used automatically. For third-party posts, pass the full activity URN or the raw numeric activity ID from the LinkedIn URL (automatically wrapped as urn:li:activity:).  | [required] |
+**post_id** | **String** | Late post ID or platform-specific post ID. Late IDs are auto-resolved. LinkedIn third-party posts accept full activity URN or numeric ID. | [required] |
 **account_id** | **String** |  | [required] |
 **subreddit** | Option<**String**> | (Reddit only) Subreddit name |  |
 **limit** | Option<**i32**> | Maximum number of comments to return |  |[default to 25]
@@ -152,7 +152,7 @@ Name | Type | Description  | Required | Notes
 > models::ListInboxComments200Response list_inbox_comments(profile_id, platform, min_comments, since, sort_by, sort_order, limit, cursor, account_id)
 List commented posts
 
-Fetch posts with their comment counts from all connected accounts. Aggregates data from multiple accounts in a single API call.  Supported platforms: Facebook, Instagram, Twitter/X, Bluesky, Threads, YouTube, LinkedIn, Reddit, TikTok (write-only). 
+Returns posts with comment counts from all connected accounts. Aggregates data across multiple accounts.
 
 ### Parameters
 
@@ -197,7 +197,7 @@ Post a reply to a post or specific comment. Requires accountId in request body.
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**post_id** | **String** | The post identifier. Accepts a Late post ID or a platform-specific post ID.  LinkedIn: for third-party posts, pass the full activity URN (e.g. urn:li:activity:7422459067685855232) or the raw numeric activity ID from the URL.  | [required] |
+**post_id** | **String** | Late post ID or platform-specific post ID. LinkedIn third-party posts accept full activity URN or numeric ID. | [required] |
 **reply_to_inbox_post_request** | [**ReplyToInboxPostRequest**](ReplyToInboxPostRequest.md) |  | [required] |
 
 ### Return type
@@ -221,7 +221,7 @@ Name | Type | Description  | Required | Notes
 > models::SendPrivateReplyToComment200Response send_private_reply_to_comment(post_id, comment_id, send_private_reply_to_comment_request)
 Send private reply
 
-Send a private direct message to the author of a comment on your post. Supported platforms: Instagram, Facebook. Only one private reply per comment (platform restriction), must be sent within 7 days, only for comments on your own posts, text only. Instagram messages go to Inbox or Message Requests; Facebook opens a Messenger conversation. Both permissions are already included in Late's OAuth flow. 
+Send a private message to the author of a comment. Supported on Instagram and Facebook only. One reply per comment, must be sent within 7 days, text only.
 
 ### Parameters
 
