@@ -4,42 +4,10 @@ All URIs are relative to *https://getlate.dev/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**get_log**](LogsApi.md#get_log) | **GET** /v1/logs/{logId} | Get log entry
 [**get_post_logs**](LogsApi.md#get_post_logs) | **GET** /v1/posts/{postId}/logs | Get post logs
 [**list_connection_logs**](LogsApi.md#list_connection_logs) | **GET** /v1/connections/logs | List connection logs
-[**list_logs**](LogsApi.md#list_logs) | **GET** /v1/logs | List publishing logs (deprecated)
 [**list_posts_logs**](LogsApi.md#list_posts_logs) | **GET** /v1/posts/logs | List publishing logs
 
-
-
-## get_log
-
-> models::GetLog200Response get_log(log_id)
-Get log entry
-
-Retrieve detailed information about a specific log entry, including full request and response bodies for debugging. 
-
-### Parameters
-
-
-Name | Type | Description  | Required | Notes
-------------- | ------------- | ------------- | ------------- | -------------
-**log_id** | **String** | The log entry ID | [required] |
-
-### Return type
-
-[**models::GetLog200Response**](getLog_200_response.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 
 ## get_post_logs
@@ -78,7 +46,7 @@ Name | Type | Description  | Required | Notes
 > models::ListConnectionLogs200Response list_connection_logs(platform, event_type, status, days, limit, skip)
 List connection logs
 
-Retrieve connection event logs showing account connection and disconnection history. Useful for debugging OAuth issues and tracking account lifecycle.  **Event Types:** - `connect_success` - New account connected successfully - `connect_failed` - Connection attempt failed - `disconnect` - Account was disconnected - `reconnect_success` - Existing account reconnected - `reconnect_failed` - Reconnection attempt failed  **Retention:** Logs are automatically deleted after 7 days. 
+Retrieve connection event logs showing account connection and disconnection history. Event types: connect_success, connect_failed, disconnect, reconnect_success, reconnect_failed. Logs are automatically deleted after 7 days. 
 
 ### Parameters
 
@@ -108,47 +76,12 @@ Name | Type | Description  | Required | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 
-## list_logs
-
-> models::ListLogs200Response list_logs(status, platform, action, days, limit, skip)
-List publishing logs (deprecated)
-
-**Deprecated:** Use `/v1/posts/logs` instead. This endpoint is maintained for backwards compatibility.  Retrieve publishing logs for all posts. Logs show detailed information about each publishing attempt including API requests, responses, and timing data.  **Filtering:** - Filter by status (success, failed, pending, skipped) - Filter by platform (instagram, twitter, linkedin, etc.) - Filter by action (publish, retry, rate_limit_pause, etc.)  **Retention:** Logs are automatically deleted after 7 days. 
-
-### Parameters
-
-
-Name | Type | Description  | Required | Notes
-------------- | ------------- | ------------- | ------------- | -------------
-**status** | Option<**String**> | Filter by log status |  |
-**platform** | Option<**String**> | Filter by platform |  |
-**action** | Option<**String**> | Filter by action type |  |
-**days** | Option<**i32**> | Number of days to look back (max 7) |  |[default to 7]
-**limit** | Option<**i32**> | Maximum number of logs to return (max 100) |  |[default to 50]
-**skip** | Option<**i32**> | Number of logs to skip (for pagination) |  |[default to 0]
-
-### Return type
-
-[**models::ListLogs200Response**](listLogs_200_response.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-
 ## list_posts_logs
 
-> models::ListLogs200Response list_posts_logs(status, platform, action, days, limit, skip)
+> models::ListPostsLogs200Response list_posts_logs(status, platform, action, days, limit, skip)
 List publishing logs
 
-Retrieve publishing logs for all posts. Logs show detailed information about each publishing attempt including API requests, responses, and timing data.  **Filtering:** - Filter by status (success, failed, pending, skipped) - Filter by platform (instagram, twitter, linkedin, etc.) - Filter by action (publish, retry, rate_limit_pause, etc.)  **Retention:** Logs are automatically deleted after 7 days. 
+Retrieve publishing logs for all posts with detailed information about each publishing attempt. Filter by status, platform, or action. Logs are automatically deleted after 7 days. 
 
 ### Parameters
 
@@ -164,7 +97,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**models::ListLogs200Response**](listLogs_200_response.md)
+[**models::ListPostsLogs200Response**](listPostsLogs_200_response.md)
 
 ### Authorization
 

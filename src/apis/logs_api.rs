@@ -13,16 +13,6 @@ use crate::{apis::ResponseContent, models};
 use reqwest;
 use serde::{de::Error as _, Deserialize, Serialize};
 
-/// struct for typed errors of method [`get_log`]
-#[derive(Debug, Clone, Serialize, Deserialize)]
-#[serde(untagged)]
-pub enum GetLogError {
-    Status401(models::InlineObject),
-    Status403(),
-    Status404(models::InlineObject1),
-    UnknownValue(serde_json::Value),
-}
-
 /// struct for typed errors of method [`get_post_logs`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -41,71 +31,12 @@ pub enum ListConnectionLogsError {
     UnknownValue(serde_json::Value),
 }
 
-/// struct for typed errors of method [`list_logs`]
-#[derive(Debug, Clone, Serialize, Deserialize)]
-#[serde(untagged)]
-pub enum ListLogsError {
-    Status401(models::InlineObject),
-    UnknownValue(serde_json::Value),
-}
-
 /// struct for typed errors of method [`list_posts_logs`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum ListPostsLogsError {
     Status401(models::InlineObject),
     UnknownValue(serde_json::Value),
-}
-
-/// Retrieve detailed information about a specific log entry, including full request and response bodies for debugging.
-pub async fn get_log(
-    configuration: &configuration::Configuration,
-    log_id: &str,
-) -> Result<models::GetLog200Response, Error<GetLogError>> {
-    // add a prefix to parameters to efficiently prevent name collisions
-    let p_path_log_id = log_id;
-
-    let uri_str = format!(
-        "{}/v1/logs/{logId}",
-        configuration.base_path,
-        logId = crate::apis::urlencode(p_path_log_id)
-    );
-    let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
-
-    if let Some(ref user_agent) = configuration.user_agent {
-        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
-    }
-    if let Some(ref token) = configuration.bearer_access_token {
-        req_builder = req_builder.bearer_auth(token.to_owned());
-    };
-
-    let req = req_builder.build()?;
-    let resp = configuration.client.execute(req).await?;
-
-    let status = resp.status();
-    let content_type = resp
-        .headers()
-        .get("content-type")
-        .and_then(|v| v.to_str().ok())
-        .unwrap_or("application/octet-stream");
-    let content_type = super::ContentType::from(content_type);
-
-    if !status.is_client_error() && !status.is_server_error() {
-        let content = resp.text().await?;
-        match content_type {
-            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
-            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::GetLog200Response`"))),
-            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::GetLog200Response`")))),
-        }
-    } else {
-        let content = resp.text().await?;
-        let entity: Option<GetLogError> = serde_json::from_str(&content).ok();
-        Err(Error::ResponseError(ResponseContent {
-            status,
-            content,
-            entity,
-        }))
-    }
 }
 
 /// Retrieve all publishing logs for a specific post. Shows the complete history of publishing attempts for that post across all platforms.
@@ -164,7 +95,7 @@ pub async fn get_post_logs(
     }
 }
 
-/// Retrieve connection event logs showing account connection and disconnection history. Useful for debugging OAuth issues and tracking account lifecycle.  **Event Types:** - `connect_success` - New account connected successfully - `connect_failed` - Connection attempt failed - `disconnect` - Account was disconnected - `reconnect_success` - Existing account reconnected - `reconnect_failed` - Reconnection attempt failed  **Retention:** Logs are automatically deleted after 7 days.
+/// Retrieve connection event logs showing account connection and disconnection history. Event types: connect_success, connect_failed, disconnect, reconnect_success, reconnect_failed. Logs are automatically deleted after 7 days.
 pub async fn list_connection_logs(
     configuration: &configuration::Configuration,
     platform: Option<&str>,
@@ -239,83 +170,7 @@ pub async fn list_connection_logs(
     }
 }
 
-/// **Deprecated:** Use `/v1/posts/logs` instead. This endpoint is maintained for backwards compatibility.  Retrieve publishing logs for all posts. Logs show detailed information about each publishing attempt including API requests, responses, and timing data.  **Filtering:** - Filter by status (success, failed, pending, skipped) - Filter by platform (instagram, twitter, linkedin, etc.) - Filter by action (publish, retry, rate_limit_pause, etc.)  **Retention:** Logs are automatically deleted after 7 days.
-#[deprecated]
-pub async fn list_logs(
-    configuration: &configuration::Configuration,
-    status: Option<&str>,
-    platform: Option<&str>,
-    action: Option<&str>,
-    days: Option<i32>,
-    limit: Option<i32>,
-    skip: Option<i32>,
-) -> Result<models::ListLogs200Response, Error<ListLogsError>> {
-    // add a prefix to parameters to efficiently prevent name collisions
-    let p_query_status = status;
-    let p_query_platform = platform;
-    let p_query_action = action;
-    let p_query_days = days;
-    let p_query_limit = limit;
-    let p_query_skip = skip;
-
-    let uri_str = format!("{}/v1/logs", configuration.base_path);
-    let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
-
-    if let Some(ref param_value) = p_query_status {
-        req_builder = req_builder.query(&[("status", &param_value.to_string())]);
-    }
-    if let Some(ref param_value) = p_query_platform {
-        req_builder = req_builder.query(&[("platform", &param_value.to_string())]);
-    }
-    if let Some(ref param_value) = p_query_action {
-        req_builder = req_builder.query(&[("action", &param_value.to_string())]);
-    }
-    if let Some(ref param_value) = p_query_days {
-        req_builder = req_builder.query(&[("days", &param_value.to_string())]);
-    }
-    if let Some(ref param_value) = p_query_limit {
-        req_builder = req_builder.query(&[("limit", &param_value.to_string())]);
-    }
-    if let Some(ref param_value) = p_query_skip {
-        req_builder = req_builder.query(&[("skip", &param_value.to_string())]);
-    }
-    if let Some(ref user_agent) = configuration.user_agent {
-        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
-    }
-    if let Some(ref token) = configuration.bearer_access_token {
-        req_builder = req_builder.bearer_auth(token.to_owned());
-    };
-
-    let req = req_builder.build()?;
-    let resp = configuration.client.execute(req).await?;
-
-    let status = resp.status();
-    let content_type = resp
-        .headers()
-        .get("content-type")
-        .and_then(|v| v.to_str().ok())
-        .unwrap_or("application/octet-stream");
-    let content_type = super::ContentType::from(content_type);
-
-    if !status.is_client_error() && !status.is_server_error() {
-        let content = resp.text().await?;
-        match content_type {
-            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
-            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::ListLogs200Response`"))),
-            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::ListLogs200Response`")))),
-        }
-    } else {
-        let content = resp.text().await?;
-        let entity: Option<ListLogsError> = serde_json::from_str(&content).ok();
-        Err(Error::ResponseError(ResponseContent {
-            status,
-            content,
-            entity,
-        }))
-    }
-}
-
-/// Retrieve publishing logs for all posts. Logs show detailed information about each publishing attempt including API requests, responses, and timing data.  **Filtering:** - Filter by status (success, failed, pending, skipped) - Filter by platform (instagram, twitter, linkedin, etc.) - Filter by action (publish, retry, rate_limit_pause, etc.)  **Retention:** Logs are automatically deleted after 7 days.
+/// Retrieve publishing logs for all posts with detailed information about each publishing attempt. Filter by status, platform, or action. Logs are automatically deleted after 7 days.
 pub async fn list_posts_logs(
     configuration: &configuration::Configuration,
     status: Option<&str>,
@@ -324,7 +179,7 @@ pub async fn list_posts_logs(
     days: Option<i32>,
     limit: Option<i32>,
     skip: Option<i32>,
-) -> Result<models::ListLogs200Response, Error<ListPostsLogsError>> {
+) -> Result<models::ListPostsLogs200Response, Error<ListPostsLogsError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_query_status = status;
     let p_query_platform = platform;
@@ -376,8 +231,8 @@ pub async fn list_posts_logs(
         let content = resp.text().await?;
         match content_type {
             ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
-            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::ListLogs200Response`"))),
-            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::ListLogs200Response`")))),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::ListPostsLogs200Response`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::ListPostsLogs200Response`")))),
         }
     } else {
         let content = resp.text().await?;

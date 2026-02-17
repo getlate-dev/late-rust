@@ -11,7 +11,7 @@
 use crate::models;
 use serde::{Deserialize, Serialize};
 
-/// BlueskyPlatformData : Bluesky post settings: - Supports text posts with up to 4 images per post - Videos supported (single video per post) - threadItems creates a reply chain (Bluesky thread) - Images exceeding Bluesky's 1MB limit are automatically compressed - Alt text for images is supported via mediaItem properties
+/// BlueskyPlatformData : Bluesky post settings. Supports text posts with up to 4 images or a single video. threadItems creates a reply chain (Bluesky thread). Images exceeding 1MB are automatically compressed. Alt text supported via mediaItem properties.
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct BlueskyPlatformData {
     /// Sequence of posts in a Bluesky thread (root then replies in order).
@@ -20,7 +20,7 @@ pub struct BlueskyPlatformData {
 }
 
 impl BlueskyPlatformData {
-    /// Bluesky post settings: - Supports text posts with up to 4 images per post - Videos supported (single video per post) - threadItems creates a reply chain (Bluesky thread) - Images exceeding Bluesky's 1MB limit are automatically compressed - Alt text for images is supported via mediaItem properties
+    /// Bluesky post settings. Supports text posts with up to 4 images or a single video. threadItems creates a reply chain (Bluesky thread). Images exceeding 1MB are automatically compressed. Alt text supported via mediaItem properties.
     pub fn new() -> BlueskyPlatformData {
         BlueskyPlatformData { thread_items: None }
     }

@@ -26,7 +26,7 @@ pub struct ConnectionLog {
     pub account_id: Option<String>,
     #[serde(rename = "platform", skip_serializing_if = "Option::is_none")]
     pub platform: Option<Platform>,
-    /// Type of connection event: - `connect_success` - New account connected successfully - `connect_failed` - Connection attempt failed - `disconnect` - Account was disconnected - `reconnect_success` - Existing account reconnected successfully - `reconnect_failed` - Reconnection attempt failed
+    /// Type of connection event: connect_success, connect_failed, disconnect, reconnect_success, reconnect_failed
     #[serde(rename = "eventType", skip_serializing_if = "Option::is_none")]
     pub event_type: Option<EventType>,
     /// How the connection was initiated
@@ -104,7 +104,7 @@ impl Default for Platform {
         Self::Tiktok
     }
 }
-/// Type of connection event: - `connect_success` - New account connected successfully - `connect_failed` - Connection attempt failed - `disconnect` - Account was disconnected - `reconnect_success` - Existing account reconnected successfully - `reconnect_failed` - Reconnection attempt failed
+/// Type of connection event: connect_success, connect_failed, disconnect, reconnect_success, reconnect_failed
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
 pub enum EventType {
     #[serde(rename = "connect_success")]

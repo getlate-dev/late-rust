@@ -292,7 +292,7 @@ pub async fn hide_inbox_comment(
     }
 }
 
-/// Like or upvote a comment on a post.  **Supported platforms:** Facebook, Twitter/X, Bluesky, Reddit  For Bluesky, the `cid` (content identifier) is required in the request body.
+/// Like or upvote a comment on a post. Supported platforms: Facebook, Twitter/X, Bluesky, Reddit. For Bluesky, the cid (content identifier) is required in the request body.
 pub async fn like_inbox_comment(
     configuration: &configuration::Configuration,
     post_id: &str,
@@ -351,7 +351,7 @@ pub async fn like_inbox_comment(
     }
 }
 
-/// Fetch posts with their comment counts from all connected accounts. Aggregates data from multiple accounts in a single API call.  **Supported platforms:** Facebook, Instagram, Twitter/X, Bluesky, Threads, YouTube, LinkedIn, Reddit, TikTok (write-only)
+/// Fetch posts with their comment counts from all connected accounts. Aggregates data from multiple accounts in a single API call.  Supported platforms: Facebook, Instagram, Twitter/X, Bluesky, Threads, YouTube, LinkedIn, Reddit, TikTok (write-only).
 pub async fn list_inbox_comments(
     configuration: &configuration::Configuration,
     profile_id: Option<&str>,
@@ -497,7 +497,7 @@ pub async fn reply_to_inbox_post(
     }
 }
 
-/// Send a private direct message to the author of a comment on your post. This is useful for handling customer inquiries or sensitive matters privately.  **Supported platforms:** Instagram, Facebook  **Limitations:** - Only ONE private reply per comment (platform API restriction) - Must be sent within 7 days of the comment being posted - Only works for comments on posts owned by the connected account - Text only (no media attachments) - Instagram: message goes to the user's Inbox (if they follow you) or Message Requests (if they don't). Requires `instagram_business_manage_messages` permission. - Facebook: message opens a Messenger conversation with the commenter. Requires `pages_messaging` permission.  **Note:** Both permissions are already included in Late's OAuth flow. This does not create a conversation thread until the user replies back.
+/// Send a private direct message to the author of a comment on your post. Supported platforms: Instagram, Facebook. Only one private reply per comment (platform restriction), must be sent within 7 days, only for comments on your own posts, text only. Instagram messages go to Inbox or Message Requests; Facebook opens a Messenger conversation. Both permissions are already included in Late's OAuth flow.
 pub async fn send_private_reply_to_comment(
     configuration: &configuration::Configuration,
     post_id: &str,
@@ -615,7 +615,7 @@ pub async fn unhide_inbox_comment(
     }
 }
 
-/// Remove a like from a comment.  **Supported platforms:** Facebook, Twitter/X, Bluesky, Reddit  For Bluesky, the `likeUri` query parameter is required.
+/// Remove a like from a comment. Supported platforms: Facebook, Twitter/X, Bluesky, Reddit. For Bluesky, the likeUri query parameter is required.
 pub async fn unlike_inbox_comment(
     configuration: &configuration::Configuration,
     post_id: &str,

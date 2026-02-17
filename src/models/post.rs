@@ -32,7 +32,7 @@ pub struct Post {
     pub timezone: Option<String>,
     #[serde(rename = "status", skip_serializing_if = "Option::is_none")]
     pub status: Option<Status>,
-    /// YouTube tag constraints when targeting YouTube: - No count cap; duplicates removed. - Each tag must be ≤ 100 chars. - Combined characters across all tags ≤ 500.
+    /// YouTube constraints: each tag max 100 chars, combined max 500 chars, duplicates removed.
     #[serde(rename = "tags", skip_serializing_if = "Option::is_none")]
     pub tags: Option<Vec<String>>,
     #[serde(rename = "hashtags", skip_serializing_if = "Option::is_none")]

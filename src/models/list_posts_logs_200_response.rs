@@ -12,16 +12,16 @@ use crate::models;
 use serde::{Deserialize, Serialize};
 
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
-pub struct ListConnectionLogs200Response {
+pub struct ListPostsLogs200Response {
     #[serde(rename = "logs", skip_serializing_if = "Option::is_none")]
-    pub logs: Option<Vec<models::ConnectionLog>>,
+    pub logs: Option<Vec<models::PostLog>>,
     #[serde(rename = "pagination", skip_serializing_if = "Option::is_none")]
     pub pagination: Option<Box<models::ListPostsLogs200ResponsePagination>>,
 }
 
-impl ListConnectionLogs200Response {
-    pub fn new() -> ListConnectionLogs200Response {
-        ListConnectionLogs200Response {
+impl ListPostsLogs200Response {
+    pub fn new() -> ListPostsLogs200Response {
+        ListPostsLogs200Response {
             logs: None,
             pagination: None,
         }

@@ -229,7 +229,7 @@ pub async fn get_all_accounts_health(
     }
 }
 
-/// Returns follower count history and growth metrics for connected social accounts. **Requires analytics add-on subscription.**  **Data Freshness:** Follower counts are automatically refreshed once per day.
+/// Returns follower count history and growth metrics for connected social accounts. Requires analytics add-on subscription. Follower counts are refreshed once per day.
 pub async fn get_follower_stats(
     configuration: &configuration::Configuration,
     account_ids: Option<&str>,

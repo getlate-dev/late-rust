@@ -17,7 +17,7 @@ pub struct UpdatePostRequest {
     pub content: Option<String>,
     #[serde(rename = "scheduledFor", skip_serializing_if = "Option::is_none")]
     pub scheduled_for: Option<String>,
-    /// Root-level TikTok settings applied to all TikTok platforms in the request. This is a convenience shorthand. Settings here are merged into each TikTok platform's platformSpecificData, with platform-specific settings taking precedence.
+    /// Root-level TikTok settings applied to all TikTok platforms. Merged into each platform's platformSpecificData, with platform-specific settings taking precedence.
     #[serde(rename = "tiktokSettings", skip_serializing_if = "Option::is_none")]
     pub tiktok_settings: Option<Box<models::TikTokPlatformData>>,
 }

@@ -36,7 +36,7 @@ impl Default for PlatformTargetPlatformSpecificData {
         Self::TwitterPlatformData(Default::default())
     }
 }
-/// Type of Snapchat content to publish: - `story` - Ephemeral snap visible for 24 hours (default) - `saved_story` - Permanent story saved to Public Profile - `spotlight` - Video posted to Spotlight (Snapchat's TikTok-like feed)
+/// Content type: story (ephemeral 24h, default), saved_story (permanent on Public Profile), spotlight (video feed)
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
 pub enum ContentType {
     #[serde(rename = "story")]
@@ -52,7 +52,7 @@ impl Default for ContentType {
         Self::Story
     }
 }
-/// Video visibility setting: - public: Anyone can search for and watch (default) - unlisted: Only people with the link can watch - private: Only you and people you specifically share with can watch
+/// Video visibility: public (default, anyone can watch), unlisted (link only), private (invite only)
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
 pub enum Visibility {
     #[serde(rename = "public")]

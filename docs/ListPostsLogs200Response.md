@@ -1,10 +1,11 @@
-# SnapchatPlatformData
+# ListPostsLogs200Response
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**content_type** | Option<**ContentType**> | Content type: story (ephemeral 24h, default), saved_story (permanent on Public Profile), spotlight (video feed) (enum: story, saved_story, spotlight) | [optional][default to Story]
+**logs** | Option<[**Vec<models::PostLog>**](PostLog.md)> |  | [optional]
+**pagination** | Option<[**models::ListPostsLogs200ResponsePagination**](ListPostsLogs200ResponsePagination.md)> |  | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -11,21 +11,21 @@
 use crate::models;
 use serde::{Deserialize, Serialize};
 
-/// SnapchatPlatformData : Snapchat requires a Public Profile. Media is required for all content types (single item only, auto-encrypted before upload).  **Content types:** Story (ephemeral 24h, no caption), Saved Story (permanent, title max 45 chars), Spotlight (video, description max 160 chars).  **Media limits:** Images max 20 MB (JPEG/PNG), videos max 500 MB (MP4, 5-60s, min 540x960px, 9:16 recommended).
+/// SnapchatPlatformData : Requires a Public Profile. Media required for all content types (single item only, auto-encrypted). Content types: story (ephemeral 24h, no caption), saved_story (permanent, title max 45 chars), spotlight (video, description max 160 chars). Images max 20 MB (JPEG/PNG), videos max 500 MB (MP4, 5-60s, min 540x960px).
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct SnapchatPlatformData {
-    /// Type of Snapchat content to publish: - `story` - Ephemeral snap visible for 24 hours (default) - `saved_story` - Permanent story saved to Public Profile - `spotlight` - Video posted to Spotlight (Snapchat's TikTok-like feed)
+    /// Content type: story (ephemeral 24h, default), saved_story (permanent on Public Profile), spotlight (video feed)
     #[serde(rename = "contentType", skip_serializing_if = "Option::is_none")]
     pub content_type: Option<ContentType>,
 }
 
 impl SnapchatPlatformData {
-    /// Snapchat requires a Public Profile. Media is required for all content types (single item only, auto-encrypted before upload).  **Content types:** Story (ephemeral 24h, no caption), Saved Story (permanent, title max 45 chars), Spotlight (video, description max 160 chars).  **Media limits:** Images max 20 MB (JPEG/PNG), videos max 500 MB (MP4, 5-60s, min 540x960px, 9:16 recommended).
+    /// Requires a Public Profile. Media required for all content types (single item only, auto-encrypted). Content types: story (ephemeral 24h, no caption), saved_story (permanent, title max 45 chars), spotlight (video, description max 160 chars). Images max 20 MB (JPEG/PNG), videos max 500 MB (MP4, 5-60s, min 540x960px).
     pub fn new() -> SnapchatPlatformData {
         SnapchatPlatformData { content_type: None }
     }
 }
-/// Type of Snapchat content to publish: - `story` - Ephemeral snap visible for 24 hours (default) - `saved_story` - Permanent story saved to Public Profile - `spotlight` - Video posted to Spotlight (Snapchat's TikTok-like feed)
+/// Content type: story (ephemeral 24h, default), saved_story (permanent on Public Profile), spotlight (video feed)
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
 pub enum ContentType {
     #[serde(rename = "story")]

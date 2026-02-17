@@ -14,7 +14,7 @@ use serde::{Deserialize, Serialize};
 /// GoogleBusinessPlatformDataCallToAction : Optional call-to-action button displayed on the post
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct GoogleBusinessPlatformDataCallToAction {
-    /// Button action type: - LEARN_MORE: Link to more information - BOOK: Booking/reservation link - ORDER: Online ordering link - SHOP: E-commerce/shopping link - SIGN_UP: Registration/signup link - CALL: Phone call action
+    /// Button action type: LEARN_MORE, BOOK, ORDER, SHOP, SIGN_UP, CALL
     #[serde(rename = "type")]
     pub r#type: Type,
     /// Destination URL for the CTA button (required when callToAction is provided)
@@ -28,7 +28,7 @@ impl GoogleBusinessPlatformDataCallToAction {
         GoogleBusinessPlatformDataCallToAction { r#type, url }
     }
 }
-/// Button action type: - LEARN_MORE: Link to more information - BOOK: Booking/reservation link - ORDER: Online ordering link - SHOP: E-commerce/shopping link - SIGN_UP: Registration/signup link - CALL: Phone call action
+/// Button action type: LEARN_MORE, BOOK, ORDER, SHOP, SIGN_UP, CALL
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
 pub enum Type {
     #[serde(rename = "LEARN_MORE")]

@@ -79,7 +79,7 @@ Name | Type | Description  | Required | Notes
 > models::GetNextQueueSlot200Response get_next_queue_slot(profile_id, queue_id)
 Get next available slot
 
-Returns the next available queue slot for preview/informational purposes.  **Important: To schedule a post to the queue, do NOT use this endpoint's response with `scheduledFor`.** That creates a manual post, not a queue post.  Instead, use `POST /v1/posts` with `queuedFromProfile` (and optionally `queueId`). The system will automatically assign the next available slot with proper locking to prevent race conditions.  This endpoint is useful for: - Showing users when their next post will go out before they commit - Debugging/verifying queue configuration - Building UI previews  If no queueId is specified, uses the profile's default queue. 
+Returns the next available queue slot for preview/informational purposes. Do NOT use this response with scheduledFor to schedule a post, as that creates a manual post, not a queue post. Instead, use POST /v1/posts with queuedFromProfile (and optionally queueId). Useful for showing users when their next post will go out, debugging queue configuration, or building UI previews.  If no queueId is specified, uses the profile's default queue. 
 
 ### Parameters
 
@@ -110,7 +110,7 @@ Name | Type | Description  | Required | Notes
 > models::ListQueueSlots200Response list_queue_slots(profile_id, queue_id, all)
 List schedules
 
-Retrieve queue schedules for a profile. Each profile can have multiple queues. - Without `all=true`: Returns the default queue (or specific queue if queueId provided) - With `all=true`: Returns all queues for the profile 
+Retrieve queue schedules for a profile. Each profile can have multiple queues. Without all=true, returns the default queue (or specific queue if queueId provided). With all=true, returns all queues for the profile. 
 
 ### Parameters
 
@@ -171,7 +171,7 @@ Name | Type | Description  | Required | Notes
 > models::UpdateQueueSlot200Response update_queue_slot(update_queue_slot_request)
 Update schedule
 
-Create a new queue or update an existing one. - Without queueId: Creates or updates the default queue - With queueId: Updates the specific queue - With setAsDefault=true: Makes this queue the default for the profile 
+Create a new queue or update an existing one. Without queueId, creates/updates the default queue. With queueId, updates a specific queue. With setAsDefault=true, makes this queue the default for the profile. 
 
 ### Parameters
 

@@ -46,7 +46,7 @@ Name | Type | Description  | Required | Notes
 > models::ListInboxReviews200Response list_inbox_reviews(profile_id, platform, min_rating, max_rating, has_reply, sort_by, sort_order, limit, cursor, account_id)
 List reviews
 
-Fetch reviews from all connected Facebook Pages and Google Business accounts. Aggregates data with filtering and sorting options.  **Supported platforms:** Facebook, Google Business 
+Fetch reviews from all connected Facebook Pages and Google Business accounts. Aggregates data with filtering and sorting options. Supported platforms: Facebook, Google Business. 
 
 ### Parameters
 

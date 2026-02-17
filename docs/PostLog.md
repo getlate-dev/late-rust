@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **platform** | Option<**Platform**> |  (enum: tiktok, instagram, facebook, youtube, linkedin, twitter, threads, pinterest, reddit, bluesky, googlebusiness, telegram, snapchat) | [optional]
 **account_id** | Option<**String**> |  | [optional]
 **account_username** | Option<**String**> |  | [optional]
-**action** | Option<**Action**> | Type of action logged: - `publish` - Initial publish attempt - `retry` - Retry after failure - `media_upload` - Media upload step - `rate_limit_pause` - Account paused due to rate limits - `token_refresh` - Token was refreshed - `cancelled` - Post was cancelled  (enum: publish, retry, media_upload, rate_limit_pause, token_refresh, cancelled) | [optional]
+**action** | Option<**Action**> | Type of action logged: publish (initial attempt), retry (after failure), media_upload, rate_limit_pause, token_refresh, cancelled (enum: publish, retry, media_upload, rate_limit_pause, token_refresh, cancelled) | [optional]
 **status** | Option<**Status**> |  (enum: success, failed, pending, skipped) | [optional]
 **status_code** | Option<**i32**> | HTTP status code from platform API | [optional]
 **endpoint** | Option<**String**> | Platform API endpoint called | [optional]

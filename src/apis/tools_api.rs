@@ -80,7 +80,7 @@ pub enum GetYouTubeTranscriptError {
     UnknownValue(serde_json::Value),
 }
 
-/// Check if Instagram hashtags are banned, restricted, or safe to use.  **Rate Limits:** Build (50/day), Accelerate (500/day), Unlimited (unlimited)
+/// Check if Instagram hashtags are banned, restricted, or safe to use.  Rate limits: Build (50/day), Accelerate (500/day), Unlimited (unlimited).
 pub async fn check_instagram_hashtags(
     configuration: &configuration::Configuration,
     check_instagram_hashtags_request: models::CheckInstagramHashtagsRequest,
@@ -133,7 +133,7 @@ pub async fn check_instagram_hashtags(
     }
 }
 
-/// Download videos from Bluesky posts.  **Rate Limits:** Build (50/day), Accelerate (500/day), Unlimited (unlimited)
+/// Download videos from Bluesky posts.  Rate limits: Build (50/day), Accelerate (500/day), Unlimited (unlimited).
 pub async fn download_bluesky_media(
     configuration: &configuration::Configuration,
     url: &str,
@@ -181,7 +181,7 @@ pub async fn download_bluesky_media(
     }
 }
 
-/// Download videos and reels from Facebook.  **Rate Limits:** Build (50/day), Accelerate (500/day), Unlimited (unlimited)
+/// Download videos and reels from Facebook.  Rate limits: Build (50/day), Accelerate (500/day), Unlimited (unlimited).
 pub async fn download_facebook_video(
     configuration: &configuration::Configuration,
     url: &str,
@@ -229,7 +229,7 @@ pub async fn download_facebook_video(
     }
 }
 
-/// Download Instagram reels, posts, or photos.  **Rate Limits:** Build (50/day), Accelerate (500/day), Unlimited (unlimited)
+/// Download Instagram reels, posts, or photos.  Rate limits: Build (50/day), Accelerate (500/day), Unlimited (unlimited).
 pub async fn download_instagram_media(
     configuration: &configuration::Configuration,
     url: &str,
@@ -277,7 +277,7 @@ pub async fn download_instagram_media(
     }
 }
 
-/// Download videos from LinkedIn posts.  **Rate Limits:** Build (50/day), Accelerate (500/day), Unlimited (unlimited)
+/// Download videos from LinkedIn posts.  Rate limits: Build (50/day), Accelerate (500/day), Unlimited (unlimited).
 pub async fn download_linked_in_video(
     configuration: &configuration::Configuration,
     url: &str,
@@ -325,7 +325,7 @@ pub async fn download_linked_in_video(
     }
 }
 
-/// Download TikTok videos with or without watermark.  **Rate Limits:** Build (50/day), Accelerate (500/day), Unlimited (unlimited)
+/// Download TikTok videos with or without watermark.  Rate limits: Build (50/day), Accelerate (500/day), Unlimited (unlimited).
 pub async fn download_tik_tok_video(
     configuration: &configuration::Configuration,
     url: &str,
@@ -383,7 +383,7 @@ pub async fn download_tik_tok_video(
     }
 }
 
-/// Download videos from Twitter/X posts.  **Rate Limits:** Build (50/day), Accelerate (500/day), Unlimited (unlimited)
+/// Download videos from Twitter/X posts.  Rate limits: Build (50/day), Accelerate (500/day), Unlimited (unlimited).
 pub async fn download_twitter_media(
     configuration: &configuration::Configuration,
     url: &str,
@@ -441,7 +441,7 @@ pub async fn download_twitter_media(
     }
 }
 
-/// Download YouTube videos or audio. Returns available formats or direct download URL.  **Rate Limits:** Build (50/day), Accelerate (500/day), Unlimited (unlimited)
+/// Download YouTube videos or audio. Returns available formats or direct download URL.  Rate limits: Build (50/day), Accelerate (500/day), Unlimited (unlimited).
 pub async fn download_you_tube_video(
     configuration: &configuration::Configuration,
     url: &str,
@@ -509,7 +509,7 @@ pub async fn download_you_tube_video(
     }
 }
 
-/// Extract transcript/captions from a YouTube video.  **Rate Limits:** Build (50/day), Accelerate (500/day), Unlimited (unlimited)
+/// Extract transcript/captions from a YouTube video.  Rate limits: Build (50/day), Accelerate (500/day), Unlimited (unlimited).
 pub async fn get_you_tube_transcript(
     configuration: &configuration::Configuration,
     url: &str,

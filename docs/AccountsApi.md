@@ -108,7 +108,7 @@ Name | Type | Description  | Required | Notes
 > models::GetFollowerStats200Response get_follower_stats(account_ids, profile_id, from_date, to_date, granularity)
 Get follower stats
 
-Returns follower count history and growth metrics for connected social accounts. **Requires analytics add-on subscription.**  **Data Freshness:** Follower counts are automatically refreshed once per day. 
+Returns follower count history and growth metrics for connected social accounts. Requires analytics add-on subscription. Follower counts are refreshed once per day. 
 
 ### Parameters
 

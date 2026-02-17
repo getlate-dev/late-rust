@@ -19,7 +19,7 @@ pub struct ConnectBlueskyCredentialsRequest {
     /// App password generated from Bluesky Settings > App Passwords
     #[serde(rename = "appPassword")]
     pub app_password: String,
-    /// Required state parameter formatted as `{userId}-{profileId}`. - `userId`: Your Late user ID (get from `GET /v1/users` → `currentUserId`) - `profileId`: The profile ID to connect the account to (get from `GET /v1/profiles`)
+    /// Required state parameter formatted as {userId}-{profileId}. userId is your Late user ID (from GET /v1/users, currentUserId field), profileId is the profile to connect the account to (from GET /v1/profiles).
     #[serde(rename = "state")]
     pub state: String,
     /// Optional URL to redirect to after successful connection

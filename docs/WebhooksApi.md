@@ -18,7 +18,7 @@ Method | HTTP request | Description
 > models::UpdateWebhookSettings200Response create_webhook_settings(create_webhook_settings_request)
 Create webhook
 
-Create a new webhook configuration. Maximum 10 webhooks per user.  **Note:** Webhooks are automatically disabled after 10 consecutive delivery failures. 
+Create a new webhook configuration. Maximum 10 webhooks per user.  Webhooks are automatically disabled after 10 consecutive delivery failures. 
 
 ### Parameters
 
@@ -138,7 +138,7 @@ This endpoint does not need any parameter.
 > models::UnpublishPost200Response test_webhook(test_webhook_request)
 Send test webhook
 
-Send a test webhook to verify your endpoint is configured correctly. The test payload includes `event: \"webhook.test\"` to distinguish it from real events. 
+Send a test webhook to verify your endpoint is configured correctly. The test payload includes event: \"webhook.test\" to distinguish it from real events. 
 
 ### Parameters
 
@@ -168,7 +168,7 @@ Name | Type | Description  | Required | Notes
 > models::UpdateWebhookSettings200Response update_webhook_settings(update_webhook_settings_request)
 Update webhook
 
-Update an existing webhook configuration. All fields except `_id` are optional - only provided fields will be updated.  **Note:** Webhooks are automatically disabled after 10 consecutive delivery failures. 
+Update an existing webhook configuration. All fields except _id are optional; only provided fields will be updated.  Webhooks are automatically disabled after 10 consecutive delivery failures. 
 
 ### Parameters
 

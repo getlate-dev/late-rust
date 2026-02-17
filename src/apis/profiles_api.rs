@@ -211,7 +211,7 @@ pub async fn get_profile(
     }
 }
 
-/// Returns profiles within the user's plan limit. Profiles are sorted by creation date (oldest first). Use `includeOverLimit=true` to include profiles that exceed the plan limit (for management/deletion purposes).
+/// Returns profiles within the user's plan limit, sorted by creation date (oldest first). Use includeOverLimit=true to include profiles that exceed the plan limit (for management/deletion purposes).
 pub async fn list_profiles(
     configuration: &configuration::Configuration,
     include_over_limit: Option<bool>,

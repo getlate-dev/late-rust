@@ -142,7 +142,6 @@ docs/GetLinkedInPostAnalytics200Response.md
 docs/GetLinkedInPostAnalytics200ResponseAnalytics.md
 docs/GetLinkedInPostAnalytics400Response.md
 docs/GetLinkedInPostAnalytics403Response.md
-docs/GetLog200Response.md
 docs/GetMediaPresignedUrl200Response.md
 docs/GetMediaPresignedUrlRequest.md
 docs/GetMessengerMenu200Response.md
@@ -231,10 +230,10 @@ docs/ListInboxReviews200ResponseDataInnerReviewer.md
 docs/ListInboxReviews200ResponseSummary.md
 docs/ListLinkedInOrganizations200Response.md
 docs/ListLinkedInOrganizations200ResponseOrganizationsInner.md
-docs/ListLogs200Response.md
-docs/ListLogs200ResponsePagination.md
 docs/ListPinterestBoardsForSelection200Response.md
 docs/ListPinterestBoardsForSelection200ResponseBoardsInner.md
+docs/ListPostsLogs200Response.md
+docs/ListPostsLogs200ResponsePagination.md
 docs/ListQueueSlots200Response.md
 docs/ListQueueSlots200ResponseOneOf.md
 docs/ListQueueSlots200ResponseOneOf1.md
@@ -262,9 +261,6 @@ docs/PostCreateResponse.md
 docs/PostDeleteResponse.md
 docs/PostGetResponse.md
 docs/PostLog.md
-docs/PostLogDetail.md
-docs/PostLogDetailAllOfAccountId.md
-docs/PostLogDetailAllOfPostId.md
 docs/PostLogPostId.md
 docs/PostLogPostIdOneOf.md
 docs/PostLogRequest.md
@@ -345,7 +341,6 @@ docs/TelegramPlatformData.md
 docs/TestWebhookRequest.md
 docs/ThreadsPlatformData.md
 docs/TikTokPlatformData.md
-docs/TikTokSettings.md
 docs/ToolsApi.md
 docs/TranscriptResponse.md
 docs/TranscriptSegment.md
@@ -587,7 +582,6 @@ src/models/get_linked_in_post_analytics_200_response.rs
 src/models/get_linked_in_post_analytics_200_response_analytics.rs
 src/models/get_linked_in_post_analytics_400_response.rs
 src/models/get_linked_in_post_analytics_403_response.rs
-src/models/get_log_200_response.rs
 src/models/get_media_presigned_url_200_response.rs
 src/models/get_media_presigned_url_request.rs
 src/models/get_messenger_menu_200_response.rs
@@ -668,10 +662,10 @@ src/models/list_inbox_reviews_200_response_data_inner_reviewer.rs
 src/models/list_inbox_reviews_200_response_summary.rs
 src/models/list_linked_in_organizations_200_response.rs
 src/models/list_linked_in_organizations_200_response_organizations_inner.rs
-src/models/list_logs_200_response.rs
-src/models/list_logs_200_response_pagination.rs
 src/models/list_pinterest_boards_for_selection_200_response.rs
 src/models/list_pinterest_boards_for_selection_200_response_boards_inner.rs
+src/models/list_posts_logs_200_response.rs
+src/models/list_posts_logs_200_response_pagination.rs
 src/models/list_queue_slots_200_response.rs
 src/models/list_queue_slots_200_response_one_of.rs
 src/models/list_queue_slots_200_response_one_of_1.rs
@@ -697,9 +691,6 @@ src/models/post_create_response.rs
 src/models/post_delete_response.rs
 src/models/post_get_response.rs
 src/models/post_log.rs
-src/models/post_log_detail.rs
-src/models/post_log_detail_all_of_account_id.rs
-src/models/post_log_detail_all_of_post_id.rs
 src/models/post_log_post_id.rs
 src/models/post_log_post_id_one_of.rs
 src/models/post_log_request.rs
@@ -775,7 +766,6 @@ src/models/telegram_platform_data.rs
 src/models/test_webhook_request.rs
 src/models/threads_platform_data.rs
 src/models/tik_tok_platform_data.rs
-src/models/tik_tok_settings.rs
 src/models/transcript_response.rs
 src/models/transcript_segment.rs
 src/models/twitter_platform_data.rs

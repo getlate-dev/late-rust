@@ -11,7 +11,7 @@
 use crate::models;
 use serde::{Deserialize, Serialize};
 
-/// MediaItem : Media referenced in posts. URLs must be publicly reachable over HTTPS by the destination platforms. When using third-party storage, ensure signed links remain valid until upload completes.  **Uploading Media:** Use `POST /v1/media/presign` to get a presigned URL, then upload your file directly to cloud storage. Supports files up to 5GB. See the `/v1/media/presign` endpoint documentation for details.  **Automatic Media Compression:** Late automatically compresses images and videos that exceed platform limits. Compression happens server-side during publishing. Videos larger than 200 MB may not be compressed due to server timeout constraints.
+/// MediaItem : Media referenced in posts. URLs must be publicly reachable over HTTPS. When using third-party storage, ensure signed links remain valid until upload completes. Use POST /v1/media/presign to get a presigned URL for direct cloud storage upload (up to 5GB). Late automatically compresses images and videos that exceed platform limits server-side during publishing. Videos larger than 200 MB may not be compressed due to timeout constraints.
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct MediaItem {
     #[serde(rename = "type", skip_serializing_if = "Option::is_none")]
@@ -38,7 +38,7 @@ pub struct MediaItem {
 }
 
 impl MediaItem {
-    /// Media referenced in posts. URLs must be publicly reachable over HTTPS by the destination platforms. When using third-party storage, ensure signed links remain valid until upload completes.  **Uploading Media:** Use `POST /v1/media/presign` to get a presigned URL, then upload your file directly to cloud storage. Supports files up to 5GB. See the `/v1/media/presign` endpoint documentation for details.  **Automatic Media Compression:** Late automatically compresses images and videos that exceed platform limits. Compression happens server-side during publishing. Videos larger than 200 MB may not be compressed due to server timeout constraints.
+    /// Media referenced in posts. URLs must be publicly reachable over HTTPS. When using third-party storage, ensure signed links remain valid until upload completes. Use POST /v1/media/presign to get a presigned URL for direct cloud storage upload (up to 5GB). Late automatically compresses images and videos that exceed platform limits server-side during publishing. Videos larger than 200 MB may not be compressed due to timeout constraints.
     pub fn new() -> MediaItem {
         MediaItem {
             r#type: None,

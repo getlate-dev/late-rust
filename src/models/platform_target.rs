@@ -43,13 +43,13 @@ pub struct PlatformTarget {
     /// Timestamp when the post was published to this platform
     #[serde(rename = "publishedAt", skip_serializing_if = "Option::is_none")]
     pub published_at: Option<String>,
-    /// Human-readable error message when status is 'failed'. Contains platform-specific error details explaining why the publish failed. Examples: - \"Instagram access token has expired. Please reconnect your account.\" - \"Post text exceeds the 500 character limit for Threads.\" - \"You do not have enough karma to post in this subreddit.\" - \"Video is too long for Reels. Facebook Reels must be 90 seconds or less.\"
+    /// Human-readable error message when status is failed. Contains platform-specific error details explaining why the publish failed.
     #[serde(rename = "errorMessage", skip_serializing_if = "Option::is_none")]
     pub error_message: Option<String>,
-    /// Error category for programmatic handling: - auth_expired: Token expired or revoked, account needs reconnection - user_content: Content doesn't meet platform requirements (too long, wrong format, etc.) - user_abuse: Rate limits, spam detection, excessive posting - account_issue: Account configuration problems (missing board, inactive account) - platform_rejected: Platform rules violated (banned, suspended, policy violation) - platform_error: Platform-side issues (5xx errors, maintenance) - system_error: Late infrastructure issues (timeouts, network errors) - unknown: Unclassified error
+    /// Error category for programmatic handling: auth_expired (token expired/revoked), user_content (wrong format/too long), user_abuse (rate limits/spam), account_issue (config problems), platform_rejected (policy violation), platform_error (5xx/maintenance), system_error (Late infra), unknown
     #[serde(rename = "errorCategory", skip_serializing_if = "Option::is_none")]
     pub error_category: Option<ErrorCategory>,
-    /// Who/what caused the error: - user: User action required (fix content, reconnect account) - platform: Platform-side issue (outage, API change) - system: Late system issue (rare)
+    /// Who caused the error: user (fix content/reconnect), platform (outage/API change), system (Late issue, rare)
     #[serde(rename = "errorSource", skip_serializing_if = "Option::is_none")]
     pub error_source: Option<ErrorSource>,
 }
@@ -73,7 +73,7 @@ impl PlatformTarget {
         }
     }
 }
-/// Error category for programmatic handling: - auth_expired: Token expired or revoked, account needs reconnection - user_content: Content doesn't meet platform requirements (too long, wrong format, etc.) - user_abuse: Rate limits, spam detection, excessive posting - account_issue: Account configuration problems (missing board, inactive account) - platform_rejected: Platform rules violated (banned, suspended, policy violation) - platform_error: Platform-side issues (5xx errors, maintenance) - system_error: Late infrastructure issues (timeouts, network errors) - unknown: Unclassified error
+/// Error category for programmatic handling: auth_expired (token expired/revoked), user_content (wrong format/too long), user_abuse (rate limits/spam), account_issue (config problems), platform_rejected (policy violation), platform_error (5xx/maintenance), system_error (Late infra), unknown
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
 pub enum ErrorCategory {
     #[serde(rename = "auth_expired")]
@@ -99,7 +99,7 @@ impl Default for ErrorCategory {
         Self::AuthExpired
     }
 }
-/// Who/what caused the error: - user: User action required (fix content, reconnect account) - platform: Platform-side issue (outage, API change) - system: Late system issue (rare)
+/// Who caused the error: user (fix content/reconnect), platform (outage/API change), system (Late issue, rare)
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
 pub enum ErrorSource {
     #[serde(rename = "user")]

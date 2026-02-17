@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **scheduled_for** | Option<**String**> |  | [optional]
 **timezone** | Option<**String**> |  | [optional]
 **status** | Option<**Status**> |  (enum: draft, scheduled, publishing, published, failed, partial) | [optional]
-**tags** | Option<**Vec<String>**> | YouTube tag constraints when targeting YouTube: - No count cap; duplicates removed. - Each tag must be ≤ 100 chars. - Combined characters across all tags ≤ 500.  | [optional]
+**tags** | Option<**Vec<String>**> | YouTube constraints: each tag max 100 chars, combined max 500 chars, duplicates removed. | [optional]
 **hashtags** | Option<**Vec<String>**> |  | [optional]
 **mentions** | Option<**Vec<String>**> |  | [optional]
 **visibility** | Option<**Visibility**> |  (enum: public, private, unlisted) | [optional]

@@ -11,7 +11,7 @@
 use crate::models;
 use serde::{Deserialize, Serialize};
 
-/// SelectGoogleBusinessLocationRequestUserProfile : Decoded user profile object from the OAuth callback. **Important:** This contains  the refresh token needed for token refresh. Always include this field.
+/// SelectGoogleBusinessLocationRequestUserProfile : Decoded user profile object from the OAuth callback. Contains the refresh token needed for token refresh. Always include this field.
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct SelectGoogleBusinessLocationRequestUserProfile {
     #[serde(rename = "id", skip_serializing_if = "Option::is_none")]
@@ -30,7 +30,7 @@ pub struct SelectGoogleBusinessLocationRequestUserProfile {
 }
 
 impl SelectGoogleBusinessLocationRequestUserProfile {
-    /// Decoded user profile object from the OAuth callback. **Important:** This contains  the refresh token needed for token refresh. Always include this field.
+    /// Decoded user profile object from the OAuth callback. Contains the refresh token needed for token refresh. Always include this field.
     pub fn new() -> SelectGoogleBusinessLocationRequestUserProfile {
         SelectGoogleBusinessLocationRequestUserProfile {
             id: None,

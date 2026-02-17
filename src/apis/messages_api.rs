@@ -238,7 +238,7 @@ pub async fn get_inbox_conversation_messages(
     }
 }
 
-/// Fetch conversations (DMs) from all connected messaging accounts in a single API call. Supports filtering by profile and platform. Results are aggregated and deduplicated.  **Supported platforms:** Facebook, Instagram, Twitter/X, Bluesky, Reddit, Telegram
+/// Fetch conversations (DMs) from all connected messaging accounts in a single API call. Supports filtering by profile and platform. Results are aggregated and deduplicated. Supported platforms: Facebook, Instagram, Twitter/X, Bluesky, Reddit, Telegram.
 pub async fn list_inbox_conversations(
     configuration: &configuration::Configuration,
     profile_id: Option<&str>,
@@ -318,7 +318,7 @@ pub async fn list_inbox_conversations(
     }
 }
 
-/// Send a message in a conversation. Supports text, attachments, quick replies, buttons, carousels, and message tags.  **Attachment support by platform:** - Telegram: Images, videos, documents (up to 50MB) - Facebook Messenger: Images, videos, audio, files - Instagram: Images, videos, audio via URL (8MB images, 25MB video/audio) - Twitter/X: Images, videos (requires media upload) - Bluesky/Reddit: Not supported  **Interactive messages:** Supports quick replies, buttons, templates, and reply markup. Feature availability varies by platform (Instagram, Facebook, Telegram). Unsupported fields are silently ignored.
+/// Send a message in a conversation. Supports text, attachments, quick replies, buttons, carousels, and message tags. Attachments: Telegram (images, videos, docs up to 50MB), Facebook (images, videos, audio, files), Instagram (images, videos, audio via URL), Twitter/X (images, videos). Not supported on Bluesky/Reddit. Interactive messages (quick replies, buttons, templates, reply markup) vary by platform. Unsupported fields are silently ignored.
 pub async fn send_inbox_message(
     configuration: &configuration::Configuration,
     conversation_id: &str,

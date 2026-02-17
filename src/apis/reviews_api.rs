@@ -96,7 +96,7 @@ pub async fn delete_inbox_review_reply(
     }
 }
 
-/// Fetch reviews from all connected Facebook Pages and Google Business accounts. Aggregates data with filtering and sorting options.  **Supported platforms:** Facebook, Google Business
+/// Fetch reviews from all connected Facebook Pages and Google Business accounts. Aggregates data with filtering and sorting options. Supported platforms: Facebook, Google Business.
 pub async fn list_inbox_reviews(
     configuration: &configuration::Configuration,
     profile_id: Option<&str>,

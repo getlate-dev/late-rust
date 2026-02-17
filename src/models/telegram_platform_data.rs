@@ -11,7 +11,7 @@
 use crate::models;
 use serde::{Deserialize, Serialize};
 
-/// TelegramPlatformData : Telegram channel/group posting settings: - Supports text, images (up to 10), videos (up to 10), and mixed media albums - Posts to channels display the channel name and logo as author - Posts to groups display the bot name (Late) as author - Message IDs are returned for analytics tracking - Captions support up to 1024 characters for media posts, 4096 for text-only  **Analytics:** - **Not available via API.** The Telegram Bot API does not expose message analytics (views, forwards, reactions). - View counts are only visible to channel admins directly in the Telegram app. - This is a Telegram platform limitation that affects all third-party tools.
+/// TelegramPlatformData : Supports text, images (up to 10), videos (up to 10), and mixed media albums. Captions up to 1024 chars for media posts, 4096 for text-only. Channel posts show channel name as author; group posts show bot name. Analytics not available via Telegram Bot API.
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct TelegramPlatformData {
     /// Text formatting mode for the message (default is HTML)
@@ -35,7 +35,7 @@ pub struct TelegramPlatformData {
 }
 
 impl TelegramPlatformData {
-    /// Telegram channel/group posting settings: - Supports text, images (up to 10), videos (up to 10), and mixed media albums - Posts to channels display the channel name and logo as author - Posts to groups display the bot name (Late) as author - Message IDs are returned for analytics tracking - Captions support up to 1024 characters for media posts, 4096 for text-only  **Analytics:** - **Not available via API.** The Telegram Bot API does not expose message analytics (views, forwards, reactions). - View counts are only visible to channel admins directly in the Telegram app. - This is a Telegram platform limitation that affects all third-party tools.
+    /// Supports text, images (up to 10), videos (up to 10), and mixed media albums. Captions up to 1024 chars for media posts, 4096 for text-only. Channel posts show channel name as author; group posts show bot name. Analytics not available via Telegram Bot API.
     pub fn new() -> TelegramPlatformData {
         TelegramPlatformData {
             parse_mode: None,

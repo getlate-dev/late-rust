@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **description** | Option<**String**> |  | [optional]
 **color** | Option<**String**> |  | [optional]
 **is_default** | Option<**bool**> |  | [optional]
-**is_over_limit** | Option<**bool**> | Only present when `includeOverLimit=true` is used. Indicates if this profile exceeds the user's plan limit. Over-limit profiles cannot be used for posting but can be managed (disconnected accounts, deleted).  | [optional]
+**is_over_limit** | Option<**bool**> | Only present when includeOverLimit=true is used. Indicates if this profile exceeds the user's plan limit. Over-limit profiles cannot be used for posting but can be managed (disconnected accounts, deleted).  | [optional]
 **created_at** | Option<**String**> |  | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

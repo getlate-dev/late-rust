@@ -28,7 +28,7 @@ pub struct PostLog {
     pub account_id: Option<String>,
     #[serde(rename = "accountUsername", skip_serializing_if = "Option::is_none")]
     pub account_username: Option<String>,
-    /// Type of action logged: - `publish` - Initial publish attempt - `retry` - Retry after failure - `media_upload` - Media upload step - `rate_limit_pause` - Account paused due to rate limits - `token_refresh` - Token was refreshed - `cancelled` - Post was cancelled
+    /// Type of action logged: publish (initial attempt), retry (after failure), media_upload, rate_limit_pause, token_refresh, cancelled
     #[serde(rename = "action", skip_serializing_if = "Option::is_none")]
     pub action: Option<Action>,
     #[serde(rename = "status", skip_serializing_if = "Option::is_none")]
@@ -112,7 +112,7 @@ impl Default for Platform {
         Self::Tiktok
     }
 }
-/// Type of action logged: - `publish` - Initial publish attempt - `retry` - Retry after failure - `media_upload` - Media upload step - `rate_limit_pause` - Account paused due to rate limits - `token_refresh` - Token was refreshed - `cancelled` - Post was cancelled
+/// Type of action logged: publish (initial attempt), retry (after failure), media_upload, rate_limit_pause, token_refresh, cancelled
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
 pub enum Action {
     #[serde(rename = "publish")]

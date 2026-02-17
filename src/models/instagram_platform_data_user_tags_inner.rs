@@ -22,7 +22,7 @@ pub struct InstagramPlatformDataUserTagsInner {
     /// Y coordinate position from top edge (0.0 = top, 0.5 = center, 1.0 = bottom)
     #[serde(rename = "y")]
     pub y: f64,
-    /// Zero-based index of the carousel item to tag. Defaults to 0 (first image) if omitted. Only relevant for carousel posts. Tags targeting video items or out-of-range indices are ignored.
+    /// Zero-based index of the carousel item to tag. Defaults to 0. Tags on video items or out-of-range indices are ignored.
     #[serde(rename = "mediaIndex", skip_serializing_if = "Option::is_none")]
     pub media_index: Option<i32>,
 }
