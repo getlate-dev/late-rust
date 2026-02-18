@@ -49,6 +49,13 @@ jobs:
             --git-user-id=getlate-dev \
             --git-repo-id=late-rust
 
+      # Switch from native-tls to rustls-tls to avoid native-tls upstream bugs
+      # (e.g. v0.2.17 missing Protocol::Tlsv13 match arm) and remove system
+      # OpenSSL dependency. Pure Rust TLS is more portable for CI builds.
+      - name: Use rustls-tls instead of native-tls
+        run: |
+          sed -i 's/default = \["native-tls"\]/default = ["rustls-tls"]/' Cargo.toml
+
       - name: Format code
         run: cargo fmt || true
 
