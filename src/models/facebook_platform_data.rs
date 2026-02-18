@@ -11,13 +11,16 @@
 use crate::models;
 use serde::{Deserialize, Serialize};
 
-/// FacebookPlatformData : Up to 10 images for feed posts, cannot mix videos and images. Stories require single image or video (ephemeral 24h, no captions). Use pageId for multi-page posting.
+/// FacebookPlatformData : Feed posts support up to 10 images (no mixed video+image). Stories require single media (24h, no captions). Reels require single vertical video (9:16, 3-60s).
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct FacebookPlatformData {
-    /// Set to 'story' to publish as a Facebook Page Story (24-hour ephemeral content). Requires media.
+    /// Set to 'story' for Page Stories (24h ephemeral) or 'reel' for Reels (short vertical video). Defaults to feed post if omitted.
     #[serde(rename = "contentType", skip_serializing_if = "Option::is_none")]
     pub content_type: Option<ContentType>,
-    /// Optional first comment to post immediately after publishing (feed posts only, not stories)
+    /// Reel title (only for contentType=reel). Separate from the caption/content field.
+    #[serde(rename = "title", skip_serializing_if = "Option::is_none")]
+    pub title: Option<String>,
+    /// Optional first comment to post immediately after publishing (feed posts only, not stories or reels)
     #[serde(rename = "firstComment", skip_serializing_if = "Option::is_none")]
     pub first_comment: Option<String>,
     /// Target Facebook Page ID for multi-page posting. If omitted, uses the default page. Use GET /v1/accounts/{id}/facebook-page to list pages.
@@ -26,20 +29,23 @@ pub struct FacebookPlatformData {
 }
 
 impl FacebookPlatformData {
-    /// Up to 10 images for feed posts, cannot mix videos and images. Stories require single image or video (ephemeral 24h, no captions). Use pageId for multi-page posting.
+    /// Feed posts support up to 10 images (no mixed video+image). Stories require single media (24h, no captions). Reels require single vertical video (9:16, 3-60s).
     pub fn new() -> FacebookPlatformData {
         FacebookPlatformData {
             content_type: None,
+            title: None,
             first_comment: None,
             page_id: None,
         }
     }
 }
-/// Set to 'story' to publish as a Facebook Page Story (24-hour ephemeral content). Requires media.
+/// Set to 'story' for Page Stories (24h ephemeral) or 'reel' for Reels (short vertical video). Defaults to feed post if omitted.
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
 pub enum ContentType {
     #[serde(rename = "story")]
     Story,
+    #[serde(rename = "reel")]
+    Reel,
 }
 
 impl Default for ContentType {
