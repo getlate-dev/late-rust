@@ -26,6 +26,15 @@ pub struct ApiKey {
     /// Returned only once, on creation
     #[serde(rename = "key", skip_serializing_if = "Option::is_none")]
     pub key: Option<String>,
+    /// 'full' grants access to all profiles, 'profiles' restricts to specific profiles
+    #[serde(rename = "scope", skip_serializing_if = "Option::is_none")]
+    pub scope: Option<Scope>,
+    /// Profiles this key can access (populated with name and color). Only present when scope is 'profiles'.
+    #[serde(rename = "profileIds", skip_serializing_if = "Option::is_none")]
+    pub profile_ids: Option<Vec<models::ApiKeyProfileIdsInner>>,
+    /// 'read-write' allows all operations, 'read' restricts to GET requests only
+    #[serde(rename = "permission", skip_serializing_if = "Option::is_none")]
+    pub permission: Option<Permission>,
 }
 
 impl ApiKey {
@@ -37,6 +46,37 @@ impl ApiKey {
             expires_at: None,
             created_at: None,
             key: None,
+            scope: None,
+            profile_ids: None,
+            permission: None,
         }
+    }
+}
+/// 'full' grants access to all profiles, 'profiles' restricts to specific profiles
+#[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
+pub enum Scope {
+    #[serde(rename = "full")]
+    Full,
+    #[serde(rename = "profiles")]
+    Profiles,
+}
+
+impl Default for Scope {
+    fn default() -> Scope {
+        Self::Full
+    }
+}
+/// 'read-write' allows all operations, 'read' restricts to GET requests only
+#[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
+pub enum Permission {
+    #[serde(rename = "read-write")]
+    ReadWrite,
+    #[serde(rename = "read")]
+    Read,
+}
+
+impl Default for Permission {
+    fn default() -> Permission {
+        Self::ReadWrite
     }
 }

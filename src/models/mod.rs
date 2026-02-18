@@ -14,6 +14,8 @@ pub mod analytics_single_post_response;
 pub use self::analytics_single_post_response::AnalyticsSinglePostResponse;
 pub mod api_key;
 pub use self::api_key::ApiKey;
+pub mod api_key_profile_ids_inner;
+pub use self::api_key_profile_ids_inner::ApiKeyProfileIdsInner;
 pub mod bluesky_platform_data;
 pub use self::bluesky_platform_data::BlueskyPlatformData;
 pub mod bulk_upload_posts_200_response;

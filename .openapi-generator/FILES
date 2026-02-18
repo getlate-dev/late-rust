@@ -14,6 +14,7 @@ docs/AnalyticsListResponsePostsInner.md
 docs/AnalyticsOverview.md
 docs/AnalyticsSinglePostResponse.md
 docs/ApiKey.md
+docs/ApiKeyProfileIdsInner.md
 docs/ApiKeysApi.md
 docs/BlueskyPlatformData.md
 docs/BulkUploadPosts200Response.md
@@ -457,6 +458,7 @@ src/models/analytics_list_response_posts_inner.rs
 src/models/analytics_overview.rs
 src/models/analytics_single_post_response.rs
 src/models/api_key.rs
+src/models/api_key_profile_ids_inner.rs
 src/models/bluesky_platform_data.rs
 src/models/bulk_upload_posts_200_response.rs
 src/models/bulk_upload_posts_200_response_errors_inner.rs

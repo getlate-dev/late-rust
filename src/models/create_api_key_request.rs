@@ -18,6 +18,15 @@ pub struct CreateApiKeyRequest {
     /// Days until expiry
     #[serde(rename = "expiresIn", skip_serializing_if = "Option::is_none")]
     pub expires_in: Option<i32>,
+    /// 'full' grants access to all profiles (default), 'profiles' restricts to specific profiles
+    #[serde(rename = "scope", skip_serializing_if = "Option::is_none")]
+    pub scope: Option<Scope>,
+    /// Profile IDs this key can access. Required when scope is 'profiles'.
+    #[serde(rename = "profileIds", skip_serializing_if = "Option::is_none")]
+    pub profile_ids: Option<Vec<String>>,
+    /// 'read-write' allows all operations (default), 'read' restricts to GET requests only
+    #[serde(rename = "permission", skip_serializing_if = "Option::is_none")]
+    pub permission: Option<Permission>,
 }
 
 impl CreateApiKeyRequest {
@@ -25,6 +34,37 @@ impl CreateApiKeyRequest {
         CreateApiKeyRequest {
             name,
             expires_in: None,
+            scope: None,
+            profile_ids: None,
+            permission: None,
         }
+    }
+}
+/// 'full' grants access to all profiles (default), 'profiles' restricts to specific profiles
+#[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
+pub enum Scope {
+    #[serde(rename = "full")]
+    Full,
+    #[serde(rename = "profiles")]
+    Profiles,
+}
+
+impl Default for Scope {
+    fn default() -> Scope {
+        Self::Full
+    }
+}
+/// 'read-write' allows all operations (default), 'read' restricts to GET requests only
+#[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
+pub enum Permission {
+    #[serde(rename = "read-write")]
+    ReadWrite,
+    #[serde(rename = "read")]
+    Read,
+}
+
+impl Default for Permission {
+    fn default() -> Permission {
+        Self::ReadWrite
     }
 }

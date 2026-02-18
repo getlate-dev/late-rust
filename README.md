@@ -172,6 +172,7 @@ Class | Method | HTTP request | Description
  - [AnalyticsOverview](docs/AnalyticsOverview.md)
  - [AnalyticsSinglePostResponse](docs/AnalyticsSinglePostResponse.md)
  - [ApiKey](docs/ApiKey.md)
+ - [ApiKeyProfileIdsInner](docs/ApiKeyProfileIdsInner.md)
  - [BlueskyPlatformData](docs/BlueskyPlatformData.md)
  - [BulkUploadPosts200Response](docs/BulkUploadPosts200Response.md)
  - [BulkUploadPosts200ResponseErrorsInner](docs/BulkUploadPosts200ResponseErrorsInner.md)
