@@ -21,7 +21,7 @@ Method | HTTP request | Description
 > models::DeleteInboxComment200Response delete_inbox_comment(post_id, account_id, comment_id)
 Delete comment
 
-Delete a comment on a post. Supported by Facebook, Instagram, Bluesky, Reddit, YouTube, LinkedIn, and TikTok. Requires accountId and commentId query parameters. 
+Delete a comment on a post. Supported by Facebook, Instagram, Bluesky, Reddit, YouTube, and LinkedIn. Requires accountId and commentId query parameters. 
 
 ### Parameters
 

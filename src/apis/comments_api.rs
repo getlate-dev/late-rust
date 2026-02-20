@@ -100,7 +100,7 @@ pub enum UnlikeInboxCommentError {
     UnknownValue(serde_json::Value),
 }
 
-/// Delete a comment on a post. Supported by Facebook, Instagram, Bluesky, Reddit, YouTube, LinkedIn, and TikTok. Requires accountId and commentId query parameters.
+/// Delete a comment on a post. Supported by Facebook, Instagram, Bluesky, Reddit, YouTube, and LinkedIn. Requires accountId and commentId query parameters.
 pub async fn delete_inbox_comment(
     configuration: &configuration::Configuration,
     post_id: &str,
