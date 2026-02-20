@@ -14,6 +14,9 @@ use serde::{Deserialize, Serialize};
 /// LinkedInPlatformData : Up to 20 images, no multi-video. Single PDF supported (max 100MB). Link previews auto-generated when no media attached. Use organizationUrn for multi-org posting.
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct LinkedInPlatformData {
+    /// Title displayed on LinkedIn document (PDF/carousel) posts. Required by LinkedIn for document posts. If omitted, falls back to the media item title, then the filename.
+    #[serde(rename = "documentTitle", skip_serializing_if = "Option::is_none")]
+    pub document_title: Option<String>,
     /// Target LinkedIn Organization URN (e.g. \"urn:li:organization:123456789\"). If omitted, uses the default org. Use GET /v1/accounts/{id}/linkedin-organizations to list orgs.
     #[serde(rename = "organizationUrn", skip_serializing_if = "Option::is_none")]
     pub organization_urn: Option<String>,
@@ -29,6 +32,7 @@ impl LinkedInPlatformData {
     /// Up to 20 images, no multi-video. Single PDF supported (max 100MB). Link previews auto-generated when no media attached. Use organizationUrn for multi-org posting.
     pub fn new() -> LinkedInPlatformData {
         LinkedInPlatformData {
+            document_title: None,
             organization_urn: None,
             first_comment: None,
             disable_link_preview: None,

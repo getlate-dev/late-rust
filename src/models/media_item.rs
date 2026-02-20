@@ -18,6 +18,9 @@ pub struct MediaItem {
     pub r#type: Option<Type>,
     #[serde(rename = "url", skip_serializing_if = "Option::is_none")]
     pub url: Option<String>,
+    /// Optional title for the media item. Used as the document title for LinkedIn PDF/carousel posts. If omitted, falls back to the post title, then the filename.
+    #[serde(rename = "title", skip_serializing_if = "Option::is_none")]
+    pub title: Option<String>,
     #[serde(rename = "filename", skip_serializing_if = "Option::is_none")]
     pub filename: Option<String>,
     /// Optional file size in bytes
@@ -43,6 +46,7 @@ impl MediaItem {
         MediaItem {
             r#type: None,
             url: None,
+            title: None,
             filename: None,
             size: None,
             mime_type: None,
