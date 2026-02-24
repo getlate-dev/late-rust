@@ -64,6 +64,10 @@ pub enum Platform {
     Facebook,
     #[serde(rename = "telegram")]
     Telegram,
+    #[serde(rename = "bluesky")]
+    Bluesky,
+    #[serde(rename = "reddit")]
+    Reddit,
 }
 
 impl Default for Platform {

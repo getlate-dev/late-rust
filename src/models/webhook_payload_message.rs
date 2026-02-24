@@ -11,7 +11,7 @@
 use crate::models;
 use serde::{Deserialize, Serialize};
 
-/// WebhookPayloadMessage : Webhook payload for message received events (DMs from Instagram, Telegram)
+/// WebhookPayloadMessage : Webhook payload for message received events (DMs from Instagram, Facebook, Telegram, Bluesky, Reddit)
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct WebhookPayloadMessage {
     #[serde(rename = "event", skip_serializing_if = "Option::is_none")]
@@ -29,7 +29,7 @@ pub struct WebhookPayloadMessage {
 }
 
 impl WebhookPayloadMessage {
-    /// Webhook payload for message received events (DMs from Instagram, Telegram)
+    /// Webhook payload for message received events (DMs from Instagram, Facebook, Telegram, Bluesky, Reddit)
     pub fn new() -> WebhookPayloadMessage {
         WebhookPayloadMessage {
             event: None,

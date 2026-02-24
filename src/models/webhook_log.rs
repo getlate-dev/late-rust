@@ -87,6 +87,8 @@ pub enum Event {
     AccountDisconnected,
     #[serde(rename = "message.received")]
     MessageReceived,
+    #[serde(rename = "comment.received")]
+    CommentReceived,
     #[serde(rename = "webhook.test")]
     WebhookTest,
 }

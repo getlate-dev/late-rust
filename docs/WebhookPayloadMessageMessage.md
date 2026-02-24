@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | Option<**String**> | Internal message ID | [optional]
 **conversation_id** | Option<**String**> | Internal conversation ID | [optional]
-**platform** | Option<**Platform**> |  (enum: instagram, facebook, telegram) | [optional]
+**platform** | Option<**Platform**> |  (enum: instagram, facebook, telegram, bluesky, reddit) | [optional]
 **platform_message_id** | Option<**String**> | Platform's message ID | [optional]
 **direction** | Option<**Direction**> |  (enum: incoming) | [optional]
 **text** | Option<**String**> | Message text content | [optional]

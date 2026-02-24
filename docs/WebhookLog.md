@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **_id** | Option<**String**> |  | [optional]
 **webhook_id** | Option<**String**> | ID of the webhook that was triggered | [optional]
 **webhook_name** | Option<**String**> | Name of the webhook that was triggered | [optional]
-**event** | Option<**Event**> |  (enum: post.scheduled, post.published, post.failed, post.partial, account.connected, account.disconnected, message.received, webhook.test) | [optional]
+**event** | Option<**Event**> |  (enum: post.scheduled, post.published, post.failed, post.partial, account.connected, account.disconnected, message.received, comment.received, webhook.test) | [optional]
 **url** | Option<**String**> |  | [optional]
 **status** | Option<**Status**> |  (enum: success, failed) | [optional]
 **status_code** | Option<**i32**> | HTTP status code from webhook endpoint | [optional]

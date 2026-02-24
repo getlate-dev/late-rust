@@ -62,6 +62,8 @@ pub enum Events {
     AccountDisconnected,
     #[serde(rename = "message.received")]
     MessageReceived,
+    #[serde(rename = "comment.received")]
+    CommentReceived,
 }
 
 impl Default for Events {
