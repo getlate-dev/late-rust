@@ -34,6 +34,22 @@ impl Default for CreatePostRequestPlatformsInnerPlatformSpecificData {
         Self::TwitterPlatformData(Default::default())
     }
 }
+/// Controls who can reply to the tweet. \"following\" allows only people you follow, \"mentionedUsers\" allows only mentioned users, \"subscribers\" allows only subscribers. Omit for default (everyone can reply). For threads, applies to the first tweet only.
+#[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
+pub enum ReplySettings {
+    #[serde(rename = "following")]
+    Following,
+    #[serde(rename = "mentionedUsers")]
+    MentionedUsers,
+    #[serde(rename = "subscribers")]
+    Subscribers,
+}
+
+impl Default for ReplySettings {
+    fn default() -> ReplySettings {
+        Self::Following
+    }
+}
 /// Content type: story (ephemeral 24h, default), saved_story (permanent on Public Profile), spotlight (video feed)
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
 pub enum ContentType {

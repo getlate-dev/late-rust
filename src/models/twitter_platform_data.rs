@@ -13,6 +13,9 @@ use serde::{Deserialize, Serialize};
 
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct TwitterPlatformData {
+    /// Controls who can reply to the tweet. \"following\" allows only people you follow, \"mentionedUsers\" allows only mentioned users, \"subscribers\" allows only subscribers. Omit for default (everyone can reply). For threads, applies to the first tweet only.
+    #[serde(rename = "replySettings", skip_serializing_if = "Option::is_none")]
+    pub reply_settings: Option<ReplySettings>,
     /// Sequence of tweets in a thread. First item is the root tweet.
     #[serde(rename = "threadItems", skip_serializing_if = "Option::is_none")]
     pub thread_items: Option<Vec<models::TwitterPlatformDataThreadItemsInner>>,
@@ -20,6 +23,25 @@ pub struct TwitterPlatformData {
 
 impl TwitterPlatformData {
     pub fn new() -> TwitterPlatformData {
-        TwitterPlatformData { thread_items: None }
+        TwitterPlatformData {
+            reply_settings: None,
+            thread_items: None,
+        }
+    }
+}
+/// Controls who can reply to the tweet. \"following\" allows only people you follow, \"mentionedUsers\" allows only mentioned users, \"subscribers\" allows only subscribers. Omit for default (everyone can reply). For threads, applies to the first tweet only.
+#[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
+pub enum ReplySettings {
+    #[serde(rename = "following")]
+    Following,
+    #[serde(rename = "mentionedUsers")]
+    MentionedUsers,
+    #[serde(rename = "subscribers")]
+    Subscribers,
+}
+
+impl Default for ReplySettings {
+    fn default() -> ReplySettings {
+        Self::Following
     }
 }
