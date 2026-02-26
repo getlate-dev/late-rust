@@ -52,9 +52,13 @@ Class | Method | HTTP request | Description
 *AccountsApi* | [**list_accounts**](docs/AccountsApi.md#list_accounts) | **GET** /v1/accounts | List accounts
 *AccountsApi* | [**update_account**](docs/AccountsApi.md#update_account) | **PUT** /v1/accounts/{accountId} | Update account
 *AnalyticsApi* | [**get_analytics**](docs/AnalyticsApi.md#get_analytics) | **GET** /v1/analytics | Get post analytics
+*AnalyticsApi* | [**get_best_time_to_post**](docs/AnalyticsApi.md#get_best_time_to_post) | **GET** /v1/analytics/best-time | Get best times to post
+*AnalyticsApi* | [**get_content_decay**](docs/AnalyticsApi.md#get_content_decay) | **GET** /v1/analytics/content-decay | Get content performance decay
+*AnalyticsApi* | [**get_daily_metrics**](docs/AnalyticsApi.md#get_daily_metrics) | **GET** /v1/analytics/daily-metrics | Get daily aggregated metrics
 *AnalyticsApi* | [**get_follower_stats**](docs/AnalyticsApi.md#get_follower_stats) | **GET** /v1/accounts/follower-stats | Get follower stats
 *AnalyticsApi* | [**get_linked_in_aggregate_analytics**](docs/AnalyticsApi.md#get_linked_in_aggregate_analytics) | **GET** /v1/accounts/{accountId}/linkedin-aggregate-analytics | Get LinkedIn aggregate stats
 *AnalyticsApi* | [**get_linked_in_post_analytics**](docs/AnalyticsApi.md#get_linked_in_post_analytics) | **GET** /v1/accounts/{accountId}/linkedin-post-analytics | Get LinkedIn post stats
+*AnalyticsApi* | [**get_posting_frequency**](docs/AnalyticsApi.md#get_posting_frequency) | **GET** /v1/analytics/posting-frequency | Get posting frequency vs engagement
 *AnalyticsApi* | [**get_you_tube_daily_views**](docs/AnalyticsApi.md#get_you_tube_daily_views) | **GET** /v1/analytics/youtube/daily-views | Get YouTube daily views
 *CommentsApi* | [**delete_inbox_comment**](docs/CommentsApi.md#delete_inbox_comment) | **DELETE** /v1/inbox/comments/{postId} | Delete comment
 *CommentsApi* | [**get_inbox_post_comments**](docs/CommentsApi.md#get_inbox_post_comments) | **GET** /v1/inbox/comments/{postId} | Get post comments
@@ -252,7 +256,16 @@ Class | Method | HTTP request | Description
  - [GetAllAccountsHealth200ResponseSummary](docs/GetAllAccountsHealth200ResponseSummary.md)
  - [GetAnalytics200Response](docs/GetAnalytics200Response.md)
  - [GetAnalytics402Response](docs/GetAnalytics402Response.md)
+ - [GetBestTimeToPost200Response](docs/GetBestTimeToPost200Response.md)
+ - [GetBestTimeToPost200ResponseSlotsInner](docs/GetBestTimeToPost200ResponseSlotsInner.md)
+ - [GetBestTimeToPost403Response](docs/GetBestTimeToPost403Response.md)
  - [GetConnectUrl200Response](docs/GetConnectUrl200Response.md)
+ - [GetContentDecay200Response](docs/GetContentDecay200Response.md)
+ - [GetContentDecay200ResponseBucketsInner](docs/GetContentDecay200ResponseBucketsInner.md)
+ - [GetDailyMetrics200Response](docs/GetDailyMetrics200Response.md)
+ - [GetDailyMetrics200ResponseDailyDataInner](docs/GetDailyMetrics200ResponseDailyDataInner.md)
+ - [GetDailyMetrics200ResponseDailyDataInnerMetrics](docs/GetDailyMetrics200ResponseDailyDataInnerMetrics.md)
+ - [GetDailyMetrics200ResponsePlatformBreakdownInner](docs/GetDailyMetrics200ResponsePlatformBreakdownInner.md)
  - [GetFacebookPages200Response](docs/GetFacebookPages200Response.md)
  - [GetFacebookPages200ResponsePagesInner](docs/GetFacebookPages200ResponsePagesInner.md)
  - [GetFollowerStats200Response](docs/GetFollowerStats200Response.md)
@@ -307,6 +320,8 @@ Class | Method | HTTP request | Description
  - [GetPinterestBoards200Response](docs/GetPinterestBoards200Response.md)
  - [GetPinterestBoards200ResponseBoardsInner](docs/GetPinterestBoards200ResponseBoardsInner.md)
  - [GetPostLogs200Response](docs/GetPostLogs200Response.md)
+ - [GetPostingFrequency200Response](docs/GetPostingFrequency200Response.md)
+ - [GetPostingFrequency200ResponseFrequencyInner](docs/GetPostingFrequency200ResponseFrequencyInner.md)
  - [GetProfile200Response](docs/GetProfile200Response.md)
  - [GetRedditFeed200Response](docs/GetRedditFeed200Response.md)
  - [GetRedditFlairs200Response](docs/GetRedditFlairs200Response.md)

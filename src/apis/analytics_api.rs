@@ -24,6 +24,33 @@ pub enum GetAnalyticsError {
     UnknownValue(serde_json::Value),
 }
 
+/// struct for typed errors of method [`get_best_time_to_post`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum GetBestTimeToPostError {
+    Status401(models::InlineObject),
+    Status403(models::GetBestTimeToPost403Response),
+    UnknownValue(serde_json::Value),
+}
+
+/// struct for typed errors of method [`get_content_decay`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum GetContentDecayError {
+    Status401(models::InlineObject),
+    Status403(models::GetBestTimeToPost403Response),
+    UnknownValue(serde_json::Value),
+}
+
+/// struct for typed errors of method [`get_daily_metrics`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum GetDailyMetricsError {
+    Status401(models::InlineObject),
+    Status402(models::GetAnalytics402Response),
+    UnknownValue(serde_json::Value),
+}
+
 /// struct for typed errors of method [`get_follower_stats`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -54,6 +81,15 @@ pub enum GetLinkedInPostAnalyticsError {
     Status402(),
     Status403(models::GetLinkedInPostAnalytics403Response),
     Status404(models::GetLinkedInAggregateAnalytics402Response),
+    UnknownValue(serde_json::Value),
+}
+
+/// struct for typed errors of method [`get_posting_frequency`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum GetPostingFrequencyError {
+    Status401(models::InlineObject),
+    Status403(models::GetBestTimeToPost403Response),
     UnknownValue(serde_json::Value),
 }
 
@@ -157,6 +193,181 @@ pub async fn get_analytics(
     } else {
         let content = resp.text().await?;
         let entity: Option<GetAnalyticsError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent {
+            status,
+            content,
+            entity,
+        }))
+    }
+}
+
+/// Returns the best times to post based on historical engagement data. Groups all published posts by day of week and hour (UTC), calculating average engagement per slot. Use this to auto-schedule posts at optimal times. Requires the Analytics add-on.
+pub async fn get_best_time_to_post(
+    configuration: &configuration::Configuration,
+    platform: Option<&str>,
+    profile_id: Option<&str>,
+) -> Result<models::GetBestTimeToPost200Response, Error<GetBestTimeToPostError>> {
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_query_platform = platform;
+    let p_query_profile_id = profile_id;
+
+    let uri_str = format!("{}/v1/analytics/best-time", configuration.base_path);
+    let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
+
+    if let Some(ref param_value) = p_query_platform {
+        req_builder = req_builder.query(&[("platform", &param_value.to_string())]);
+    }
+    if let Some(ref param_value) = p_query_profile_id {
+        req_builder = req_builder.query(&[("profileId", &param_value.to_string())]);
+    }
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    if let Some(ref token) = configuration.bearer_access_token {
+        req_builder = req_builder.bearer_auth(token.to_owned());
+    };
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::GetBestTimeToPost200Response`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::GetBestTimeToPost200Response`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<GetBestTimeToPostError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent {
+            status,
+            content,
+            entity,
+        }))
+    }
+}
+
+/// Returns how engagement accumulates over time after a post is published. Each bucket shows what percentage of the post's total engagement had been reached by that time window. Useful for understanding content lifespan (e.g. \"posts reach 78% of total engagement within 24 hours\"). Requires the Analytics add-on.
+pub async fn get_content_decay(
+    configuration: &configuration::Configuration,
+    platform: Option<&str>,
+    profile_id: Option<&str>,
+) -> Result<models::GetContentDecay200Response, Error<GetContentDecayError>> {
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_query_platform = platform;
+    let p_query_profile_id = profile_id;
+
+    let uri_str = format!("{}/v1/analytics/content-decay", configuration.base_path);
+    let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
+
+    if let Some(ref param_value) = p_query_platform {
+        req_builder = req_builder.query(&[("platform", &param_value.to_string())]);
+    }
+    if let Some(ref param_value) = p_query_profile_id {
+        req_builder = req_builder.query(&[("profileId", &param_value.to_string())]);
+    }
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    if let Some(ref token) = configuration.bearer_access_token {
+        req_builder = req_builder.bearer_auth(token.to_owned());
+    };
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::GetContentDecay200Response`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::GetContentDecay200Response`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<GetContentDecayError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent {
+            status,
+            content,
+            entity,
+        }))
+    }
+}
+
+/// Returns daily aggregated analytics metrics and a per-platform breakdown. Each day includes post count, platform distribution, and summed metrics (impressions, reach, likes, comments, shares, saves, clicks, views). Defaults to the last 180 days. Requires the Analytics add-on.
+pub async fn get_daily_metrics(
+    configuration: &configuration::Configuration,
+    platform: Option<&str>,
+    profile_id: Option<&str>,
+    from_date: Option<String>,
+    to_date: Option<String>,
+) -> Result<models::GetDailyMetrics200Response, Error<GetDailyMetricsError>> {
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_query_platform = platform;
+    let p_query_profile_id = profile_id;
+    let p_query_from_date = from_date;
+    let p_query_to_date = to_date;
+
+    let uri_str = format!("{}/v1/analytics/daily-metrics", configuration.base_path);
+    let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
+
+    if let Some(ref param_value) = p_query_platform {
+        req_builder = req_builder.query(&[("platform", &param_value.to_string())]);
+    }
+    if let Some(ref param_value) = p_query_profile_id {
+        req_builder = req_builder.query(&[("profileId", &param_value.to_string())]);
+    }
+    if let Some(ref param_value) = p_query_from_date {
+        req_builder = req_builder.query(&[("fromDate", &param_value.to_string())]);
+    }
+    if let Some(ref param_value) = p_query_to_date {
+        req_builder = req_builder.query(&[("toDate", &param_value.to_string())]);
+    }
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    if let Some(ref token) = configuration.bearer_access_token {
+        req_builder = req_builder.bearer_auth(token.to_owned());
+    };
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::GetDailyMetrics200Response`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::GetDailyMetrics200Response`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<GetDailyMetricsError> = serde_json::from_str(&content).ok();
         Err(Error::ResponseError(ResponseContent {
             status,
             content,
@@ -356,6 +567,61 @@ pub async fn get_linked_in_post_analytics(
     } else {
         let content = resp.text().await?;
         let entity: Option<GetLinkedInPostAnalyticsError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent {
+            status,
+            content,
+            entity,
+        }))
+    }
+}
+
+/// Returns the correlation between posting frequency (posts per week) and engagement rate, broken down by platform. Helps find the optimal posting cadence for each platform. Each row represents a specific (platform, posts_per_week) combination with the average engagement rate observed across all weeks matching that frequency. Requires the Analytics add-on.
+pub async fn get_posting_frequency(
+    configuration: &configuration::Configuration,
+    platform: Option<&str>,
+    profile_id: Option<&str>,
+) -> Result<models::GetPostingFrequency200Response, Error<GetPostingFrequencyError>> {
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_query_platform = platform;
+    let p_query_profile_id = profile_id;
+
+    let uri_str = format!("{}/v1/analytics/posting-frequency", configuration.base_path);
+    let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
+
+    if let Some(ref param_value) = p_query_platform {
+        req_builder = req_builder.query(&[("platform", &param_value.to_string())]);
+    }
+    if let Some(ref param_value) = p_query_profile_id {
+        req_builder = req_builder.query(&[("profileId", &param_value.to_string())]);
+    }
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    if let Some(ref token) = configuration.bearer_access_token {
+        req_builder = req_builder.bearer_auth(token.to_owned());
+    };
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::GetPostingFrequency200Response`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::GetPostingFrequency200Response`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<GetPostingFrequencyError> = serde_json::from_str(&content).ok();
         Err(Error::ResponseError(ResponseContent {
             status,
             content,
