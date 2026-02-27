@@ -139,6 +139,7 @@ pub mod reviews_api;
 pub mod tools_api;
 pub mod usage_api;
 pub mod users_api;
+pub mod validate_api;
 pub mod webhooks_api;
 
 pub mod configuration;

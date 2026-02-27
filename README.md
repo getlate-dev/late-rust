@@ -158,6 +158,10 @@ Class | Method | HTTP request | Description
 *UsageApi* | [**get_usage_stats**](docs/UsageApi.md#get_usage_stats) | **GET** /v1/usage-stats | Get plan and usage stats
 *UsersApi* | [**get_user**](docs/UsersApi.md#get_user) | **GET** /v1/users/{userId} | Get user
 *UsersApi* | [**list_users**](docs/UsersApi.md#list_users) | **GET** /v1/users | List users
+*ValidateApi* | [**validate_media**](docs/ValidateApi.md#validate_media) | **POST** /v1/tools/validate/media | Validate media URL
+*ValidateApi* | [**validate_post**](docs/ValidateApi.md#validate_post) | **POST** /v1/tools/validate/post | Validate post content
+*ValidateApi* | [**validate_post_length**](docs/ValidateApi.md#validate_post_length) | **POST** /v1/tools/validate/post-length | Validate post character count
+*ValidateApi* | [**validate_subreddit**](docs/ValidateApi.md#validate_subreddit) | **GET** /v1/tools/validate/subreddit | Check subreddit existence
 *WebhooksApi* | [**create_webhook_settings**](docs/WebhooksApi.md#create_webhook_settings) | **POST** /v1/webhooks/settings | Create webhook
 *WebhooksApi* | [**delete_webhook_settings**](docs/WebhooksApi.md#delete_webhook_settings) | **DELETE** /v1/webhooks/settings | Delete webhook
 *WebhooksApi* | [**get_webhook_logs**](docs/WebhooksApi.md#get_webhook_logs) | **GET** /v1/webhooks/logs | Get delivery logs
@@ -545,6 +549,25 @@ Class | Method | HTTP request | Description
  - [User](docs/User.md)
  - [UserGetResponse](docs/UserGetResponse.md)
  - [UsersListResponse](docs/UsersListResponse.md)
+ - [ValidateMedia200Response](docs/ValidateMedia200Response.md)
+ - [ValidateMedia200ResponsePlatformLimitsValue](docs/ValidateMedia200ResponsePlatformLimitsValue.md)
+ - [ValidateMediaRequest](docs/ValidateMediaRequest.md)
+ - [ValidatePost200Response](docs/ValidatePost200Response.md)
+ - [ValidatePost200ResponseOneOf](docs/ValidatePost200ResponseOneOf.md)
+ - [ValidatePost200ResponseOneOf1](docs/ValidatePost200ResponseOneOf1.md)
+ - [ValidatePost200ResponseOneOf1ErrorsInner](docs/ValidatePost200ResponseOneOf1ErrorsInner.md)
+ - [ValidatePost200ResponseOneOfWarningsInner](docs/ValidatePost200ResponseOneOfWarningsInner.md)
+ - [ValidatePostLength200Response](docs/ValidatePostLength200Response.md)
+ - [ValidatePostLength200ResponsePlatformsValue](docs/ValidatePostLength200ResponsePlatformsValue.md)
+ - [ValidatePostLengthRequest](docs/ValidatePostLengthRequest.md)
+ - [ValidatePostRequest](docs/ValidatePostRequest.md)
+ - [ValidatePostRequestMediaItemsInner](docs/ValidatePostRequestMediaItemsInner.md)
+ - [ValidatePostRequestPlatformsInner](docs/ValidatePostRequestPlatformsInner.md)
+ - [ValidatePostRequestPlatformsInnerCustomMediaInner](docs/ValidatePostRequestPlatformsInnerCustomMediaInner.md)
+ - [ValidateSubreddit200Response](docs/ValidateSubreddit200Response.md)
+ - [ValidateSubreddit200ResponseOneOf](docs/ValidateSubreddit200ResponseOneOf.md)
+ - [ValidateSubreddit200ResponseOneOf1](docs/ValidateSubreddit200ResponseOneOf1.md)
+ - [ValidateSubreddit200ResponseOneOfSubreddit](docs/ValidateSubreddit200ResponseOneOfSubreddit.md)
  - [Webhook](docs/Webhook.md)
  - [WebhookLog](docs/WebhookLog.md)
  - [WebhookPayloadAccountConnected](docs/WebhookPayloadAccountConnected.md)
