@@ -7,7 +7,6 @@ Name | Type | Description | Notes
 **account_id** | **String** |  | 
 **message** | **String** |  | 
 **comment_id** | Option<**String**> | Reply to specific comment (optional) | [optional]
-**subreddit** | Option<**String**> | (Reddit only) Subreddit name for replies | [optional]
 **parent_cid** | Option<**String**> | (Bluesky only) Parent content identifier | [optional]
 **root_uri** | Option<**String**> | (Bluesky only) Root post URI | [optional]
 **root_cid** | Option<**String**> | (Bluesky only) Root post CID | [optional]

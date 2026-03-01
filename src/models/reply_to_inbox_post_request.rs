@@ -20,9 +20,6 @@ pub struct ReplyToInboxPostRequest {
     /// Reply to specific comment (optional)
     #[serde(rename = "commentId", skip_serializing_if = "Option::is_none")]
     pub comment_id: Option<String>,
-    /// (Reddit only) Subreddit name for replies
-    #[serde(rename = "subreddit", skip_serializing_if = "Option::is_none")]
-    pub subreddit: Option<String>,
     /// (Bluesky only) Parent content identifier
     #[serde(rename = "parentCid", skip_serializing_if = "Option::is_none")]
     pub parent_cid: Option<String>,
@@ -40,7 +37,6 @@ impl ReplyToInboxPostRequest {
             account_id,
             message,
             comment_id: None,
-            subreddit: None,
             parent_cid: None,
             root_uri: None,
             root_cid: None,
