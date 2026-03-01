@@ -23,15 +23,3 @@ impl Default for ValidatePost200Response {
         Self::ValidatePost200ResponseOneOf(Default::default())
     }
 }
-///
-#[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
-pub enum Valid {
-    #[serde(rename = "false")]
-    False,
-}
-
-impl Default for Valid {
-    fn default() -> Valid {
-        Self::False
-    }
-}

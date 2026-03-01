@@ -15,7 +15,7 @@ use serde::{Deserialize, Serialize};
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct ValidateSubreddit200ResponseOneOf {
     #[serde(rename = "exists", skip_serializing_if = "Option::is_none")]
-    pub exists: Option<Exists>,
+    pub exists: Option<bool>,
     #[serde(rename = "subreddit", skip_serializing_if = "Option::is_none")]
     pub subreddit: Option<Box<models::ValidateSubreddit200ResponseOneOfSubreddit>>,
 }
@@ -27,17 +27,5 @@ impl ValidateSubreddit200ResponseOneOf {
             exists: None,
             subreddit: None,
         }
-    }
-}
-///
-#[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
-pub enum Exists {
-    #[serde(rename = "true")]
-    True,
-}
-
-impl Default for Exists {
-    fn default() -> Exists {
-        Self::True
     }
 }

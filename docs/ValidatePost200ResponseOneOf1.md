@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**valid** | Option<**Valid**> |  (enum: false) | [optional]
+**valid** | Option<**bool**> |  | [optional]
 **errors** | Option<[**Vec<models::ValidatePost200ResponseOneOf1ErrorsInner>**](ValidatePost200ResponseOneOf1ErrorsInner.md)> |  | [optional]
 **warnings** | Option<[**Vec<models::ValidatePost200ResponseOneOfWarningsInner>**](ValidatePost200ResponseOneOfWarningsInner.md)> |  | [optional]
 

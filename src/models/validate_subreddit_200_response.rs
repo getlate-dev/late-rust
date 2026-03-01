@@ -23,15 +23,3 @@ impl Default for ValidateSubreddit200Response {
         Self::ValidateSubreddit200ResponseOneOf(Default::default())
     }
 }
-///
-#[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
-pub enum Exists {
-    #[serde(rename = "false")]
-    False,
-}
-
-impl Default for Exists {
-    fn default() -> Exists {
-        Self::False
-    }
-}

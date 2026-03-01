@@ -15,7 +15,7 @@ use serde::{Deserialize, Serialize};
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct ValidatePost200ResponseOneOf1 {
     #[serde(rename = "valid", skip_serializing_if = "Option::is_none")]
-    pub valid: Option<Valid>,
+    pub valid: Option<bool>,
     #[serde(rename = "errors", skip_serializing_if = "Option::is_none")]
     pub errors: Option<Vec<models::ValidatePost200ResponseOneOf1ErrorsInner>>,
     #[serde(rename = "warnings", skip_serializing_if = "Option::is_none")]
@@ -30,17 +30,5 @@ impl ValidatePost200ResponseOneOf1 {
             errors: None,
             warnings: None,
         }
-    }
-}
-///
-#[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
-pub enum Valid {
-    #[serde(rename = "false")]
-    False,
-}
-
-impl Default for Valid {
-    fn default() -> Valid {
-        Self::False
     }
 }
