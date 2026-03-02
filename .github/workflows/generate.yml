@@ -59,6 +59,12 @@ jobs:
       - name: Format code
         run: cargo fmt || true
 
+      - name: Build
+        run: cargo build
+
+      - name: Run tests
+        run: cargo test
+
       - name: Check for changes
         id: changes
         run: |
