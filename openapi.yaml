@@ -2244,6 +2244,8 @@ paths:
                         duration: { type: number }
         "404":
           description: No transcript available
+        "503":
+          description: Transcript service temporarily unavailable
 
   /v1/tools/instagram/download:
     get:
@@ -10575,6 +10577,14 @@ paths:
                     type: object
                     properties:
                       message: { type: string }
+        '400':
+          description: Platform rejected the operation (e.g., comment already deleted, insufficient permissions on the video)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error: { type: string }
         '401': { $ref: '#/components/responses/Unauthorized' }
         '403':
           description: Inbox addon required

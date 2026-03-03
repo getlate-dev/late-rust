@@ -17,6 +17,7 @@ use serde::{de::Error as _, Deserialize, Serialize};
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum DeleteInboxCommentError {
+    Status400(models::GetYouTubeDailyViews400Response),
     Status401(models::InlineObject),
     Status403(),
     UnknownValue(serde_json::Value),

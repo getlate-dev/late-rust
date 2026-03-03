@@ -77,6 +77,7 @@ pub enum DownloadYouTubeVideoError {
 #[serde(untagged)]
 pub enum GetYouTubeTranscriptError {
     Status404(),
+    Status503(),
     UnknownValue(serde_json::Value),
 }
 
