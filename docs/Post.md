@@ -18,6 +18,8 @@ Name | Type | Description | Notes
 **mentions** | Option<**Vec<String>**> |  | [optional]
 **visibility** | Option<**Visibility**> |  (enum: public, private, unlisted) | [optional]
 **metadata** | Option<**std::collections::HashMap<String, serde_json::Value>**> |  | [optional]
+**recycling** | Option<[**models::RecyclingState**](RecyclingState.md)> |  | [optional]
+**recycled_from_post_id** | Option<**String**> | ID of the original post if this post was created via recycling | [optional]
 **queued_from_profile** | Option<**String**> | Profile ID if the post was scheduled via the queue | [optional]
 **queue_id** | Option<**String**> | Queue ID if the post was scheduled via a specific queue | [optional]
 **created_at** | Option<**String**> |  | [optional]

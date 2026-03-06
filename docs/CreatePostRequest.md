@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **crossposting_enabled** | Option<**bool**> |  | [optional][default to true]
 **metadata** | Option<**std::collections::HashMap<String, serde_json::Value>**> |  | [optional]
 **tiktok_settings** | Option<[**models::TikTokPlatformData**](TikTokPlatformData.md)> | Root-level TikTok settings applied to all TikTok platforms. Merged into each platform's platformSpecificData, with platform-specific settings taking precedence. | [optional]
+**recycling** | Option<[**models::RecyclingConfig**](RecyclingConfig.md)> |  | [optional]
 **queued_from_profile** | Option<**String**> | Profile ID to schedule via queue. When provided without scheduledFor, the post is auto-assigned to the next available slot. Do not call /v1/queue/next-slot and use that time in scheduledFor, as that bypasses queue locking. | [optional]
 **queue_id** | Option<**String**> | Specific queue ID to use when scheduling via queue. Only used when queuedFromProfile is also provided. If omitted, uses the profile's default queue.  | [optional]
 

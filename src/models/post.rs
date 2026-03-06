@@ -43,6 +43,11 @@ pub struct Post {
     pub visibility: Option<Visibility>,
     #[serde(rename = "metadata", skip_serializing_if = "Option::is_none")]
     pub metadata: Option<std::collections::HashMap<String, serde_json::Value>>,
+    #[serde(rename = "recycling", skip_serializing_if = "Option::is_none")]
+    pub recycling: Option<Box<models::RecyclingState>>,
+    /// ID of the original post if this post was created via recycling
+    #[serde(rename = "recycledFromPostId", skip_serializing_if = "Option::is_none")]
+    pub recycled_from_post_id: Option<String>,
     /// Profile ID if the post was scheduled via the queue
     #[serde(rename = "queuedFromProfile", skip_serializing_if = "Option::is_none")]
     pub queued_from_profile: Option<String>,
@@ -72,6 +77,8 @@ impl Post {
             mentions: None,
             visibility: None,
             metadata: None,
+            recycling: None,
+            recycled_from_post_id: None,
             queued_from_profile: None,
             queue_id: None,
             created_at: None,

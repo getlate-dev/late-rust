@@ -43,6 +43,8 @@ pub enum Event {
     PostFailed,
     #[serde(rename = "post.partial")]
     PostPartial,
+    #[serde(rename = "post.recycled")]
+    PostRecycled,
 }
 
 impl Default for Event {

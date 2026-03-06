@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**event** | Option<**Event**> |  (enum: post.scheduled, post.published, post.failed, post.partial) | [optional]
+**event** | Option<**Event**> |  (enum: post.scheduled, post.published, post.failed, post.partial, post.recycled) | [optional]
 **post** | Option<[**models::WebhookPayloadPostPost**](WebhookPayloadPostPost.md)> |  | [optional]
 **timestamp** | Option<**String**> |  | [optional]
 

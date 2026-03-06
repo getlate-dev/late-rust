@@ -20,6 +20,8 @@ pub struct UpdatePostRequest {
     /// Root-level TikTok settings applied to all TikTok platforms. Merged into each platform's platformSpecificData, with platform-specific settings taking precedence.
     #[serde(rename = "tiktokSettings", skip_serializing_if = "Option::is_none")]
     pub tiktok_settings: Option<Box<models::TikTokPlatformData>>,
+    #[serde(rename = "recycling", skip_serializing_if = "Option::is_none")]
+    pub recycling: Option<Box<models::RecyclingConfig>>,
 }
 
 impl UpdatePostRequest {
@@ -28,6 +30,7 @@ impl UpdatePostRequest {
             content: None,
             scheduled_for: None,
             tiktok_settings: None,
+            recycling: None,
         }
     }
 }

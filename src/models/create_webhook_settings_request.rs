@@ -56,6 +56,8 @@ pub enum Events {
     PostFailed,
     #[serde(rename = "post.partial")]
     PostPartial,
+    #[serde(rename = "post.recycled")]
+    PostRecycled,
     #[serde(rename = "account.connected")]
     AccountConnected,
     #[serde(rename = "account.disconnected")]

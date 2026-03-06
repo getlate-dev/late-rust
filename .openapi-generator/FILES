@@ -303,6 +303,8 @@ docs/QueueSchedule.md
 docs/QueueSlot.md
 docs/QueueSlotsResponse.md
 docs/QueueUpdateResponse.md
+docs/RecyclingConfig.md
+docs/RecyclingState.md
 docs/RedditPlatformData.md
 docs/RedditSearchApi.md
 docs/ReplyToInboxPost200Response.md
@@ -773,6 +775,8 @@ src/models/queue_schedule.rs
 src/models/queue_slot.rs
 src/models/queue_slots_response.rs
 src/models/queue_update_response.rs
+src/models/recycling_config.rs
+src/models/recycling_state.rs
 src/models/reddit_platform_data.rs
 src/models/reply_to_inbox_post_200_response.rs
 src/models/reply_to_inbox_post_200_response_data.rs
