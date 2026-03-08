@@ -58,7 +58,7 @@ Class | Method | HTTP request | Description
 *AnalyticsApi* | [**get_follower_stats**](docs/AnalyticsApi.md#get_follower_stats) | **GET** /v1/accounts/follower-stats | Get follower stats
 *AnalyticsApi* | [**get_linked_in_aggregate_analytics**](docs/AnalyticsApi.md#get_linked_in_aggregate_analytics) | **GET** /v1/accounts/{accountId}/linkedin-aggregate-analytics | Get LinkedIn aggregate stats
 *AnalyticsApi* | [**get_linked_in_post_analytics**](docs/AnalyticsApi.md#get_linked_in_post_analytics) | **GET** /v1/accounts/{accountId}/linkedin-post-analytics | Get LinkedIn post stats
-*AnalyticsApi* | [**get_linked_in_post_reactions**](docs/AnalyticsApi.md#get_linked_in_post_reactions) | **GET** /v1/accounts/{accountId}/linkedin-post-reactions | Get LinkedIn post reactions (who reacted)
+*AnalyticsApi* | [**get_linked_in_post_reactions**](docs/AnalyticsApi.md#get_linked_in_post_reactions) | **GET** /v1/accounts/{accountId}/linkedin-post-reactions | Get LinkedIn post reactions
 *AnalyticsApi* | [**get_post_timeline**](docs/AnalyticsApi.md#get_post_timeline) | **GET** /v1/analytics/post-timeline | Get post analytics timeline
 *AnalyticsApi* | [**get_posting_frequency**](docs/AnalyticsApi.md#get_posting_frequency) | **GET** /v1/analytics/posting-frequency | Get posting frequency vs engagement
 *AnalyticsApi* | [**get_you_tube_daily_views**](docs/AnalyticsApi.md#get_you_tube_daily_views) | **GET** /v1/analytics/youtube/daily-views | Get YouTube daily views
