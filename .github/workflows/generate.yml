@@ -49,6 +49,33 @@ jobs:
             --git-user-id=getlate-dev \
             --git-repo-id=late-rust
 
+      - name: Patch README install instructions
+        run: |
+          python3 -c "
+          import re
+          with open('README.md', 'r') as f:
+              content = f.read()
+          install_section = '''## Installation
+
+          Add the crate to your project:
+
+          \`\`\`bash
+          cargo add late
+          \`\`\`
+
+          Or add it manually to your \`Cargo.toml\`:
+
+          \`\`\`toml
+          [dependencies]
+          late = \"*\"
+          \`\`\`'''
+          import textwrap
+          install_section = textwrap.dedent(install_section)
+          content = re.sub(r'## Installation.*?(?=\n## )', install_section + '\n\n', content, flags=re.DOTALL)
+          with open('README.md', 'w') as f:
+              f.write(content)
+          "
+
       # Switch from native-tls to rustls-tls to avoid native-tls upstream bugs
       # (e.g. v0.2.17 missing Protocol::Tlsv13 match arm) and remove system
       # OpenSSL dependency. Pure Rust TLS is more portable for CI builds.
