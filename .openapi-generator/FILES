@@ -161,6 +161,11 @@ docs/GetPendingOAuthData200ResponseOrganizationsInner.md
 docs/GetPinterestBoards200Response.md
 docs/GetPinterestBoards200ResponseBoardsInner.md
 docs/GetPostLogs200Response.md
+docs/GetPostReactions200Response.md
+docs/GetPostReactions200ResponseMeta.md
+docs/GetPostReactions200ResponsePagination.md
+docs/GetPostReactions200ResponseReactionsInner.md
+docs/GetPostReactions200ResponseReactionsInnerFrom.md
 docs/GetPostTimeline200Response.md
 docs/GetPostTimeline200ResponseTimelineInner.md
 docs/GetPostTimeline400Response.md
@@ -646,6 +651,11 @@ src/models/get_pending_o_auth_data_200_response_organizations_inner.rs
 src/models/get_pinterest_boards_200_response.rs
 src/models/get_pinterest_boards_200_response_boards_inner.rs
 src/models/get_post_logs_200_response.rs
+src/models/get_post_reactions_200_response.rs
+src/models/get_post_reactions_200_response_meta.rs
+src/models/get_post_reactions_200_response_pagination.rs
+src/models/get_post_reactions_200_response_reactions_inner.rs
+src/models/get_post_reactions_200_response_reactions_inner_from.rs
 src/models/get_post_timeline_200_response.rs
 src/models/get_post_timeline_200_response_timeline_inner.rs
 src/models/get_post_timeline_400_response.rs

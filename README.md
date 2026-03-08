@@ -63,6 +63,7 @@ Class | Method | HTTP request | Description
 *AnalyticsApi* | [**get_you_tube_daily_views**](docs/AnalyticsApi.md#get_you_tube_daily_views) | **GET** /v1/analytics/youtube/daily-views | Get YouTube daily views
 *CommentsApi* | [**delete_inbox_comment**](docs/CommentsApi.md#delete_inbox_comment) | **DELETE** /v1/inbox/comments/{postId} | Delete comment
 *CommentsApi* | [**get_inbox_post_comments**](docs/CommentsApi.md#get_inbox_post_comments) | **GET** /v1/inbox/comments/{postId} | Get post comments
+*CommentsApi* | [**get_post_reactions**](docs/CommentsApi.md#get_post_reactions) | **GET** /v1/inbox/reactions/{postId} | Get post reactions (who reacted)
 *CommentsApi* | [**hide_inbox_comment**](docs/CommentsApi.md#hide_inbox_comment) | **POST** /v1/inbox/comments/{postId}/{commentId}/hide | Hide comment
 *CommentsApi* | [**like_inbox_comment**](docs/CommentsApi.md#like_inbox_comment) | **POST** /v1/inbox/comments/{postId}/{commentId}/like | Like comment
 *CommentsApi* | [**list_inbox_comments**](docs/CommentsApi.md#list_inbox_comments) | **GET** /v1/inbox/comments | List commented posts
@@ -325,6 +326,11 @@ Class | Method | HTTP request | Description
  - [GetPinterestBoards200Response](docs/GetPinterestBoards200Response.md)
  - [GetPinterestBoards200ResponseBoardsInner](docs/GetPinterestBoards200ResponseBoardsInner.md)
  - [GetPostLogs200Response](docs/GetPostLogs200Response.md)
+ - [GetPostReactions200Response](docs/GetPostReactions200Response.md)
+ - [GetPostReactions200ResponseMeta](docs/GetPostReactions200ResponseMeta.md)
+ - [GetPostReactions200ResponsePagination](docs/GetPostReactions200ResponsePagination.md)
+ - [GetPostReactions200ResponseReactionsInner](docs/GetPostReactions200ResponseReactionsInner.md)
+ - [GetPostReactions200ResponseReactionsInnerFrom](docs/GetPostReactions200ResponseReactionsInnerFrom.md)
  - [GetPostTimeline200Response](docs/GetPostTimeline200Response.md)
  - [GetPostTimeline200ResponseTimelineInner](docs/GetPostTimeline200ResponseTimelineInner.md)
  - [GetPostTimeline400Response](docs/GetPostTimeline400Response.md)

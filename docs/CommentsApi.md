@@ -6,6 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**delete_inbox_comment**](CommentsApi.md#delete_inbox_comment) | **DELETE** /v1/inbox/comments/{postId} | Delete comment
 [**get_inbox_post_comments**](CommentsApi.md#get_inbox_post_comments) | **GET** /v1/inbox/comments/{postId} | Get post comments
+[**get_post_reactions**](CommentsApi.md#get_post_reactions) | **GET** /v1/inbox/reactions/{postId} | Get post reactions (who reacted)
 [**hide_inbox_comment**](CommentsApi.md#hide_inbox_comment) | **POST** /v1/inbox/comments/{postId}/{commentId}/hide | Hide comment
 [**like_inbox_comment**](CommentsApi.md#like_inbox_comment) | **POST** /v1/inbox/comments/{postId}/{commentId}/like | Like comment
 [**list_inbox_comments**](CommentsApi.md#list_inbox_comments) | **GET** /v1/inbox/comments | List commented posts
@@ -70,6 +71,39 @@ Name | Type | Description  | Required | Notes
 ### Return type
 
 [**models::GetInboxPostComments200Response**](getInboxPostComments_200_response.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## get_post_reactions
+
+> models::GetPostReactions200Response get_post_reactions(post_id, account_id, limit, cursor)
+Get post reactions (who reacted)
+
+Fetch individual reactions for a post, including reactor profiles (name, headline/title, picture, profile URL). Currently only supported for **LinkedIn organization/company page** posts. LinkedIn restricts reaction data for personal profiles (r_member_social_feed is a closed permission). 
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**post_id** | **String** | Late post ID or platform-specific post ID (LinkedIn activity URN or numeric ID). | [required] |
+**account_id** | **String** | The social account ID (must be a LinkedIn organization account). | [required] |
+**limit** | Option<**i32**> | Maximum number of reactions to return per page. |  |[default to 25]
+**cursor** | Option<**String**> | Offset-based pagination start index. |  |
+
+### Return type
+
+[**models::GetPostReactions200Response**](getPostReactions_200_response.md)
 
 ### Authorization
 
