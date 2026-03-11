@@ -193,8 +193,6 @@ docs/GetPostTimeline403Response.md
 docs/GetPostTimeline404Response.md
 docs/GetPostingFrequency200Response.md
 docs/GetPostingFrequency200ResponseFrequencyInner.md
-docs/GetPreverifiedWhatsAppNumbers200Response.md
-docs/GetPreverifiedWhatsAppNumbers200ResponseNumbersInner.md
 docs/GetProfile200Response.md
 docs/GetRedditFeed200Response.md
 docs/GetRedditFlairs200Response.md
@@ -383,13 +381,10 @@ docs/ReplyToInboxPostRequest.md
 docs/ReplyToInboxReview200Response.md
 docs/ReplyToInboxReview200ResponseReply.md
 docs/ReplyToInboxReviewRequest.md
-docs/RequestWhatsAppVerificationCode200Response.md
-docs/RequestWhatsAppVerificationCodeRequest.md
 docs/ReviewsApi.md
 docs/ScheduleWhatsAppBroadcast200Response.md
 docs/ScheduleWhatsAppBroadcast200ResponseBroadcast.md
 docs/ScheduleWhatsAppBroadcastRequest.md
-docs/SearchAvailableWhatsAppNumbers200Response.md
 docs/SearchReddit200Response.md
 docs/SearchReddit200ResponsePostsInner.md
 docs/SelectFacebookPage200Response.md
@@ -522,8 +517,6 @@ docs/ValidateSubreddit200Response.md
 docs/ValidateSubreddit200ResponseOneOf.md
 docs/ValidateSubreddit200ResponseOneOf1.md
 docs/ValidateSubreddit200ResponseOneOfSubreddit.md
-docs/VerifyWhatsAppPhoneNumber200Response.md
-docs/VerifyWhatsAppPhoneNumberRequest.md
 docs/Webhook.md
 docs/WebhookLog.md
 docs/WebhookPayloadAccountConnected.md
@@ -774,8 +767,6 @@ src/models/get_post_timeline_403_response.rs
 src/models/get_post_timeline_404_response.rs
 src/models/get_posting_frequency_200_response.rs
 src/models/get_posting_frequency_200_response_frequency_inner.rs
-src/models/get_preverified_whats_app_numbers_200_response.rs
-src/models/get_preverified_whats_app_numbers_200_response_numbers_inner.rs
 src/models/get_profile_200_response.rs
 src/models/get_reddit_feed_200_response.rs
 src/models/get_reddit_flairs_200_response.rs
@@ -950,12 +941,9 @@ src/models/reply_to_inbox_post_request.rs
 src/models/reply_to_inbox_review_200_response.rs
 src/models/reply_to_inbox_review_200_response_reply.rs
 src/models/reply_to_inbox_review_request.rs
-src/models/request_whats_app_verification_code_200_response.rs
-src/models/request_whats_app_verification_code_request.rs
 src/models/schedule_whats_app_broadcast_200_response.rs
 src/models/schedule_whats_app_broadcast_200_response_broadcast.rs
 src/models/schedule_whats_app_broadcast_request.rs
-src/models/search_available_whats_app_numbers_200_response.rs
 src/models/search_reddit_200_response.rs
 src/models/search_reddit_200_response_posts_inner.rs
 src/models/select_facebook_page_200_response.rs
@@ -1084,8 +1072,6 @@ src/models/validate_subreddit_200_response.rs
 src/models/validate_subreddit_200_response_one_of.rs
 src/models/validate_subreddit_200_response_one_of_1.rs
 src/models/validate_subreddit_200_response_one_of_subreddit.rs
-src/models/verify_whats_app_phone_number_200_response.rs
-src/models/verify_whats_app_phone_number_request.rs
 src/models/webhook.rs
 src/models/webhook_log.rs
 src/models/webhook_payload_account_connected.rs
