@@ -29,7 +29,7 @@ pub struct MediaItem {
     /// Optional MIME type (e.g. image/jpeg, video/mp4)
     #[serde(rename = "mimeType", skip_serializing_if = "Option::is_none")]
     pub mime_type: Option<String>,
-    /// Optional thumbnail image URL for videos
+    /// Optional custom thumbnail/cover image URL for videos. Supported for Facebook video posts, Facebook Reels, and regular video uploads. Max 10MB, JPG/PNG recommended.
     #[serde(rename = "thumbnail", skip_serializing_if = "Option::is_none")]
     pub thumbnail: Option<String>,
     /// Optional custom cover image URL for Instagram Reels
