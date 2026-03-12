@@ -32,6 +32,12 @@ pub struct GetGoogleBusinessLocationDetails200Response {
     pub website_uri: Option<String>,
     #[serde(rename = "phoneNumbers", skip_serializing_if = "Option::is_none")]
     pub phone_numbers: Option<Box<models::GetGoogleBusinessLocationDetails200ResponsePhoneNumbers>>,
+    #[serde(rename = "categories", skip_serializing_if = "Option::is_none")]
+    pub categories: Option<Box<models::GetGoogleBusinessLocationDetails200ResponseCategories>>,
+    /// Services offered (returned when readMask includes 'serviceItems')
+    #[serde(rename = "serviceItems", skip_serializing_if = "Option::is_none")]
+    pub service_items:
+        Option<Vec<models::GetGoogleBusinessLocationDetails200ResponseServiceItemsInner>>,
 }
 
 impl GetGoogleBusinessLocationDetails200Response {
@@ -46,6 +52,8 @@ impl GetGoogleBusinessLocationDetails200Response {
             profile: None,
             website_uri: None,
             phone_numbers: None,
+            categories: None,
+            service_items: None,
         }
     }
 }

@@ -13,6 +13,8 @@ Name | Type | Description | Notes
 **profile** | Option<[**models::GetGoogleBusinessLocationDetails200ResponseProfile**](GetGoogleBusinessLocationDetails200ResponseProfile.md)> |  | [optional]
 **website_uri** | Option<**String**> |  | [optional]
 **phone_numbers** | Option<[**models::GetGoogleBusinessLocationDetails200ResponsePhoneNumbers**](GetGoogleBusinessLocationDetails200ResponsePhoneNumbers.md)> |  | [optional]
+**categories** | Option<[**models::GetGoogleBusinessLocationDetails200ResponseCategories**](GetGoogleBusinessLocationDetails200ResponseCategories.md)> |  | [optional]
+**service_items** | Option<[**Vec<models::GetGoogleBusinessLocationDetails200ResponseServiceItemsInner>**](GetGoogleBusinessLocationDetails200ResponseServiceItemsInner.md)> | Services offered (returned when readMask includes 'serviceItems') | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

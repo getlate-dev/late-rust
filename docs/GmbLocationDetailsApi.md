@@ -14,7 +14,7 @@ Method | HTTP request | Description
 > models::GetGoogleBusinessLocationDetails200Response get_google_business_location_details(account_id, location_id, read_mask)
 Get location details
 
-Returns detailed GBP location info (hours, description, phone, website, categories). Use readMask to request specific fields.
+Returns detailed GBP location info (hours, description, phone, website, categories, services). Use readMask to request specific fields.
 
 ### Parameters
 
@@ -23,7 +23,7 @@ Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **account_id** | **String** | The Late account ID (from /v1/accounts) | [required] |
 **location_id** | Option<**String**> | Override which location to query. If omitted, uses the account's selected location. Use GET /gmb-locations to list valid IDs. |  |
-**read_mask** | Option<**String**> | Comma-separated fields to return. Available: name, title, phoneNumbers, categories, storefrontAddress, websiteUri, regularHours, specialHours, serviceArea, profile, openInfo, metadata, moreHours. |  |
+**read_mask** | Option<**String**> | Comma-separated fields to return. Available: name, title, phoneNumbers, categories, storefrontAddress, websiteUri, regularHours, specialHours, serviceArea, serviceItems, profile, openInfo, metadata, moreHours. |  |
 
 ### Return type
 
@@ -46,7 +46,7 @@ Name | Type | Description  | Required | Notes
 > models::UpdateGoogleBusinessLocationDetails200Response update_google_business_location_details(account_id, update_google_business_location_details_request, location_id)
 Update location details
 
-Updates GBP location details (hours, description, phone, website). The updateMask field is required and specifies which fields to update.
+Updates GBP location details. The updateMask field is required and specifies which fields to update. This endpoint proxies Google's Business Information API locations.patch, so any valid updateMask field is supported. Common fields: regularHours, specialHours, profile.description, websiteUri, phoneNumbers, categories, serviceItems. 
 
 ### Parameters
 

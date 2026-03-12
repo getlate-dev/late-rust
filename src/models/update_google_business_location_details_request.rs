@@ -13,7 +13,7 @@ use serde::{Deserialize, Serialize};
 
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct UpdateGoogleBusinessLocationDetailsRequest {
-    /// Required. Comma-separated fields to update (e.g. 'regularHours', 'specialHours', 'profile.description')
+    /// Required. Comma-separated fields to update (e.g. 'regularHours', 'specialHours', 'profile.description', 'categories', 'serviceItems'). Any valid Google Business Information API updateMask field is supported.
     #[serde(rename = "updateMask")]
     pub update_mask: String,
     #[serde(rename = "regularHours", skip_serializing_if = "Option::is_none")]
@@ -26,6 +26,12 @@ pub struct UpdateGoogleBusinessLocationDetailsRequest {
     pub website_uri: Option<String>,
     #[serde(rename = "phoneNumbers", skip_serializing_if = "Option::is_none")]
     pub phone_numbers: Option<Box<models::GetGoogleBusinessLocationDetails200ResponsePhoneNumbers>>,
+    #[serde(rename = "categories", skip_serializing_if = "Option::is_none")]
+    pub categories: Option<Box<models::UpdateGoogleBusinessLocationDetailsRequestCategories>>,
+    /// Services offered by the business. Use updateMask='serviceItems' to update.
+    #[serde(rename = "serviceItems", skip_serializing_if = "Option::is_none")]
+    pub service_items:
+        Option<Vec<models::UpdateGoogleBusinessLocationDetailsRequestServiceItemsInner>>,
 }
 
 impl UpdateGoogleBusinessLocationDetailsRequest {
@@ -37,6 +43,8 @@ impl UpdateGoogleBusinessLocationDetailsRequest {
             profile: None,
             website_uri: None,
             phone_numbers: None,
+            categories: None,
+            service_items: None,
         }
     }
 }
