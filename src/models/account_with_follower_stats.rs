@@ -53,6 +53,8 @@ pub struct AccountWithFollowerStats {
     /// Number of historical snapshots
     #[serde(rename = "dataPoints", skip_serializing_if = "Option::is_none")]
     pub data_points: Option<f64>,
+    #[serde(rename = "accountStats", skip_serializing_if = "Option::is_none")]
+    pub account_stats: Option<Box<models::AccountWithFollowerStatsAllOfAccountStats>>,
 }
 
 impl AccountWithFollowerStats {
@@ -73,6 +75,7 @@ impl AccountWithFollowerStats {
             growth: None,
             growth_percentage: None,
             data_points: None,
+            account_stats: None,
         }
     }
 }

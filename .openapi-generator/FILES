@@ -6,6 +6,7 @@ docs/AccountGetResponse.md
 docs/AccountGroupsApi.md
 docs/AccountSettingsApi.md
 docs/AccountWithFollowerStats.md
+docs/AccountWithFollowerStatsAllOfAccountStats.md
 docs/AccountsApi.md
 docs/AccountsListResponse.md
 docs/AddWhatsAppBroadcastRecipients200Response.md
@@ -227,6 +228,8 @@ docs/GetWhatsAppContacts200Response.md
 docs/GetWhatsAppContacts200ResponseContactsInner.md
 docs/GetWhatsAppContacts200ResponseFilters.md
 docs/GetWhatsAppContacts200ResponsePagination.md
+docs/GetWhatsAppDisplayName200Response.md
+docs/GetWhatsAppDisplayName200ResponseDisplayName.md
 docs/GetWhatsAppGroups200Response.md
 docs/GetWhatsAppGroups200ResponseGroupsInner.md
 docs/GetWhatsAppGroups200ResponseSummary.md
@@ -488,6 +491,9 @@ docs/UpdateWhatsAppBusinessProfileRequest.md
 docs/UpdateWhatsAppContact200Response.md
 docs/UpdateWhatsAppContact200ResponseContact.md
 docs/UpdateWhatsAppContactRequest.md
+docs/UpdateWhatsAppDisplayName200Response.md
+docs/UpdateWhatsAppDisplayName200ResponseDisplayName.md
+docs/UpdateWhatsAppDisplayNameRequest.md
 docs/UpdateWhatsAppTemplate200Response.md
 docs/UpdateWhatsAppTemplate200ResponseTemplate.md
 docs/UpdateWhatsAppTemplateRequest.md
@@ -590,6 +596,7 @@ src/apis/whats_app_phone_numbers_api.rs
 src/lib.rs
 src/models/account_get_response.rs
 src/models/account_with_follower_stats.rs
+src/models/account_with_follower_stats_all_of_account_stats.rs
 src/models/accounts_list_response.rs
 src/models/add_whats_app_broadcast_recipients_200_response.rs
 src/models/add_whats_app_broadcast_recipients_request.rs
@@ -806,6 +813,8 @@ src/models/get_whats_app_contacts_200_response.rs
 src/models/get_whats_app_contacts_200_response_contacts_inner.rs
 src/models/get_whats_app_contacts_200_response_filters.rs
 src/models/get_whats_app_contacts_200_response_pagination.rs
+src/models/get_whats_app_display_name_200_response.rs
+src/models/get_whats_app_display_name_200_response_display_name.rs
 src/models/get_whats_app_groups_200_response.rs
 src/models/get_whats_app_groups_200_response_groups_inner.rs
 src/models/get_whats_app_groups_200_response_summary.rs
@@ -1051,6 +1060,9 @@ src/models/update_whats_app_business_profile_request.rs
 src/models/update_whats_app_contact_200_response.rs
 src/models/update_whats_app_contact_200_response_contact.rs
 src/models/update_whats_app_contact_request.rs
+src/models/update_whats_app_display_name_200_response.rs
+src/models/update_whats_app_display_name_200_response_display_name.rs
+src/models/update_whats_app_display_name_request.rs
 src/models/update_whats_app_template_200_response.rs
 src/models/update_whats_app_template_200_response_template.rs
 src/models/update_whats_app_template_request.rs
