@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 ## get_google_business_location_details
 
-> models::GetGoogleBusinessLocationDetails200Response get_google_business_location_details(account_id, read_mask)
+> models::GetGoogleBusinessLocationDetails200Response get_google_business_location_details(account_id, location_id, read_mask)
 Get location details
 
 Returns detailed GBP location info (hours, description, phone, website, categories). Use readMask to request specific fields.
@@ -22,6 +22,7 @@ Returns detailed GBP location info (hours, description, phone, website, categori
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **account_id** | **String** | The Late account ID (from /v1/accounts) | [required] |
+**location_id** | Option<**String**> | Override which location to query. If omitted, uses the account's selected location. Use GET /gmb-locations to list valid IDs. |  |
 **read_mask** | Option<**String**> | Comma-separated fields to return. Available: name, title, phoneNumbers, categories, storefrontAddress, websiteUri, regularHours, specialHours, serviceArea, profile, openInfo, metadata, moreHours. |  |
 
 ### Return type
@@ -42,7 +43,7 @@ Name | Type | Description  | Required | Notes
 
 ## update_google_business_location_details
 
-> models::UpdateGoogleBusinessLocationDetails200Response update_google_business_location_details(account_id, update_google_business_location_details_request)
+> models::UpdateGoogleBusinessLocationDetails200Response update_google_business_location_details(account_id, update_google_business_location_details_request, location_id)
 Update location details
 
 Updates GBP location details (hours, description, phone, website). The updateMask field is required and specifies which fields to update.
@@ -54,6 +55,7 @@ Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **account_id** | **String** | The Late account ID (from /v1/accounts) | [required] |
 **update_google_business_location_details_request** | [**UpdateGoogleBusinessLocationDetailsRequest**](UpdateGoogleBusinessLocationDetailsRequest.md) |  | [required] |
+**location_id** | Option<**String**> | Override which location to target. If omitted, uses the account's selected location. Use GET /gmb-locations to list valid IDs. |  |
 
 ### Return type
 

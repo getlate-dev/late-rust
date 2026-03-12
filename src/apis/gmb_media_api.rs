@@ -45,10 +45,12 @@ pub async fn create_google_business_media(
     configuration: &configuration::Configuration,
     account_id: &str,
     create_google_business_media_request: models::CreateGoogleBusinessMediaRequest,
+    location_id: Option<&str>,
 ) -> Result<models::CreateGoogleBusinessMedia200Response, Error<CreateGoogleBusinessMediaError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_path_account_id = account_id;
     let p_body_create_google_business_media_request = create_google_business_media_request;
+    let p_query_location_id = location_id;
 
     let uri_str = format!(
         "{}/v1/accounts/{accountId}/gmb-media",
@@ -59,6 +61,9 @@ pub async fn create_google_business_media(
         .client
         .request(reqwest::Method::POST, &uri_str);
 
+    if let Some(ref param_value) = p_query_location_id {
+        req_builder = req_builder.query(&[("locationId", &param_value.to_string())]);
+    }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
@@ -101,10 +106,12 @@ pub async fn delete_google_business_media(
     configuration: &configuration::Configuration,
     account_id: &str,
     media_id: &str,
+    location_id: Option<&str>,
 ) -> Result<models::DeleteGoogleBusinessMedia200Response, Error<DeleteGoogleBusinessMediaError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_path_account_id = account_id;
     let p_query_media_id = media_id;
+    let p_query_location_id = location_id;
 
     let uri_str = format!(
         "{}/v1/accounts/{accountId}/gmb-media",
@@ -115,6 +122,9 @@ pub async fn delete_google_business_media(
         .client
         .request(reqwest::Method::DELETE, &uri_str);
 
+    if let Some(ref param_value) = p_query_location_id {
+        req_builder = req_builder.query(&[("locationId", &param_value.to_string())]);
+    }
     req_builder = req_builder.query(&[("mediaId", &p_query_media_id.to_string())]);
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
@@ -156,11 +166,13 @@ pub async fn delete_google_business_media(
 pub async fn list_google_business_media(
     configuration: &configuration::Configuration,
     account_id: &str,
+    location_id: Option<&str>,
     page_size: Option<i32>,
     page_token: Option<&str>,
 ) -> Result<models::ListGoogleBusinessMedia200Response, Error<ListGoogleBusinessMediaError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_path_account_id = account_id;
+    let p_query_location_id = location_id;
     let p_query_page_size = page_size;
     let p_query_page_token = page_token;
 
@@ -171,6 +183,9 @@ pub async fn list_google_business_media(
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
+    if let Some(ref param_value) = p_query_location_id {
+        req_builder = req_builder.query(&[("locationId", &param_value.to_string())]);
+    }
     if let Some(ref param_value) = p_query_page_size {
         req_builder = req_builder.query(&[("pageSize", &param_value.to_string())]);
     }

@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 ## create_google_business_place_action
 
-> models::CreateGoogleBusinessPlaceAction200Response create_google_business_place_action(account_id, create_google_business_place_action_request)
+> models::CreateGoogleBusinessPlaceAction200Response create_google_business_place_action(account_id, create_google_business_place_action_request, location_id)
 Create action link
 
 Creates a place action link for a location.  Available action types: APPOINTMENT, ONLINE_APPOINTMENT, DINING_RESERVATION, FOOD_ORDERING, FOOD_DELIVERY, FOOD_TAKEOUT, SHOP_ONLINE. 
@@ -24,6 +24,7 @@ Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **account_id** | **String** |  | [required] |
 **create_google_business_place_action_request** | [**CreateGoogleBusinessPlaceActionRequest**](CreateGoogleBusinessPlaceActionRequest.md) |  | [required] |
+**location_id** | Option<**String**> | Override which location to target. If omitted, uses the account's selected location. Use GET /gmb-locations to list valid IDs. |  |
 
 ### Return type
 
@@ -43,7 +44,7 @@ Name | Type | Description  | Required | Notes
 
 ## delete_google_business_place_action
 
-> models::DeleteGoogleBusinessPlaceAction200Response delete_google_business_place_action(account_id, name)
+> models::DeleteGoogleBusinessPlaceAction200Response delete_google_business_place_action(account_id, name, location_id)
 Delete action link
 
 Deletes a place action link (e.g. booking or ordering URL) from a GBP location.
@@ -55,6 +56,7 @@ Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **account_id** | **String** |  | [required] |
 **name** | **String** | The resource name of the place action link (e.g. locations/123/placeActionLinks/456) | [required] |
+**location_id** | Option<**String**> | Override which location to target. If omitted, uses the account's selected location. Use GET /gmb-locations to list valid IDs. |  |
 
 ### Return type
 
@@ -74,7 +76,7 @@ Name | Type | Description  | Required | Notes
 
 ## list_google_business_place_actions
 
-> models::ListGoogleBusinessPlaceActions200Response list_google_business_place_actions(account_id, page_size, page_token)
+> models::ListGoogleBusinessPlaceActions200Response list_google_business_place_actions(account_id, location_id, page_size, page_token)
 List action links
 
 Lists place action links for a Google Business Profile location.  Place actions are the booking, ordering, and reservation buttons that appear on your listing. 
@@ -85,6 +87,7 @@ Lists place action links for a Google Business Profile location.  Place actions 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **account_id** | **String** |  | [required] |
+**location_id** | Option<**String**> | Override which location to query. If omitted, uses the account's selected location. Use GET /gmb-locations to list valid IDs. |  |
 **page_size** | Option<**i32**> |  |  |[default to 100]
 **page_token** | Option<**String**> |  |  |
 

@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 ## get_google_business_attributes
 
-> models::GetGoogleBusinessAttributes200Response get_google_business_attributes(account_id)
+> models::GetGoogleBusinessAttributes200Response get_google_business_attributes(account_id, location_id)
 Get attributes
 
 Returns GBP location attributes (amenities, services, accessibility, payment types). Available attributes vary by business category.
@@ -22,6 +22,7 @@ Returns GBP location attributes (amenities, services, accessibility, payment typ
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **account_id** | **String** |  | [required] |
+**location_id** | Option<**String**> | Override which location to query. If omitted, uses the account's selected location. Use GET /gmb-locations to list valid IDs. |  |
 
 ### Return type
 
@@ -41,7 +42,7 @@ Name | Type | Description  | Required | Notes
 
 ## update_google_business_attributes
 
-> models::UpdateGoogleBusinessAttributes200Response update_google_business_attributes(account_id, update_google_business_attributes_request)
+> models::UpdateGoogleBusinessAttributes200Response update_google_business_attributes(account_id, update_google_business_attributes_request, location_id)
 Update attributes
 
 Updates location attributes (amenities, services, etc.).  The attributeMask specifies which attributes to update (comma-separated). 
@@ -53,6 +54,7 @@ Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **account_id** | **String** |  | [required] |
 **update_google_business_attributes_request** | [**UpdateGoogleBusinessAttributesRequest**](UpdateGoogleBusinessAttributesRequest.md) |  | [required] |
+**location_id** | Option<**String**> | Override which location to target. If omitted, uses the account's selected location. Use GET /gmb-locations to list valid IDs. |  |
 
 ### Return type
 

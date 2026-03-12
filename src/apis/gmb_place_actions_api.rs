@@ -45,6 +45,7 @@ pub async fn create_google_business_place_action(
     configuration: &configuration::Configuration,
     account_id: &str,
     create_google_business_place_action_request: models::CreateGoogleBusinessPlaceActionRequest,
+    location_id: Option<&str>,
 ) -> Result<
     models::CreateGoogleBusinessPlaceAction200Response,
     Error<CreateGoogleBusinessPlaceActionError>,
@@ -53,6 +54,7 @@ pub async fn create_google_business_place_action(
     let p_path_account_id = account_id;
     let p_body_create_google_business_place_action_request =
         create_google_business_place_action_request;
+    let p_query_location_id = location_id;
 
     let uri_str = format!(
         "{}/v1/accounts/{accountId}/gmb-place-actions",
@@ -63,6 +65,9 @@ pub async fn create_google_business_place_action(
         .client
         .request(reqwest::Method::POST, &uri_str);
 
+    if let Some(ref param_value) = p_query_location_id {
+        req_builder = req_builder.query(&[("locationId", &param_value.to_string())]);
+    }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
@@ -106,6 +111,7 @@ pub async fn delete_google_business_place_action(
     configuration: &configuration::Configuration,
     account_id: &str,
     name: &str,
+    location_id: Option<&str>,
 ) -> Result<
     models::DeleteGoogleBusinessPlaceAction200Response,
     Error<DeleteGoogleBusinessPlaceActionError>,
@@ -113,6 +119,7 @@ pub async fn delete_google_business_place_action(
     // add a prefix to parameters to efficiently prevent name collisions
     let p_path_account_id = account_id;
     let p_query_name = name;
+    let p_query_location_id = location_id;
 
     let uri_str = format!(
         "{}/v1/accounts/{accountId}/gmb-place-actions",
@@ -123,6 +130,9 @@ pub async fn delete_google_business_place_action(
         .client
         .request(reqwest::Method::DELETE, &uri_str);
 
+    if let Some(ref param_value) = p_query_location_id {
+        req_builder = req_builder.query(&[("locationId", &param_value.to_string())]);
+    }
     req_builder = req_builder.query(&[("name", &p_query_name.to_string())]);
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
@@ -165,6 +175,7 @@ pub async fn delete_google_business_place_action(
 pub async fn list_google_business_place_actions(
     configuration: &configuration::Configuration,
     account_id: &str,
+    location_id: Option<&str>,
     page_size: Option<i32>,
     page_token: Option<&str>,
 ) -> Result<
@@ -173,6 +184,7 @@ pub async fn list_google_business_place_actions(
 > {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_path_account_id = account_id;
+    let p_query_location_id = location_id;
     let p_query_page_size = page_size;
     let p_query_page_token = page_token;
 
@@ -183,6 +195,9 @@ pub async fn list_google_business_place_actions(
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
+    if let Some(ref param_value) = p_query_location_id {
+        req_builder = req_builder.query(&[("locationId", &param_value.to_string())]);
+    }
     if let Some(ref param_value) = p_query_page_size {
         req_builder = req_builder.query(&[("pageSize", &param_value.to_string())]);
     }

@@ -35,10 +35,12 @@ pub enum UpdateGoogleBusinessAttributesError {
 pub async fn get_google_business_attributes(
     configuration: &configuration::Configuration,
     account_id: &str,
+    location_id: Option<&str>,
 ) -> Result<models::GetGoogleBusinessAttributes200Response, Error<GetGoogleBusinessAttributesError>>
 {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_path_account_id = account_id;
+    let p_query_location_id = location_id;
 
     let uri_str = format!(
         "{}/v1/accounts/{accountId}/gmb-attributes",
@@ -47,6 +49,9 @@ pub async fn get_google_business_attributes(
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
+    if let Some(ref param_value) = p_query_location_id {
+        req_builder = req_builder.query(&[("locationId", &param_value.to_string())]);
+    }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
@@ -88,6 +93,7 @@ pub async fn update_google_business_attributes(
     configuration: &configuration::Configuration,
     account_id: &str,
     update_google_business_attributes_request: models::UpdateGoogleBusinessAttributesRequest,
+    location_id: Option<&str>,
 ) -> Result<
     models::UpdateGoogleBusinessAttributes200Response,
     Error<UpdateGoogleBusinessAttributesError>,
@@ -96,6 +102,7 @@ pub async fn update_google_business_attributes(
     let p_path_account_id = account_id;
     let p_body_update_google_business_attributes_request =
         update_google_business_attributes_request;
+    let p_query_location_id = location_id;
 
     let uri_str = format!(
         "{}/v1/accounts/{accountId}/gmb-attributes",
@@ -104,6 +111,9 @@ pub async fn update_google_business_attributes(
     );
     let mut req_builder = configuration.client.request(reqwest::Method::PUT, &uri_str);
 
+    if let Some(ref param_value) = p_query_location_id {
+        req_builder = req_builder.query(&[("locationId", &param_value.to_string())]);
+    }
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }

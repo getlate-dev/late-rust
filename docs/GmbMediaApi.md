@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 ## create_google_business_media
 
-> models::CreateGoogleBusinessMedia200Response create_google_business_media(account_id, create_google_business_media_request)
+> models::CreateGoogleBusinessMedia200Response create_google_business_media(account_id, create_google_business_media_request, location_id)
 Upload photo
 
 Creates a media item (photo) for a location from a publicly accessible URL.  Categories determine where the photo appears: COVER, PROFILE, LOGO, EXTERIOR, INTERIOR, FOOD_AND_DRINK, MENU, PRODUCT, TEAMS, ADDITIONAL. 
@@ -24,6 +24,7 @@ Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **account_id** | **String** |  | [required] |
 **create_google_business_media_request** | [**CreateGoogleBusinessMediaRequest**](CreateGoogleBusinessMediaRequest.md) |  | [required] |
+**location_id** | Option<**String**> | Override which location to target. If omitted, uses the account's selected location. Use GET /gmb-locations to list valid IDs. |  |
 
 ### Return type
 
@@ -43,7 +44,7 @@ Name | Type | Description  | Required | Notes
 
 ## delete_google_business_media
 
-> models::DeleteGoogleBusinessMedia200Response delete_google_business_media(account_id, media_id)
+> models::DeleteGoogleBusinessMedia200Response delete_google_business_media(account_id, media_id, location_id)
 Delete photo
 
 Deletes a photo or media item from a GBP location.
@@ -55,6 +56,7 @@ Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **account_id** | **String** |  | [required] |
 **media_id** | **String** | The media item ID to delete | [required] |
+**location_id** | Option<**String**> | Override which location to target. If omitted, uses the account's selected location. Use GET /gmb-locations to list valid IDs. |  |
 
 ### Return type
 
@@ -74,7 +76,7 @@ Name | Type | Description  | Required | Notes
 
 ## list_google_business_media
 
-> models::ListGoogleBusinessMedia200Response list_google_business_media(account_id, page_size, page_token)
+> models::ListGoogleBusinessMedia200Response list_google_business_media(account_id, location_id, page_size, page_token)
 List media
 
 Lists media items (photos) for a Google Business Profile location. Returns photo URLs, descriptions, categories, and metadata. 
@@ -85,6 +87,7 @@ Lists media items (photos) for a Google Business Profile location. Returns photo
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **account_id** | **String** |  | [required] |
+**location_id** | Option<**String**> | Override which location to query. If omitted, uses the account's selected location. Use GET /gmb-locations to list valid IDs. |  |
 **page_size** | Option<**i32**> | Number of items to return (max 100) |  |[default to 100]
 **page_token** | Option<**String**> | Pagination token from previous response |  |
 

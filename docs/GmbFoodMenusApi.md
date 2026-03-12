@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 ## get_google_business_food_menus
 
-> models::GetGoogleBusinessFoodMenus200Response get_google_business_food_menus(account_id)
+> models::GetGoogleBusinessFoodMenus200Response get_google_business_food_menus(account_id, location_id)
 Get food menus
 
 Returns food menus for a GBP location including sections, items, pricing, and dietary info. Only for locations with food menu support.
@@ -22,6 +22,7 @@ Returns food menus for a GBP location including sections, items, pricing, and di
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **account_id** | **String** | The Late account ID (from /v1/accounts) | [required] |
+**location_id** | Option<**String**> | Override which location to query. If omitted, uses the account's selected location. Use GET /gmb-locations to list valid IDs. |  |
 
 ### Return type
 
@@ -41,7 +42,7 @@ Name | Type | Description  | Required | Notes
 
 ## update_google_business_food_menus
 
-> models::UpdateGoogleBusinessFoodMenus200Response update_google_business_food_menus(account_id, update_google_business_food_menus_request)
+> models::UpdateGoogleBusinessFoodMenus200Response update_google_business_food_menus(account_id, update_google_business_food_menus_request, location_id)
 Update food menus
 
 Updates food menus for a GBP location. Send the full menus array. Use updateMask for partial updates.
@@ -53,6 +54,7 @@ Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **account_id** | **String** | The Late account ID (from /v1/accounts) | [required] |
 **update_google_business_food_menus_request** | [**UpdateGoogleBusinessFoodMenusRequest**](UpdateGoogleBusinessFoodMenusRequest.md) |  | [required] |
+**location_id** | Option<**String**> | Override which location to target. If omitted, uses the account's selected location. Use GET /gmb-locations to list valid IDs. |  |
 
 ### Return type
 

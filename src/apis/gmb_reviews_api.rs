@@ -29,11 +29,13 @@ pub enum GetGoogleBusinessReviewsError {
 pub async fn get_google_business_reviews(
     configuration: &configuration::Configuration,
     account_id: &str,
+    location_id: Option<&str>,
     page_size: Option<i32>,
     page_token: Option<&str>,
 ) -> Result<models::GetGoogleBusinessReviews200Response, Error<GetGoogleBusinessReviewsError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_path_account_id = account_id;
+    let p_query_location_id = location_id;
     let p_query_page_size = page_size;
     let p_query_page_token = page_token;
 
@@ -44,6 +46,9 @@ pub async fn get_google_business_reviews(
     );
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
+    if let Some(ref param_value) = p_query_location_id {
+        req_builder = req_builder.query(&[("locationId", &param_value.to_string())]);
+    }
     if let Some(ref param_value) = p_query_page_size {
         req_builder = req_builder.query(&[("pageSize", &param_value.to_string())]);
     }

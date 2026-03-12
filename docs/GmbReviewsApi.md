@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 ## get_google_business_reviews
 
-> models::GetGoogleBusinessReviews200Response get_google_business_reviews(account_id, page_size, page_token)
+> models::GetGoogleBusinessReviews200Response get_google_business_reviews(account_id, location_id, page_size, page_token)
 Get reviews
 
 Returns reviews for a GBP account including ratings, comments, and owner replies. Use nextPageToken for pagination.
@@ -21,6 +21,7 @@ Returns reviews for a GBP account including ratings, comments, and owner replies
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **account_id** | **String** | The Late account ID (from /v1/accounts) | [required] |
+**location_id** | Option<**String**> | Override which location to query. If omitted, uses the account's selected location. Use GET /gmb-locations to list valid IDs. |  |
 **page_size** | Option<**i32**> | Number of reviews to fetch per page (max 50) |  |[default to 50]
 **page_token** | Option<**String**> | Pagination token from previous response |  |
 
