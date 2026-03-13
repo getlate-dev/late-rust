@@ -18,7 +18,7 @@ Method | HTTP request | Description
 > models::BookmarkPost200Response bookmark_post(bookmark_post_request)
 Bookmark a tweet
 
-Bookmark a tweet by ID. Requires X API Basic tier ($200/mo) or higher. Requires the bookmark.write OAuth scope. Rate limit: 50 requests per 15-min window. 
+Bookmark a tweet by ID. Requires the bookmark.write OAuth scope. Rate limit: 50 requests per 15-min window. 
 
 ### Parameters
 
@@ -48,7 +48,7 @@ Name | Type | Description  | Required | Notes
 > models::FollowUser200Response follow_user(follow_user_request)
 Follow a user
 
-Follow a user on X/Twitter. Requires X API Basic tier ($200/mo) or higher. Requires the follows.write OAuth scope. For protected accounts, a follow request is sent instead (pending_follow will be true). 
+Follow a user on X/Twitter. Requires the follows.write OAuth scope. For protected accounts, a follow request is sent instead (pending_follow will be true). 
 
 ### Parameters
 
@@ -109,7 +109,7 @@ Name | Type | Description  | Required | Notes
 > models::RetweetPost200Response retweet_post(retweet_post_request)
 Retweet a post
 
-Retweet (repost) a tweet by ID. Requires X API Basic tier ($200/mo) or higher. Rate limit: 50 requests per 15-min window. Shares the 300/3hr creation limit with tweet creation. 
+Retweet (repost) a tweet by ID. Rate limit: 50 requests per 15-min window. Shares the 300/3hr creation limit with tweet creation. 
 
 ### Parameters
 

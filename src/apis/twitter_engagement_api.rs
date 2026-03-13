@@ -73,7 +73,7 @@ pub enum UnfollowUserError {
     UnknownValue(serde_json::Value),
 }
 
-/// Bookmark a tweet by ID. Requires X API Basic tier ($200/mo) or higher. Requires the bookmark.write OAuth scope. Rate limit: 50 requests per 15-min window.
+/// Bookmark a tweet by ID. Requires the bookmark.write OAuth scope. Rate limit: 50 requests per 15-min window.
 pub async fn bookmark_post(
     configuration: &configuration::Configuration,
     bookmark_post_request: models::BookmarkPostRequest,
@@ -123,7 +123,7 @@ pub async fn bookmark_post(
     }
 }
 
-/// Follow a user on X/Twitter. Requires X API Basic tier ($200/mo) or higher. Requires the follows.write OAuth scope. For protected accounts, a follow request is sent instead (pending_follow will be true).
+/// Follow a user on X/Twitter. Requires the follows.write OAuth scope. For protected accounts, a follow request is sent instead (pending_follow will be true).
 pub async fn follow_user(
     configuration: &configuration::Configuration,
     follow_user_request: models::FollowUserRequest,
@@ -226,7 +226,7 @@ pub async fn remove_bookmark(
     }
 }
 
-/// Retweet (repost) a tweet by ID. Requires X API Basic tier ($200/mo) or higher. Rate limit: 50 requests per 15-min window. Shares the 300/3hr creation limit with tweet creation.
+/// Retweet (repost) a tweet by ID. Rate limit: 50 requests per 15-min window. Shares the 300/3hr creation limit with tweet creation.
 pub async fn retweet_post(
     configuration: &configuration::Configuration,
     retweet_post_request: models::RetweetPostRequest,
