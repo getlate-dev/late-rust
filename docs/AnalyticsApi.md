@@ -23,7 +23,7 @@ Method | HTTP request | Description
 > models::GetAnalytics200Response get_analytics(post_id, platform, profile_id, source, from_date, to_date, limit, page, sort_by, order)
 Get post analytics
 
-Returns analytics for posts. With postId, returns a single post. Without it, returns a paginated list with overview stats. Accepts both Late Post IDs and External Post IDs (auto-resolved). Data is cached and refreshed at most once per hour. For follower stats, use /v1/accounts/follower-stats. 
+Returns analytics for posts. With postId, returns a single post. Without it, returns a paginated list with overview stats. Accepts both Late Post IDs and External Post IDs (auto-resolved). fromDate defaults to 90 days ago if omitted, max range 366 days. Single post lookups may return 202 (sync pending) or 424 (all platforms failed). For follower stats, use /v1/accounts/follower-stats. 
 
 ### Parameters
 
@@ -34,11 +34,11 @@ Name | Type | Description  | Required | Notes
 **platform** | Option<**String**> | Filter by platform (default \"all\") |  |
 **profile_id** | Option<**String**> | Filter by profile ID (default \"all\") |  |
 **source** | Option<**String**> | Filter by post source: late (posted via Late API), external (synced from platform), all (default) |  |[default to all]
-**from_date** | Option<**String**> | Inclusive lower bound |  |
-**to_date** | Option<**String**> | Inclusive upper bound |  |
+**from_date** | Option<**String**> | Inclusive lower bound (YYYY-MM-DD). Defaults to 90 days ago if omitted. Max range is 366 days. |  |
+**to_date** | Option<**String**> | Inclusive upper bound (YYYY-MM-DD). Defaults to today if omitted. |  |
 **limit** | Option<**i32**> | Page size (default 50) |  |[default to 50]
 **page** | Option<**i32**> | Page number (default 1) |  |[default to 1]
-**sort_by** | Option<**String**> | Sort by date or engagement |  |[default to date]
+**sort_by** | Option<**String**> | Sort by date, engagement, or a specific metric |  |[default to date]
 **order** | Option<**String**> | Sort order |  |[default to desc]
 
 ### Return type

@@ -15,6 +15,9 @@ use serde::{Deserialize, Serialize};
 pub struct AnalyticsListResponsePostsInner {
     #[serde(rename = "_id", skip_serializing_if = "Option::is_none")]
     pub _id: Option<String>,
+    /// Original Late post ID if scheduled via Late
+    #[serde(rename = "latePostId", skip_serializing_if = "Option::is_none")]
+    pub late_post_id: Option<String>,
     #[serde(rename = "content", skip_serializing_if = "Option::is_none")]
     pub content: Option<String>,
     #[serde(rename = "scheduledFor", skip_serializing_if = "Option::is_none")]
@@ -33,6 +36,8 @@ pub struct AnalyticsListResponsePostsInner {
     pub platform_post_url: Option<String>,
     #[serde(rename = "isExternal", skip_serializing_if = "Option::is_none")]
     pub is_external: Option<bool>,
+    #[serde(rename = "profileId", skip_serializing_if = "Option::is_none")]
+    pub profile_id: Option<String>,
     #[serde(rename = "thumbnailUrl", skip_serializing_if = "Option::is_none")]
     pub thumbnail_url: Option<String>,
     #[serde(rename = "mediaType", skip_serializing_if = "Option::is_none")]
@@ -46,6 +51,7 @@ impl AnalyticsListResponsePostsInner {
     pub fn new() -> AnalyticsListResponsePostsInner {
         AnalyticsListResponsePostsInner {
             _id: None,
+            late_post_id: None,
             content: None,
             scheduled_for: None,
             published_at: None,
@@ -55,6 +61,7 @@ impl AnalyticsListResponsePostsInner {
             platform: None,
             platform_post_url: None,
             is_external: None,
+            profile_id: None,
             thumbnail_url: None,
             media_type: None,
             media_items: None,

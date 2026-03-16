@@ -21,6 +21,8 @@ pub struct AnalyticsOverview {
     pub scheduled_posts: Option<i32>,
     #[serde(rename = "lastSync", skip_serializing_if = "Option::is_none")]
     pub last_sync: Option<String>,
+    #[serde(rename = "dataStaleness", skip_serializing_if = "Option::is_none")]
+    pub data_staleness: Option<Box<models::AnalyticsOverviewDataStaleness>>,
 }
 
 impl AnalyticsOverview {
@@ -30,6 +32,7 @@ impl AnalyticsOverview {
             published_posts: None,
             scheduled_posts: None,
             last_sync: None,
+            data_staleness: None,
         }
     }
 }

@@ -17,9 +17,11 @@ use serde::{de::Error as _, Deserialize, Serialize};
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum GetAnalyticsError {
+    Status400(models::GetAnalytics400Response),
     Status401(models::InlineObject),
     Status402(models::GetAnalytics402Response),
     Status404(models::InlineObject1),
+    Status424(models::AnalyticsSinglePostResponse),
     Status500(models::ErrorResponse),
     UnknownValue(serde_json::Value),
 }
@@ -130,7 +132,7 @@ pub enum GetYouTubeDailyViewsError {
     UnknownValue(serde_json::Value),
 }
 
-/// Returns analytics for posts. With postId, returns a single post. Without it, returns a paginated list with overview stats. Accepts both Late Post IDs and External Post IDs (auto-resolved). Data is cached and refreshed at most once per hour. For follower stats, use /v1/accounts/follower-stats.
+/// Returns analytics for posts. With postId, returns a single post. Without it, returns a paginated list with overview stats. Accepts both Late Post IDs and External Post IDs (auto-resolved). fromDate defaults to 90 days ago if omitted, max range 366 days. Single post lookups may return 202 (sync pending) or 424 (all platforms failed). For follower stats, use /v1/accounts/follower-stats.
 pub async fn get_analytics(
     configuration: &configuration::Configuration,
     post_id: Option<&str>,

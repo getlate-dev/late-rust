@@ -16,6 +16,7 @@ docs/AnalyticsApi.md
 docs/AnalyticsListResponse.md
 docs/AnalyticsListResponsePostsInner.md
 docs/AnalyticsOverview.md
+docs/AnalyticsOverviewDataStaleness.md
 docs/AnalyticsSinglePostResponse.md
 docs/AnalyticsSinglePostResponseMediaItemsInner.md
 docs/ApiKey.md
@@ -127,6 +128,7 @@ docs/GetAllAccountsHealth200Response.md
 docs/GetAllAccountsHealth200ResponseAccountsInner.md
 docs/GetAllAccountsHealth200ResponseSummary.md
 docs/GetAnalytics200Response.md
+docs/GetAnalytics400Response.md
 docs/GetAnalytics402Response.md
 docs/GetBestTimeToPost200Response.md
 docs/GetBestTimeToPost200ResponseSlotsInner.md
@@ -346,7 +348,6 @@ docs/Pagination.md
 docs/Pending.md
 docs/PinterestPlatformData.md
 docs/PlatformAnalytics.md
-docs/PlatformAnalyticsAccountMetrics.md
 docs/PlatformTarget.md
 docs/PlatformTargetAccountId.md
 docs/PlatformTargetPlatformSpecificData.md
@@ -632,6 +633,7 @@ src/models/add_whats_app_broadcast_recipients_request_recipients_inner.rs
 src/models/analytics_list_response.rs
 src/models/analytics_list_response_posts_inner.rs
 src/models/analytics_overview.rs
+src/models/analytics_overview_data_staleness.rs
 src/models/analytics_single_post_response.rs
 src/models/analytics_single_post_response_media_items_inner.rs
 src/models/api_key.rs
@@ -740,6 +742,7 @@ src/models/get_all_accounts_health_200_response.rs
 src/models/get_all_accounts_health_200_response_accounts_inner.rs
 src/models/get_all_accounts_health_200_response_summary.rs
 src/models/get_analytics_200_response.rs
+src/models/get_analytics_400_response.rs
 src/models/get_analytics_402_response.rs
 src/models/get_best_time_to_post_200_response.rs
 src/models/get_best_time_to_post_200_response_slots_inner.rs
@@ -949,7 +952,6 @@ src/models/pagination.rs
 src/models/pending.rs
 src/models/pinterest_platform_data.rs
 src/models/platform_analytics.rs
-src/models/platform_analytics_account_metrics.rs
 src/models/platform_target.rs
 src/models/platform_target_account_id.rs
 src/models/platform_target_platform_specific_data.rs

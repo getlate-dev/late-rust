@@ -16,15 +16,21 @@ pub struct PlatformAnalytics {
     #[serde(rename = "platform", skip_serializing_if = "Option::is_none")]
     pub platform: Option<String>,
     #[serde(rename = "status", skip_serializing_if = "Option::is_none")]
-    pub status: Option<String>,
+    pub status: Option<Status>,
     #[serde(rename = "accountId", skip_serializing_if = "Option::is_none")]
     pub account_id: Option<String>,
     #[serde(rename = "accountUsername", skip_serializing_if = "Option::is_none")]
     pub account_username: Option<String>,
     #[serde(rename = "analytics", skip_serializing_if = "Option::is_none")]
     pub analytics: Option<Box<models::PostAnalytics>>,
-    #[serde(rename = "accountMetrics", skip_serializing_if = "Option::is_none")]
-    pub account_metrics: Option<Box<models::PlatformAnalyticsAccountMetrics>>,
+    /// Sync state of analytics for this platform
+    #[serde(rename = "syncStatus", skip_serializing_if = "Option::is_none")]
+    pub sync_status: Option<SyncStatus>,
+    #[serde(rename = "platformPostUrl", skip_serializing_if = "Option::is_none")]
+    pub platform_post_url: Option<String>,
+    /// Error details when status is failed
+    #[serde(rename = "errorMessage", skip_serializing_if = "Option::is_none")]
+    pub error_message: Option<String>,
 }
 
 impl PlatformAnalytics {
@@ -35,7 +41,39 @@ impl PlatformAnalytics {
             account_id: None,
             account_username: None,
             analytics: None,
-            account_metrics: None,
+            sync_status: None,
+            platform_post_url: None,
+            error_message: None,
         }
+    }
+}
+///
+#[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
+pub enum Status {
+    #[serde(rename = "published")]
+    Published,
+    #[serde(rename = "failed")]
+    Failed,
+}
+
+impl Default for Status {
+    fn default() -> Status {
+        Self::Published
+    }
+}
+/// Sync state of analytics for this platform
+#[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
+pub enum SyncStatus {
+    #[serde(rename = "synced")]
+    Synced,
+    #[serde(rename = "pending")]
+    Pending,
+    #[serde(rename = "unavailable")]
+    Unavailable,
+}
+
+impl Default for SyncStatus {
+    fn default() -> SyncStatus {
+        Self::Synced
     }
 }

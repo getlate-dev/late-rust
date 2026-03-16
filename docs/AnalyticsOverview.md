@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **published_posts** | Option<**i32**> |  | [optional]
 **scheduled_posts** | Option<**i32**> |  | [optional]
 **last_sync** | Option<**String**> |  | [optional]
+**data_staleness** | Option<[**models::AnalyticsOverviewDataStaleness**](AnalyticsOverviewDataStaleness.md)> |  | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

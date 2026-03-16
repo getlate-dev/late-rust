@@ -15,8 +15,12 @@ use serde::{Deserialize, Serialize};
 pub struct AnalyticsSinglePostResponse {
     #[serde(rename = "postId", skip_serializing_if = "Option::is_none")]
     pub post_id: Option<String>,
+    /// Original Late post ID if scheduled via Late
+    #[serde(rename = "latePostId", skip_serializing_if = "Option::is_none")]
+    pub late_post_id: Option<String>,
+    /// Overall post status. \"partial\" when some platforms published and others failed.
     #[serde(rename = "status", skip_serializing_if = "Option::is_none")]
-    pub status: Option<String>,
+    pub status: Option<Status>,
     #[serde(rename = "content", skip_serializing_if = "Option::is_none")]
     pub content: Option<String>,
     #[serde(rename = "scheduledFor", skip_serializing_if = "Option::is_none")]
@@ -33,6 +37,12 @@ pub struct AnalyticsSinglePostResponse {
     pub platform_post_url: Option<String>,
     #[serde(rename = "isExternal", skip_serializing_if = "Option::is_none")]
     pub is_external: Option<bool>,
+    /// Overall sync state across all platforms
+    #[serde(rename = "syncStatus", skip_serializing_if = "Option::is_none")]
+    pub sync_status: Option<SyncStatus>,
+    /// Human-readable status message for pending, partial, or failed states
+    #[serde(rename = "message", skip_serializing_if = "Option::is_none")]
+    pub message: Option<String>,
     #[serde(rename = "thumbnailUrl", skip_serializing_if = "Option::is_none")]
     pub thumbnail_url: Option<String>,
     #[serde(rename = "mediaType", skip_serializing_if = "Option::is_none")]
@@ -46,6 +56,7 @@ impl AnalyticsSinglePostResponse {
     pub fn new() -> AnalyticsSinglePostResponse {
         AnalyticsSinglePostResponse {
             post_id: None,
+            late_post_id: None,
             status: None,
             content: None,
             scheduled_for: None,
@@ -55,10 +66,46 @@ impl AnalyticsSinglePostResponse {
             platform: None,
             platform_post_url: None,
             is_external: None,
+            sync_status: None,
+            message: None,
             thumbnail_url: None,
             media_type: None,
             media_items: None,
         }
+    }
+}
+/// Overall post status. \"partial\" when some platforms published and others failed.
+#[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
+pub enum Status {
+    #[serde(rename = "published")]
+    Published,
+    #[serde(rename = "failed")]
+    Failed,
+    #[serde(rename = "partial")]
+    Partial,
+}
+
+impl Default for Status {
+    fn default() -> Status {
+        Self::Published
+    }
+}
+/// Overall sync state across all platforms
+#[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
+pub enum SyncStatus {
+    #[serde(rename = "synced")]
+    Synced,
+    #[serde(rename = "pending")]
+    Pending,
+    #[serde(rename = "partial")]
+    Partial,
+    #[serde(rename = "unavailable")]
+    Unavailable,
+}
+
+impl Default for SyncStatus {
+    fn default() -> SyncStatus {
+        Self::Synced
     }
 }
 ///

@@ -23,6 +23,40 @@ impl Default for GetAnalytics200Response {
         Self::AnalyticsSinglePostResponse(Default::default())
     }
 }
+/// Overall post status. \"partial\" when some platforms published and others failed.
+#[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
+pub enum Status {
+    #[serde(rename = "published")]
+    Published,
+    #[serde(rename = "failed")]
+    Failed,
+    #[serde(rename = "partial")]
+    Partial,
+}
+
+impl Default for Status {
+    fn default() -> Status {
+        Self::Published
+    }
+}
+/// Overall sync state across all platforms
+#[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
+pub enum SyncStatus {
+    #[serde(rename = "synced")]
+    Synced,
+    #[serde(rename = "pending")]
+    Pending,
+    #[serde(rename = "partial")]
+    Partial,
+    #[serde(rename = "unavailable")]
+    Unavailable,
+}
+
+impl Default for SyncStatus {
+    fn default() -> SyncStatus {
+        Self::Synced
+    }
+}
 ///
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
 pub enum MediaType {
