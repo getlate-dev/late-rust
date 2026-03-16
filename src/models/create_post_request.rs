@@ -26,6 +26,7 @@ pub struct CreatePostRequest {
     pub scheduled_for: Option<String>,
     #[serde(rename = "publishNow", skip_serializing_if = "Option::is_none")]
     pub publish_now: Option<bool>,
+    /// When true, saves the post as a draft. When none of scheduledFor, publishNow, or queuedFromProfile are provided, the post defaults to draft automatically.
     #[serde(rename = "isDraft", skip_serializing_if = "Option::is_none")]
     pub is_draft: Option<bool>,
     #[serde(rename = "timezone", skip_serializing_if = "Option::is_none")]

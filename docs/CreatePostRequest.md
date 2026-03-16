@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **platforms** | Option<[**Vec<models::CreatePostRequestPlatformsInner>**](CreatePostRequestPlatformsInner.md)> |  | [optional]
 **scheduled_for** | Option<**String**> |  | [optional]
 **publish_now** | Option<**bool**> |  | [optional][default to false]
-**is_draft** | Option<**bool**> |  | [optional][default to false]
+**is_draft** | Option<**bool**> | When true, saves the post as a draft. When none of scheduledFor, publishNow, or queuedFromProfile are provided, the post defaults to draft automatically. | [optional][default to false]
 **timezone** | Option<**String**> |  | [optional][default to UTC]
 **tags** | Option<**Vec<String>**> | Tags/keywords. YouTube constraints: each tag max 100 chars, combined max 500 chars, duplicates auto-removed. | [optional]
 **hashtags** | Option<**Vec<String>**> |  | [optional]
