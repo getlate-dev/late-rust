@@ -35,7 +35,7 @@ jobs:
 
       - name: Fetch latest OpenAPI spec
         run: |
-          curl -f -o openapi.yaml https://getlate.dev/openapi.yaml
+          curl -f -o openapi.yaml https://zernio.com/openapi.yaml
           echo "Fetched OpenAPI spec"
 
       - name: Generate SDK
@@ -46,8 +46,8 @@ jobs:
             -o . \
             --skip-validate-spec \
             --additional-properties=packageName=late,library=reqwest \
-            --git-user-id=getlate-dev \
-            --git-repo-id=late-rust
+            --git-user-id=zernio-dev \
+            --git-repo-id=zernio-rust
 
       - name: Patch README install instructions
         run: |
@@ -133,10 +133,22 @@ jobs:
         if: steps.changes.outputs.has_changes == 'true'
         run: cargo build --release
 
-      - name: Publish to crates.io
+      - name: Publish as late to crates.io
         if: steps.changes.outputs.has_changes == 'true'
         run: cargo publish --token ${{ secrets.CRATES_IO_TOKEN }}
         continue-on-error: true
+
+      - name: Publish as zernio to crates.io
+        if: steps.changes.outputs.has_changes == 'true'
+        run: |
+          sed -i 's/^name = "late"/name = "zernio"/' Cargo.toml
+          cargo publish --token ${{ secrets.CRATES_IO_TOKEN }}
+        continue-on-error: true
+
+      - name: Restore Cargo.toml package name
+        if: steps.changes.outputs.has_changes == 'true'
+        run: |
+          sed -i 's/^name = "zernio"/name = "late"/' Cargo.toml
 
       - name: Create GitHub Release
         if: steps.changes.outputs.has_changes == 'true'
@@ -148,10 +160,12 @@ jobs:
           body: |
             ## Auto-generated SDK Update
 
-            Add to `Cargo.toml`:
+            Available as both `late` and `zernio` on crates.io:
             ```toml
             [dependencies]
             late = "${{ steps.version.outputs.cargo_version }}"
+            # or
+            zernio = "${{ steps.version.outputs.cargo_version }}"
             ```
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
