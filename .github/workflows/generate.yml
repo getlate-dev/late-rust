@@ -142,7 +142,7 @@ jobs:
         if: steps.changes.outputs.has_changes == 'true'
         run: |
           sed -i 's/^name = "late"/name = "zernio"/' Cargo.toml
-          cargo publish --token ${{ secrets.CRATES_IO_TOKEN }}
+          cargo publish --allow-dirty --token ${{ secrets.CRATES_IO_TOKEN }}
         continue-on-error: true
 
       - name: Restore Cargo.toml package name
