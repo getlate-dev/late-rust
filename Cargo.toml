@@ -1,5 +1,5 @@
 [package]
-name = "late"
+name = "zernio"
 version = "0.0.70"
 authors = ["support@zernio.com"]
 description = "API reference for Zernio. Authenticate with a Bearer API key. Base URL: https://zernio.com/api "
