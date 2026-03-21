@@ -1,6 +1,6 @@
 [package]
 name = "zernio"
-version = "0.0.71"
+version = "0.0.72"
 authors = ["support@zernio.com"]
 description = "API reference for Zernio. Authenticate with a Bearer API key. Base URL: https://zernio.com/api "
 # Override this license by providing a License Object in the OpenAPI.
