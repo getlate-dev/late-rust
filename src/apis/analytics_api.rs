@@ -62,6 +62,30 @@ pub enum GetFollowerStatsError {
     UnknownValue(serde_json::Value),
 }
 
+/// struct for typed errors of method [`get_instagram_account_insights`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum GetInstagramAccountInsightsError {
+    Status400(models::GetYouTubeDailyViews400Response),
+    Status401(models::InlineObject),
+    Status402(models::GetAnalytics402Response),
+    Status403(models::GetYouTubeDailyViews403Response),
+    Status404(models::GetInstagramAccountInsights404Response),
+    UnknownValue(serde_json::Value),
+}
+
+/// struct for typed errors of method [`get_instagram_demographics`]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum GetInstagramDemographicsError {
+    Status400(models::GetYouTubeDailyViews400Response),
+    Status401(models::InlineObject),
+    Status402(models::GetAnalytics402Response),
+    Status403(models::GetYouTubeDailyViews403Response),
+    Status404(models::GetInstagramAccountInsights404Response),
+    UnknownValue(serde_json::Value),
+}
+
 /// struct for typed errors of method [`get_linked_in_aggregate_analytics`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -479,6 +503,148 @@ pub async fn get_follower_stats(
     } else {
         let content = resp.text().await?;
         let entity: Option<GetFollowerStatsError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent {
+            status,
+            content,
+            entity,
+        }))
+    }
+}
+
+/// Returns account-level Instagram insights such as reach, views, accounts engaged, and total interactions. These metrics reflect the entire account's performance across all content surfaces (feed, stories, explore, profile), and are fundamentally different from post-level metrics. Data may be delayed up to 48 hours. Max 90 days, defaults to last 30 days. Requires the Analytics add-on.
+pub async fn get_instagram_account_insights(
+    configuration: &configuration::Configuration,
+    account_id: &str,
+    metrics: Option<&str>,
+    since: Option<String>,
+    until: Option<String>,
+    metric_type: Option<&str>,
+    breakdown: Option<&str>,
+) -> Result<models::InstagramAccountInsightsResponse, Error<GetInstagramAccountInsightsError>> {
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_query_account_id = account_id;
+    let p_query_metrics = metrics;
+    let p_query_since = since;
+    let p_query_until = until;
+    let p_query_metric_type = metric_type;
+    let p_query_breakdown = breakdown;
+
+    let uri_str = format!(
+        "{}/v1/analytics/instagram/account-insights",
+        configuration.base_path
+    );
+    let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
+
+    req_builder = req_builder.query(&[("accountId", &p_query_account_id.to_string())]);
+    if let Some(ref param_value) = p_query_metrics {
+        req_builder = req_builder.query(&[("metrics", &param_value.to_string())]);
+    }
+    if let Some(ref param_value) = p_query_since {
+        req_builder = req_builder.query(&[("since", &param_value.to_string())]);
+    }
+    if let Some(ref param_value) = p_query_until {
+        req_builder = req_builder.query(&[("until", &param_value.to_string())]);
+    }
+    if let Some(ref param_value) = p_query_metric_type {
+        req_builder = req_builder.query(&[("metricType", &param_value.to_string())]);
+    }
+    if let Some(ref param_value) = p_query_breakdown {
+        req_builder = req_builder.query(&[("breakdown", &param_value.to_string())]);
+    }
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    if let Some(ref token) = configuration.bearer_access_token {
+        req_builder = req_builder.bearer_auth(token.to_owned());
+    };
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::InstagramAccountInsightsResponse`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::InstagramAccountInsightsResponse`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<GetInstagramAccountInsightsError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent {
+            status,
+            content,
+            entity,
+        }))
+    }
+}
+
+/// Returns audience demographic insights for an Instagram account, broken down by age, city, country, and/or gender. Requires at least 100 followers. Returns top 45 entries per dimension. Data may be delayed up to 48 hours. Requires the Analytics add-on.
+pub async fn get_instagram_demographics(
+    configuration: &configuration::Configuration,
+    account_id: &str,
+    metric: Option<&str>,
+    breakdown: Option<&str>,
+    timeframe: Option<&str>,
+) -> Result<models::InstagramDemographicsResponse, Error<GetInstagramDemographicsError>> {
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_query_account_id = account_id;
+    let p_query_metric = metric;
+    let p_query_breakdown = breakdown;
+    let p_query_timeframe = timeframe;
+
+    let uri_str = format!(
+        "{}/v1/analytics/instagram/demographics",
+        configuration.base_path
+    );
+    let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
+
+    req_builder = req_builder.query(&[("accountId", &p_query_account_id.to_string())]);
+    if let Some(ref param_value) = p_query_metric {
+        req_builder = req_builder.query(&[("metric", &param_value.to_string())]);
+    }
+    if let Some(ref param_value) = p_query_breakdown {
+        req_builder = req_builder.query(&[("breakdown", &param_value.to_string())]);
+    }
+    if let Some(ref param_value) = p_query_timeframe {
+        req_builder = req_builder.query(&[("timeframe", &param_value.to_string())]);
+    }
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
+    }
+    if let Some(ref token) = configuration.bearer_access_token {
+        req_builder = req_builder.bearer_auth(token.to_owned());
+    };
+
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
+
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
+
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::InstagramDemographicsResponse`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::InstagramDemographicsResponse`")))),
+        }
+    } else {
+        let content = resp.text().await?;
+        let entity: Option<GetInstagramDemographicsError> = serde_json::from_str(&content).ok();
         Err(Error::ResponseError(ResponseContent {
             status,
             content,

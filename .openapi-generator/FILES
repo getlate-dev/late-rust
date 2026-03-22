@@ -182,6 +182,7 @@ docs/GetInboxPostComments200ResponseCommentsInner.md
 docs/GetInboxPostComments200ResponseCommentsInnerFrom.md
 docs/GetInboxPostComments200ResponseMeta.md
 docs/GetInboxPostComments200ResponsePagination.md
+docs/GetInstagramAccountInsights404Response.md
 docs/GetLinkedInAggregateAnalytics200Response.md
 docs/GetLinkedInAggregateAnalytics400Response.md
 docs/GetLinkedInAggregateAnalytics402Response.md
@@ -289,6 +290,13 @@ docs/InitiateTelegramConnect200ResponseAccount.md
 docs/InitiateTelegramConnectRequest.md
 docs/InlineObject.md
 docs/InlineObject1.md
+docs/InstagramAccountInsightsResponse.md
+docs/InstagramAccountInsightsResponseDateRange.md
+docs/InstagramAccountInsightsResponseMetricsValue.md
+docs/InstagramAccountInsightsResponseMetricsValueBreakdownsInner.md
+docs/InstagramAccountInsightsResponseMetricsValueValuesInner.md
+docs/InstagramDemographicsResponse.md
+docs/InstagramDemographicsResponseDemographicsValueInner.md
 docs/InstagramPlatformData.md
 docs/InstagramPlatformDataTrialParams.md
 docs/InstagramPlatformDataUserTagsInner.md
@@ -801,6 +809,7 @@ src/models/get_inbox_post_comments_200_response_comments_inner.rs
 src/models/get_inbox_post_comments_200_response_comments_inner_from.rs
 src/models/get_inbox_post_comments_200_response_meta.rs
 src/models/get_inbox_post_comments_200_response_pagination.rs
+src/models/get_instagram_account_insights_404_response.rs
 src/models/get_linked_in_aggregate_analytics_200_response.rs
 src/models/get_linked_in_aggregate_analytics_400_response.rs
 src/models/get_linked_in_aggregate_analytics_402_response.rs
@@ -902,6 +911,13 @@ src/models/initiate_telegram_connect_200_response_account.rs
 src/models/initiate_telegram_connect_request.rs
 src/models/inline_object.rs
 src/models/inline_object_1.rs
+src/models/instagram_account_insights_response.rs
+src/models/instagram_account_insights_response_date_range.rs
+src/models/instagram_account_insights_response_metrics_value.rs
+src/models/instagram_account_insights_response_metrics_value_breakdowns_inner.rs
+src/models/instagram_account_insights_response_metrics_value_values_inner.rs
+src/models/instagram_demographics_response.rs
+src/models/instagram_demographics_response_demographics_value_inner.rs
 src/models/instagram_platform_data.rs
 src/models/instagram_platform_data_trial_params.rs
 src/models/instagram_platform_data_user_tags_inner.rs
