@@ -23,6 +23,9 @@ pub struct GetWhatsAppBroadcasts200ResponseBroadcastsInner {
     pub template: Option<Box<models::GetWhatsAppBroadcasts200ResponseBroadcastsInnerTemplate>>,
     #[serde(rename = "status", skip_serializing_if = "Option::is_none")]
     pub status: Option<Status>,
+    /// Template name or message text snippet
+    #[serde(rename = "messagePreview", skip_serializing_if = "Option::is_none")]
+    pub message_preview: Option<String>,
     #[serde(rename = "recipientCount", skip_serializing_if = "Option::is_none")]
     pub recipient_count: Option<i32>,
     #[serde(rename = "scheduledAt", skip_serializing_if = "Option::is_none")]
@@ -51,6 +54,7 @@ impl GetWhatsAppBroadcasts200ResponseBroadcastsInner {
             description: None,
             template: None,
             status: None,
+            message_preview: None,
             recipient_count: None,
             scheduled_at: None,
             started_at: None,

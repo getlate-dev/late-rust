@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **description** | Option<**String**> |  | [optional]
 **template** | Option<[**models::GetWhatsAppBroadcasts200ResponseBroadcastsInnerTemplate**](GetWhatsAppBroadcasts200ResponseBroadcastsInnerTemplate.md)> |  | [optional]
 **status** | Option<**Status**> |  (enum: draft, scheduled, sending, completed, failed, cancelled) | [optional]
+**message_preview** | Option<**String**> | Template name or message text snippet | [optional]
 **recipient_count** | Option<**i32**> |  | [optional]
 **scheduled_at** | Option<**String**> |  | [optional]
 **started_at** | Option<**String**> |  | [optional]
