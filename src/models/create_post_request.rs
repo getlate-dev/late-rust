@@ -20,6 +20,7 @@ pub struct CreatePostRequest {
     pub content: Option<String>,
     #[serde(rename = "mediaItems", skip_serializing_if = "Option::is_none")]
     pub media_items: Option<Vec<models::CreatePostRequestMediaItemsInner>>,
+    /// Target platforms and accounts for this post. Required for non-draft posts (returns 400 if empty). Drafts can omit platforms.
     #[serde(rename = "platforms", skip_serializing_if = "Option::is_none")]
     pub platforms: Option<Vec<models::CreatePostRequestPlatformsInner>>,
     #[serde(rename = "scheduledFor", skip_serializing_if = "Option::is_none")]
