@@ -22,7 +22,7 @@ Method | HTTP request | Description
 
 ## get_analytics
 
-> models::GetAnalytics200Response get_analytics(post_id, platform, profile_id, source, from_date, to_date, limit, page, sort_by, order)
+> models::GetAnalytics200Response get_analytics(post_id, platform, profile_id, account_id, source, from_date, to_date, limit, page, sort_by, order)
 Get post analytics
 
 Returns analytics for posts. With postId, returns a single post. Without it, returns a paginated list with overview stats. Accepts both Zernio Post IDs and External Post IDs (auto-resolved). fromDate defaults to 90 days ago if omitted, max range 366 days. Single post lookups may return 202 (sync pending) or 424 (all platforms failed). For follower stats, use /v1/accounts/follower-stats. 
@@ -35,6 +35,7 @@ Name | Type | Description  | Required | Notes
 **post_id** | Option<**String**> | Returns analytics for a single post. Accepts both Zernio Post IDs and External Post IDs. Zernio IDs are auto-resolved to External Post analytics. |  |
 **platform** | Option<**String**> | Filter by platform (default \"all\") |  |
 **profile_id** | Option<**String**> | Filter by profile ID (default \"all\") |  |
+**account_id** | Option<**String**> | Filter by social account ID |  |
 **source** | Option<**String**> | Filter by post source: late (posted via Zernio API), external (synced from platform), all (default) |  |[default to all]
 **from_date** | Option<**String**> | Inclusive lower bound (YYYY-MM-DD). Defaults to 90 days ago if omitted. Max range is 366 days. |  |
 **to_date** | Option<**String**> | Inclusive upper bound (YYYY-MM-DD). Defaults to today if omitted. |  |
@@ -125,7 +126,7 @@ Name | Type | Description  | Required | Notes
 
 ## get_daily_metrics
 
-> models::GetDailyMetrics200Response get_daily_metrics(platform, profile_id, from_date, to_date, source)
+> models::GetDailyMetrics200Response get_daily_metrics(platform, profile_id, account_id, from_date, to_date, source)
 Get daily aggregated metrics
 
 Returns daily aggregated analytics metrics and a per-platform breakdown. Each day includes post count, platform distribution, and summed metrics (impressions, reach, likes, comments, shares, saves, clicks, views). Defaults to the last 180 days. Requires the Analytics add-on. 
@@ -137,6 +138,7 @@ Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **platform** | Option<**String**> | Filter by platform (e.g. \"instagram\", \"tiktok\"). Omit for all platforms. |  |
 **profile_id** | Option<**String**> | Filter by profile ID. Omit for all profiles. |  |
+**account_id** | Option<**String**> | Filter by social account ID |  |
 **from_date** | Option<**String**> | Inclusive start date (ISO 8601). Defaults to 180 days ago. |  |
 **to_date** | Option<**String**> | Inclusive end date (ISO 8601). Defaults to now. |  |
 **source** | Option<**String**> | Filter by post origin. \"late\" for posts published via Zernio, \"external\" for posts imported from platforms. |  |[default to all]

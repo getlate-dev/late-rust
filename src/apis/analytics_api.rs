@@ -162,6 +162,7 @@ pub async fn get_analytics(
     post_id: Option<&str>,
     platform: Option<&str>,
     profile_id: Option<&str>,
+    account_id: Option<&str>,
     source: Option<&str>,
     from_date: Option<String>,
     to_date: Option<String>,
@@ -174,6 +175,7 @@ pub async fn get_analytics(
     let p_query_post_id = post_id;
     let p_query_platform = platform;
     let p_query_profile_id = profile_id;
+    let p_query_account_id = account_id;
     let p_query_source = source;
     let p_query_from_date = from_date;
     let p_query_to_date = to_date;
@@ -193,6 +195,9 @@ pub async fn get_analytics(
     }
     if let Some(ref param_value) = p_query_profile_id {
         req_builder = req_builder.query(&[("profileId", &param_value.to_string())]);
+    }
+    if let Some(ref param_value) = p_query_account_id {
+        req_builder = req_builder.query(&[("accountId", &param_value.to_string())]);
     }
     if let Some(ref param_value) = p_query_source {
         req_builder = req_builder.query(&[("source", &param_value.to_string())]);
@@ -376,6 +381,7 @@ pub async fn get_daily_metrics(
     configuration: &configuration::Configuration,
     platform: Option<&str>,
     profile_id: Option<&str>,
+    account_id: Option<&str>,
     from_date: Option<String>,
     to_date: Option<String>,
     source: Option<&str>,
@@ -383,6 +389,7 @@ pub async fn get_daily_metrics(
     // add a prefix to parameters to efficiently prevent name collisions
     let p_query_platform = platform;
     let p_query_profile_id = profile_id;
+    let p_query_account_id = account_id;
     let p_query_from_date = from_date;
     let p_query_to_date = to_date;
     let p_query_source = source;
@@ -395,6 +402,9 @@ pub async fn get_daily_metrics(
     }
     if let Some(ref param_value) = p_query_profile_id {
         req_builder = req_builder.query(&[("profileId", &param_value.to_string())]);
+    }
+    if let Some(ref param_value) = p_query_account_id {
+        req_builder = req_builder.query(&[("accountId", &param_value.to_string())]);
     }
     if let Some(ref param_value) = p_query_from_date {
         req_builder = req_builder.query(&[("fromDate", &param_value.to_string())]);
