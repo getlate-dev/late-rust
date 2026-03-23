@@ -9,6 +9,7 @@ docs/AccountWithFollowerStats.md
 docs/AccountWithFollowerStatsAllOfAccountStats.md
 docs/AccountsApi.md
 docs/AccountsListResponse.md
+docs/AddBroadcastRecipientsRequest.md
 docs/AddWhatsAppBroadcastRecipients200Response.md
 docs/AddWhatsAppBroadcastRecipientsRequest.md
 docs/AddWhatsAppBroadcastRecipientsRequestRecipientsInner.md
@@ -25,6 +26,9 @@ docs/ApiKeysApi.md
 docs/BlueskyPlatformData.md
 docs/BookmarkPost200Response.md
 docs/BookmarkPostRequest.md
+docs/BroadcastsApi.md
+docs/BulkCreateContactsRequest.md
+docs/BulkCreateContactsRequestContactsInner.md
 docs/BulkDeleteWhatsAppContacts200Response.md
 docs/BulkDeleteWhatsAppContactsRequest.md
 docs/BulkUpdateWhatsAppContacts200Response.md
@@ -39,6 +43,7 @@ docs/CheckInstagramHashtags200Response.md
 docs/CheckInstagramHashtags200ResponseResultsInner.md
 docs/CheckInstagramHashtags200ResponseSummary.md
 docs/CheckInstagramHashtagsRequest.md
+docs/CommentAutomationsApi.md
 docs/CommentsApi.md
 docs/CompleteTelegramConnect200Response.md
 docs/ConnectApi.md
@@ -53,10 +58,19 @@ docs/ConnectionLog.md
 docs/ConnectionLogContext.md
 docs/ConnectionLogError.md
 docs/ConnectionLogSuccess.md
+docs/ContactsApi.md
 docs/CreateAccountGroup201Response.md
 docs/CreateAccountGroupRequest.md
 docs/CreateApiKey201Response.md
 docs/CreateApiKeyRequest.md
+docs/CreateBroadcastRequest.md
+docs/CreateBroadcastRequestMessage.md
+docs/CreateBroadcastRequestMessageAttachmentsInner.md
+docs/CreateBroadcastRequestSegmentFilters.md
+docs/CreateBroadcastRequestTemplate.md
+docs/CreateCommentAutomationRequest.md
+docs/CreateContactRequest.md
+docs/CreateCustomFieldRequest.md
 docs/CreateGoogleBusinessMedia200Response.md
 docs/CreateGoogleBusinessMediaRequest.md
 docs/CreateGoogleBusinessPlaceAction200Response.md
@@ -73,6 +87,9 @@ docs/CreatePostRequestPlatformsInnerPlatformSpecificData.md
 docs/CreateProfileRequest.md
 docs/CreateQueueSlot201Response.md
 docs/CreateQueueSlotRequest.md
+docs/CreateSequenceRequest.md
+docs/CreateSequenceRequestStepsInner.md
+docs/CreateSequenceRequestStepsInnerMessage.md
 docs/CreateWebhookSettingsRequest.md
 docs/CreateWhatsAppBroadcast200Response.md
 docs/CreateWhatsAppBroadcast200ResponseBroadcast.md
@@ -86,6 +103,7 @@ docs/CreateWhatsAppTemplate200ResponseTemplate.md
 docs/CreateWhatsAppTemplateRequest.md
 docs/CreateWhatsAppTemplateRequestLibraryTemplateButtonInputsInner.md
 docs/CreateWhatsAppTemplateRequestLibraryTemplateButtonInputsInnerUrl.md
+docs/CustomFieldsApi.md
 docs/DeleteAccountGroup200Response.md
 docs/DeleteGoogleBusinessMedia200Response.md
 docs/DeleteGoogleBusinessPlaceAction200Response.md
@@ -108,6 +126,7 @@ docs/EditInboxMessage200ResponseData.md
 docs/EditInboxMessageRequest.md
 docs/EditInboxMessageRequestReplyMarkup.md
 docs/EditInboxMessageRequestReplyMarkupKeyboardInnerInner.md
+docs/EnrollContactsRequest.md
 docs/ErrorResponse.md
 docs/Expired.md
 docs/FacebookPlatformData.md
@@ -315,6 +334,9 @@ docs/ListAccountGroups200Response.md
 docs/ListAccountGroups200ResponseGroupsInner.md
 docs/ListAccounts200Response.md
 docs/ListApiKeys200Response.md
+docs/ListCommentAutomations200Response.md
+docs/ListCommentAutomations200ResponseAutomationsInner.md
+docs/ListCommentAutomations200ResponseAutomationsInnerStats.md
 docs/ListConnectionLogs200Response.md
 docs/ListFacebookPages200Response.md
 docs/ListFacebookPages200ResponsePagesInner.md
@@ -420,6 +442,7 @@ docs/ReplyToInboxReviewRequest.md
 docs/RetweetPost200Response.md
 docs/RetweetPostRequest.md
 docs/ReviewsApi.md
+docs/ScheduleBroadcastRequest.md
 docs/ScheduleWhatsAppBroadcast200Response.md
 docs/ScheduleWhatsAppBroadcast200ResponseBroadcast.md
 docs/ScheduleWhatsAppBroadcastRequest.md
@@ -464,6 +487,8 @@ docs/SendWhatsAppBulk200ResponseSummary.md
 docs/SendWhatsAppBulkRequest.md
 docs/SendWhatsAppBulkRequestRecipientsInner.md
 docs/SendWhatsAppBulkRequestTemplate.md
+docs/SequencesApi.md
+docs/SetContactFieldValueRequest.md
 docs/SetInstagramIceBreakersRequest.md
 docs/SetInstagramIceBreakersRequestIceBreakersInner.md
 docs/SetMessengerMenuRequest.md
@@ -492,6 +517,9 @@ docs/UpdateAccount200Response.md
 docs/UpdateAccountGroup200Response.md
 docs/UpdateAccountGroupRequest.md
 docs/UpdateAccountRequest.md
+docs/UpdateCommentAutomationRequest.md
+docs/UpdateContactRequest.md
+docs/UpdateCustomFieldRequest.md
 docs/UpdateFacebookPage200Response.md
 docs/UpdateFacebookPage200ResponseSelectedPage.md
 docs/UpdateFacebookPageRequest.md
@@ -608,9 +636,13 @@ src/apis/account_settings_api.rs
 src/apis/accounts_api.rs
 src/apis/analytics_api.rs
 src/apis/api_keys_api.rs
+src/apis/broadcasts_api.rs
+src/apis/comment_automations_api.rs
 src/apis/comments_api.rs
 src/apis/configuration.rs
 src/apis/connect_api.rs
+src/apis/contacts_api.rs
+src/apis/custom_fields_api.rs
 src/apis/gmb_attributes_api.rs
 src/apis/gmb_food_menus_api.rs
 src/apis/gmb_location_details_api.rs
@@ -628,6 +660,7 @@ src/apis/profiles_api.rs
 src/apis/queue_api.rs
 src/apis/reddit_search_api.rs
 src/apis/reviews_api.rs
+src/apis/sequences_api.rs
 src/apis/tools_api.rs
 src/apis/twitter_engagement_api.rs
 src/apis/usage_api.rs
@@ -641,6 +674,7 @@ src/models/account_get_response.rs
 src/models/account_with_follower_stats.rs
 src/models/account_with_follower_stats_all_of_account_stats.rs
 src/models/accounts_list_response.rs
+src/models/add_broadcast_recipients_request.rs
 src/models/add_whats_app_broadcast_recipients_200_response.rs
 src/models/add_whats_app_broadcast_recipients_request.rs
 src/models/add_whats_app_broadcast_recipients_request_recipients_inner.rs
@@ -655,6 +689,8 @@ src/models/api_key_profile_ids_inner.rs
 src/models/bluesky_platform_data.rs
 src/models/bookmark_post_200_response.rs
 src/models/bookmark_post_request.rs
+src/models/bulk_create_contacts_request.rs
+src/models/bulk_create_contacts_request_contacts_inner.rs
 src/models/bulk_delete_whats_app_contacts_200_response.rs
 src/models/bulk_delete_whats_app_contacts_request.rs
 src/models/bulk_update_whats_app_contacts_200_response.rs
@@ -685,6 +721,14 @@ src/models/create_account_group_201_response.rs
 src/models/create_account_group_request.rs
 src/models/create_api_key_201_response.rs
 src/models/create_api_key_request.rs
+src/models/create_broadcast_request.rs
+src/models/create_broadcast_request_message.rs
+src/models/create_broadcast_request_message_attachments_inner.rs
+src/models/create_broadcast_request_segment_filters.rs
+src/models/create_broadcast_request_template.rs
+src/models/create_comment_automation_request.rs
+src/models/create_contact_request.rs
+src/models/create_custom_field_request.rs
 src/models/create_google_business_media_200_response.rs
 src/models/create_google_business_media_request.rs
 src/models/create_google_business_place_action_200_response.rs
@@ -701,6 +745,9 @@ src/models/create_post_request_platforms_inner_platform_specific_data.rs
 src/models/create_profile_request.rs
 src/models/create_queue_slot_201_response.rs
 src/models/create_queue_slot_request.rs
+src/models/create_sequence_request.rs
+src/models/create_sequence_request_steps_inner.rs
+src/models/create_sequence_request_steps_inner_message.rs
 src/models/create_webhook_settings_request.rs
 src/models/create_whats_app_broadcast_200_response.rs
 src/models/create_whats_app_broadcast_200_response_broadcast.rs
@@ -736,6 +783,7 @@ src/models/edit_inbox_message_200_response_data.rs
 src/models/edit_inbox_message_request.rs
 src/models/edit_inbox_message_request_reply_markup.rs
 src/models/edit_inbox_message_request_reply_markup_keyboard_inner_inner.rs
+src/models/enroll_contacts_request.rs
 src/models/error_response.rs
 src/models/expired.rs
 src/models/facebook_platform_data.rs
@@ -935,6 +983,9 @@ src/models/list_account_groups_200_response.rs
 src/models/list_account_groups_200_response_groups_inner.rs
 src/models/list_accounts_200_response.rs
 src/models/list_api_keys_200_response.rs
+src/models/list_comment_automations_200_response.rs
+src/models/list_comment_automations_200_response_automations_inner.rs
+src/models/list_comment_automations_200_response_automations_inner_stats.rs
 src/models/list_connection_logs_200_response.rs
 src/models/list_facebook_pages_200_response.rs
 src/models/list_facebook_pages_200_response_pages_inner.rs
@@ -1033,6 +1084,7 @@ src/models/reply_to_inbox_review_200_response_reply.rs
 src/models/reply_to_inbox_review_request.rs
 src/models/retweet_post_200_response.rs
 src/models/retweet_post_request.rs
+src/models/schedule_broadcast_request.rs
 src/models/schedule_whats_app_broadcast_200_response.rs
 src/models/schedule_whats_app_broadcast_200_response_broadcast.rs
 src/models/schedule_whats_app_broadcast_request.rs
@@ -1077,6 +1129,7 @@ src/models/send_whats_app_bulk_200_response_summary.rs
 src/models/send_whats_app_bulk_request.rs
 src/models/send_whats_app_bulk_request_recipients_inner.rs
 src/models/send_whats_app_bulk_request_template.rs
+src/models/set_contact_field_value_request.rs
 src/models/set_instagram_ice_breakers_request.rs
 src/models/set_instagram_ice_breakers_request_ice_breakers_inner.rs
 src/models/set_messenger_menu_request.rs
@@ -1103,6 +1156,9 @@ src/models/update_account_200_response.rs
 src/models/update_account_group_200_response.rs
 src/models/update_account_group_request.rs
 src/models/update_account_request.rs
+src/models/update_comment_automation_request.rs
+src/models/update_contact_request.rs
+src/models/update_custom_field_request.rs
 src/models/update_facebook_page_200_response.rs
 src/models/update_facebook_page_200_response_selected_page.rs
 src/models/update_facebook_page_request.rs

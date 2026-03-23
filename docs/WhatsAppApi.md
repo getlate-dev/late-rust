@@ -44,7 +44,7 @@ Method | HTTP request | Description
 > models::AddWhatsAppBroadcastRecipients200Response add_whats_app_broadcast_recipients(broadcast_id, add_whats_app_broadcast_recipients_request)
 Add recipients
 
-Add recipients to a draft broadcast. Maximum 1000 recipients per request. Duplicate phone numbers are automatically skipped. 
+**Deprecated.** Use `POST /v1/broadcasts/{id}/recipients` instead. Add recipients to a draft broadcast. Maximum 1000 recipients per request. Duplicate phone numbers are automatically skipped. 
 
 ### Parameters
 
@@ -75,7 +75,7 @@ Name | Type | Description  | Required | Notes
 > models::BulkDeleteWhatsAppContacts200Response bulk_delete_whats_app_contacts(bulk_delete_whats_app_contacts_request)
 Bulk delete contacts
 
-Permanently delete multiple contacts at once (max 500 per request).
+**Deprecated.** Use `DELETE /v1/contacts/{id}` for individual deletes instead. Permanently delete multiple contacts at once (max 500 per request). 
 
 ### Parameters
 
@@ -105,7 +105,7 @@ Name | Type | Description  | Required | Notes
 > models::BulkUpdateWhatsAppContacts200Response bulk_update_whats_app_contacts(bulk_update_whats_app_contacts_request)
 Bulk update contacts
 
-Perform bulk operations on multiple contacts (max 500 per request). Supported actions: addTags, removeTags, addGroups, removeGroups, optIn, optOut, block, unblock. 
+**Deprecated.** Use `PATCH /v1/contacts/{id}` for individual updates instead. Perform bulk operations on multiple contacts (max 500 per request). Supported actions: addTags, removeTags, addGroups, removeGroups, optIn, optOut, block, unblock. 
 
 ### Parameters
 
@@ -135,7 +135,7 @@ Name | Type | Description  | Required | Notes
 > models::CancelWhatsAppBroadcastSchedule200Response cancel_whats_app_broadcast_schedule(broadcast_id)
 Cancel scheduled broadcast
 
-Cancel a scheduled broadcast and return it to draft status. Only broadcasts in scheduled status can be cancelled. 
+**Deprecated.** Use `POST /v1/broadcasts/{id}/cancel` instead. Cancel a scheduled broadcast and return it to draft status. Only broadcasts in scheduled status can be cancelled. 
 
 ### Parameters
 
@@ -165,7 +165,7 @@ Name | Type | Description  | Required | Notes
 > models::CreateWhatsAppBroadcast200Response create_whats_app_broadcast(create_whats_app_broadcast_request)
 Create broadcast
 
-Create a new draft broadcast. Optionally include initial recipients. After creation, add recipients and then send or schedule the broadcast. 
+**Deprecated.** Use `POST /v1/broadcasts` instead. Create a new draft broadcast. Optionally include initial recipients. After creation, add recipients and then send or schedule the broadcast. 
 
 ### Parameters
 
@@ -195,7 +195,7 @@ Name | Type | Description  | Required | Notes
 > models::CreateWhatsAppContact200Response create_whats_app_contact(create_whats_app_contact_request)
 Create contact
 
-Create a new WhatsApp contact. Phone number must be unique per account and in E.164 format (e.g., +1234567890). 
+**Deprecated.** Use `POST /v1/contacts` instead. Create a new WhatsApp contact. Phone number must be unique per account and in E.164 format (e.g., +1234567890). 
 
 ### Parameters
 
@@ -255,7 +255,7 @@ Name | Type | Description  | Required | Notes
 > models::UnpublishPost200Response delete_whats_app_broadcast(broadcast_id)
 Delete broadcast
 
-Delete a broadcast. Only draft or cancelled broadcasts can be deleted.
+**Deprecated.** Use `DELETE /v1/broadcasts/{id}` instead. Delete a broadcast. Only draft or cancelled broadcasts can be deleted. 
 
 ### Parameters
 
@@ -285,7 +285,7 @@ Name | Type | Description  | Required | Notes
 > models::UnpublishPost200Response delete_whats_app_contact(contact_id)
 Delete contact
 
-Permanently delete a WhatsApp contact.
+**Deprecated.** Use `DELETE /v1/contacts/{id}` instead. Permanently delete a WhatsApp contact. 
 
 ### Parameters
 
@@ -315,7 +315,7 @@ Name | Type | Description  | Required | Notes
 > models::RenameWhatsAppGroup200Response delete_whats_app_group(delete_whats_app_group_request)
 Delete group
 
-Delete a contact group. This removes the group from all contacts but does not delete the contacts themselves.
+**Deprecated.** Use contact tags via `PATCH /v1/contacts/{id}` instead. Delete a contact group. This removes the group from all contacts but does not delete the contacts themselves. 
 
 ### Parameters
 
@@ -345,7 +345,7 @@ Name | Type | Description  | Required | Notes
 > models::UnpublishPost200Response delete_whats_app_template(template_name, account_id)
 Delete template
 
-Permanently delete a message template by name.
+Permanently delete a message template by name. 
 
 ### Parameters
 
@@ -376,7 +376,7 @@ Name | Type | Description  | Required | Notes
 > models::GetWhatsAppBroadcast200Response get_whats_app_broadcast(broadcast_id)
 Get broadcast
 
-Retrieve detailed information about a single broadcast including delivery statistics.
+**Deprecated.** Use `GET /v1/broadcasts/{id}` instead. Retrieve detailed information about a single broadcast including delivery statistics. 
 
 ### Parameters
 
@@ -406,7 +406,7 @@ Name | Type | Description  | Required | Notes
 > models::GetWhatsAppBroadcastRecipients200Response get_whats_app_broadcast_recipients(broadcast_id, status, limit, skip)
 List recipients
 
-List recipients of a broadcast with their delivery status. Supports filtering by delivery status and pagination. 
+**Deprecated.** Use `GET /v1/broadcasts/{id}/recipients` instead. List recipients of a broadcast with their delivery status. Supports filtering by delivery status and pagination. 
 
 ### Parameters
 
@@ -439,7 +439,7 @@ Name | Type | Description  | Required | Notes
 > models::GetWhatsAppBroadcasts200Response get_whats_app_broadcasts(account_id, status, limit, skip)
 List broadcasts
 
-List all WhatsApp broadcasts for an account. Returns broadcasts sorted by creation date (newest first) without the full recipients list for performance. 
+**Deprecated.** Use `GET /v1/broadcasts?profileId={profileId}` instead. List all WhatsApp broadcasts for an account. Returns broadcasts sorted by creation date (newest first) without the full recipients list for performance. 
 
 ### Parameters
 
@@ -472,7 +472,7 @@ Name | Type | Description  | Required | Notes
 > models::GetWhatsAppBusinessProfile200Response get_whats_app_business_profile(account_id)
 Get business profile
 
-Retrieve the WhatsApp Business profile for the account (about, address, description, email, websites, etc.).
+Retrieve the WhatsApp Business profile for the account (about, address, description, email, websites, etc.). 
 
 ### Parameters
 
@@ -502,7 +502,7 @@ Name | Type | Description  | Required | Notes
 > models::GetWhatsAppContact200Response get_whats_app_contact(contact_id)
 Get contact
 
-Retrieve a single WhatsApp contact by ID with full details.
+**Deprecated.** Use `GET /v1/contacts/{id}` instead. Retrieve a single WhatsApp contact by ID with full details. 
 
 ### Parameters
 
@@ -532,7 +532,7 @@ Name | Type | Description  | Required | Notes
 > models::GetWhatsAppContacts200Response get_whats_app_contacts(account_id, search, tag, group, opted_in, limit, skip)
 List contacts
 
-List WhatsApp contacts for an account. Supports filtering by tags, groups, opt-in status, and text search. Returns contacts sorted by name with available filter options. 
+**Deprecated.** Use `GET /v1/contacts?profileId={profileId}` instead. List WhatsApp contacts for an account. Supports filtering by tags, groups, opt-in status, and text search. Returns contacts sorted by name with available filter options. 
 
 ### Parameters
 
@@ -598,7 +598,7 @@ Name | Type | Description  | Required | Notes
 > models::GetWhatsAppGroups200Response get_whats_app_groups(account_id)
 List contact groups
 
-List all contact groups for a WhatsApp account with contact counts. Groups are derived from the groups field on contacts, not stored as separate documents. 
+**Deprecated.** Use contact tags via `GET /v1/contacts` for grouping instead. WhatsApp groups have no cross-platform equivalent. List all contact groups for a WhatsApp account with contact counts. Groups are derived from the groups field on contacts, not stored as separate documents. 
 
 ### Parameters
 
@@ -628,7 +628,7 @@ Name | Type | Description  | Required | Notes
 > models::GetWhatsAppTemplate200Response get_whats_app_template(template_name, account_id)
 Get template
 
-Retrieve a single message template by name.
+Retrieve a single message template by name. 
 
 ### Parameters
 
@@ -689,7 +689,7 @@ Name | Type | Description  | Required | Notes
 > models::ImportWhatsAppContacts200Response import_whats_app_contacts(import_whats_app_contacts_request)
 Bulk import contacts
 
-Import up to 1000 contacts at once. Each contact requires a phone number and name. Duplicates are skipped by default. Supports default tags and groups applied to all imported contacts. 
+**Deprecated.** Use `POST /v1/contacts/bulk` instead. Import up to 1000 contacts at once. Each contact requires a phone number and name. Duplicates are skipped by default. Supports default tags and groups applied to all imported contacts. 
 
 ### Parameters
 
@@ -719,7 +719,7 @@ Name | Type | Description  | Required | Notes
 > models::RemoveWhatsAppBroadcastRecipients200Response remove_whats_app_broadcast_recipients(broadcast_id, remove_whats_app_broadcast_recipients_request)
 Remove recipients
 
-Remove recipients from a draft broadcast by phone number.
+**Deprecated.** Use `POST /v1/broadcasts/{id}/recipients` with removal flag instead. Remove recipients from a draft broadcast by phone number. 
 
 ### Parameters
 
@@ -750,7 +750,7 @@ Name | Type | Description  | Required | Notes
 > models::RenameWhatsAppGroup200Response rename_whats_app_group(rename_whats_app_group_request)
 Rename group
 
-Rename a contact group. This updates the group name on all contacts that belong to the group.
+**Deprecated.** Use contact tags via `PATCH /v1/contacts/{id}` instead. Rename a contact group. This updates the group name on all contacts that belong to the group. 
 
 ### Parameters
 
@@ -780,7 +780,7 @@ Name | Type | Description  | Required | Notes
 > models::ScheduleWhatsAppBroadcast200Response schedule_whats_app_broadcast(broadcast_id, schedule_whats_app_broadcast_request)
 Schedule broadcast
 
-Schedule a draft broadcast for future sending. The scheduled time must be in the future and no more than 30 days in advance. The broadcast must be in draft status and have recipients. 
+**Deprecated.** Use `POST /v1/broadcasts/{id}/schedule` instead. Schedule a draft broadcast for future sending. The scheduled time must be in the future and no more than 30 days in advance. The broadcast must be in draft status and have recipients. 
 
 ### Parameters
 
@@ -811,7 +811,7 @@ Name | Type | Description  | Required | Notes
 > models::SendWhatsAppBroadcast200Response send_whats_app_broadcast(broadcast_id)
 Send broadcast
 
-Start sending a broadcast immediately. The broadcast must be in draft or scheduled status and have at least one recipient. Messages are sent sequentially with rate limiting. 
+**Deprecated.** Use `POST /v1/broadcasts/{id}/send` instead. Start sending a broadcast immediately. The broadcast must be in draft or scheduled status and have at least one recipient. Messages are sent sequentially with rate limiting. 
 
 ### Parameters
 
@@ -841,7 +841,7 @@ Name | Type | Description  | Required | Notes
 > models::SendWhatsAppBulk200Response send_whats_app_bulk(send_whats_app_bulk_request)
 Bulk send template messages
 
-Send a template message to multiple recipients in a single request. Maximum 100 recipients per request. Only template messages are supported for bulk sending (not free-form text).  Each recipient can have optional per-recipient template variables for personalization. Returns detailed results for each recipient. 
+**Deprecated.** Use `POST /v1/broadcasts` to create a broadcast, `POST /v1/broadcasts/{id}/recipients` to add recipients, then `POST /v1/broadcasts/{id}/send` to send. Send a template message to multiple recipients in a single request. Maximum 100 recipients per request. Only template messages are supported for bulk sending (not free-form text).  Each recipient can have optional per-recipient template variables for personalization. Returns detailed results for each recipient. 
 
 ### Parameters
 
@@ -901,7 +901,7 @@ Name | Type | Description  | Required | Notes
 > models::UpdateWhatsAppContact200Response update_whats_app_contact(contact_id, update_whats_app_contact_request)
 Update contact
 
-Update an existing WhatsApp contact. All fields are optional; only provided fields will be updated. Custom fields are merged with existing values. Set a custom field to null to remove it. 
+**Deprecated.** Use `PATCH /v1/contacts/{id}` instead. Update an existing WhatsApp contact. All fields are optional; only provided fields will be updated. Custom fields are merged with existing values. Set a custom field to null to remove it. 
 
 ### Parameters
 
