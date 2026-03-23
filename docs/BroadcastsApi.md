@@ -19,7 +19,7 @@ Method | HTTP request | Description
 
 ## add_broadcast_recipients
 
-> add_broadcast_recipients(broadcast_id, add_broadcast_recipients_request)
+> models::AddBroadcastRecipients200Response add_broadcast_recipients(broadcast_id, add_broadcast_recipients_request)
 Add recipients to a broadcast
 
 ### Parameters
@@ -32,7 +32,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
- (empty response body)
+[**models::AddBroadcastRecipients200Response**](addBroadcastRecipients_200_response.md)
 
 ### Authorization
 
@@ -48,7 +48,7 @@ Name | Type | Description  | Required | Notes
 
 ## cancel_broadcast
 
-> cancel_broadcast(broadcast_id)
+> models::CancelBroadcast200Response cancel_broadcast(broadcast_id)
 Cancel a broadcast
 
 ### Parameters
@@ -60,7 +60,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
- (empty response body)
+[**models::CancelBroadcast200Response**](cancelBroadcast_200_response.md)
 
 ### Authorization
 
@@ -132,7 +132,7 @@ Name | Type | Description  | Required | Notes
 
 ## get_broadcast
 
-> get_broadcast(broadcast_id)
+> models::GetBroadcast200Response get_broadcast(broadcast_id)
 Get broadcast details
 
 ### Parameters
@@ -144,7 +144,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
- (empty response body)
+[**models::GetBroadcast200Response**](getBroadcast_200_response.md)
 
 ### Authorization
 
@@ -160,7 +160,7 @@ Name | Type | Description  | Required | Notes
 
 ## list_broadcast_recipients
 
-> list_broadcast_recipients(broadcast_id, status, limit, skip)
+> models::ListBroadcastRecipients200Response list_broadcast_recipients(broadcast_id, status, limit, skip)
 List broadcast recipients
 
 ### Parameters
@@ -175,7 +175,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
- (empty response body)
+[**models::ListBroadcastRecipients200Response**](listBroadcastRecipients_200_response.md)
 
 ### Authorization
 
@@ -223,7 +223,7 @@ Name | Type | Description  | Required | Notes
 
 ## schedule_broadcast
 
-> schedule_broadcast(broadcast_id, schedule_broadcast_request)
+> models::ScheduleBroadcast200Response schedule_broadcast(broadcast_id, schedule_broadcast_request)
 Schedule broadcast for later
 
 ### Parameters
@@ -236,7 +236,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
- (empty response body)
+[**models::ScheduleBroadcast200Response**](scheduleBroadcast_200_response.md)
 
 ### Authorization
 
@@ -280,7 +280,7 @@ Name | Type | Description  | Required | Notes
 
 ## update_broadcast
 
-> update_broadcast(broadcast_id)
+> models::UpdateBroadcast200Response update_broadcast(broadcast_id)
 Update a broadcast
 
 ### Parameters
@@ -292,7 +292,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
- (empty response body)
+[**models::UpdateBroadcast200Response**](updateBroadcast_200_response.md)
 
 ### Authorization
 

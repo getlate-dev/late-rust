@@ -108,7 +108,7 @@ pub async fn add_broadcast_recipients(
     configuration: &configuration::Configuration,
     broadcast_id: &str,
     add_broadcast_recipients_request: models::AddBroadcastRecipientsRequest,
-) -> Result<(), Error<AddBroadcastRecipientsError>> {
+) -> Result<models::AddBroadcastRecipients200Response, Error<AddBroadcastRecipientsError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_path_broadcast_id = broadcast_id;
     let p_body_add_broadcast_recipients_request = add_broadcast_recipients_request;
@@ -134,9 +134,20 @@ pub async fn add_broadcast_recipients(
     let resp = configuration.client.execute(req).await?;
 
     let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
 
     if !status.is_client_error() && !status.is_server_error() {
-        Ok(())
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::AddBroadcastRecipients200Response`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::AddBroadcastRecipients200Response`")))),
+        }
     } else {
         let content = resp.text().await?;
         let entity: Option<AddBroadcastRecipientsError> = serde_json::from_str(&content).ok();
@@ -151,7 +162,7 @@ pub async fn add_broadcast_recipients(
 pub async fn cancel_broadcast(
     configuration: &configuration::Configuration,
     broadcast_id: &str,
-) -> Result<(), Error<CancelBroadcastError>> {
+) -> Result<models::CancelBroadcast200Response, Error<CancelBroadcastError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_path_broadcast_id = broadcast_id;
 
@@ -175,9 +186,20 @@ pub async fn cancel_broadcast(
     let resp = configuration.client.execute(req).await?;
 
     let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
 
     if !status.is_client_error() && !status.is_server_error() {
-        Ok(())
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::CancelBroadcast200Response`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::CancelBroadcast200Response`")))),
+        }
     } else {
         let content = resp.text().await?;
         let entity: Option<CancelBroadcastError> = serde_json::from_str(&content).ok();
@@ -271,7 +293,7 @@ pub async fn delete_broadcast(
 pub async fn get_broadcast(
     configuration: &configuration::Configuration,
     broadcast_id: &str,
-) -> Result<(), Error<GetBroadcastError>> {
+) -> Result<models::GetBroadcast200Response, Error<GetBroadcastError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_path_broadcast_id = broadcast_id;
 
@@ -293,9 +315,20 @@ pub async fn get_broadcast(
     let resp = configuration.client.execute(req).await?;
 
     let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
 
     if !status.is_client_error() && !status.is_server_error() {
-        Ok(())
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::GetBroadcast200Response`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::GetBroadcast200Response`")))),
+        }
     } else {
         let content = resp.text().await?;
         let entity: Option<GetBroadcastError> = serde_json::from_str(&content).ok();
@@ -313,7 +346,7 @@ pub async fn list_broadcast_recipients(
     status: Option<&str>,
     limit: Option<i32>,
     skip: Option<i32>,
-) -> Result<(), Error<ListBroadcastRecipientsError>> {
+) -> Result<models::ListBroadcastRecipients200Response, Error<ListBroadcastRecipientsError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_path_broadcast_id = broadcast_id;
     let p_query_status = status;
@@ -347,9 +380,20 @@ pub async fn list_broadcast_recipients(
     let resp = configuration.client.execute(req).await?;
 
     let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
 
     if !status.is_client_error() && !status.is_server_error() {
-        Ok(())
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::ListBroadcastRecipients200Response`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::ListBroadcastRecipients200Response`")))),
+        }
     } else {
         let content = resp.text().await?;
         let entity: Option<ListBroadcastRecipientsError> = serde_json::from_str(&content).ok();
@@ -434,7 +478,7 @@ pub async fn schedule_broadcast(
     configuration: &configuration::Configuration,
     broadcast_id: &str,
     schedule_broadcast_request: models::ScheduleBroadcastRequest,
-) -> Result<(), Error<ScheduleBroadcastError>> {
+) -> Result<models::ScheduleBroadcast200Response, Error<ScheduleBroadcastError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_path_broadcast_id = broadcast_id;
     let p_body_schedule_broadcast_request = schedule_broadcast_request;
@@ -460,9 +504,20 @@ pub async fn schedule_broadcast(
     let resp = configuration.client.execute(req).await?;
 
     let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
 
     if !status.is_client_error() && !status.is_server_error() {
-        Ok(())
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::ScheduleBroadcast200Response`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::ScheduleBroadcast200Response`")))),
+        }
     } else {
         let content = resp.text().await?;
         let entity: Option<ScheduleBroadcastError> = serde_json::from_str(&content).ok();
@@ -529,7 +584,7 @@ pub async fn send_broadcast(
 pub async fn update_broadcast(
     configuration: &configuration::Configuration,
     broadcast_id: &str,
-) -> Result<(), Error<UpdateBroadcastError>> {
+) -> Result<models::UpdateBroadcast200Response, Error<UpdateBroadcastError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_path_broadcast_id = broadcast_id;
 
@@ -553,9 +608,20 @@ pub async fn update_broadcast(
     let resp = configuration.client.execute(req).await?;
 
     let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
 
     if !status.is_client_error() && !status.is_server_error() {
-        Ok(())
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::UpdateBroadcast200Response`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::UpdateBroadcast200Response`")))),
+        }
     } else {
         let content = resp.text().await?;
         let entity: Option<UpdateBroadcastError> = serde_json::from_str(&content).ok();

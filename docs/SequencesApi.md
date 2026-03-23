@@ -19,7 +19,7 @@ Method | HTTP request | Description
 
 ## activate_sequence
 
-> activate_sequence(sequence_id)
+> models::ActivateSequence200Response activate_sequence(sequence_id)
 Activate a sequence
 
 ### Parameters
@@ -31,7 +31,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
- (empty response body)
+[**models::ActivateSequence200Response**](activateSequence_200_response.md)
 
 ### Authorization
 
@@ -103,7 +103,7 @@ Name | Type | Description  | Required | Notes
 
 ## enroll_contacts
 
-> enroll_contacts(sequence_id, enroll_contacts_request)
+> models::EnrollContacts200Response enroll_contacts(sequence_id, enroll_contacts_request)
 Enroll contacts in a sequence
 
 ### Parameters
@@ -116,7 +116,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
- (empty response body)
+[**models::EnrollContacts200Response**](enrollContacts_200_response.md)
 
 ### Authorization
 
@@ -132,7 +132,7 @@ Name | Type | Description  | Required | Notes
 
 ## get_sequence
 
-> get_sequence(sequence_id)
+> models::GetSequence200Response get_sequence(sequence_id)
 Get sequence with steps
 
 ### Parameters
@@ -144,7 +144,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
- (empty response body)
+[**models::GetSequence200Response**](getSequence_200_response.md)
 
 ### Authorization
 
@@ -160,7 +160,7 @@ Name | Type | Description  | Required | Notes
 
 ## list_sequence_enrollments
 
-> list_sequence_enrollments(sequence_id, status, limit, skip)
+> models::ListSequenceEnrollments200Response list_sequence_enrollments(sequence_id, status, limit, skip)
 List enrollments for a sequence
 
 ### Parameters
@@ -175,7 +175,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
- (empty response body)
+[**models::ListSequenceEnrollments200Response**](listSequenceEnrollments_200_response.md)
 
 ### Authorization
 
@@ -222,7 +222,7 @@ Name | Type | Description  | Required | Notes
 
 ## pause_sequence
 
-> pause_sequence(sequence_id)
+> models::ActivateSequence200Response pause_sequence(sequence_id)
 Pause a sequence
 
 ### Parameters
@@ -234,7 +234,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
- (empty response body)
+[**models::ActivateSequence200Response**](activateSequence_200_response.md)
 
 ### Authorization
 
@@ -279,7 +279,7 @@ Name | Type | Description  | Required | Notes
 
 ## update_sequence
 
-> update_sequence(sequence_id)
+> models::UpdateSequence200Response update_sequence(sequence_id)
 Update a sequence
 
 ### Parameters
@@ -291,7 +291,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
- (empty response body)
+[**models::UpdateSequence200Response**](updateSequence_200_response.md)
 
 ### Authorization
 

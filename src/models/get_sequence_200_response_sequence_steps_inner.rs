@@ -12,22 +12,22 @@ use crate::models;
 use serde::{Deserialize, Serialize};
 
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
-pub struct CreateSequenceRequestStepsInner {
-    #[serde(rename = "order")]
-    pub order: i32,
-    #[serde(rename = "delayMinutes")]
-    pub delay_minutes: i32,
+pub struct GetSequence200ResponseSequenceStepsInner {
+    #[serde(rename = "order", skip_serializing_if = "Option::is_none")]
+    pub order: Option<i32>,
+    #[serde(rename = "delayMinutes", skip_serializing_if = "Option::is_none")]
+    pub delay_minutes: Option<i32>,
     #[serde(rename = "message", skip_serializing_if = "Option::is_none")]
     pub message: Option<Box<models::GetBroadcast200ResponseBroadcastMessage>>,
     #[serde(rename = "template", skip_serializing_if = "Option::is_none")]
-    pub template: Option<Box<models::CreateSequenceRequestStepsInnerTemplate>>,
+    pub template: Option<Box<models::GetSequence200ResponseSequenceStepsInnerTemplate>>,
 }
 
-impl CreateSequenceRequestStepsInner {
-    pub fn new(order: i32, delay_minutes: i32) -> CreateSequenceRequestStepsInner {
-        CreateSequenceRequestStepsInner {
-            order,
-            delay_minutes,
+impl GetSequence200ResponseSequenceStepsInner {
+    pub fn new() -> GetSequence200ResponseSequenceStepsInner {
+        GetSequence200ResponseSequenceStepsInner {
+            order: None,
+            delay_minutes: None,
             message: None,
             template: None,
         }

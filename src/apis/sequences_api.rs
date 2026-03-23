@@ -106,7 +106,7 @@ pub enum UpdateSequenceError {
 pub async fn activate_sequence(
     configuration: &configuration::Configuration,
     sequence_id: &str,
-) -> Result<(), Error<ActivateSequenceError>> {
+) -> Result<models::ActivateSequence200Response, Error<ActivateSequenceError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_path_sequence_id = sequence_id;
 
@@ -130,9 +130,20 @@ pub async fn activate_sequence(
     let resp = configuration.client.execute(req).await?;
 
     let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
 
     if !status.is_client_error() && !status.is_server_error() {
-        Ok(())
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::ActivateSequence200Response`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::ActivateSequence200Response`")))),
+        }
     } else {
         let content = resp.text().await?;
         let entity: Option<ActivateSequenceError> = serde_json::from_str(&content).ok();
@@ -227,7 +238,7 @@ pub async fn enroll_contacts(
     configuration: &configuration::Configuration,
     sequence_id: &str,
     enroll_contacts_request: models::EnrollContactsRequest,
-) -> Result<(), Error<EnrollContactsError>> {
+) -> Result<models::EnrollContacts200Response, Error<EnrollContactsError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_path_sequence_id = sequence_id;
     let p_body_enroll_contacts_request = enroll_contacts_request;
@@ -253,9 +264,20 @@ pub async fn enroll_contacts(
     let resp = configuration.client.execute(req).await?;
 
     let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
 
     if !status.is_client_error() && !status.is_server_error() {
-        Ok(())
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::EnrollContacts200Response`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::EnrollContacts200Response`")))),
+        }
     } else {
         let content = resp.text().await?;
         let entity: Option<EnrollContactsError> = serde_json::from_str(&content).ok();
@@ -270,7 +292,7 @@ pub async fn enroll_contacts(
 pub async fn get_sequence(
     configuration: &configuration::Configuration,
     sequence_id: &str,
-) -> Result<(), Error<GetSequenceError>> {
+) -> Result<models::GetSequence200Response, Error<GetSequenceError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_path_sequence_id = sequence_id;
 
@@ -292,9 +314,20 @@ pub async fn get_sequence(
     let resp = configuration.client.execute(req).await?;
 
     let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
 
     if !status.is_client_error() && !status.is_server_error() {
-        Ok(())
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::GetSequence200Response`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::GetSequence200Response`")))),
+        }
     } else {
         let content = resp.text().await?;
         let entity: Option<GetSequenceError> = serde_json::from_str(&content).ok();
@@ -312,7 +345,7 @@ pub async fn list_sequence_enrollments(
     status: Option<&str>,
     limit: Option<i32>,
     skip: Option<i32>,
-) -> Result<(), Error<ListSequenceEnrollmentsError>> {
+) -> Result<models::ListSequenceEnrollments200Response, Error<ListSequenceEnrollmentsError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_path_sequence_id = sequence_id;
     let p_query_status = status;
@@ -346,9 +379,20 @@ pub async fn list_sequence_enrollments(
     let resp = configuration.client.execute(req).await?;
 
     let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
 
     if !status.is_client_error() && !status.is_server_error() {
-        Ok(())
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::ListSequenceEnrollments200Response`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::ListSequenceEnrollments200Response`")))),
+        }
     } else {
         let content = resp.text().await?;
         let entity: Option<ListSequenceEnrollmentsError> = serde_json::from_str(&content).ok();
@@ -427,7 +471,7 @@ pub async fn list_sequences(
 pub async fn pause_sequence(
     configuration: &configuration::Configuration,
     sequence_id: &str,
-) -> Result<(), Error<PauseSequenceError>> {
+) -> Result<models::ActivateSequence200Response, Error<PauseSequenceError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_path_sequence_id = sequence_id;
 
@@ -451,9 +495,20 @@ pub async fn pause_sequence(
     let resp = configuration.client.execute(req).await?;
 
     let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
 
     if !status.is_client_error() && !status.is_server_error() {
-        Ok(())
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::ActivateSequence200Response`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::ActivateSequence200Response`")))),
+        }
     } else {
         let content = resp.text().await?;
         let entity: Option<PauseSequenceError> = serde_json::from_str(&content).ok();
@@ -512,7 +567,7 @@ pub async fn unenroll_contact(
 pub async fn update_sequence(
     configuration: &configuration::Configuration,
     sequence_id: &str,
-) -> Result<(), Error<UpdateSequenceError>> {
+) -> Result<models::UpdateSequence200Response, Error<UpdateSequenceError>> {
     // add a prefix to parameters to efficiently prevent name collisions
     let p_path_sequence_id = sequence_id;
 
@@ -536,9 +591,20 @@ pub async fn update_sequence(
     let resp = configuration.client.execute(req).await?;
 
     let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
 
     if !status.is_client_error() && !status.is_server_error() {
-        Ok(())
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::UpdateSequence200Response`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::UpdateSequence200Response`")))),
+        }
     } else {
         let content = resp.text().await?;
         let entity: Option<UpdateSequenceError> = serde_json::from_str(&content).ok();

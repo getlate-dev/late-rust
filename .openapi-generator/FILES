@@ -9,6 +9,8 @@ docs/AccountWithFollowerStats.md
 docs/AccountWithFollowerStatsAllOfAccountStats.md
 docs/AccountsApi.md
 docs/AccountsListResponse.md
+docs/ActivateSequence200Response.md
+docs/AddBroadcastRecipients200Response.md
 docs/AddBroadcastRecipientsRequest.md
 docs/AddWhatsAppBroadcastRecipients200Response.md
 docs/AddWhatsAppBroadcastRecipientsRequest.md
@@ -36,6 +38,8 @@ docs/BulkUpdateWhatsAppContactsRequest.md
 docs/BulkUploadPosts200Response.md
 docs/BulkUploadPosts200ResponseErrorsInner.md
 docs/BulkUploadPosts429Response.md
+docs/CancelBroadcast200Response.md
+docs/CancelBroadcast200ResponseBroadcast.md
 docs/CancelWhatsAppBroadcastSchedule200Response.md
 docs/CancelWhatsAppBroadcastSchedule200ResponseBroadcast.md
 docs/CaptionResponse.md
@@ -89,7 +93,6 @@ docs/CreateQueueSlot201Response.md
 docs/CreateQueueSlotRequest.md
 docs/CreateSequenceRequest.md
 docs/CreateSequenceRequestStepsInner.md
-docs/CreateSequenceRequestStepsInnerMessage.md
 docs/CreateSequenceRequestStepsInnerTemplate.md
 docs/CreateSequenceRequestStepsInnerTemplateVariableMappingValue.md
 docs/CreateWebhookSettingsRequest.md
@@ -128,6 +131,7 @@ docs/EditInboxMessage200ResponseData.md
 docs/EditInboxMessageRequest.md
 docs/EditInboxMessageRequestReplyMarkup.md
 docs/EditInboxMessageRequestReplyMarkupKeyboardInnerInner.md
+docs/EnrollContacts200Response.md
 docs/EnrollContactsRequest.md
 docs/ErrorResponse.md
 docs/Expired.md
@@ -154,6 +158,10 @@ docs/GetAnalytics402Response.md
 docs/GetBestTimeToPost200Response.md
 docs/GetBestTimeToPost200ResponseSlotsInner.md
 docs/GetBestTimeToPost403Response.md
+docs/GetBroadcast200Response.md
+docs/GetBroadcast200ResponseBroadcast.md
+docs/GetBroadcast200ResponseBroadcastMessage.md
+docs/GetBroadcast200ResponseBroadcastSegmentFilters.md
 docs/GetConnectUrl200Response.md
 docs/GetContentDecay200Response.md
 docs/GetContentDecay200ResponseBucketsInner.md
@@ -242,6 +250,10 @@ docs/GetRedditFlairs200Response.md
 docs/GetRedditFlairs200ResponseFlairsInner.md
 docs/GetRedditSubreddits200Response.md
 docs/GetRedditSubreddits200ResponseSubredditsInner.md
+docs/GetSequence200Response.md
+docs/GetSequence200ResponseSequence.md
+docs/GetSequence200ResponseSequenceStepsInner.md
+docs/GetSequence200ResponseSequenceStepsInnerTemplate.md
 docs/GetTelegramCommands200Response.md
 docs/GetTelegramCommands200ResponseDataInner.md
 docs/GetTelegramConnectStatus200Response.md
@@ -336,6 +348,8 @@ docs/ListAccountGroups200Response.md
 docs/ListAccountGroups200ResponseGroupsInner.md
 docs/ListAccounts200Response.md
 docs/ListApiKeys200Response.md
+docs/ListBroadcastRecipients200Response.md
+docs/ListBroadcastRecipients200ResponseRecipientsInner.md
 docs/ListBroadcasts200Response.md
 docs/ListBroadcasts200ResponseBroadcastsInner.md
 docs/ListCommentAutomations200Response.md
@@ -373,6 +387,8 @@ docs/ListPostsLogs200ResponsePagination.md
 docs/ListQueueSlots200Response.md
 docs/ListQueueSlots200ResponseOneOf.md
 docs/ListQueueSlots200ResponseOneOf1.md
+docs/ListSequenceEnrollments200Response.md
+docs/ListSequenceEnrollments200ResponseEnrollmentsInner.md
 docs/ListSequences200Response.md
 docs/ListSequences200ResponseSequencesInner.md
 docs/ListSnapchatProfiles200Response.md
@@ -448,6 +464,8 @@ docs/ReplyToInboxReviewRequest.md
 docs/RetweetPost200Response.md
 docs/RetweetPostRequest.md
 docs/ReviewsApi.md
+docs/ScheduleBroadcast200Response.md
+docs/ScheduleBroadcast200ResponseBroadcast.md
 docs/ScheduleBroadcastRequest.md
 docs/ScheduleWhatsAppBroadcast200Response.md
 docs/ScheduleWhatsAppBroadcast200ResponseBroadcast.md
@@ -524,6 +542,8 @@ docs/UpdateAccount200Response.md
 docs/UpdateAccountGroup200Response.md
 docs/UpdateAccountGroupRequest.md
 docs/UpdateAccountRequest.md
+docs/UpdateBroadcast200Response.md
+docs/UpdateBroadcast200ResponseBroadcast.md
 docs/UpdateCommentAutomationRequest.md
 docs/UpdateContactRequest.md
 docs/UpdateCustomFieldRequest.md
@@ -562,6 +582,8 @@ docs/UpdateQueueSlot200Response.md
 docs/UpdateQueueSlotRequest.md
 docs/UpdateRedditSubreddits200Response.md
 docs/UpdateRedditSubredditsRequest.md
+docs/UpdateSequence200Response.md
+docs/UpdateSequence200ResponseSequence.md
 docs/UpdateWebhookSettings200Response.md
 docs/UpdateWebhookSettingsRequest.md
 docs/UpdateWhatsAppBusinessProfileRequest.md
@@ -681,6 +703,8 @@ src/models/account_get_response.rs
 src/models/account_with_follower_stats.rs
 src/models/account_with_follower_stats_all_of_account_stats.rs
 src/models/accounts_list_response.rs
+src/models/activate_sequence_200_response.rs
+src/models/add_broadcast_recipients_200_response.rs
 src/models/add_broadcast_recipients_request.rs
 src/models/add_whats_app_broadcast_recipients_200_response.rs
 src/models/add_whats_app_broadcast_recipients_request.rs
@@ -705,6 +729,8 @@ src/models/bulk_update_whats_app_contacts_request.rs
 src/models/bulk_upload_posts_200_response.rs
 src/models/bulk_upload_posts_200_response_errors_inner.rs
 src/models/bulk_upload_posts_429_response.rs
+src/models/cancel_broadcast_200_response.rs
+src/models/cancel_broadcast_200_response_broadcast.rs
 src/models/cancel_whats_app_broadcast_schedule_200_response.rs
 src/models/cancel_whats_app_broadcast_schedule_200_response_broadcast.rs
 src/models/caption_response.rs
@@ -754,7 +780,6 @@ src/models/create_queue_slot_201_response.rs
 src/models/create_queue_slot_request.rs
 src/models/create_sequence_request.rs
 src/models/create_sequence_request_steps_inner.rs
-src/models/create_sequence_request_steps_inner_message.rs
 src/models/create_sequence_request_steps_inner_template.rs
 src/models/create_sequence_request_steps_inner_template_variable_mapping_value.rs
 src/models/create_webhook_settings_request.rs
@@ -792,6 +817,7 @@ src/models/edit_inbox_message_200_response_data.rs
 src/models/edit_inbox_message_request.rs
 src/models/edit_inbox_message_request_reply_markup.rs
 src/models/edit_inbox_message_request_reply_markup_keyboard_inner_inner.rs
+src/models/enroll_contacts_200_response.rs
 src/models/enroll_contacts_request.rs
 src/models/error_response.rs
 src/models/expired.rs
@@ -818,6 +844,10 @@ src/models/get_analytics_402_response.rs
 src/models/get_best_time_to_post_200_response.rs
 src/models/get_best_time_to_post_200_response_slots_inner.rs
 src/models/get_best_time_to_post_403_response.rs
+src/models/get_broadcast_200_response.rs
+src/models/get_broadcast_200_response_broadcast.rs
+src/models/get_broadcast_200_response_broadcast_message.rs
+src/models/get_broadcast_200_response_broadcast_segment_filters.rs
 src/models/get_connect_url_200_response.rs
 src/models/get_content_decay_200_response.rs
 src/models/get_content_decay_200_response_buckets_inner.rs
@@ -906,6 +936,10 @@ src/models/get_reddit_flairs_200_response.rs
 src/models/get_reddit_flairs_200_response_flairs_inner.rs
 src/models/get_reddit_subreddits_200_response.rs
 src/models/get_reddit_subreddits_200_response_subreddits_inner.rs
+src/models/get_sequence_200_response.rs
+src/models/get_sequence_200_response_sequence.rs
+src/models/get_sequence_200_response_sequence_steps_inner.rs
+src/models/get_sequence_200_response_sequence_steps_inner_template.rs
 src/models/get_telegram_commands_200_response.rs
 src/models/get_telegram_commands_200_response_data_inner.rs
 src/models/get_telegram_connect_status_200_response.rs
@@ -992,6 +1026,8 @@ src/models/list_account_groups_200_response.rs
 src/models/list_account_groups_200_response_groups_inner.rs
 src/models/list_accounts_200_response.rs
 src/models/list_api_keys_200_response.rs
+src/models/list_broadcast_recipients_200_response.rs
+src/models/list_broadcast_recipients_200_response_recipients_inner.rs
 src/models/list_broadcasts_200_response.rs
 src/models/list_broadcasts_200_response_broadcasts_inner.rs
 src/models/list_comment_automations_200_response.rs
@@ -1029,6 +1065,8 @@ src/models/list_posts_logs_200_response_pagination.rs
 src/models/list_queue_slots_200_response.rs
 src/models/list_queue_slots_200_response_one_of.rs
 src/models/list_queue_slots_200_response_one_of_1.rs
+src/models/list_sequence_enrollments_200_response.rs
+src/models/list_sequence_enrollments_200_response_enrollments_inner.rs
 src/models/list_sequences_200_response.rs
 src/models/list_sequences_200_response_sequences_inner.rs
 src/models/list_snapchat_profiles_200_response.rs
@@ -1097,6 +1135,8 @@ src/models/reply_to_inbox_review_200_response_reply.rs
 src/models/reply_to_inbox_review_request.rs
 src/models/retweet_post_200_response.rs
 src/models/retweet_post_request.rs
+src/models/schedule_broadcast_200_response.rs
+src/models/schedule_broadcast_200_response_broadcast.rs
 src/models/schedule_broadcast_request.rs
 src/models/schedule_whats_app_broadcast_200_response.rs
 src/models/schedule_whats_app_broadcast_200_response_broadcast.rs
@@ -1170,6 +1210,8 @@ src/models/update_account_200_response.rs
 src/models/update_account_group_200_response.rs
 src/models/update_account_group_request.rs
 src/models/update_account_request.rs
+src/models/update_broadcast_200_response.rs
+src/models/update_broadcast_200_response_broadcast.rs
 src/models/update_comment_automation_request.rs
 src/models/update_contact_request.rs
 src/models/update_custom_field_request.rs
@@ -1208,6 +1250,8 @@ src/models/update_queue_slot_200_response.rs
 src/models/update_queue_slot_request.rs
 src/models/update_reddit_subreddits_200_response.rs
 src/models/update_reddit_subreddits_request.rs
+src/models/update_sequence_200_response.rs
+src/models/update_sequence_200_response_sequence.rs
 src/models/update_webhook_settings_200_response.rs
 src/models/update_webhook_settings_request.rs
 src/models/update_whats_app_business_profile_request.rs
