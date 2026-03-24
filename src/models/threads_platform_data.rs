@@ -14,6 +14,9 @@ use serde::{Deserialize, Serialize};
 /// ThreadsPlatformData : Up to 10 images per carousel (no videos). Videos must be H.264/AAC MP4, max 5 min. Images JPEG/PNG, max 8 MB. Use threadItems for reply chains.
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct ThreadsPlatformData {
+    /// Topic tag for post categorization and discoverability on Threads. Must be 1-50 characters, cannot contain periods (.) or ampersands (&). Overrides auto-extraction from content hashtags when provided.
+    #[serde(rename = "topic_tag", skip_serializing_if = "Option::is_none")]
+    pub topic_tag: Option<String>,
     /// Sequence of posts in a Threads thread (root then replies in order).
     #[serde(rename = "threadItems", skip_serializing_if = "Option::is_none")]
     pub thread_items: Option<Vec<models::TwitterPlatformDataThreadItemsInner>>,
@@ -22,6 +25,9 @@ pub struct ThreadsPlatformData {
 impl ThreadsPlatformData {
     /// Up to 10 images per carousel (no videos). Videos must be H.264/AAC MP4, max 5 min. Images JPEG/PNG, max 8 MB. Use threadItems for reply chains.
     pub fn new() -> ThreadsPlatformData {
-        ThreadsPlatformData { thread_items: None }
+        ThreadsPlatformData {
+            topic_tag: None,
+            thread_items: None,
+        }
     }
 }
