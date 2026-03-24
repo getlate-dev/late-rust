@@ -27,6 +27,9 @@ pub struct GetInboxConversationMessages200ResponseMessagesInner {
     pub sender_id: Option<String>,
     #[serde(rename = "senderName", skip_serializing_if = "Option::is_none")]
     pub sender_name: Option<String>,
+    /// X/Twitter verified badge type. Only present for Twitter/X messages.
+    #[serde(rename = "senderVerifiedType", skip_serializing_if = "Option::is_none")]
+    pub sender_verified_type: Option<SenderVerifiedType>,
     #[serde(rename = "direction", skip_serializing_if = "Option::is_none")]
     pub direction: Option<Direction>,
     #[serde(rename = "createdAt", skip_serializing_if = "Option::is_none")]
@@ -55,6 +58,7 @@ impl GetInboxConversationMessages200ResponseMessagesInner {
             message: None,
             sender_id: None,
             sender_name: None,
+            sender_verified_type: None,
             direction: None,
             created_at: None,
             attachments: None,
@@ -62,6 +66,24 @@ impl GetInboxConversationMessages200ResponseMessagesInner {
             story_reply: None,
             is_story_mention: None,
         }
+    }
+}
+/// X/Twitter verified badge type. Only present for Twitter/X messages.
+#[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
+pub enum SenderVerifiedType {
+    #[serde(rename = "blue")]
+    Blue,
+    #[serde(rename = "government")]
+    Government,
+    #[serde(rename = "business")]
+    Business,
+    #[serde(rename = "none")]
+    None,
+}
+
+impl Default for SenderVerifiedType {
+    fn default() -> SenderVerifiedType {
+        Self::Blue
     }
 }
 ///

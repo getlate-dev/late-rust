@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **participant_name** | Option<**String**> |  | [optional]
 **participant_username** | Option<**String**> |  | [optional]
 **participant_picture** | Option<**String**> |  | [optional]
+**participant_verified_type** | Option<**ParticipantVerifiedType**> | X/Twitter verified badge type. Only present for Twitter/X conversations. (enum: blue, government, business, none) | [optional]
 **status** | Option<**Status**> |  (enum: active, archived) | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

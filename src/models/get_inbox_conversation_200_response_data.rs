@@ -27,6 +27,12 @@ pub struct GetInboxConversation200ResponseData {
     pub participant_name: Option<String>,
     #[serde(rename = "participantId", skip_serializing_if = "Option::is_none")]
     pub participant_id: Option<String>,
+    /// X/Twitter verified badge type. Only present for Twitter/X conversations.
+    #[serde(
+        rename = "participantVerifiedType",
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub participant_verified_type: Option<ParticipantVerifiedType>,
     #[serde(rename = "lastMessage", skip_serializing_if = "Option::is_none")]
     pub last_message: Option<String>,
     #[serde(rename = "lastMessageAt", skip_serializing_if = "Option::is_none")]
@@ -50,6 +56,7 @@ impl GetInboxConversation200ResponseData {
             status: None,
             participant_name: None,
             participant_id: None,
+            participant_verified_type: None,
             last_message: None,
             last_message_at: None,
             updated_time: None,
@@ -70,5 +77,23 @@ pub enum Status {
 impl Default for Status {
     fn default() -> Status {
         Self::Active
+    }
+}
+/// X/Twitter verified badge type. Only present for Twitter/X conversations.
+#[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
+pub enum ParticipantVerifiedType {
+    #[serde(rename = "blue")]
+    Blue,
+    #[serde(rename = "government")]
+    Government,
+    #[serde(rename = "business")]
+    Business,
+    #[serde(rename = "none")]
+    None,
+}
+
+impl Default for ParticipantVerifiedType {
+    fn default() -> ParticipantVerifiedType {
+        Self::Blue
     }
 }

@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **message** | Option<**String**> |  | [optional]
 **sender_id** | Option<**String**> |  | [optional]
 **sender_name** | Option<**String**> |  | [optional]
+**sender_verified_type** | Option<**SenderVerifiedType**> | X/Twitter verified badge type. Only present for Twitter/X messages. (enum: blue, government, business, none) | [optional]
 **direction** | Option<**Direction**> |  (enum: incoming, outgoing) | [optional]
 **created_at** | Option<**String**> |  | [optional]
 **attachments** | Option<[**Vec<models::GetInboxConversationMessages200ResponseMessagesInnerAttachmentsInner>**](GetInboxConversationMessages200ResponseMessagesInnerAttachmentsInner.md)> |  | [optional]

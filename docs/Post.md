@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **status** | Option<**Status**> |  (enum: draft, scheduled, publishing, published, failed, partial) | [optional]
 **tags** | Option<**Vec<String>**> | YouTube constraints: each tag max 100 chars, combined max 500 chars, duplicates removed. | [optional]
 **hashtags** | Option<**Vec<String>**> |  | [optional]
-**mentions** | Option<**Vec<String>**> |  | [optional]
+**mentions** | Option<**Vec<String>**> | Stored for reference only. This field does NOT automatically create @mentions when publishing. For LinkedIn @mentions, use the /v1/accounts/{accountId}/linkedin-mentions endpoint to resolve profile URLs to URNs, then embed the returned mentionFormat directly in the post content field. | [optional]
 **visibility** | Option<**Visibility**> |  (enum: public, private, unlisted) | [optional]
 **metadata** | Option<**std::collections::HashMap<String, serde_json::Value>**> |  | [optional]
 **recycling** | Option<[**models::RecyclingState**](RecyclingState.md)> |  | [optional]

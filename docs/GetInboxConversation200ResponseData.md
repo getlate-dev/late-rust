@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **status** | Option<**Status**> |  (enum: active, archived) | [optional]
 **participant_name** | Option<**String**> |  | [optional]
 **participant_id** | Option<**String**> |  | [optional]
+**participant_verified_type** | Option<**ParticipantVerifiedType**> | X/Twitter verified badge type. Only present for Twitter/X conversations. (enum: blue, government, business, none) | [optional]
 **last_message** | Option<**String**> |  | [optional]
 **last_message_at** | Option<**String**> |  | [optional]
 **updated_time** | Option<**String**> |  | [optional]

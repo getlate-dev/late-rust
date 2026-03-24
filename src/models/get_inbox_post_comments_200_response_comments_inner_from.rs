@@ -23,6 +23,9 @@ pub struct GetInboxPostComments200ResponseCommentsInnerFrom {
     pub picture: Option<String>,
     #[serde(rename = "isOwner", skip_serializing_if = "Option::is_none")]
     pub is_owner: Option<bool>,
+    /// X/Twitter verified badge type. Only present for Twitter/X comments.
+    #[serde(rename = "verifiedType", skip_serializing_if = "Option::is_none")]
+    pub verified_type: Option<VerifiedType>,
 }
 
 impl GetInboxPostComments200ResponseCommentsInnerFrom {
@@ -33,6 +36,25 @@ impl GetInboxPostComments200ResponseCommentsInnerFrom {
             username: None,
             picture: None,
             is_owner: None,
+            verified_type: None,
         }
+    }
+}
+/// X/Twitter verified badge type. Only present for Twitter/X comments.
+#[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
+pub enum VerifiedType {
+    #[serde(rename = "blue")]
+    Blue,
+    #[serde(rename = "government")]
+    Government,
+    #[serde(rename = "business")]
+    Business,
+    #[serde(rename = "none")]
+    None,
+}
+
+impl Default for VerifiedType {
+    fn default() -> VerifiedType {
+        Self::Blue
     }
 }

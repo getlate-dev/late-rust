@@ -37,6 +37,7 @@ pub struct Post {
     pub tags: Option<Vec<String>>,
     #[serde(rename = "hashtags", skip_serializing_if = "Option::is_none")]
     pub hashtags: Option<Vec<String>>,
+    /// Stored for reference only. This field does NOT automatically create @mentions when publishing. For LinkedIn @mentions, use the /v1/accounts/{accountId}/linkedin-mentions endpoint to resolve profile URLs to URNs, then embed the returned mentionFormat directly in the post content field.
     #[serde(rename = "mentions", skip_serializing_if = "Option::is_none")]
     pub mentions: Option<Vec<String>>,
     #[serde(rename = "visibility", skip_serializing_if = "Option::is_none")]

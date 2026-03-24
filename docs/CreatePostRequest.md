@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **timezone** | Option<**String**> |  | [optional][default to UTC]
 **tags** | Option<**Vec<String>**> | Tags/keywords. YouTube constraints: each tag max 100 chars, combined max 500 chars, duplicates auto-removed. | [optional]
 **hashtags** | Option<**Vec<String>**> |  | [optional]
-**mentions** | Option<**Vec<String>**> |  | [optional]
+**mentions** | Option<**Vec<String>**> | Stored for reference only. This field does NOT automatically create @mentions when publishing. For LinkedIn @mentions, use the /v1/accounts/{accountId}/linkedin-mentions endpoint to resolve profile URLs to URNs, then embed the returned mentionFormat directly in the post content field. | [optional]
 **crossposting_enabled** | Option<**bool**> |  | [optional][default to true]
 **metadata** | Option<**std::collections::HashMap<String, serde_json::Value>**> |  | [optional]
 **tiktok_settings** | Option<[**models::TikTokPlatformData**](TikTokPlatformData.md)> | Root-level TikTok settings applied to all TikTok platforms. Merged into each platform's platformSpecificData, with platform-specific settings taking precedence. | [optional]
